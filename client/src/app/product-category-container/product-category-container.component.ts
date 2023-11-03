@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../product';
+import { Product } from '../models';
 @Component({
   selector: 'app-product-category-container',
   templateUrl: './product-category-container.component.html',
