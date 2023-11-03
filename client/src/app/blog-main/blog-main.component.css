@@ -1,13 +1,13 @@
 .product-container {
-  width: 235px;
+  width: 320px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .product-container img {
-  width: 235px;
-  height: 235px;
+  width: 320px;
+  height: 320px;
 }
 
 /* 8 */

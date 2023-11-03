@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../models';
+import { blog } from '../models';
 @Component({
   selector: 'app-product-category-container',
   templateUrl: './product-category-container.component.html',
@@ -7,5 +8,7 @@ import { Product } from '../models';
 })
 export class ProductCategoryContainerComponent {
   @Input() container_title: string = 'HẠT GIỐNG';
-  products: Product[] = [new Product(),new Product(),new Product(),new Product()];
+  products: Product[] = [new Product(), new Product(), new Product(), new Product()];
+  blogs: blog[] = [new blog(), new blog(), new blog()]
+  @Input() is_blog: boolean = false;
 }

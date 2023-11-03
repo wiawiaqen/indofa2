@@ -13,3 +13,13 @@ export class Product {
     return parts.join(".");
   }
 }
+export class blog {
+  productTitle: string;
+  productImgSource: string;
+  date: string;
+  constructor(productTitle: string = 'Top 10 những cách trang trí chậu cây tui luôn tin tưởng', productImgSource: string = 'test.png', date: string = '11/04/2022') {
+    this.productTitle = productTitle;
+    this.productImgSource = productImgSource;
+    this.date = date;
+  }
+}
