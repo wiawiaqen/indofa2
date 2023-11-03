@@ -1,0 +1,27 @@
+/* .product-container{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+} */
+.product-container{
+  width: 235px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-container img{
+  width: 235px;
+  height:235px;
+}
+/* 8 */
+.product-container p{
+  margin-left: 1px;
+}
+.product-container .title{
+  font-weight: bold;
+  font-size: 14px;
+}
+.product-container .price{
+  font-size: 13px;
+  color: #9A9898;
+}

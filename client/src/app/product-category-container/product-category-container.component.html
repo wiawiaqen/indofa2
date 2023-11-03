@@ -1,0 +1,13 @@
+<div class="product-category-container">
+  <div class="title-container">
+    <h1>{{ container_title }}</h1>
+    <a href="#">
+      <div class="btn-main">
+        XEM THÊM →
+      </div>
+    </a>
+  </div>
+  <div class="grid-product-container">
+      <app-product-main *ngFor="let product of products" [product]="product"></app-product-main>
+  </div>
+</div>
