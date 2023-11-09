@@ -7,6 +7,8 @@ import { ProductCategoryContainerComponent } from './product-category-container/
 import { BlogMainComponent } from './blog-main/blog-main.component';
 import { LoginComponent } from './login/login.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { BlogcategoryComponent } from './blogcategory/blogcategory.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { BlogsComponent } from './blogs/blogs.component';
     ProductCategoryContainerComponent,
     BlogMainComponent,
     LoginComponent,
-    BlogsComponent
+    BlogsComponent,
+    BlogcategoryComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule
