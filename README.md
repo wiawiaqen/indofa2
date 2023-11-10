@@ -20,3 +20,4 @@ npm start
 Upon execution, these commands will install the necessary dependencies and start the backend server, thus activating the full suite of services.
 
 We continue to strive for technical excellence and operational efficiency, and this transition to Node.js and Angular signifies our commitment to providing cutting-edge solutions to our clients.
+.

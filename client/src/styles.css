@@ -1,18 +1,8 @@
-/* @tailwind base;
-
-h1 {
-  @apply text-2xl;
-}
-h2 {
-  @apply text-xl;
-}
-h3 {
-  @apply text-lg;
-} */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 body {
   font-family: 'Noto Sans';
   background-color: #FEFFF8;
 }
-/* @tailwind base; */
-@tailwind components;
-@tailwind utilities;
+
