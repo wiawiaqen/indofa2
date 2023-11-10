@@ -9,4 +9,5 @@ export class AboutUsReviewComponent {
   @Input() content: string = '';
   @Input() name: string='';
   @Input() place: string='';
+  // write function to encode the img url to base64
 }
