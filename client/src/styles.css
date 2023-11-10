@@ -1,3 +1,18 @@
-body {
-  font-family: 'Noto Sans'
+/* @tailwind base;
+
+h1 {
+  @apply text-2xl;
 }
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+} */
+body {
+  font-family: 'Noto Sans';
+  background-color: #FEFFF8;
+}
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;

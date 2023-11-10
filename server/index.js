@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
-
 const port = 4000;
 
+
+// ----------DATABASE PART-------------
 const DB_URL_CONNECTION = "mongodb://127.0.0.1:27017";
 const DB_NAME = "INDOFA";
 const PRODUCT_COLLECTION_NAME = "Product";
@@ -12,6 +13,7 @@ client.connect();
 const database = client.db(DB_NAME);
 const product_collection = database.collection(PRODUCT_COLLECTION_NAME);
 
+// ----------SERVER CONFIGURATION-------------
 const morgan = require("morgan");
 app.use(morgan("combined"));
 app.set("trust proxy", true);
@@ -26,6 +28,9 @@ app.use(express.urlencoded({ limit: "20mb" }));
 const cors = require("cors");
 app.use(cors());
 
+
+
+// ----------API-------------
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
