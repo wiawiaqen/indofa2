@@ -35,3 +35,6 @@ const CartSchema = new mongoose.Schema(
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
+
+const Cart = mongoose.model("Cart", CartSchema);
+module.exports = Cart;

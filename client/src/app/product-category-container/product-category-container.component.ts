@@ -8,7 +8,7 @@ import { blog } from '../models';
 })
 export class ProductCategoryContainerComponent {
   @Input() container_title: string = 'HẠT GIỐNG';
+  @Input() is_blog: boolean = false;
   products: Product[] = [new Product(), new Product(), new Product(), new Product()];
   blogs: blog[] = [new blog(), new blog(), new blog()]
-  @Input() is_blog: boolean = false;
 }

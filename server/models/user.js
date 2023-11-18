@@ -45,7 +45,6 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-
 // // @desc Last Date  User Created a Post
 // UserSchema.pre("findOne", async function (next) {
 //   // get the user id
