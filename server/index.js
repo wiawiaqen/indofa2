@@ -56,8 +56,8 @@ require("./config/database");
 app.use(express.json());
 
 // routes
+const authRouters = require("./routes/auth");
 const userRouters = require("./routes/User");
-const authRouters = require("./routes/Auth");
 const categoryRouters = require("./routes/Category");
 const postRouters = require("./routes/Post");
 const commentRouters = require("./routes/Comment");
