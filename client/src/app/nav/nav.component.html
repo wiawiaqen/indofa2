@@ -1,0 +1,9 @@
+<a routerLink="/">Homepage</a>
+
+<div *ngIf="!authenticated">
+<a routerLink="/login">Đăng nhập</a>
+<a routerLink="/register">Đăng ký</a></div>
+
+<div *ngIf="authenticated">
+    <a routerLink="/"(click)="logout()">Đăng xuất</a>
+</div>

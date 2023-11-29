@@ -6,24 +6,22 @@ const jwt = require("jsonwebtoken");
 const session = require("express-session");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const JwtStrategy = require("passport-jwt").Strategy;
-const app = express();
+const morgan = require("morgan");
+const cors = require("cors");
+const { globalErrHandler } = require("./utils/globalErrHandler");
 require("dotenv").config();
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false },
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.json());
-var opts = {};
+const app = express();
 
+// Database Connection
+const db = require("./config/db");
+db.connect();
+
+// Routes
+const routes = require("./route/auth");
+
+// Passport Strategies
+var opts = {};
 opts.jwtFromRequest = function (req) {
   var token = null;
   if (req && req.cookies) {
@@ -31,7 +29,7 @@ opts.jwtFromRequest = function (req) {
   }
   return token;
 };
-opts.secretOrKey = "secret";
+opts.secretOrKey = process.env.JWT_SECRET;
 
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -40,12 +38,10 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
-const { globalErrHandler } = require("./utils/globalErrHandler");
 
-// connect to database
-require("./config/db_config");
 passport.use(
   new JwtStrategy(opts, function (jwt_payload, done) {
+    // Assuming CheckUser is a function defined elsewhere
     if (CheckUser(jwt_payload.data)) {
       return done(null, jwt_payload.data);
     } else {
@@ -53,19 +49,6 @@ passport.use(
     }
   })
 );
-
-//// middleware
-// const apiError = require("./utils/apiError");
-// 404 error
-// app.all("*", (req, res, next) => {
-//   // create error
-//   const err = new apiError(`Can't find this route ${req.originalUrl}`, 400);
-//   // send it to Global errors handling middlware
-//   next(err);
-// });
-
-// Global Error Handlers Middleware
-app.use(globalErrHandler);
 
 passport.use(
   new GoogleStrategy(
@@ -79,6 +62,33 @@ passport.use(
     }
   )
 );
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(
+  cors({
+    credentials: true,
+    origin: "*",
+  })
+);
+app.use(morgan("combined"));
+app.use(express.json());
+
+// Use routes
+app.use("/api", routes);
+
+app.use(globalErrHandler);
 
 const User = require("./models/user");
 async function FindOrCreate(userData) {

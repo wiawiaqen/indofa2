@@ -25,7 +25,13 @@ const UserSchema = new mongoose.Schema(
       enum: ["google", "indofa"],
       required: [true, "Provider is Required"],
     },
+    
+    cfpassword: {
+      type: String,
+      virtual: true,
+    },
 
+   
     role: {
       type: String,
       enum: ["user", "admin"],
@@ -124,7 +130,7 @@ const UserSchema = new mongoose.Schema(
 //   next();
 // });
 
-// @desc Hash Password
+ //@desc Hash Password
 UserSchema.pre("save", async function (next) {
   if (this.password == null) {
     next();
@@ -134,6 +140,10 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
+/*UserSchema.statics.login = async function(email, password)
+{
+  const user = await this
+}*/
 // @desc Create Model
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

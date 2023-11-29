@@ -1,1 +1,21 @@
-<p>login works!</p>
+<form [formGroup]="form" (submit)="submit()">
+<table >
+    <tr>
+        <td colspan="2">
+            Đăng nhập 
+        </td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><input type="text" formControlName="email"  ></td>
+    </tr>
+    <tr>
+        <td>Mật khẩu:</td>
+        <td><input type="password" formControlName="password" ></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">
+        <button type="submit">Đăng nhập</button></td>
+    </tr>
+</table>
+</form>
