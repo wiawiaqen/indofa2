@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,11 +15,16 @@ import { AboutUsMemberComponent } from './about-us-member/about-us-member.compon
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AboutUsReviewComponent } from './about-us-review/about-us-review.component';
 import { HomePageComponent } from './home-page/home-page.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import {HttpClientModule} from '@angular/common/http'
+import { NavComponent } from './nav/nav.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'blog', component: BlogsComponent },
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ]
 @NgModule({
   declarations: [
@@ -34,11 +40,16 @@ const routes: Routes = [
     AboutUsMemberComponent,
     AboutUsComponent,
     AboutUsReviewComponent,
-    HomePageComponent
+    HomePageComponent,
+    RegisterComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,7 +20,13 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is Required"],
     },
+    
+    cfpassword: {
+      type: String,
+      virtual: true,
+    },
 
+   
     role: {
       type: String,
       enum: ["user", "admin"],
@@ -119,13 +125,17 @@ const UserSchema = new mongoose.Schema(
 //   next();
 // });
 
-// @desc Hash Password
+ //@desc Hash Password
 UserSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
+/*UserSchema.statics.login = async function(email, password)
+{
+  const user = await this
+}*/
 // @desc Create Model
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

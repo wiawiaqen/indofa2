@@ -1,0 +1,27 @@
+<form [formGroup]="form" (submit)="submit()">
+<table>
+    <tr>
+        <td>Full Name:</td>
+        <td><input type="text" formControlName="name" class="form-control" placeholder="Full Name" ></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><input type="email"formControlName="email" class="form-control" placeholder="Email" ></td>
+    </tr>
+    <tr>
+        <td>Password:</td>
+        <td><input type="password" formControlName="password" class="form-control" placeholder="Password" ></td>
+    </tr>
+    <tr>
+        <td>Confirm Password:</td>
+        <td><input type="password" formControlName="cfpassword" class="form-control" placeholder="Confirm password"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button type="submit">Sign up</button> &nbsp;
+            <button type="button">Reset</button>
+        </td>
+    </tr>
+</table>
+</form>
