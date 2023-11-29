@@ -18,7 +18,12 @@ const UserSchema = new mongoose.Schema(
 
     password: {
       type: String,
-      required: [true, "Password is Required"],
+    },
+
+    provider: {
+      type: String,
+      enum: ["google", "indofa"],
+      required: [true, "Provider is Required"],
     },
 
     role: {
@@ -121,6 +126,9 @@ const UserSchema = new mongoose.Schema(
 
 // @desc Hash Password
 UserSchema.pre("save", async function (next) {
+  if (this.password == null) {
+    next();
+  }
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
