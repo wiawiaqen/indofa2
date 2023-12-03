@@ -1,0 +1,111 @@
+<head>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto Sans:ital,wght@0,400;0,500;1,400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BD Lifeless Grotesk:wght@700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" />
+</head>
+<div class="bg-[#e7f4e5] w-full h-8 pl-[30px] flex items-center text-black text-[14pt] font-noto-sans gap-x-2">
+  <a routerLink="" class="no-underline text-[#000000]">TRANG CHỦ</a> &#8260; 
+  <a routerLink="/aboutusreal" class="no-underline text-[#23562A] hover:underline font-noto-sans">ABOUT US</a>
+</div>
+<div class="grid grid-cols-[6fr_4fr] gap-x-4">
+  <div class="text-center px-5">
+    <h1 class="font-bd-lifeless-grotesk text-[128px] text-[#23562A] font-bold mb-0">INDOFA</h1>
+    <p class="font-noto-sans text-[18px]">
+      Tự do, sáng tạo và tôn vinh vẻ đẹp tự nhiên, Indofa là sự kết hợp hài hòa của sức sống, tuổi trẻ đến từ những trái
+      tim mạnh mẽ trong cuộc sống. Không đơn thuần cung cấp sản phẩm - Indofa mong muốn kết nối cộng đồng những người
+      yêu thiên nhiên. Chúng tôi muốn chia sẻ niềm đam mê của mình với bạn và thúc đẩy sự kết nối giữa mọi người. Hãy
+      cùng nhau khám phá một thế giới đầy màu sắc và hương thơm, nơi bạn có thể tận hưởng không gian sống của riêng mình
+      một cách dễ chịu nhất. 
+    </p>
+    <a>
+      <div a href="#"
+        class="font-noto-sans font-medium text-[#23562A] text-[1.5em] mt-[50px] border-[2px] rounded-[20px] border-solid border-[#23562A] inline-block p-3 hover:bg-[#23562A] hover:text-white hover:shadow-2xl">
+        TÌM HIỂU NGAY ➜
+      </div>
+    </a>
+  </div>
+  <div>
+    <img src="assets/image_aboutus/plant-pot-1@2x.png" alt="Descriptive text" class="object-cover" />
+  </div>
+</div>
+<div class="grid grid-cols-[6fr_4fr]">
+  <div>
+    <img class="w-full h-full" src="assets/image_aboutus/thit-k-cha-c-tn-1-1@2x.png">
+  </div>
+  <div class="bg-[#E7F4E5]">
+    <div class="font-bd-lifeless-grotesk text-[64px] text-[#23562A] font-bold text-center mt-10">
+      INDOFA
+    </div>
+    <br>
+    <div class="font-bd-lifeless-grotesk text-[64px] text-[#23562A] font-bold text-center">
+      VÀ NIỀM TIN
+    </div>
+    <div class="font-noto-sans text-[18px] px-8">
+      <p class="mt-10">
+        Cung cấp cho khách hàng các sản phẩm chất lượng cao, an toàn và bền vững trong lĩnh vực trồng trọt trong nhà và
+        cùng đồng hành với khách hàng trong suốt quá trình tận hưởng các trải nghiệm trồng cây đó.
+      </p>
+      <p class="my-10">
+        Trở thành một sản phẩm hàng đầu trong lĩnh vực trồng trọt trong nhà trên sàn thương mại điện tử.
+      </p>
+      <p>
+        Phát triển và cung cấp cho khách hàng các sản phẩm trồng trọt trong nhà chất lượng cao và đa dạng, đồng thời tạo
+        ra một trải nghiệm tiện lợi và dễ sử dụng.
+      </p>
+    </div>
+  </div>
+</div>
+<div style="background-image:url('assets/image_aboutus/Rectangle 98.png');" class="mt-[80px] pb-20 pt-100">
+  <div class="font-bd-lifeless-grotesk text-[64px] text-[#23562A] font-bold text-center pt-10">
+    INDOFA VÀ ĐÔI LỜI NHẮN GỬI
+  </div>
+  <div class="grid-cols-3 grid gap-x-20 px-5 font-noto-sans">
+    <app-aboutuscomment
+      [content]="'“Mình đã từng mua ở nhiều shop nhưng khi đến với Indofa mình mới cảm nhận thực sự được một không gian sống xanh. Indofa đem đến cảm giác tươi mát và giá thành rẻ hơn so với một vài nơi. Chúc Indofa ngày càng phát triển hơn nữa.”'"
+      [name]="'Văn An'" [place]="'Thành phố Hồ Chí Minh'"></app-aboutuscomment>
+    <app-aboutuscomment
+      [content]="'“Lần đầu tiên có shop quan tâm đến việc tặng quà cho người thân. Mình rất thích tính năng này, mình đã sử dụng và lựa chọn màu cho tấm card để tặng chị mình. Rất cute cực kỳ lun í. Mong Indofa sẽ cho mình nhiều sản phẩm tuyệt vời hơn nữa.”'"
+      [name]="'Phương Anh'" [place]="'Đắk Lắk'">
+    </app-aboutuscomment>
+    <app-aboutuscomment
+      [content]="'“Đội ngũ tư vấn khá nhiệt tình. Các thông tin về sản phẩm rất rõ ràng và chi tiết. Shop 10 điểm không có nhưng luôn ạ!”'"
+      [name]="'Mai Thu'" [place]="'Nam Định'">
+    </app-aboutuscomment>
+  </div>
+</div>
+<div class="text-center mt-[80px]">
+  <h1 class="font-bd-lifeless-grotesk text-[64px] text-[#23562A] font-bold pt-10">ĐỐI TÁC ĐỒNG HÀNH</h1>
+  <img src="assets/image_aboutus/logonenden-1@2x.png">
+</div>
+<div class="mt-[80px]">
+  <h1 class="font-bd-lifeless-grotesk text-[64px] text-center text-[#23562A] font-bold">
+    ĐỘI NGŨ INDOFA</h1>
+  <br>
+  <div class="flex justify-between px-[40px]">
+    <app-about-us-team [name]="'Thúy Hiền'"
+      [img_url]="'assets/members/z4861454485525_7213ae18d78296da367cc3ce2c21eb0b.jpg'"
+      [fb]="'https://www.facebook.com/profile.php?id=100024288347921'"></app-about-us-team>
+    <app-about-us-team [name]="'Thanh Mai'" [img_url]="'assets/members/THANH MAI.JPG'"
+      [fb]="'https://www.facebook.com/meii.180'"></app-about-us-team>
+    <app-about-us-team [name]="'Huỳnh Nga'" [img_url]="'assets/members/HUỲNH NGA.JPG'"
+      [fb]="'https://www.facebook.com/nguyenviethuynhnga'"></app-about-us-team>
+    <app-about-us-team [name]="'Nguyễn Nghĩa'"
+      [img_url]="'assets/members/z4923417822891_c5df02890dba71e3300d7136faa42f85.jpg'"
+      [fb]="'https://www.facebook.com/Wia.Qen'"></app-about-us-team>
+    <app-about-us-team [name]="'Yến Nhi'" [img_url]="'assets/members/Nhee.jpg'"
+      [fb]="'https://www.facebook.com/profile.php?id=100038972027741'"></app-about-us-team>
+  </div>
+</div>
+<div>
+  <h1 class="font-bd-lifeless-grotesk text-[64px] text-center text-[#23562A] font-bold mt-[80px]">
+    ĐÁNH GIÁ SẢN PHẨM</h1>
+  <div class="border-2px border-solid border-[#23562A] border w-[90%]" style="margin-left: 50%; transform: translateX(-50%);">
+    <app-aboutusreview></app-aboutusreview>
+    <app-aboutusreview></app-aboutusreview>
+    <app-aboutusreview></app-aboutusreview>
+    <app-aboutusreview></app-aboutusreview>
+    <app-aboutusreview></app-aboutusreview>
+    <app-aboutusreview></app-aboutusreview>
+  </div>
+</div>
