@@ -133,14 +133,14 @@ app.get(
 
     try {
       const foundOrCreatedUser = await FindOrCreate(user);
-      let token = jwt.sign(
-        { data: foundOrCreatedUser },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: "1h",
-        }
+      const token = jwt.sign(
+        { _id: foundOrCreatedUser._id },
+        process.env.JWT_SECRET
       );
-      res.cookie("jwt", token);
+      res.cookie("jwt", token, {
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000,
+      });
       res.redirect("/");
     } catch (error) {
       console.error("Error during authentication:", error);
@@ -148,18 +148,6 @@ app.get(
     }
   }
 );
-
-app.get("/signout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.error("Error in session destruction:", err);
-      res.status(500).send("Error signing out");
-    } else {
-      res.clearCookie("connect.sid");
-      res.redirect("/");
-    }
-  });
-});
 
 // Listen To Server
 const PORT = process.env.PORT || 5000;

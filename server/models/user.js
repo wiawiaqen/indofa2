@@ -9,10 +9,6 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Name is Required"],
     },
 
-    username: {
-      type: String
-    },
-
     email: {
       type: String,
       unique: true,
@@ -28,11 +24,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       enum: ["google", "indofa"],
       required: [true, "Provider is Required"],
-    },
-    
-    cfpassword: {
-      type: String,
-      virtual: true,
     },
 
    
