@@ -19,12 +19,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http'
 import { NavComponent } from './nav/nav.component';
+import { ForgotPwComponent } from './forgot-pw/forgot-pw.component';
+import { ResetpwComponent } from './resetpw/resetpw.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'blog', component: BlogsComponent },
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'forgot-password', component: ForgotPwComponent},
+  {path: 'reset/:token', component: ResetpwComponent}
+  
 ]
 @NgModule({
   declarations: [
@@ -42,7 +47,9 @@ const routes: Routes = [
     AboutUsReviewComponent,
     HomePageComponent,
     RegisterComponent,
-    NavComponent
+    NavComponent,
+    ForgotPwComponent,
+    ResetpwComponent
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,13 @@ const { globalErrHandler } = require("./utils/globalErrHandler");
 require("dotenv").config();
 
 const app = express();
-
+app.use(cors ({
+  credentials: true,
+  origin: 'http://localhost:4200'
+}));
 // Database Connection
 const db = require("./config/db");
+
 db.connect();
 
 // Routes
@@ -76,12 +80,13 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(
+/*app.use(
   cors({
     credentials: true,
     origin: "*",
   })
-);
+);*/
+
 app.use(morgan("combined"));
 app.use(express.json());
 
@@ -156,7 +161,7 @@ app.get("/signout", (req, res) => {
       res.status(500).send("Error signing out");
     } else {
       res.clearCookie("connect.sid");
-      res.redirect("/");
+      res.redirect("http://localhost:4200");
     }
   });
 });
