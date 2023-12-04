@@ -14,8 +14,18 @@
         <td><input type="password" formControlName="password" ></td>
     </tr>
     <tr>
-        <td colspan="2" style="text-align: center;">
-        <button type="submit">Đăng nhập</button></td>
+       <td >
+        <a routerLink="/register" class="text-red-500 no-underline">Chưa có tài khoản?</a>
+       
+       </td>
+       <td> <a routerLink="/forgot-password" class="text-blue-500 no-underline">Quên mật khẩu?</a></td>
     </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">
+        <button type="submit">Đăng nhập</button>&nbsp;
+        <button type="button" (click)="gg()"><img src="../../assets/img/google.png" width="15"> &nbsp;Đăng nhập bằng goole</button></td>
+    </tr>
+    
+    
 </table>
 </form>

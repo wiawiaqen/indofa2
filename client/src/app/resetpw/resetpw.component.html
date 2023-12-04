@@ -1,0 +1,22 @@
+<form [formGroup]="resetForm" >
+    <table>
+        
+        <tr>
+            <td>New Password:</td>
+            <td><input type="password" formControlName="password" class="form-control" placeholder="Password" ></td>
+        </tr>
+        <tr>
+            <td>Confirm Password:</td>
+            <td><input type="password" formControlName="cfpassword" class="form-control" placeholder="Confirm password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button (click)="reset()">Submit</button> &nbsp;
+                
+            </td>
+            
+        </tr>
+        
+    </table>
+    </form>

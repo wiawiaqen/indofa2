@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -53,4 +54,13 @@ export class LoginComponent implements OnInit {
         }
       )
 }
-  }}
+  }
+  gg(): void {
+    window.location.href = "http://localhost:5000/auth/google";
+    
+  }
+  
+  
+  
+  
+}

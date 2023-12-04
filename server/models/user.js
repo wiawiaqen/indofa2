@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema(
     provider: {
       type: String,
       enum: ["google", "indofa"],
-      required: [true, "Provider is Required"],
+     // required: [true, "Provider is Required"],
     },
 
    

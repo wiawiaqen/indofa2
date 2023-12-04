@@ -12,9 +12,13 @@ const { globalErrHandler } = require("./utils/globalErrHandler");
 require("dotenv").config();
 
 const app = express();
-
+app.use(cors ({
+  credentials: true,
+  origin: '*'
+}));
 // Database Connection
 const db = require("./config/db");
+
 db.connect();
 
 // Routes
@@ -75,12 +79,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(
-  cors({
-    credentials: true,
-    origin: "*",
-  })
-);
+
 app.use(morgan("combined"));
 app.use(express.json());
 
@@ -147,6 +146,18 @@ app.get(
     }
   }
 );
+
+app.get("/signout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error in session destruction:", err);
+      res.status(500).send("Error signing out");
+    } else {
+      res.clearCookie("connect.sid");
+      res.redirect("http://localhost:4200");
+    }
+  });
+});
 
 // Listen To Server
 const PORT = process.env.PORT || 5000;

@@ -59,4 +59,8 @@ export class RegisterComponent implements OnInit {
       })
     }
   }
+  gg(): void {
+    window.location.href = "http://localhost:5000/auth/google";
+  }
+  
 }
