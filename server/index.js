@@ -18,7 +18,7 @@ const db = require("./config/db");
 db.connect();
 
 // Routes
-const routes = require("./route/auth");
+const routes = require("./routes/auth");
 
 // Passport Strategies
 var opts = {};
@@ -41,7 +41,6 @@ passport.deserializeUser(function (user, done) {
 
 passport.use(
   new JwtStrategy(opts, function (jwt_payload, done) {
-    // Assuming CheckUser is a function defined elsewhere
     if (CheckUser(jwt_payload.data)) {
       return done(null, jwt_payload.data);
     } else {
