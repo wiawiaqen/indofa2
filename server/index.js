@@ -12,10 +12,12 @@ const { globalErrHandler } = require("./utils/globalErrHandler");
 require("dotenv").config();
 
 const app = express();
-app.use(cors ({
-  credentials: true,
-  origin: '*'
-}));
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
 // Database Connection
 const db = require("./config/db");
 
@@ -139,7 +141,7 @@ app.get(
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
       });
-      res.redirect("/");
+      res.redirect(provess.env.LIVE_URL);
     } catch (error) {
       console.error("Error during authentication:", error);
       res.status(500).send("Internal Server Error");
