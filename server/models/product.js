@@ -27,6 +27,16 @@ const ProductSchema = new mongoose.Schema(
       required: [true, "Product price is Required"],
       default: -1,
     },
+
+    f_description: {
+      type: String,
+      required: [true, "Description is Required"],
+    },
+
+    f_imgbase64: {
+      type: String,
+      required: [true, "Product image is Required"],
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
