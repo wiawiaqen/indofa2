@@ -7,6 +7,7 @@ Originally architected using Django, a Python-based web framework, our developme
 To deploy the Angular application, execute the command below:
 ```bash
 cd client
+npm i
 ng serve --open
 ```
 This initiates the client server, opening the application in your default web browser automatically.

@@ -1,0 +1,21 @@
+<!-- BLOG ICON TEMPLATE -->
+<ng-container *ngFor="let small of small">
+  <a href="#" class="justify-center flex no-underline text-current">
+    <div class="w-[215px] h-[355px] items-center hover:shadow-lg transition-shadow relative hover:scale-105">
+      <img class="w-[195px] h-[200px] ml-[10px]" src="../../assets/images/{{small.image}}" />
+      <br>
+      <p class="title ml-[10px] font-custom">
+        <b>{{small.title}}</b>
+      </p>
+
+      <div class="text-[12px] text-black w-[188px] h-[67px] ml-[10px] text-justify">
+        {{small.summary}}
+      </div>
+
+      <div class="relative w-[325px] h-[95px] ml-[10px]">
+        <img src="../../assets/img/Frame 59.png" class="w-[90px] h-[25px]" />
+        <img src="../../assets/img/Frame 87.png" class="w-[90px] h-[25px] absolute top-0 left-0 opacity-0 transition-opacity duration-300 hover:opacity-100" />
+      </div>
+    </div>
+  </a>
+</ng-container>

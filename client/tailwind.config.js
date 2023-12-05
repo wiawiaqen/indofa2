@@ -1,9 +1,14 @@
 /* @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.{html,js}", "./!(build|dist|.*)/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: 
+        ['BDLifelessGrotesk', 'cursive'],
+         },
+         
+    },
   },
   plugins: [],
-}
-
+};

@@ -14,11 +14,22 @@ import { AboutUsMemberComponent } from './about-us-member/about-us-member.compon
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AboutUsReviewComponent } from './about-us-review/about-us-review.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { BlogSmallComponent } from './blog-small/blog-small.component';
+import { LeftmenuComponent } from './leftmenu/leftmenu.component';
+import { BottommenublogComponent } from './bottommenublog/bottommenublog.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ProductTotalComponent } from './product-total/product-total.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutus', component: AboutUsComponent },
-  { path: 'blog', component: BlogsComponent },
+  { path: 'blogs', component: BlogsComponent },
+  { path: 'blogcategory', component: BlogcategoryComponent },
+  { path: 'blog', component:BlogComponent },
+  { path: 'prodtotal', component:ProductTotalComponent },
+  { path: 'proddetail', component:ProductDetailComponent },
 ]
 @NgModule({
   declarations: [
@@ -34,7 +45,14 @@ const routes: Routes = [
     AboutUsMemberComponent,
     AboutUsComponent,
     AboutUsReviewComponent,
-    HomePageComponent
+    HomePageComponent,
+    BlogSmallComponent,
+    LeftmenuComponent,
+    BottommenublogComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProductTotalComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
