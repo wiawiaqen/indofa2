@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap');
-body{
+/*body{
     line-height: 1.5;
     font-family: 'Noto Sans', sans-serif;
 }
@@ -16,11 +15,11 @@ body{
 .row{
     display: flex;
     flex-wrap: wrap;
-}
+}*/
 ul{
-    list-style: none;
+    list-style-type: none;
 }
-.footer{
+/*.footer{
     width: 100%;
     background-color: #23562A;
     color: #FEFFF8;
@@ -37,12 +36,12 @@ ul{
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-}
-.footer-col ul li:not(:last-child){
+}*/
+ul li:not(:last-child){
     margin-bottom: 10px;
 }
 
-.footer-col ul li a{
+ul li a{
     font-size: 16px;
     text-transform: capitalize;
     text-decoration: none;
@@ -52,12 +51,12 @@ ul{
     display: block;
     transition: all 0.3s ease
 }
-.footer-col ul li a:hover{
+ul li a:hover{
     text-decoration: underline;
     color: #FEFFF8;
 }
-.logo{
-    width: 250px;
+/*.logo{
+    width: 200px;
     height: auto;
     flex-shrink: 0;
 }
@@ -85,7 +84,7 @@ hr{
 }
 .info .connect{
     text-align: right;
-}
+}*/
 
 
 

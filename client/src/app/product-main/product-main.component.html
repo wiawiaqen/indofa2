@@ -1,7 +1,12 @@
-<div class="product-container">
-  <a href="#">
-    <img src="assets/{{ product.productImgSource }}">
-    <p class="title">{{ product.productTitle }}</p>
-    <p class="price">{{ product.productPrice }} VNĐ</p>
-  </a>
+<div class="py-5 flex justify-center card">
+  <div class="text-clip w-[260px]">
+    <a href="#">
+      <img src="assets/{{ product.productImgSource }}" class="h-[260px] w-auto">
+      <p class="font-semibold text-black text-[16px] ">{{ product.productTitle }}</p>
+      <p class="text-[16px] text-[#9A9898]">{{ product.productPrice }} VNĐ</p>
+    </a>
+    <div class="overlay">
+      <a href="#" class="btn-pcard-hover flex items-center">Thêm vào giỏ hàng</a>
+    </div>
+  </div>
 </div>

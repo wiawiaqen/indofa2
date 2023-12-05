@@ -29,7 +29,7 @@ ul{
 header{
     width: 100%;
     background-color: #FEFFF8;
-    padding: 23px 42px 20px 42px;
+    padding: 23px 50px 20px 50px;
 }
 
 .first-line{
@@ -120,6 +120,7 @@ a{
 	width: 100%;
 	position: relative;
 	padding: 0;
+	
 }
 
 .list-item ul, h4{
@@ -129,12 +130,12 @@ a{
 .header1 .menu > ul > li{
 	display: inline-block;
 	line-height: 40px;
-	margin-right: 50px;
+	margin: 0px 25px;
 	justify-content: center;
 
 }
 .header1 .menu > ul > li > a{
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 500;
 	color:#000000;
 	position: relative;
@@ -143,7 +144,7 @@ a{
 .header1 .menu > ul > li > a::before{
 	content: '';
 	position: absolute;
-	bottom: -10px;
+	bottom: -8px;
 	width: 100%;
 	height: 2px;
 	background: black;

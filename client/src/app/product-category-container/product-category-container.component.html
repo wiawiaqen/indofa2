@@ -1,19 +1,9 @@
 <div class="product-category-container">
   <div class="title-container">
-    <h1>{{ container_title }}</h1>
+    <h1 class="text-[30px] text-[#23562A]">{{ container_title }}</h1>
     <a href="#">
       <div class="btn-main">
-        XEM THÊM →
-      </div>
-    </a>
-  </div>
-  <div class="grid-product-container" *ngIf="is_blog">
-    <app-blog-main *ngFor="let blog of blogs"></app-blog-main>
-  </div>
-  <div class="blog-btn-container" *ngIf="is_blog">
-    <a href="#">
-      <div class="btn-main">
-        XEM THÊM →
+        Xem thêm →
       </div>
     </a>
   </div>
