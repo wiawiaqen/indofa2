@@ -14,6 +14,8 @@ import { AboutUsMemberComponent } from './about-us-member/about-us-member.compon
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AboutUsReviewComponent } from './about-us-review/about-us-review.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     AboutUsMemberComponent,
     AboutUsComponent,
     AboutUsReviewComponent,
-    HomePageComponent
+    HomePageComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
