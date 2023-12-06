@@ -23,11 +23,20 @@ import { AboutUsTeamComponent } from './aboutusteam/aboutusteam.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutusreviewComponent } from './aboutusreview/aboutusreview.component';
+import { BlogSmallComponent } from './blog-small/blog-small.component';
+import { LeftmenuComponent } from './leftmenu/leftmenu.component';
+import { BottommenublogComponent } from './bottommenublog/bottommenublog.component';
+import { ProductTotalComponent } from './product-total/product-total.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
-  { path: 'blog', component: BlogsComponent },
+  { path: 'blogs', component: BlogsComponent },
+  { path: 'blogcategory', component: BlogcategoryComponent },
+  { path: 'blog', component:BlogComponent },
+  { path: 'prodtotal', component:ProductTotalComponent },
+  { path: 'proddetail', component:ProductDetailComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPwComponent},
@@ -55,7 +64,14 @@ const routes: Routes = [
     AboutUsTeamComponent,
     HeaderComponent,
     FooterComponent,
-    AboutusreviewComponent
+    AboutusreviewComponent,
+    BlogSmallComponent,
+    LeftmenuComponent,
+    BottommenublogComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProductTotalComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

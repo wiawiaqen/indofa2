@@ -24,12 +24,6 @@
   border: 2px solid #23562A;
 }
 
-.product-category-container .grid-product-container {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .blog-btn-container {
   display: flex;

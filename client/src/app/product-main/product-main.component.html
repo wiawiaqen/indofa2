@@ -1,7 +1,14 @@
-<div class="product-container">
-  <a href="#">
-    <img src="assets/{{ product.productImgSource }}">
-    <p class="title">{{ product.productTitle }}</p>
-    <p class="price">{{ product.productPrice }} VNĐ</p>
+<div class="leading-[30px] text-[14pt] pb-[50px] font-normal">
+  <a routerLink="/proddetail" class="relative group">
+    <img src="assets/{{ product.productImgSource }}" class="object-cover">
+    <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
+    <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
+
+    <div class="hidden group-hover:block absolute bottom-[75px] left-0 w-[235px] p-[16px] bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
+      THÊM VÀO GIỎ HÀNG
+    </div>
   </a>
 </div>
+
+
+

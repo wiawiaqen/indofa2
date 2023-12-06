@@ -4,7 +4,12 @@
 body {
   @apply leading-[normal] m-0;
 }
-*,
+*
+
+.img-hover-scale:hover {
+  transform: scale(1.1);
+}
+
 ::before,
 ::after {
   border-width: 0;
