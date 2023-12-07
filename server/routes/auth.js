@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const router = Router();
 const passport = require("passport");
-const userService = require("../main/userController");
+const userService = require("../Controllers/userController");
 
 router.get(
   "/auth/google",
