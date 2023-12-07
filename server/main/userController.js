@@ -1,10 +1,22 @@
-const jwt = require("jsonwebtoken");
-const userService = require("../services/userService");
+const User = require("../models/user");
 
-exports.googleAuth = async (req, res) => {
-  // Google authentication logic
-};
+exports.findOrCreate = async (userData) => {
+  try {
+    let user = await User.findOne({
+      email: userData.email,
+      provider: userData.provider,
+    });
 
-exports.signOut = (req, res) => {
-  // Sign out logic
+    if (!user) {
+      user = await User.create(userData);
+      console.log("User created");
+    } else {
+      console.log("User found");
+    }
+
+    return user;
+  } catch (error) {
+    console.error("Error in FindOrCreate:", error);
+    throw error;
+  }
 };

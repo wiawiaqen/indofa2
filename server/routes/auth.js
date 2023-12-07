@@ -3,6 +3,41 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const router = Router();
+const passport = require("passport");
+const userService = require("../main/userController");
+
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/googleRedirect",
+  passport.authenticate("google"),
+  async (req, res) => {
+    const user = {
+      name: req.user.name.givenName,
+      email: req.user._json.email,
+      provider: "google",
+    };
+
+    try {
+      const foundOrCreatedUser = await userService.findOrCreate(user);
+      const token = jwt.sign(
+        { _id: foundOrCreatedUser._id },
+        process.env.JWT_SECRET
+      );
+      res.cookie("jwt", token, {
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000,
+      });
+      res.redirect(process.env.LIVE_URL);
+    } catch (error) {
+      console.error("Error during authentication:", error);
+      res.status(500).send("Internal Server Error");
+    }
+  }
+);
 
 router.post("/register", async (req, res) => {
   let email = req.body.email;

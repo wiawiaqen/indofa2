@@ -60,7 +60,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "http://localhost:5000/googleRedirect",
+      callbackURL: "http://localhost:5000/api/googleRedirect",
     },
     function (accessToken, refreshToken, profile, cb) {
       return cb(null, profile);
@@ -85,80 +85,14 @@ app.use(passport.session());
 app.use(morgan("combined"));
 app.use(express.json());
 
+app.use(globalErrHandler);
+
 // Use routes
 app.use("/api", routes);
 
-app.use(globalErrHandler);
-
-const User = require("./models/user");
-async function FindOrCreate(userData) {
-  try {
-    let user = await User.findOne({
-      email: userData.email,
-      provider: userData.provider,
-    });
-
-    if (!user) {
-      user = await User.create(userData);
-      console.log("User created");
-    } else {
-      console.log("User found");
-    }
-
-    return user;
-  } catch (error) {
-    console.error("Error in FindOrCreate:", error);
-    throw error;
-  }
-}
 
 app.get("/", (req, res) => {
   res.send("hello world");
-});
-
-app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
-
-app.get(
-  "/googleRedirect",
-  passport.authenticate("google"),
-  async (req, res) => {
-    let user = {
-      name: req.user.name.givenName,
-      email: req.user._json.email,
-      provider: "google",
-    };
-
-    try {
-      const foundOrCreatedUser = await FindOrCreate(user);
-      const token = jwt.sign(
-        { _id: foundOrCreatedUser._id },
-        process.env.JWT_SECRET
-      );
-      res.cookie("jwt", token, {
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
-      });
-      res.redirect(provess.env.LIVE_URL);
-    } catch (error) {
-      console.error("Error during authentication:", error);
-      res.status(500).send("Internal Server Error");
-    }
-  }
-);
-
-app.get("/signout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.error("Error in session destruction:", err);
-      res.status(500).send("Error signing out");
-    } else {
-      res.clearCookie("connect.sid");
-      res.redirect("http://localhost:4200");
-    }
-  });
 });
 
 // Listen To Server
