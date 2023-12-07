@@ -5,25 +5,29 @@ const session = require("express-session");
 const morgan = require("morgan");
 const cors = require("cors");
 const { globalErrHandler } = require("./utils/globalErrHandler");
+const apiError = require("./utils/apiError");
 require("dotenv").config();
 
+// Config
+const db = require("./config/db_config");
+const passport = require("./config/passport_config");
+
+// Connect to DB
+db.connect();
+
+// Routes
+const routes = require("./routes/auth");
+
+
+// Middleware
 const app = express();
+
 app.use(
   cors({
     credentials: true,
     origin: true,
   })
 );
-// Database Connection
-const db = require("./config/db_config");
-
-db.connect();
-
-// Routes
-const routes = require("./routes/auth");
-const passport = require("./config/passport_config");
-
-// Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
@@ -40,14 +44,21 @@ app.use(passport.session());
 app.use(morgan("combined"));
 app.use(express.json());
 
-app.use(globalErrHandler);
-
 // Use routes
 app.use("/api", routes);
 
 app.get("/", (req, res) => {
   res.send("hello world");
 });
+
+// Handle route error
+app.all("*", (req, res, next) => {
+  const err = new apiError(`Can't find this route ${req.originalUrl}`, 400);
+  next(err);
+});
+
+// Global Error Handlers Middleware
+app.use(globalErrHandler);
 
 // Listen To Server
 const PORT = process.env.PORT || 5000;
