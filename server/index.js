@@ -1,11 +1,7 @@
 const express = require("express");
-const passport = require("passport");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
 const session = require("express-session");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const JwtStrategy = require("passport-jwt").Strategy;
 const morgan = require("morgan");
 const cors = require("cors");
 const { globalErrHandler } = require("./utils/globalErrHandler");
@@ -19,54 +15,13 @@ app.use(
   })
 );
 // Database Connection
-const db = require("./config/db");
+const db = require("./config/db_config");
 
 db.connect();
 
 // Routes
 const routes = require("./routes/auth");
-
-// Passport Strategies
-var opts = {};
-opts.jwtFromRequest = function (req) {
-  var token = null;
-  if (req && req.cookies) {
-    token = req.cookies["jwt"];
-  }
-  return token;
-};
-opts.secretOrKey = process.env.JWT_SECRET;
-
-passport.serializeUser(function (user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function (user, done) {
-  done(null, user);
-});
-
-passport.use(
-  new JwtStrategy(opts, function (jwt_payload, done) {
-    if (CheckUser(jwt_payload.data)) {
-      return done(null, jwt_payload.data);
-    } else {
-      return done(null, false);
-    }
-  })
-);
-
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "http://localhost:5000/api/googleRedirect",
-    },
-    function (accessToken, refreshToken, profile, cb) {
-      return cb(null, profile);
-    }
-  )
-);
+const passport = require("./config/passport");
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
