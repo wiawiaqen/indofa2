@@ -21,7 +21,7 @@ db.connect();
 
 // Routes
 const routes = require("./routes/auth");
-const passport = require("./config/passport");
+const passport = require("./config/passport_config");
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
