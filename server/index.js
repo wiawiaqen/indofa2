@@ -45,7 +45,6 @@ app.use(globalErrHandler);
 // Use routes
 app.use("/api", routes);
 
-
 app.get("/", (req, res) => {
   res.send("hello world");
 });
