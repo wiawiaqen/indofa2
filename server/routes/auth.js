@@ -2,7 +2,6 @@ const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-const UserToken = require("../models/userToken");
 const router = Router();
 const passport = require("passport");
 const userService = require("../Controllers/userController");
@@ -188,17 +187,10 @@ router.post("/send-email", async (req, res, next) => {
       expiresIn: expiryTime,
     });
 
-    // Lưu token mới
-    const newToken = new UserToken({
-      userId: user._id,
-      token: token,
-    });
-    await newToken.save();
-
     const htmlContent = await fs.readFile('./templates/resetpw.html', 'utf8');
     const personalizedHtmlContent = htmlContent
-      .replace('${user.name}', user.name)
-      .replace('${process.env.LIVE_URL}', process.env.LIVE_URL)
+      .replace('${username}', user.name)
+      .replace('${CLIENT_URL}', process.env.LIVE_URL)
       .replace('${token}', token);
     // Tạo transporter để gửi email
     const mailTransporter = nodemailer.createTransport({
