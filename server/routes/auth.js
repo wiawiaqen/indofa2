@@ -2,9 +2,12 @@ const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const UserToken = require("../models/userToken");
 const router = Router();
 const passport = require("passport");
 const userService = require("../Controllers/userController");
+const fs = require('fs').promises;
+const nodemailer = require('nodemailer');
 
 router.get(
   "/auth/google",
@@ -29,7 +32,7 @@ router.get(
       );
       res.cookie("jwt", token, {
         httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
       });
       res.redirect(process.env.LIVE_URL);
     } catch (error) {
@@ -132,6 +135,7 @@ router.get("/user", async (req, res) => {
     const claims = jwt.verify(cookie, process.env.JWT_SECRET);
 
     if (!claims) {
+      res.cookie("jwt", "", { maxAge: 0 }); // delete cookie
       return res.status(401).send({
         message: "unauthenticated",
       });
@@ -191,41 +195,28 @@ router.post("/send-email", async (req, res, next) => {
     });
     await newToken.save();
 
+    const htmlContent = await fs.readFile('./templates/resetpw.html', 'utf8');
+    const personalizedHtmlContent = htmlContent
+      .replace('${user.name}', user.name)
+      .replace('${process.env.LIVE_URL}', process.env.LIVE_URL)
+      .replace('${token}', token);
     // Tạo transporter để gửi email
     const mailTransporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {
-        user: "teamindofa@gmail.com",
-        pass: "kyagojijvbexwpwf",
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASSWORD,
       },
     });
 
     // Thiết lập các chi tiết email
     const mailOptions = {
-      from: "teamindofa@gmail.com",
+      from: process.env.GMAIL_USER,
       to: email,
       subject: "Reset Password",
-      html: `
-          <html>
-          <head>
-              <title>Password Reset Request</title>
-          </head>
-          <body>
-              <h1>Password Reset Request</h1>
-              <p>Dear ${user.name},</p>
-              <p>
-              We have received a request to reset your password. Please click on the link below to proceed:<br>
-              
-              <a href="${process.env.LIVE_URL}/reset/${token}">Password Reset Link</a><br>
-              
-              If you did not request a password reset, please disregard this email. If you have any questions, please contact us.</p>
-              
-              <p>Best regards,<br>
-              Indofa Team</p>
-          </body>
-          </html>`,
+      html: personalizedHtmlContent,
     };
 
     // Gửi email

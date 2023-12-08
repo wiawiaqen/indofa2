@@ -7,10 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-resetpw',
-  
+
   templateUrl: './resetpw.component.html',
   styleUrls: ['./resetpw.component.css'],
-  
+
 })
 export class ResetpwComponent implements OnInit {
   resetForm: FormGroup;
@@ -44,7 +44,7 @@ export class ResetpwComponent implements OnInit {
       alert('Password and confirm password do not match');
     } else {
       this.http
-        .post('http://localhost:5000/api/reset-pw', { token: this.token, password: user.password })
+        .post('http://localhost:5000/auth/reset-pw', { token: this.token, password: user.password })
         .subscribe(
           () => this.router.navigate(['/login']),
           (err) => {

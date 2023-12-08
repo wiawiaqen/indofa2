@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
   submit(): void {
     let user = this.form.getRawValue();
-    console.log(user);
 
     if (user.email == '' || user.password == '') {
       alert("Please enter all the fields");
@@ -41,7 +40,7 @@ export class LoginComponent implements OnInit {
     else if (!this.ValidateEmail(user.email)) {
       alert("You have entered an invalid email address!");
     } else {
-      this.http.post("http://localhost:5000/api/login", user, {
+      this.http.post("http://localhost:5000/auth/login", user, {
         withCredentials: true
       })
       .subscribe({
