@@ -35,7 +35,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "http://localhost:5000/api/googleRedirect",
+      callbackURL: "http://localhost:5000/api/auth/googleRedirect",
     },
     function (accessToken, refreshToken, profile, cb) {
       return cb(null, profile);

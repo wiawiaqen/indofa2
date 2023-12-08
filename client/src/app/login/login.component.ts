@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     else if (!this.ValidateEmail(user.email)) {
       alert("You have entered an invalid email address!");
     } else {
-      this.http.post("http://localhost:5000/auth/login", user, {
+      this.http.post("http://localhost:5000/api/auth/login", user, {
         withCredentials: true
       })
       .subscribe({
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     }
   }
     gg(): void {
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href = "http://localhost:5000/api/auth/google";
 
   }
 }

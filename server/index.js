@@ -46,8 +46,8 @@ app.use(morgan("combined"));
 app.use(express.json());
 
 // Use routes
-app.use("/auth", authRoute);
-app.use("/review", reviewRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/review", reviewRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");

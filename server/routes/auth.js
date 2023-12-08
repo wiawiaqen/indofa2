@@ -92,6 +92,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   let saveSession = req.body.save;
+  let password = req.body.password;
 
   if (!user) {
     return res.status(404).send({
@@ -104,7 +105,7 @@ router.post("/login", async (req, res) => {
     });
   }
 
-  if (!(await bcrypt.compare(req.body.password, user.password))) {
+  if (!(await bcrypt.compare(password, user.password))) {
     return res.status(400).send({
       message: "Password is Incorrect",
     });
