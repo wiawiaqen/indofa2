@@ -16,7 +16,8 @@ const passport = require("./config/passport_config");
 db.connect();
 
 // Routes
-const routes = require("./routes/auth");
+const authRoute = require("./routes/auth");
+const reviewRoute = require("./routes/review");
 
 
 // Middleware
@@ -45,7 +46,8 @@ app.use(morgan("combined"));
 app.use(express.json());
 
 // Use routes
-app.use("/api", routes);
+app.use("/auth", authRoute);
+app.use("/review", reviewRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");

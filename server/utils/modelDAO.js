@@ -44,6 +44,5 @@ exports.getOne = (Model, name = "document") =>
 exports.getAll = (Model) =>
   asyncHandler(async (req, res, next) => {
     const document = await Model.find();
-
     res.status(200).json({ size: document.length, data: document });
   });

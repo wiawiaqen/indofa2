@@ -2,17 +2,18 @@ const mongoose = require("mongoose");
 
 const ReviewSchema = new mongoose.Schema(
   {
-    Reviewer: {
+    reviewer: {
       type: String,
-      required: [true, "Title is Required"],
+      required: [true, "Reviewer is Required"],
     },
 
-    Date: {
+    date: {
       type: Date,
+      default: Date.now,
       required: [true, "Date is Required"],
     },
 
-    Rating: {
+    rating: {
       type: Number,
       required: [true, "Rating is Required"],
     },
@@ -22,7 +23,7 @@ const ReviewSchema = new mongoose.Schema(
       required: [true, "Title is Required"],
     },
 
-    Content: {
+    content: {
       type: String,
       required: [true, "Content is Required"],
     },
