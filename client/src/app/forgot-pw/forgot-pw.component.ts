@@ -47,7 +47,7 @@ submit(){
     })
     .subscribe(
       (res)=>
-      this.router.navigate(['/forgot-password-after/'], user.email),
+      this.router.navigate([`/forgot-password-after/${user.email}`],),
       (err)=>{
         alert(err.error.message)
       }

@@ -11,11 +11,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ForgotPwAfterComponent {
   email: string = '';
   constructor(
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router) {
   }
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((val) => {
       this.email = val['email'];
     });
+  }
+  resend(): void {
+    this.http.post("http://localhost:5000/api/auth/send-email", this.email, {
+      withCredentials: true
+    })
+      .subscribe({
+        next(res) {
+          alert("Email sent");
+        },
+        error(err) {
+          alert(err.error.message);
+        }
+      }
+      )
   }
 }
