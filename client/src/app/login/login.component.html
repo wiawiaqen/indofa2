@@ -1,31 +1,58 @@
-<form [formGroup]="form" (submit)="submit()">
-<table >
-    <tr>
-        <td colspan="2">
-            Đăng nhập 
-        </td>
-    </tr>
-    <tr>
-        <td>Email:</td>
-        <td><input type="text" formControlName="email"  ></td>
-    </tr>
-    <tr>
-        <td>Mật khẩu:</td>
-        <td><input type="password" formControlName="password" ></td>
-    </tr>
-    <tr>
-       <td >
-        <a routerLink="/register" class="text-red-500 no-underline">Chưa có tài khoản?</a>
-       
-       </td>
-       <td> <a routerLink="/forgot-password" class="text-blue-500 no-underline">Quên mật khẩu?</a></td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align: center;">
-        <button type="submit">Đăng nhập</button>&nbsp;
-        <button type="button" (click)="gg()"><img src="../../assets/img/google.png" width="15"> &nbsp;Đăng nhập bằng goole</button></td>
-    </tr>
-    
-    
-</table>
-</form>
+<div class="min-h-screen justify-center flex items-center bg-opacity-30">
+  <div class="relative flex flex-col m-6 bg-[#fefff8] shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+    <div class="flex flex-col justify-center p-8 md:p-14">
+      <span class="mb-3 text-4xl font-bold text-[#23562a]">ĐĂNG NHẬP</span>
+      <form [formGroup]="form" (submit)="submit()">
+        <div class="py-2">
+          <span class="mb-2 text-md text-[18px]">Địa chỉ Email</span>
+        </div>
+        <div class="py-2">
+          <input type="text" formControlName="email" type="text"
+            class="w-full p-2 border border-gray-500 rounded-md placeholder:font-light placeholder:text-gray-500 bg-[#fefff8]"
+            placeholder="Nhập email" name="email" id="email" />
+        </div>
+        <div class="py-2">
+          <span class="mb-2 text-md text-[18px]">Mật khẩu</span>
+        </div>
+        <div class="py-2">
+          <input type="password" formControlName="password" type="password"
+            class="w-full p-2 border border-gray-500 rounded-md placeholder:font-light placeholder:text-gray-500 bg-[#fefff8]"
+            placeholder="Nhập mật khẩu" name="password" id="password" />
+        </div>
+        <div class="py-2">
+          <span class="text-md text-[#23562a] font-bold text-[15px]"><a routerLink="/forgot-password"
+              class="text-blue-500 no-underline">Quên mật khẩu?</a></span>
+        </div>
+        <div class="py-2">
+          <button type="submit"
+            class="w-full bg-[#23562a] text-[#fefff8] p-2 rounded-lg mb-6 text-[18px] cursor-pointer">
+            Đăng nhập
+          </button>
+
+          <div class="relative pb-6">
+            <hr>
+            <div class="absolute -top-3 left-0 w-full text-center">
+              <span class="bg-[#fefff8] px-3 text-gray-600">Hoặc</span>
+            </div>
+          </div>
+          <button (click)="gg()" type="button"
+            class="w-full bg-[#fefff8] border-2 border-green-700 text-md text-[18px] p-2 rounded-lg cursor-pointer">
+            <img src="./assets/signin_login/google.png" alt="img" class="inline mr-2">
+            Đăng nhập bằng Google
+          </button>
+        </div>
+      </form>
+      <div class="text-center text-[15px]">
+        Bạn đã có tài khoản?
+        <span class="font-bold text-[#23562a]">Đăng nhập ngay</span>
+      </div>
+    </div>
+    <div class="relative">
+      <img src="./assets/signin_login/login.jpg" alt="img"
+        class="h-full w-[460px] rounded-r-2xl hidden md:block object-cover">
+      <div class="absolute hidden top-4 right-4 p-4 drop-shadow-lg md:block">
+        <img src="./assets/signin_login/close.png" class="w-[40px] h-full">
+      </div>
+    </div>
+  </div>
+</div>

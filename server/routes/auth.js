@@ -9,7 +9,7 @@ const fs = require('fs').promises;
 const nodemailer = require('nodemailer');
 
 router.get(
-  "/auth/google",
+  "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 

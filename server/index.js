@@ -47,7 +47,7 @@ app.use(express.json());
 
 // Use routes
 app.use("/api/auth", authRoute);
-app.use("/api/review", reviewRoute);
+app.use("/api/", reviewRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");
