@@ -23,7 +23,6 @@ const UserSchema = new mongoose.Schema(
     provider: {
       type: String,
       enum: ["google", "indofa"],
-      // required: [true, "Provider is Required"],
     },
 
     role: {
@@ -32,7 +31,7 @@ const UserSchema = new mongoose.Schema(
       default: "user",
     },
 
-    active: {
+    isActive: {
       type: Boolean,
       default: true,
     },

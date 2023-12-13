@@ -37,6 +37,16 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: [true, "Product image is Required"],
     },
+
+    category: {
+      type: String,
+      required: [true, "Product image is Required"],
+    },
+
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
