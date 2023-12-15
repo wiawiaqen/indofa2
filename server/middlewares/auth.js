@@ -19,7 +19,7 @@ exports.auth = asyncHandler(async (req, res, next) => {
     if (!claims) {
       reset_cookie_and_redirect(res);
     }
-    const user = User.findOne({ _id: claims });
+    const user = User.findOne({ _id: claims._id });
 
     if (!user) {
       reset_cookie_and_redirect(res);
@@ -37,7 +37,7 @@ exports.admin = asyncHandler(async (req, res, next) => {
   if (token) {
     try {
       const userId = jwt.verify(token, process.env.JWT_SECRET);
-      const user = User.findOne({ _id: userId });
+      const user = User.findOne({ _id: userId._id });
 
       if (user && user.role === "admin") {
         next();
