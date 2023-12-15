@@ -7,6 +7,12 @@ exports.createOne = (Model) =>
     res.status(201).json({ data: newDoc });
   });
 
+exports.createMany = (Model) =>
+  asyncHandler(async (req, res) => {
+    const newDocs = await Model.insertMany(req.body);
+    res.status(201).json({ data: newDocs });
+  });
+  
 exports.updateOne = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
@@ -45,4 +51,13 @@ exports.getAll = (Model) =>
   asyncHandler(async (req, res, next) => {
     const document = await Model.find();
     res.status(200).json({ size: document.length, data: document });
+  });
+
+exports.filter = (Model, name = "document") =>
+  asyncHandler(async (req, res, next) => {
+    const document = await Model.find(req.body);
+    if (!document) {
+      return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
+    }
+    res.status(200).json({ data: document });
   });
