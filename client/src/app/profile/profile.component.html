@@ -1,0 +1,181 @@
+<!-- PROFILE PAGE -->
+<div class="bg-[#e7f4e5] w-full h-8 pl-[50px] flex items-center text-black text-[13pt] gap-x-2">
+    <a routerLink="" class="hover:underline">Trang chủ</a> &#8260; 
+    <p class="text-[#23562A] hover:underline">Tài khoản</p>
+</div>
+
+<div class="w-full h-full grid grid-cols-[1fr_3fr] gap-[30px] overflow-hidden pb-[50px]">
+
+    <div class="flex flex-col relative shrink-0 visible pt-[30px] pl-[50px] mr-[50px]">
+        <div>
+            <p class="text-[15pt] font-bold font-custom text-[#23562A]">
+                XIN CHÀO QUÝ KHÁCH
+                <br>
+            </p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal">Phạm Nguyễn Thanh Mai</p>
+            <hr class="w-[250px] desktop:hidden mt-3">
+        </div>
+        <div>
+            <p class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">TÀI KHOẢN</p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Thông tin tài khoản</p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Lịch sử mua hàng</p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Danh sách địa chỉ</p>
+            <p class="text-[13pt] text-red-600 collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Đăng xuất</p>
+            <hr class="w-[250px] desktop:hidden mt-3">
+        </div> 
+        
+    </div>
+    <div class="pt-[30px]">
+        <div>
+            <p class="text-[15pt] font-bold font-custom text-[#23562A] text-center">THÔNG TIN TÀI KHOẢN</p>
+            
+        </div>
+        <div>
+            <table>
+                <tr class="pt-[20px]">
+                  <td width="200px" >Họ và tên:</td>
+                  <td width="750px">
+                    <!-- {{ customer.name }} --> &nbsp; Phạm Nguyễn Thanh Mai
+                  </td>
+                  <td>
+                    <button type="button" class="border-2 w-[full] h-[35px] px-5 border-[#23562A] bg-[#23562A] text-white hover:cursor-pointer focus:outline-none focus:ring focus:transition duration-300 ease-in-out rounded-3xl">
+                        <a href="up-profile">
+                            Chỉnh sửa
+                        </a>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="pt-[10px]">Email:</td>
+                  <td colspan="2">
+                    <!-- {{ customer.email }} -->
+                </tr>
+                <tr >
+                  <td class="pt-[10px]">Số điện thoại</td>
+                  <td colspan="2">
+                    <!-- {{ customer.font }} -->
+                  </td>
+                </tr>
+                <tr>
+                  <td class="pt-[10px]">Địa chỉ:</td>
+                  <td colspan="2">
+                    <!-- {{ customer.address }} -->
+                  </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="pt-[10px]">
+                        <dd class="custom-control custom-checkbox add-to-email-list-wrapper">
+                            <input type="checkbox" class="custom-control-input" id="add-to-email-list" checked="checked">
+                            <label class="custom-control-label" for="add-to-email-list">
+                                Nhận thông báo về các sản phẩm mới, chương trình khuyến mãi hoặc bài viết thú vị thông qua email của tôi.
+                            </label>
+                        </dd>
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+        <div class=" mt-[30px] bg-[#e7f4e5] h-[200px] mr-[50px]">
+            <p class="text-[15pt] font-bold font-custom text-[#23562A] text-center pt-[25px] pb-[20px]">LỊCH SỬ ĐẶT HÀNG</p>
+            <table class="table w-[1000px] ml-[50px] mr-[50px]">
+                <thead class="bg-[#23562A] text-white py-[15px]">
+                    <tr>
+                        <th class="order_number text-centern py-[15px]  ">Mã đơn hàng</th>
+                        <th class="date text-center py-[15px]">Ngày đặt</th>
+                        <th class="total text-right py-[15px]">Thành tiền</th>
+                        <th class="payment_status text-center py-[15px]">Trạng thái thanh toán</th>
+                        <th class="fulfillment_status text-center py-[15px]">Vận chuyển</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-[#FEFFF8]">
+                    
+                    <tr data-name="#524033" class="odd ">
+                        <td class="text-center py-[10px]"><a href="ord-detail" title="">#524033</a></td>
+                        <td class="text-center py-[10px]"><span>21/11/2023</span></td>
+                        <td class="text-right py-[10px]" ><span class="total money">774,000 ₫</span></td>
+                        <td class="text-center py-[10px]"><span class="status status_pending">Chờ xử lý</span></td>
+                        <td class="text-center py-[10px]"><span class="delivery status_fulfilled">Đang giao hàng</span></td>
+                         
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+        </div>
+        <div>
+            <p class="text-[15pt] font-bold font-custom text-[#23562A] text-center pt-[25px] pb-[20px]">ĐỊA CHỈ</p>
+            <div class="grid grid-cols-[1fr_1fr] first-letter:mt-[30px] h-[250px] mb-[30px] items-center">
+              <div>
+                <table class="w-[550px] mx-[100px] border border-[#9A9898]">
+                  <tr class="bg-[#e7f4e5] font-bold border border-[#9A9898]">
+                    <td class="py-[15px] px-[15px] "> Mai Pham (mặc định) </td>
+                  </tr>
+                  <tr>
+                    <div class="col-lg-12 col-md-12 large_view ">
+                      <div class="lb-left pt-[15px] px-[15px]"><b>Địa chỉ:</b></div>
+                      <div class="lb-right px-[15px] pb-[15px]">
+                        <p>KTX Khu B, ĐHQG TP HCM</p>
+                        <p></p>
+                        <p>Hồ Chí Minh, Vietnam </p>
+                      </div>
+                    </div>
+                  </tr>
+                </table>
+              </div>
+              <div class="relative">
+                <div class="w-[350px] h-[250px] bg-[#e7f4e5] mr-[50px]"></div>
+                <img src="../../assets/images/diachi.png.png" alt="" class="w-[350px] absolute top-[20px] left-[20px]">
+              </div>
+            </div>
+        </div>
+        
+        <div class="flex flex-col bg-[#e7f4e5] h-[700px] mr-[50px] mt-8">
+            <div class="flex mx-auto my-8 w-[850px] h-[350px] bg-[#FEFFF8] border-[#23562A] rounded-3xl border-2 ">
+              <div class="mx-auto text-center">
+                <img src="../../assets/images/rate.png.png" alt="Rating Image" class="mx-auto">
+                <b class="w-[852px] h-[76px] text-[20pt] mt-4">
+                  <p class="m-0">CẢM NHẬN CỦA BẠN VỀ</p>
+                  <p class="m-0">
+                    <span class="text-[#23562A]">[SẢN PHẨM/DỊCH VỤ]</span>
+                    <span class="text-black"> CỦA INDOFA?</span>
+                  </p>
+                </b>
+              </div>
+            </div>
+          
+            <div class="text-center text-[#23562A]">
+                <b>
+                    <p class="m-0">
+                        INDOFA hi vọng nhận được những đánh giá của bạn để có thể cải thiện
+                      </p>
+                      <p class="m-0">chất lượng và dịch vụ của mình hơn trong tương lai.</p>
+                      <p class="m-0">INDOFA trân trọng cảm ơn!</p>
+                </b>
+               
+                <form class="w-100 pt-[20px]">
+                    <div class="d-flex flex-column flex-lg-row">
+                        <div class="form-group">
+                            <!-- <label class="d-none form-control-label" for="input-id" aria-hidden="true"></label> -->
+                            <input type="text" id="review-id" class="form-control mx-auto w-[850px] h-[100px] bg-[#FEFFF8] mt-[20px] rounded-2xl px-[30px] border border-[#23562A]" placeholder="Viết cảm nhận của bạn tại đây ....">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button type="submit" class="border-2 w-[full] h-[35px] px-5 my-5 border-[#23562A] bg-[#23562A] text-white hover:cursor-pointer focus:outline-none focus:ring focus:transition duration-300 ease-in-out rounded-3xl">
+                            Gửi đánh giá
+                        </button>
+                    </div>
+                </form>
+            </div>
+          </div>
+          
+          
+
+            
+            
+   
+        
+    </div>
+
+</div>
+
+

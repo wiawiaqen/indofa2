@@ -1,0 +1,70 @@
+<div class="bg-[#e7f4e5] w-full h-8 pl-[50px] flex items-center text-black text-[13pt] gap-x-2">
+    <a routerLink="" class="hover:underline">Trang chủ</a> &#8260; 
+    <a routerLink="/profile" class="hover:underline">Tài khoản</a> &#8260; 
+    <p class="text-[#23562A] hover:underline">Chỉnh sửa thông tin</p>
+</div>
+
+<div class="w-full h-full grid grid-cols-[1fr_3fr] gap-[30px] overflow-hidden pb-[50px]">
+
+    <div class="flex flex-col relative shrink-0 visible pt-[30px] pl-[50px] mr-[50px]">
+        <div>
+            <p class="text-[15pt] font-bold font-custom text-[#23562A]">
+                XIN CHÀO QUÝ KHÁCH
+                <br>
+            </p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal">Phạm Nguyễn Thanh Mai</p>
+            <hr class="w-[250px] desktop:hidden mt-3">
+        </div>
+        <div>
+            <p class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">TÀI KHOẢN</p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Thông tin tài khoản</p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Lịch sử mua hàng</p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Danh sách địa chỉ</p>
+            <p class="text-[13pt] text-red-600 collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Đăng xuất</p>
+            <hr class="w-[250px] desktop:hidden mt-3">
+        </div> 
+        
+    </div>
+    <div>
+        <p class="text-[15pt] font-bold font-custom text-[#23562A] ml-[400px] pt-[25px] pb-[20px]">THÔNG TIN TÀI KHOẢN</p>
+        <div class="col-lg-6 col-md-12 col-12">
+
+              <form id="extraInfo">
+                <div class="mb-3">
+                  <label class="block">Họ:</label>
+                  <input class="form-input w-[1000px] bg-white mt-[10px] pl-[20px] rounded-lg py-[10px] border border-[#23562A]" autocomplete="off" required data-errormessage-value-missing="Bạn chưa nhập Họ" type="text" value="Pham" name="last_name" placeholder="Nhập họ (*)" id="last_name" size="30">
+                </div>
+                <div class="mb-3">
+                  <label class="block">Tên:</label>
+                  <input class="form-input w-[1000px] bg-white mt-[10px] pl-[20px] rounded-lg py-[10px] border border-[#23562A]" autocomplete="off" required data-errormessage-value-missing="Bạn chưa nhập Tên" type="text" value="Mai" name="first_name" placeholder="Nhập tên (*)" id="first_name" size="30">
+                </div>
+                <div class="mb-3">
+                  <label class="block">Email:</label>
+                  <input class="form-input w-[1000px] bg-white mt-[10px] pl-[20px] rounded-lg py-[10px] border border-[#23562A]" autocomplete="off" required data-errormessage-value-missing="Bạn chưa nhập email" data-errormessage-type-mismatch="Email chưa đúng định dạng!" type="email" value="maipham.09062003@gmail.com" placeholder="Nhập email (*)" name="email" id="email" size="30">
+                </div>
+                <div class="mb-3">
+                  <label class="block">Số điện thoại:</label>
+                  <input class="form-input w-[1000px] bg-white mt-[10px] pl-[20px] rounded-lg py-[10px] border border-[#23562A]" autocomplete="off" pattern="[0-9]{10}" required data-errormessage-value-missing="Bạn chưa nhập số điện thoại" data-errormessage-type-mismatch="Số điện thoại chưa đúng định dạng!" type="tel" value="" placeholder="Số điện thoại (*)" name="phone" id="phone_ac" size="30">
+                </div>
+                <div id="diachi" class="mb-3">
+                  <label class="block">Địa chỉ:</label>
+                  <input class="form-input w-[1000px] bg-white mt-[10px] pl-[20px] rounded-lg py-[10px] border border-[#23562A]" autocomplete="off" type="text" required value="" placeholder="Địa chỉ" name="staff_address" id="staff_address" size="30">
+                </div>
+            </form>
+
+          </div>
+          <button type="submit" class="ml-[350px] border-2 w-[full] h-[35px] px-5 my-5 border-[#23562A] bg-[#23562A] text-white hover:cursor-pointer focus:outline-none focus:ring focus:transition duration-300 ease-in-out rounded-xl">
+            Cập nhật thông tin tài khoản
+        </button>
+          
+    </div>    
+    
+     
+
+  
+
+          
+
+
+
+

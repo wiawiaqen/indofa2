@@ -29,6 +29,9 @@ import { BottommenublogComponent } from './bottommenublog/bottommenublog.compone
 import { ProductTotalComponent } from './product-total/product-total.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -43,6 +46,9 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPwComponent},
   {path: 'reset/:token', component: ResetpwComponent},
   {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'up-profile', component:UpdateProfileComponent},
+  {path: 'ord-detail', component:OrderDetailComponent}
 
 ]
 @NgModule({
@@ -75,6 +81,9 @@ const routes: Routes = [
     ProductTotalComponent,
     ProductDetailComponent,
     ForgotPwAfterComponent,
+    ProfileComponent,
+    UpdateProfileComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,

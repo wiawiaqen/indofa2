@@ -18,6 +18,7 @@ db.connect();
 // Routes
 const authRoute = require("./routes/auth");
 const reviewRoute = require("./routes/review");
+const productRoute = require("./routes/product");
 
 
 // Middleware
@@ -48,10 +49,11 @@ app.use(express.json());
 // Use routes
 app.use("/api/auth", authRoute);
 app.use("/api/reviews", reviewRoute);
-
+app.use("/api/products", productRoute);
 app.get("/", (req, res) => {
   res.send("hello world");
 });
+
 
 // Handle route error
 app.all("*", (req, res, next) => {
