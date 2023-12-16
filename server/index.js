@@ -18,8 +18,8 @@ db.connect();
 // Routes
 const authRoute = require("./routes/auth");
 const reviewRoute = require("./routes/review");
-
-
+const ProductRoute = require("./routes/products");
+const liveSearch = require("./routes/liveSearch")
 // Middleware
 const app = express();
 
@@ -46,9 +46,11 @@ app.use(morgan("combined"));
 app.use(express.json());
 
 // Use routes
+
 app.use("/api/auth", authRoute);
 app.use("/api/review", reviewRoute);
-
+app.use("/api/product", ProductRoute)
+app.use("/api/search", liveSearch);
 app.get("/", (req, res) => {
   res.send("hello world");
 });

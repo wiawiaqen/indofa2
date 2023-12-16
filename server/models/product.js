@@ -6,15 +6,18 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: [true, "Name is Required"],
     },
-
+    category: {
+      type: String,
+      required: [true, "Category is Required"],
+    },
     description: {
       type: String,
-      required: [true, "Description is Required"],
+     required: [true, "Description is Required"],
     },
 
     imgbase64: {
       type: String,
-      required: [true, "Product image is Required"],
+     required: [true, "Product image is Required"],
     },
 
     price: {
@@ -30,12 +33,12 @@ const ProductSchema = new mongoose.Schema(
 
     f_description: {
       type: String,
-      required: [true, "Description is Required"],
+     required: [true, "Description is Required"],
     },
 
     f_imgbase64: {
       type: String,
-      required: [true, "Product image is Required"],
+     required: [true, "Product image is Required"],
     },
   },
   { toJSON: { virtuals: true } },
