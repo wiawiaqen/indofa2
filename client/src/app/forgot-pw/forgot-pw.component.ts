@@ -42,7 +42,7 @@ submit(){
   else if (!this.ValidateEmail(user.email)){
     alert("You have entered an invalid email address!")
   }else{
-    this.http.post("http://localhost:5000/api/send-email",user,{
+    this.http.post("http://localhost:5000/api/auth/send-email",user,{
       withCredentials:true
     })
     .subscribe(

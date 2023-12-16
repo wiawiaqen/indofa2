@@ -1,7 +1,9 @@
 
 import { NgModule } from '@angular/core';
+//import { BrowserModule } from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+//import { RouterModule, Routes } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router'
 import { AppComponent } from './app.component';
 import { ProductMainComponent } from './product-main/product-main.component';
 import { ProductCategoryContainerComponent } from './product-category-container/product-category-container.component';
@@ -11,7 +13,8 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { BlogcategoryComponent } from './blogcategory/blogcategory.component';
 import { BlogComponent } from './blog/blog.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http'
 import { NavComponent } from './nav/nav.component';

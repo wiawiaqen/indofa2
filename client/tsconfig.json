@@ -2,6 +2,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    
+    "typeRoots": 
+    ["node_modules/@types"],
+    "importHelpers": false,
+    "paths": {
+      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -16,7 +23,7 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "moduleResolution": "node",
-    "importHelpers": true,
+    
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,

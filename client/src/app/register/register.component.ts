@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+//mport { FormBuilder, FormGroup } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+//import { Router } from '@angular/router';
+import {Router} from '@angular/router';
+
 @Component({
-  selector: 'app-register',
+  selector: 'app-select',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
