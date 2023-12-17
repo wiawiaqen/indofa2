@@ -47,10 +47,30 @@ exports.getOne = (Model, name = "document") =>
     res.status(200).json({ data: document });
   });
 
+exports.getOneWithFields = (Model, name = "document") =>
+  asyncHandler(async (req, res, next) => {
+    const document = await Model.findById(req.params.id).select(req.body);
+    if (!document) {
+      return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
+    }
+    res.status(200).json({ data: document });
+  });
+
 exports.getAll = (Model) =>
   asyncHandler(async (req, res, next) => {
     const document = await Model.find();
     res.status(200).json({ size: document.length, data: document });
+  });
+
+exports.getAllWithFields = (Model, name = "document") =>
+  asyncHandler(async (req, res, next) => {
+    const document = await Model.find().select(req.body);
+    if (!document) {
+      return next(
+        new apiError(`No ${name} for this id ${req.params.page}`, 404)
+      );
+    }
+    res.status(200).json({ data: document });
   });
 
 exports.filter = (Model, name = "document") =>

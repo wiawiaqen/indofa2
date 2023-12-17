@@ -10,4 +10,6 @@ exports.createMany = dao.createMany(product);
 exports.filter = dao.filter(product);
 exports.pagination = dao.pagination(product);
 exports.getMaxPage = dao.getMaxPage(product);
+exports.getAllWithFields = dao.getAllWithFields(product);
+exports.getOneWithFields = dao.getOneWithFields(product);
 

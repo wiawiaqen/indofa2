@@ -1,0 +1,20 @@
+<div class="bg-[#e7f4e5] w-full h-8 pl-[50px] flex items-center text-black text-[13pt] gap-x-2">
+  <a routerLink="" class="hover:underline">Trang chủ</a> &#8260;
+  <a routerLink="/payment" class="hover:underline">thành toán</a>
+</div>
+<div class="w-[90%]" style="margin-left:50%; transform: translateX(-50%);">
+  <div class="bg-[#ecf6e9]">
+    <div class="inline-flex">
+      <img src="assests/payment/address.png" alt="Address icon">
+      <p class="text-[#23562A]">Địa chỉ nhận hàng</p>
+      <hr class="w-[20%]">
+      <p>{{ address.name }} | {{ address.phone }}</p>
+      <p>{{ address.full_address() }}</p>
+    </div>
+  </div>
+  <div *ngFor="let product of cart.products">
+    <div>
+
+    </div>
+  </div>
+</div>

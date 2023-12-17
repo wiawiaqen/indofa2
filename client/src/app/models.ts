@@ -145,6 +145,8 @@ export class Blog {
 }
 
 export class Address {
+  name: string;
+  phone: string;
   street: string;
   city: string;
   district: string;
@@ -153,12 +155,18 @@ export class Address {
   isDefault: boolean;
 
   constructor(data: any = {}) {
+    this.name = data.name;
+    this.phone = data.phone;
     this.street = data.street;
     this.city = data.city;
     this.district = data.district;
     this.ward = data.ward;
     this.userID = data.user;
     this.isDefault = data.default !== undefined ? data.default : false;
+  }
+
+  full_address(): string {
+    return `${this.street}, ${this.ward}, ${this.district}, ${this.city}`;
   }
 }
 
