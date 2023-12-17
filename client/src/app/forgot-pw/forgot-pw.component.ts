@@ -13,25 +13,23 @@ export class ForgotPwComponent {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router
-  ){}
-forgetForm: FormGroup
-fb= inject(FormBuilder)
-ngOnInit(): void{
-  this.forgetForm= this.formBuilder.group({
-    email:''
-    
-  })
-}
-ValidateEmail=(email:any) =>
-  {
+  ) { }
+  forgetForm: FormGroup
+  fb = inject(FormBuilder)
+  ngOnInit(): void {
+    this.forgetForm = this.formBuilder.group({
+      email: ''
+
+    })
+  }
+  ValidateEmail = (email: any) => {
     var validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-   
-    if (email.match(validRegex))
-    {
+
+    if (email.match(validRegex)) {
       return (true)
     }
-     else{return (false)}
-      
+    else { return (false) }
+
   }
 submit(){
   let user = this.forgetForm.getRawValue()
@@ -42,7 +40,7 @@ submit(){
   else if (!this.ValidateEmail(user.email)){
     alert("You have entered an invalid email address!")
   }else{
-    this.http.post("http://localhost:5000/api/auth/send-email",user,{
+    this.http.post("http://localhost:5000/api/send-email",user,{
       withCredentials:true
     })
     .subscribe(

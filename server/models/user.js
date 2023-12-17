@@ -23,13 +23,17 @@ const UserSchema = new mongoose.Schema(
     provider: {
       type: String,
       enum: ["google", "indofa"],
-      // required: [true, "Provider is Required"],
     },
 
     role: {
       type: String,
       enum: ["user", "admin"],
       default: "user",
+    },
+
+    isActive: {
+      type: Boolean,
+      default: true,
     },
   },
   { toJSON: { virtuals: true } },

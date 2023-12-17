@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     else if (!this.ValidateEmail(user.email)) {
       alert("You have entered an invalid email address!")
     } else {
-      this.http.post("http://localhost:5000/api/auth/register", user, {
+      this.http.post("/api/auth/register", user, {
         withCredentials: true
       })
         .subscribe({
@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
     }
   }
   gg(): void {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = "/api/auth/google";
   }
 
 }

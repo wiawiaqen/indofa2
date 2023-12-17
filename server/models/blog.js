@@ -6,6 +6,7 @@ const BlogSchema = new mongoose.Schema(
       type: String,
       required: [true, "Title is Required"],
     },
+
     content: [
       {
         content_title: {
@@ -21,6 +22,12 @@ const BlogSchema = new mongoose.Schema(
         },
       },
     ],
+
+    type: {
+      type: String,
+      enum: ["space", "emotion", "season"],
+      default: "space",
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }

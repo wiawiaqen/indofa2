@@ -18,8 +18,8 @@ db.connect();
 // Routes
 const authRoute = require("./routes/auth");
 const reviewRoute = require("./routes/review");
-const ProductRoute = require("./routes/products");
-const liveSearch = require("./routes/liveSearch")
+const searchRoute = require("./routes/liveSearch");
+
 // Middleware
 const app = express();
 
@@ -30,6 +30,7 @@ app.use(
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   session({
@@ -49,8 +50,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/review", reviewRoute);
-app.use("/api/product", ProductRoute)
-app.use("/api/search", liveSearch);
+app.use("/api/search", searchRoute);
 app.get("/", (req, res) => {
   res.send("hello world");
 });
@@ -65,7 +65,7 @@ app.all("*", (req, res, next) => {
 app.use(globalErrHandler);
 
 // Listen To Server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; //default port is 5000
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });

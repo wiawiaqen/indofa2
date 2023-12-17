@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap');
-body{
+/*body{
     line-height: 1.5;
     font-family: 'Noto Sans', sans-serif;
 }
@@ -16,73 +15,75 @@ body{
 .row{
     display: flex;
     flex-wrap: wrap;
-}
+}*/
 ul{
-    list-style: none;
+  list-style-type: none;
 }
-.footer{
-    width: 100%;
-    background-color: #23562A;
-    color: #FEFFF8;
-    padding: 42px;
+/*.footer{
+  width: 100%;
+  background-color: #23562A;
+  color: #FEFFF8;
+  padding: 42px;
 }
 .footer-col{
-    width: 25%;
-    padding: 0px;
+  width: 25%;
+  padding: 0px;
 }
 .footer-col p{
-    font-size: 25px;
-    margin-bottom: 16px;
-    color: #FEFFF8;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-.footer-col ul li:not(:last-child){
-    margin-bottom: 10px;
+  font-size: 25px;
+  margin-bottom: 16px;
+  color: #FEFFF8;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}*/
+ul li:not(:last-child){
+  margin-bottom: 10px;
 }
 
-.footer-col ul li a{
-    font-size: 16px;
-    text-transform: capitalize;
-    text-decoration: none;
-    font-style: normal;
-    font-weight: 400;
-    color: #FEFFF8;
-    display: block;
-    transition: all 0.3s ease
+ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+  color: #FEFFF8;
+  display: block;
+  transition: all 0.3s ease
 }
-.footer-col ul li a:hover{
-    text-decoration: underline;
-    color: #FEFFF8;
+ul li a:hover{
+  text-decoration: underline;
+  color: #FEFFF8;
 }
-.logo{
-    width: 200px;
-    height: auto;
-    flex-shrink: 0;
+/*.logo{
+  width: 200px;
+  height: auto;
+  flex-shrink: 0;
 }
 hr{
-    width: 100%;
-    margin: 62px 42px 24px 0px
+  width: 100%;
+  margin: 62px 42px 24px 0px
 }
 .info{
-    width: 100%;
+  width: 100%;
 }
 
 .info h1{
-    font-weight: 500;
-    font-size: 30px;
-    margin-bottom: 19px;
+  font-weight: 500;
+  font-size: 30px;
+  margin-bottom: 19px;
 }
 .info ul li{
-    margin-top: 10px;
-    margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 .connect img{
-    width: 40px;
-    height: auto;
-    margin-left: 10px;
+  width: 40px;
+  height: auto;
+  margin-left: 10px;
 }
 .info .connect{
-    text-align: right;
-}
+  text-align: right;
+}*/
+
+

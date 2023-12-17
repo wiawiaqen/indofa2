@@ -10,30 +10,41 @@
     <div class="flex item-center justify-between">
         <div class="w-[135px] h-auto">
             <img src="./assets/images/Logo.png">
-        </div> -->
+        </div>
+       -->
+    
         <!--SEARCH BAR HERE-->
-        <div class="search_box w-[500px]">
-            <div class="relative w-[500px] h-[35px]">
-              <input 
-                type="text" 
-                class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]" 
-                formControlName="searchValue"
-                placeholder="Tìm kiếm sản phẩm..."
-                (keyup)="sendData($event)">
-              <div class="btn btn_common">
-                <i class="fas fa-search"></i>
-              </div>
-            </div>
-            <!-- Search result -->    
-            <section class="search-result">
-              <p *ngIf="products.length < 1 && hasQuery">Sorry. Nothing Found</p>
-              <ng-template ngFor let-product [ngForOf]="products" let-i="index">
-                <hr *ngIf="i>0">
-                <p>{{product.productTitle}}</p>
-            </ng-template>
-            </section>
-          </div>
-            
+        <div class="searchbox w-[500px]">
+  <div class="relative w-[500px] h-[35px]">
+    <input 
+      type="text" 
+      class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]" 
+      formControlName="searchValue"
+      placeholder="Tìm kiếm sản phẩm..."
+      (keyup)="sendData($event)">
+    <div class="btn btn_common">
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+  <!-- <section class="search-result">
+    <p *ngIf="products.length < 1 && hasQuery">Sorry. Nothing Found</p>
+    <div *ngFor="let product of products">
+      <hr *ngIf="product !== products[0]">
+      <p>{{ product.productTitle }}</p>
+    </div>
+  </section> -->
+</div>
+<div class="search-result-container w-[500px] rounded-[15px] px-5 py-5">
+    <div>
+        <ul class="px-[20px] py-[15px] w-full" *ngFor="let product of products">
+            <li class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">{{ product.productTitle }}</li>
+         
+        </ul>
+    </div>
+
+</div>
+
+              
         <!--SEARCH BAR END-->
         <!-- </div>
               <div class="flex item-center">
@@ -53,7 +64,7 @@
     </div>
   <header class="header1">
       <div class="container1">
-              < menu start here -->
+               menu start here -->
               <!-- <div class="header-item item-center">
                   <nav class="menu">
                       <ul class="menu-main">

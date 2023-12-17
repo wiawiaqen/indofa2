@@ -31,7 +31,9 @@ import { LeftmenuComponent } from './leftmenu/leftmenu.component';
 import { BottommenublogComponent } from './bottommenublog/bottommenublog.component';
 import { ProductTotalComponent } from './product-total/product-total.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-
+import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
@@ -43,7 +45,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPwComponent},
-  {path: 'reset/:token', component: ResetpwComponent}
+  {path: 'reset/:token', component: ResetpwComponent},
+  {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
 
 ]
 @NgModule({
@@ -75,13 +78,16 @@ const routes: Routes = [
     FooterComponent,
     ProductTotalComponent,
     ProductDetailComponent,
+    ForgotPwAfterComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
