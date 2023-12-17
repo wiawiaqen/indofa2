@@ -9,7 +9,7 @@ exports.createOne = (Model) =>
 
 exports.createMany = (Model) =>
   asyncHandler(async (req, res) => {
-    const newDocs = await Model.insertMany(req.body);
+    const newDocs = await Model.create(req.body);
     res.status(201).json({ data: newDocs });
   });
 
@@ -40,16 +40,8 @@ exports.deleteOne = (Model, name = "document") =>
 
 exports.getOne = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
-    const document = await Model.findById(req.params.id);
-    if (!document) {
-      return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
-    }
-    res.status(200).json({ data: document });
-  });
-
-exports.getOneWithFields = (Model, name = "document") =>
-  asyncHandler(async (req, res, next) => {
-    const document = await Model.findById(req.params.id).select(req.body);
+    let fields = req.query.fields;
+    const document = await Model.findById(req.params.id).select(fields);
     if (!document) {
       return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
     }
@@ -58,24 +50,15 @@ exports.getOneWithFields = (Model, name = "document") =>
 
 exports.getAll = (Model) =>
   asyncHandler(async (req, res, next) => {
-    const document = await Model.find();
+    let fields = req.query.fields;
+    const document = await Model.find().select(fields);
     res.status(200).json({ size: document.length, data: document });
-  });
-
-exports.getAllWithFields = (Model, name = "document") =>
-  asyncHandler(async (req, res, next) => {
-    const document = await Model.find().select(req.body);
-    if (!document) {
-      return next(
-        new apiError(`No ${name} for this id ${req.params.page}`, 404)
-      );
-    }
-    res.status(200).json({ data: document });
   });
 
 exports.filter = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
-    const document = await Model.find(req.body);
+    let fields = req.query.fields;
+    const document = await Model.find(req.body).select(fields);
     if (!document) {
       return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
     }
@@ -100,20 +83,28 @@ async function resizeBase64Image(base64Str, width, height) {
 async function resizeImagesInProducts(products, width = 250, height = 250) {
   for (const product of products) {
     try {
-      const resizedImage = await resizeBase64Image(
-        product.imgbase64,
-        width,
-        height
-      );
-      product.imgbase64 = resizedImage;
-      const resizedImage_full = await resizeBase64Image(
-        product.f_imgbase64,
-        width,
-        height
-      );
-      product.f_imgbase64 = resizedImage_full;
+      try {
+        const resizedImage = await resizeBase64Image(
+          product.imgbase64,
+          width,
+          height
+        );
+        product.imgbase64 = resizedImage;
+      } catch (error) {
+        // console.error(`Error resizing image for product ${product.id}:`, error);
+      }
+      try {
+        const resizedImage_full = await resizeBase64Image(
+          product.f_imgbase64,
+          width,
+          height
+        );
+        product.f_imgbase64 = resizedImage_full;
+      } catch (error) {
+        // console.error(`Error resizing image for product ${product.id}:`, error);
+      }
     } catch (error) {
-      console.error(`Error resizing image for product ${product.id}:`, error);
+      // console.error(`Error resizinxg image for product ${product.id}:`, error);
     }
   }
   return products;
@@ -124,6 +115,7 @@ exports.pagination = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
     const { page } = req.params.page;
     const document = await Model.find()
+      .select("name price imgbase64_reduce")
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .exec();
