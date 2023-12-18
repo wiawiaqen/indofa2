@@ -141,7 +141,7 @@ router.get("/user", async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ _id: claims._id });
+    const user = await User.findOne({ _id: claims });
     const { hashedPassword, ...data } = await user.toJSON();
     let user_data = {
       name: data.name,

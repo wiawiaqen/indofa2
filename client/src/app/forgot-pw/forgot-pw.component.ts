@@ -13,45 +13,43 @@ export class ForgotPwComponent {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router
-  ){}
-forgetForm: FormGroup
-fb= inject(FormBuilder)
-ngOnInit(): void{
-  this.forgetForm= this.formBuilder.group({
-    email:''
+  ) { }
+  forgetForm: FormGroup
+  fb = inject(FormBuilder)
+  ngOnInit(): void {
+    this.forgetForm = this.formBuilder.group({
+      email: ''
 
-  })
-}
-ValidateEmail=(email:any) =>
-  {
+    })
+  }
+  ValidateEmail = (email: any) => {
     var validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-    if (email.match(validRegex))
-    {
+    if (email.match(validRegex)) {
       return (true)
     }
-     else{return (false)}
+    else { return (false) }
 
   }
-submit(){
-  let user = this.forgetForm.getRawValue()
-  console.log(user)
-  if( user.email=='' ){
-    alert("Please enter all the fields")
+  submit() {
+    let user = this.forgetForm.getRawValue()
+    console.log(user)
+    if (user.email == '') {
+      alert("Please enter all the fields")
+    }
+    else if (!this.ValidateEmail(user.email)) {
+      alert("You have entered an invalid email address!")
+    } else {
+      this.http.post("/api/auth/send-email", user, {
+        withCredentials: true
+      })
+        .subscribe(
+          (res) =>
+            this.router.navigate([`/forgot-password-after/${user.email}`],),
+          (err) => {
+            alert(err.error.message)
+          }
+        )
+    }
   }
-  else if (!this.ValidateEmail(user.email)){
-    alert("You have entered an invalid email address!")
-  }else{
-    this.http.post("http://localhost:5000/api/auth/send-email",user,{
-      withCredentials:true
-    })
-    .subscribe(
-      (res)=>
-      this.router.navigate([`/forgot-password-after/${user.email}`],),
-      (err)=>{
-        alert(err.error.message)
-      }
-    )
-}
-}
 }

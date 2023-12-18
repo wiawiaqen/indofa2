@@ -21,7 +21,7 @@ export class ForgotPwAfterComponent {
     });
   }
   resend(): void {
-    this.http.post("http://localhost:5000/api/auth/send-email", this.email, {
+    this.http.post("/api/auth/send-email", this.email, {
       withCredentials: true
     })
       .subscribe({

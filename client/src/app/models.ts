@@ -26,6 +26,30 @@ export class Product {
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
   }
+  processPlantingInstructions(): Record<string, string[]> {
+    const lines = this.productFullDescription.split('\n');
+    const result: Record<string, string[]> = {};
+    let currentKey = '';
+
+    for (let line of lines) {
+      line = line.trim();
+      if (line === '') continue;
+
+      if (line.startsWith('+')) {
+        if (currentKey) {
+          if (!result[currentKey]) {
+            result[currentKey] = [];
+          }
+          result[currentKey].push(line.substring(1).trim());
+        }
+      } else {
+        currentKey = line;
+      }
+    }
+
+    return result;
+  }
+
 }
 
 export class Review {

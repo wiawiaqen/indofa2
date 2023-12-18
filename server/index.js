@@ -19,7 +19,11 @@ db.connect();
 const authRoute = require("./routes/auth");
 const reviewRoute = require("./routes/review");
 const productRoute = require("./routes/product");
-
+const orderRoute = require("./routes/order");
+const cartRoute = require("./routes/cart");
+const couponRoute = require("./routes/coupon");
+const blogRoute = require("./routes/blog");
+const addressRoute = require("./routes/address");
 
 // Middleware
 const app = express();
@@ -31,6 +35,7 @@ app.use(
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   session({
@@ -49,7 +54,7 @@ app.use(express.json());
 // Use routes
 app.use("/api/auth", authRoute);
 app.use("/api/reviews", reviewRoute);
-app.use("/api/products", productRoute);
+
 app.get("/", (req, res) => {
   res.send("hello world");
 });
@@ -65,7 +70,7 @@ app.all("*", (req, res, next) => {
 app.use(globalErrHandler);
 
 // Listen To Server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; //default port is 5000
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });

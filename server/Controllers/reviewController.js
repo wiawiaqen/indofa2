@@ -6,3 +6,5 @@ exports.updateOne = dao.updateOne(Review);
 exports.getAll = dao.getAll(Review);
 exports.getOne = dao.getOne(Review);
 exports.deleteOne = dao.deleteOne(Review);
+exports.createMany = dao.createMany(Review);
+exports.filter = dao.filter(Review);
