@@ -8,25 +8,25 @@ import { Product } from '../models';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit  {
+export class HeaderComponent {
 
 
   products: Product[] = [];
   hasQuery: boolean = false;
 
-  constructor(private search: SearchbarService) {} 
-  ngOnInit() {
-    this.search.searchProducts('').subscribe(
-      data => {
-        this.products = data;
-        console.log('Products:', this.products);
-      },
-      error => {
-        console.error('Error:', error);
-      }
-    );
-  }
-  
+  constructor(private search: SearchbarService) { }
+  // ngOnInit() {
+  //   this.search.searchProducts('').subscribe(
+  //     data => {
+  //       this.products = data;
+  //       console.log('Products:', this.products);
+  //     },
+  //     error => {
+  //       console.error('Error:', error);
+  //     }
+  //   );
+  // }
+
   sendData(event: any) {
     let query: string = event.target.value;
     let matchSpaces: any = query.match(/\s*/);
@@ -39,13 +39,18 @@ export class HeaderComponent implements OnInit  {
 
     this.search.searchProducts(query.trim()).subscribe(
       (results: Product[]) => {
-        results.forEach((product) => { let productObject = new Product(product); this.products.push(productObject)})
-        
+        this.products = [];
+        results.forEach((product) => {
+          let productObject = new Product(product);
+          this.products.push(productObject)
+        })
         this.hasQuery = true;
-        console.log('Data received from server:', this.products);
+        console.log('Data received from server:', results);
+        console.log('Products:', this.products);
       },
       (error) => {
         console.error('Error from server:', error);
       }
     );
-  }}
+  }
+}
