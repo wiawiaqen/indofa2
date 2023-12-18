@@ -83,26 +83,18 @@ async function resizeBase64Image(base64Str, width, height) {
 async function resizeImagesInProducts(products, width = 250, height = 250) {
   for (const product of products) {
     try {
-      try {
         const resizedImage = await resizeBase64Image(
           product.imgbase64,
           width,
           height
         );
         product.imgbase64 = resizedImage;
-      } catch (error) {
-        // console.error(`Error resizing image for product ${product.id}:`, error);
-      }
-      try {
         const resizedImage_full = await resizeBase64Image(
           product.f_imgbase64,
           width,
           height
         );
         product.f_imgbase64 = resizedImage_full;
-      } catch (error) {
-        // console.error(`Error resizing image for product ${product.id}:`, error);
-      }
     } catch (error) {
       // console.error(`Error resizinxg image for product ${product.id}:`, error);
     }
