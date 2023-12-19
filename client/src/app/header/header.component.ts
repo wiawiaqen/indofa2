@@ -25,22 +25,30 @@ export class HeaderComponent implements OnInit  {
         console.error('Error:', error);
       }
     );
+   
   }
   
+    
+  
+  
   sendData(event: any) {
+   
     let query: string = event.target.value;
     let matchSpaces: any = query.match(/\s*/);
 
     if (matchSpaces[0] === query) {
-      this.products = [];
+      
       this.hasQuery = false;
       return;
     }
 
     this.search.searchProducts(query.trim()).subscribe(
       (results: Product[]) => {
-        results.forEach((product) => { let productObject = new Product(product); this.products.push(productObject)})
-        
+        this.products = [];
+        results.forEach((product) => {
+          let productObject = new Product(product);
+          this.products.push(productObject)
+        })
         this.hasQuery = true;
         console.log('Data received from server:', this.products);
       },
@@ -48,4 +56,4 @@ export class HeaderComponent implements OnInit  {
         console.error('Error from server:', error);
       }
     );
-  }}
+    }}

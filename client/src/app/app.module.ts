@@ -1,5 +1,7 @@
 
 import { NgModule } from '@angular/core';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
 //import { BrowserModule } from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
 //import { RouterModule, Routes } from '@angular/router';
@@ -46,7 +48,7 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPwComponent},
   {path: 'reset/:token', component: ResetpwComponent},
   {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
-  {path: 'payment', component: PaymentComponent},
+  //{path: 'payment', component: PaymentComponent},
 
 ]
 @NgModule({
@@ -79,7 +81,7 @@ const routes: Routes = [
     ProductTotalComponent,
     ProductDetailComponent,
     ForgotPwAfterComponent,
-    PaymentComponent,
+    //PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,8 +89,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatInputModule
+    NgxDropzoneModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

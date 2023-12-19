@@ -4,7 +4,8 @@
   "compilerOptions": {
     
     "typeRoots": 
-    ["node_modules/@types"],
+    ["node_modules/@types",
+    "@types/angular__forms"],
     "importHelpers": false,
     "paths": {
       "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"]

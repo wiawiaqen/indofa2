@@ -22,9 +22,13 @@ export class Product {
     this.productActive = data.isActive;
   }
   numberWithCommas(x: number | string) {
-    var parts = x.toString().split(",");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return parts.join(".");
+    try {
+      var parts = x.toString().split(",");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    } catch (e) {
+      return x;
+    }
   }
   processPlantingInstructions(): Record<string, string[]> {
     const lines = this.productFullDescription.split('\n');
