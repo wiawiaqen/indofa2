@@ -29,9 +29,13 @@ import { BottommenublogComponent } from './bottommenublog/bottommenublog.compone
 import { ProductTotalComponent } from './product-total/product-total.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.component';
+<<<<<<< HEAD
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+=======
+import { PaymentComponent } from './payment/payment.component';
+>>>>>>> 4d787d5343e2141f3757a80ff1eb566df20c71c0
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -46,9 +50,13 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPwComponent},
   {path: 'reset/:token', component: ResetpwComponent},
   {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
+<<<<<<< HEAD
   {path: 'profile', component: ProfileComponent},
   {path: 'up-profile', component:UpdateProfileComponent},
   {path: 'ord-detail', component:OrderDetailComponent}
+=======
+  {path: 'payment', component: PaymentComponent},
+>>>>>>> 4d787d5343e2141f3757a80ff1eb566df20c71c0
 
 ]
 @NgModule({
@@ -81,9 +89,13 @@ const routes: Routes = [
     ProductTotalComponent,
     ProductDetailComponent,
     ForgotPwAfterComponent,
+<<<<<<< HEAD
     ProfileComponent,
     UpdateProfileComponent,
     OrderDetailComponent,
+=======
+    PaymentComponent,
+>>>>>>> 4d787d5343e2141f3757a80ff1eb566df20c71c0
   ],
   imports: [
     BrowserModule,

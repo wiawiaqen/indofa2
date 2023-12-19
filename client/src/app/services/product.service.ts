@@ -17,4 +17,24 @@ export class ProductService {
     }
     )
   }
+
+  getProduct(id: string) {
+    return this.http.get('/api/products/' + id, {
+      withCredentials: true
+    }
+    )
+  }
+
+  getProductReduce(id: string) {
+    const fields = "name price imgbase64_reduce"
+    return this.http.get('/api/products/' + id + '?fields=' + fields, { withCredentials: true })
+  }
+
+  getPagination(page: number) {
+    return this.http.get('/api/products/pagination/' + page, {
+      withCredentials: true
+    }
+    )
+  }
+
 }
