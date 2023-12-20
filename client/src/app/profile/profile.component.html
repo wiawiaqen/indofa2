@@ -17,17 +17,25 @@
         </div>
         <div>
             <p class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">TÀI KHOẢN</p>
-            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Thông tin tài khoản</p>
-            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Lịch sử mua hàng</p>
-            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Danh sách địa chỉ</p>
-            <p class="text-[13pt] text-red-600 collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">Đăng xuất</p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
+              <a href="#profile" onclick="event.preventDefault()">Thông tin tài khoản</a>
+            </p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
+              <a href="#order">Lịch sử mua hàng</a>
+            </p>
+            <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
+              <a href="#address">Danh sách địa chỉ</a>
+            </p>
+            <p class="text-[13pt] text-red-600 collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
+              Đăng xuất
+            </p>
             <hr class="w-[250px] desktop:hidden mt-3">
         </div> 
         
     </div>
-    <div class="pt-[30px]">
-        <div>
-            <p class="text-[15pt] font-bold font-custom text-[#23562A] text-center">THÔNG TIN TÀI KHOẢN</p>
+    <div class="pt-[30px]" >
+        <div >
+            <p id="profile" class="text-[15pt] font-bold font-custom text-[#23562A] text-center">THÔNG TIN TÀI KHOẢN</p>
             
         </div>
         <div>
@@ -38,7 +46,7 @@
                     <!-- {{ customer.name }} --> &nbsp; Phạm Nguyễn Thanh Mai
                   </td>
                   <td>
-                    <button type="button" class="border-2 w-[full] h-[35px] px-5 border-[#23562A] bg-[#23562A] text-white hover:cursor-pointer focus:outline-none focus:ring focus:transition duration-300 ease-in-out rounded-3xl">
+                    <button type="button" class="border-2 w-[full] h-[full] px-5 py-2 border-[#23562A] bg-[#23562A] text-white hover:cursor-pointer focus:outline-none focus:ring focus:transition duration-300 ease-in-out rounded-xl">
                         <a href="up-profile">
                             Chỉnh sửa
                         </a>
@@ -46,24 +54,24 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="pt-[10px]">Email:</td>
+                  <td class="pt-[20px]">Email:</td>
                   <td colspan="2">
                     <!-- {{ customer.email }} -->
                 </tr>
                 <tr >
-                  <td class="pt-[10px]">Số điện thoại</td>
+                  <td class="pt-[20px]">Số điện thoại:</td>
                   <td colspan="2">
                     <!-- {{ customer.font }} -->
                   </td>
                 </tr>
                 <tr>
-                  <td class="pt-[10px]">Địa chỉ:</td>
+                  <td class="pt-[20px]">Địa chỉ:</td>
                   <td colspan="2">
                     <!-- {{ customer.address }} -->
                   </td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="pt-[10px]">
+                    <td colspan="3" class="pt-[20px]">
                         <dd class="custom-control custom-checkbox add-to-email-list-wrapper">
                             <input type="checkbox" class="custom-control-input" id="add-to-email-list" checked="checked">
                             <label class="custom-control-label" for="add-to-email-list">
@@ -73,12 +81,27 @@
                     </td>
                 </tr>
             </table>
+  </div>
 
-
-        </div>
-        <div class=" mt-[30px] bg-[#e7f4e5] h-[200px] mr-[50px]">
-            <p class="text-[15pt] font-bold font-custom text-[#23562A] text-center pt-[25px] pb-[20px]">LỊCH SỬ ĐẶT HÀNG</p>
-            <table class="table w-[1000px] ml-[50px] mr-[50px]">
+        <div class="mt-[30px] bg-[#e7f4e5] h-[fit] mr-[50px] relative" id="order">
+          <p class="text-[15pt] font-bold font-custom text-[#23562A] text-center pt-[25px] pb-[20px]">LỊCH SỬ ĐẶT HÀNG</p>
+          <div class="ml-[50px] mr-[50px] relative">
+              <p>Bạn chưa mua đơn hàng nào</p>
+              <hr class="w-[250px] border-collapse border-[#23562A] mt-3">
+              <br>
+              <button type="submit" class="absolute top-0 right-0 border-2 w-[full] h-[full] px-5 py-2 mt-2 border-[#23562A] bg-[#23562A] text-white hover:cursor-pointer focus:outline-none focus:ring focus:transition duration-300 ease-in-out rounded-xl flex items-center">
+                <span class="mr-2">Khám phá INDOFA</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 1)" class="w-6 h-6">
+                    <path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"></path>
+                    <circle cx="10.5" cy="19.5" r="1.5"></circle>
+                    <circle cx="17.5" cy="19.5" r="1.5"></circle>
+                </svg>
+            </button>
+            
+          </div>
+       
+          <div>
+              <table class="table w-[1000px] ml-[50px] mr-[50px]">
                 <thead class="bg-[#23562A] text-white py-[15px]">
                     <tr>
                         <th class="order_number text-centern py-[15px]  ">Mã đơn hàng</th>
@@ -101,9 +124,9 @@
                     
                 </tbody>
             </table>
-            
+            </div>  
         </div>
-        <div>
+        <div id="address">
             <p class="text-[15pt] font-bold font-custom text-[#23562A] text-center pt-[25px] pb-[20px]">ĐỊA CHỈ</p>
             <div class="grid grid-cols-[1fr_1fr] first-letter:mt-[30px] h-[250px] mb-[30px] items-center">
               <div>
@@ -128,46 +151,7 @@
                 <img src="../../assets/images/diachi.png.png" alt="" class="w-[350px] absolute top-[20px] left-[20px]">
               </div>
             </div>
-        </div>
-        
-        <div class="flex flex-col bg-[#e7f4e5] h-[700px] mr-[50px] mt-8">
-            <div class="flex mx-auto my-8 w-[850px] h-[350px] bg-[#FEFFF8] border-[#23562A] rounded-3xl border-2 ">
-              <div class="mx-auto text-center">
-                <img src="../../assets/images/rate.png.png" alt="Rating Image" class="mx-auto">
-                <b class="w-[852px] h-[76px] text-[20pt] mt-4">
-                  <p class="m-0">CẢM NHẬN CỦA BẠN VỀ</p>
-                  <p class="m-0">
-                    <span class="text-[#23562A]">[SẢN PHẨM/DỊCH VỤ]</span>
-                    <span class="text-black"> CỦA INDOFA?</span>
-                  </p>
-                </b>
-              </div>
-            </div>
-          
-            <div class="text-center text-[#23562A]">
-                <b>
-                    <p class="m-0">
-                        INDOFA hi vọng nhận được những đánh giá của bạn để có thể cải thiện
-                      </p>
-                      <p class="m-0">chất lượng và dịch vụ của mình hơn trong tương lai.</p>
-                      <p class="m-0">INDOFA trân trọng cảm ơn!</p>
-                </b>
-               
-                <form class="w-100 pt-[20px]">
-                    <div class="d-flex flex-column flex-lg-row">
-                        <div class="form-group">
-                            <!-- <label class="d-none form-control-label" for="input-id" aria-hidden="true"></label> -->
-                            <input type="text" id="review-id" class="form-control mx-auto w-[850px] h-[100px] bg-[#FEFFF8] mt-[20px] rounded-2xl px-[30px] border border-[#23562A]" placeholder="Viết cảm nhận của bạn tại đây ....">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <button type="submit" class="border-2 w-[full] h-[35px] px-5 my-5 border-[#23562A] bg-[#23562A] text-white hover:cursor-pointer focus:outline-none focus:ring focus:transition duration-300 ease-in-out rounded-3xl">
-                            Gửi đánh giá
-                        </button>
-                    </div>
-                </form>
-            </div>
-          </div>
-          
+          </div>          
           
 
             
