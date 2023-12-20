@@ -110,7 +110,7 @@ router.post("/login", async (req, res) => {
       message: "Password is Incorrect",
     });
   }
-  const token = jwt.sign({ _id: user._id }, "secret");
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
   if (saveSession) {
     res.cookie("jwt", token, {
@@ -124,7 +124,7 @@ router.post("/login", async (req, res) => {
     });
   }
 
-  res.send({
+  res.status(201).send({
     message: "success",
   });
 });
