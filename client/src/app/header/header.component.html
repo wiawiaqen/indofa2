@@ -24,20 +24,22 @@
                     </div>
                 </div>
             
-            <div class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white" id="search-result-container">
-                <div class="z-[5000] ">
-                    <ul class="px-[20px] py-[15px] w-full" *ngFor="let product of products">
-                        <li>
-                            <hr *ngIf="product !== products[0]">
-                        </li>
-                        <li
-                            class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">
-                            {{ product.productTitle }}</li>
-
-                    </ul>
+                <div class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white" id="search-result-container">
+                    <div class="z-[5000]">
+                        <ul class="px-[20px] py-[15px] w-full" *ngIf="products.length > 0; else noProducts">
+                            <ng-container *ngFor="let product of products">
+                                <hr *ngIf="product !== products[0]" >
+                                <li class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">
+                                    {{ product.productTitle }}
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
                 </div>
-
-            </div>
+                
+                <ng-template #noProducts>
+                    <div class="text-center">Không có sản phẩm.</div>
+                </ng-template>
 
 
             <!--SEARCH BAR END-->

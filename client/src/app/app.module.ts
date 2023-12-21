@@ -34,7 +34,9 @@ import { BottommenublogComponent } from './bottommenublog/bottommenublog.compone
 import { ProductTotalComponent } from './product-total/product-total.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.component';
-
+import { ProductAddComponent } from './admin/product-add/product-add.component';
+import { ProductListComponent } from './admin/product-list/product-list.component';
+import { PaymentComponent } from './payment/payment.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
@@ -48,8 +50,8 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPwComponent},
   {path: 'reset/:token', component: ResetpwComponent},
   {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
-  //{path: 'payment', component: PaymentComponent},
-
+  {path: 'payment', component: PaymentComponent},
+  {path: 'admin-product-add', component: ProductAddComponent}
 ]
 @NgModule({
   declarations: [
@@ -81,7 +83,10 @@ const routes: Routes = [
     ProductTotalComponent,
     ProductDetailComponent,
     ForgotPwAfterComponent,
-    //PaymentComponent,
+    PaymentComponent,
+    ProductAddComponent,
+    ProductListComponent
+    
   ],
   imports: [
     BrowserModule,

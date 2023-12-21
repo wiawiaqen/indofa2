@@ -19,7 +19,8 @@ db.connect();
 const authRoute = require("./routes/auth");
 const reviewRoute = require("./routes/review");
 const searchRoute = require("./routes/liveSearch");
-
+const productRoute = require("./routes/product");
+const couponRoute = require("./routes/coupon");
 // Middleware
 const app = express();
 
@@ -51,6 +52,8 @@ app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/review", reviewRoute);
 app.use("/api/search", searchRoute);
+app.use("/api/products", productRoute);
+app.use("/api/coupons", couponRoute);
 app.get("/", (req, res) => {
   res.send("hello world");
 });
