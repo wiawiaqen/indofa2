@@ -16,39 +16,50 @@
             <!--SEARCH BAR HERE-->
             <div class="searchbox w-[500px]" id="searchbox">
                 <div class="relative w-[500px] h-[35px] ">
-                    <input type="text"
-                        class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A] "
-                        formControlName="searchValue" placeholder="Tìm kiếm sản phẩm..." (keyup)="sendData($event)">
-                    <div class="btn btn_common">
-                        <i class="fas fa-search"></i>
-                    </div>
+                  <input
+                    type="text"
+                    class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
+                    [(ngModel)]="input"
+                    placeholder="Tìm kiếm sản phẩm..."
+                    (input)="sendData($event)"
+                  />
+                  <div class="btn btn_common">
+                    <i class="fas fa-search"></i>
+                  </div>
                 </div>
-            
-                <div class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white" id="search-result-container">
-                    <div class="z-[5000]">
-                        <ul class="px-[20px] py-[15px] w-full" *ngIf="products.length > 0; else noProducts">
-                            <ng-container *ngFor="let product of products">
-                                <hr *ngIf="product !== products[0]" >
-                                <li class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">
-                                    {{ product.productTitle }}
-                                </li>
-                            </ng-container>
-                        </ul>
-                    </div>
+              
+                <div
+                  class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white"
+                  id="search-result-container"
+                  *ngIf="input.length > 0"
+                >
+                  <div class="z-[5000]">
+                    <ul class="px-[20px] py-[15px] w-full" *ngIf="products.length > 0; else noProducts">
+                      <ng-container *ngFor="let product of products">
+                        <hr *ngIf="product !== products[0]" />
+                        <li
+                          class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]"
+                        >
+                        <a [routerLink]="['/']"> {{ product.productTitle }}</a>
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </div>
                 </div>
-                
+              
                 <ng-template #noProducts>
-                    <div class="text-center">Không có sản phẩm.</div>
+                  <div class="text-center">Không có sản phẩm.</div>
                 </ng-template>
-
+             
+              
 
             <!--SEARCH BAR END-->
             </div>
               <div class="flex item-center">
-                  <a href="#" class="inline-flex">
+                  <div href="#" class="inline-flex">
                       <img src="./assets/images/user.png" class="w-[20px] h-[20px]">
-                      <span class="pl-[5px]">Đăng nhập / Đăng ký</span>
-                  </a>
+                      <span class="pl-[5px]"><a routerLink="/login">Đăng nhập</a> / <a routerLink="/register">Đăng ký</a></span>
+                  </div>
                 </div>
               <div class="flex item-center">
                   <a href="#" class="inline-flex">

@@ -14,6 +14,15 @@ export class ProductListComponent implements OnInit {
   
   constructor(public service: ProductService, public router: Router) {
     this.fetchProducts();
+    this.service.getProducts().subscribe({
+      next: (data) => {
+        // Lấy danh sách các Medicines
+        this.products = data;
+      },
+      error: (err) => {
+        this.errMessage = err;
+      },
+    });
   }
   
   ngOnInit() {
@@ -48,41 +57,16 @@ export class ProductListComponent implements OnInit {
   }
   
   updateProduct(p: any) {
-    this.router.navigate(['/', p._id]);
+    this.router.navigate(['admin-product-update', p._id]);
   }
   
   deleteProduct(_id: any) {
-    Swal.fire({
-      title: 'Tiếp tục xóa sản phẩm?',
-      text: "Sản phẩm sẽ bị xóa vĩnh viễn.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Tiếp tục'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Call the service to delete the product
-        this.service.deleteProduct(_id).subscribe({
-          next: (data) => {
-            this.products = data;
-            // Show success message
-            Swal.fire({
-              title: 'Đã xóa',
-              text: 'Sản phẩm đã được xóa.',
-              icon: 'success'
-            });
-          },
-          error: (err) => {
-            this.errMessage = err;
-            // Show error message
-            Swal.fire({
-              title: 'Lỗi',
-              text: 'Đã xảy ra lỗi khi xóa.',
-              icon: 'error'
-            });
-          },
-        });
-      }
-    });
+    if (window.confirm('confirm to delete?')){
+      this.service.deleteProduct(_id).subscribe({
+        next:(data)=>{this.products=data},
+        error:(err)=>{this.errMessage=err}
+      })
+      location.reload()
+    }
+  
   }}

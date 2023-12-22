@@ -3,14 +3,14 @@ import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Coupon } from 'src/app/models';
-@Component({
-  selector: 'app-product-add',
 
-  templateUrl: './product-add.component.html',
-  styleUrl: './product-add.component.css'
+@Component({
+  selector: 'app-category-add',
+
+  templateUrl: './category-add.component.html',
+  styleUrl: './category-add.component.css'
 })
-export class ProductAddComponent implements OnInit {
+export class CategoryAddComponent {
   myForm: FormGroup;
   
   constructor(private service: ProductService,

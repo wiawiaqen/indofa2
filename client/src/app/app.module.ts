@@ -36,7 +36,9 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.component';
 import { ProductAddComponent } from './admin/product-add/product-add.component';
 import { ProductListComponent } from './admin/product-list/product-list.component';
+import { ProductUpdateComponent } from './admin/product-update/product-update.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CategoryAddComponent } from './admin/category-add/category-add.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
@@ -51,7 +53,9 @@ const routes: Routes = [
   {path: 'reset/:token', component: ResetpwComponent},
   {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
   {path: 'payment', component: PaymentComponent},
-  {path: 'admin-product-add', component: ProductAddComponent}
+  {path: 'admin-product-add', component: ProductAddComponent},
+  {path: 'admin-product-list', component: ProductListComponent},
+  {path: 'admin-product-update/:id', component: ProductUpdateComponent}
 ]
 @NgModule({
   declarations: [
@@ -85,7 +89,9 @@ const routes: Routes = [
     ForgotPwAfterComponent,
     PaymentComponent,
     ProductAddComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductUpdateComponent,
+    CategoryAddComponent
     
   ],
   imports: [

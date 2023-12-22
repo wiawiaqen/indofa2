@@ -43,12 +43,13 @@ export class ProductService {
       headers: headers,
       responseType: 'text',
     };
-    return this.http.get<any>('/api/products/one/' +productId, requestOptions).pipe(
+    return this.http.get<any>('api/products/one/' + productId, requestOptions).pipe(
       map((res) => JSON.parse(res) as Product),
       retry(3),
       catchError(this.handleError)
     );
   }
+
 
   postProduct(aProduct: any): Observable<any> {
     const headers = new HttpHeaders().set(
@@ -69,24 +70,24 @@ export class ProductService {
       );
   }
 
-  putProduct(Product: any): Observable<any> {
+  putProduct(product: Product): Observable<any> {
     const headers = new HttpHeaders().set(
       'Content-Type',
       'application/json;charset=utf-8'
     );
-
+  
     const requestOptions: Object = {
       headers: headers,
       responseType: 'text',
     };
+  
     return this.http
-      .put<any>('/api/products/one', JSON.stringify(Product), requestOptions)
-      .pipe(
-        map((res) => JSON.parse(res) as Array<Product>),
-        retry(3),
-        catchError(this.handleError)
-      );
-  }
+  .put<any>('/api/products/' + product.productID, JSON.stringify(product), requestOptions)
+  .pipe(
+    map(res => res as Product), 
+    retry(3),
+    catchError(this.handleError)
+  )}
   getProductCate(fashionStyle:string):Observable<any>
   {
     const header=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")

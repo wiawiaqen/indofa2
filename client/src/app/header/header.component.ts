@@ -10,7 +10,7 @@ import { Product } from '../models';
 })
 export class HeaderComponent implements OnInit  {
 
-
+  input: string = ''
   products: Product[] = [];
   hasQuery: boolean = false;
 
@@ -56,4 +56,6 @@ export class HeaderComponent implements OnInit  {
         console.error('Error from server:', error);
       }
     );
-    }}
+    }
+    
+  }

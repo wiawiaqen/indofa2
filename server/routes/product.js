@@ -10,7 +10,7 @@ router.get("/pagination/:page", productService.pagination);
 router.get("/maxpage", productService.getMaxPage);
 router.post("/one", productService.createOne);
 router.post("/many", productService.createMany);
-router.put("/:id", authMiddleware.auth, authMiddleware.admin, productService.updateOne);
-router.delete("/:id", authMiddleware.auth, authMiddleware.admin, productService.deleteOne);
+router.put("/:id",  productService.updateOne);
+router.delete("/:id", productService.deleteOne);
 
 module.exports = router;
