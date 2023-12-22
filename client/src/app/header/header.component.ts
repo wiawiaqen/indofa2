@@ -15,24 +15,31 @@ export class HeaderComponent {
   hasQuery: boolean = false;
 
   constructor(private search: SearchbarService) { }
-  // ngOnInit() {
-  //   this.search.searchProducts('').subscribe(
-  //     data => {
-  //       this.products = data;
-  //       console.log('Products:', this.products);
-  //     },
-  //     error => {
-  //       console.error('Error:', error);
-  //     }
-  //   );
-  // }
+  ngOnInit() {
+    this.search.searchProducts('').subscribe(
+      data => {
+        data.forEach((product_data) => {
+          let product = new Product(product_data);
+          this.products.push(product);
+        });
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
+
+  }
+
+
+
 
   sendData(event: any) {
+
     let query: string = event.target.value;
     let matchSpaces: any = query.match(/\s*/);
 
     if (matchSpaces[0] === query) {
-      this.products = [];
+
       this.hasQuery = false;
       return;
     }

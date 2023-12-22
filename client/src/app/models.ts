@@ -3,6 +3,7 @@ export class Product {
   productTitle: string;
   productDescription: string;
   productImgSource: string;
+  productImgSourceReduce: string;
   productPrice: number | string;
   productDiscountPrice: number | string;
   productFullDescription: string;
@@ -14,6 +15,7 @@ export class Product {
     this.productTitle = data.name || "";
     this.productDescription = data.description || "";
     this.productImgSource = data.imgbase64 || "";
+    this.productImgSourceReduce = data.imgbase64_reduce || "";
     this.productPrice = this.numberWithCommas(data.price) || 0;
     this.productDiscountPrice = this.numberWithCommas(data.d_price) || 0;
     this.productFullDescription = data.f_description || "";
@@ -149,6 +151,8 @@ export class Blog {
 }
 
 export class Address {
+  name: string;
+  phone: string;
   street: string;
   city: string;
   district: string;
@@ -157,12 +161,18 @@ export class Address {
   isDefault: boolean;
 
   constructor(data: any = {}) {
+    this.name = data.name;
+    this.phone = data.phone;
     this.street = data.street;
     this.city = data.city;
     this.district = data.district;
     this.ward = data.ward;
     this.userID = data.user;
     this.isDefault = data.default !== undefined ? data.default : false;
+  }
+
+  full_address(): string {
+    return `${this.street}, ${this.ward}, ${this.district}, ${this.city}`;
   }
 }
 

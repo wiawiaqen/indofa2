@@ -19,7 +19,6 @@ export class ForgotPwComponent {
   ngOnInit(): void {
     this.forgetForm = this.formBuilder.group({
       email: ''
-
     })
   }
   ValidateEmail = (email: any) => {
