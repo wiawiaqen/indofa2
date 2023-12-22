@@ -10,7 +10,7 @@ router.post('/getProducts', async (req, res) => {
 
     // Log received data from client
     console.log('Data received from client:', payload);
-
+    console.log({ $regex: new RegExp('.*' + payload + '.*', 'i') })
     let search = await Product.find(
       { name: { $regex: new RegExp('.*' + payload + '.*', 'i') } },
       { id: 1, name: 1 }

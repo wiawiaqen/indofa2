@@ -14,19 +14,9 @@ export class ProductService {
   ) { }
 
 
-  getProducts(): Observable<Product[]> {
-    const headers = new HttpHeaders().set('Content-Type', 'text/plain;charset=utf-8');
-    const requestOptions: Object = {
-      headers: headers,
-      responseType: 'text',
-    };
-    return this.http.get<any>('api/products', requestOptions).pipe(
-      map((res) => JSON.parse(res) as Product[]),
-      retry(3),
-      catchError(this.handleError),
-      tap((data) => console.log('API Response:', data))
-    );
-
+  getProducts(): Observable<{ [key: string]: [] }> {
+    let fields = "name category imgbase64_reduce"
+    return this.http.get<any>('api/products'+ "?fields=" + fields)
   }
 
   handleError(error: HttpErrorResponse) {
@@ -126,5 +116,5 @@ export class ProductService {
       catchError(this.handleError)
     );
   }
-  
+
 }

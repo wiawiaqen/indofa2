@@ -8,36 +8,38 @@ import { Product } from '../models';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit  {
+export class HeaderComponent {
 
   input: string = ''
   products: Product[] = [];
   hasQuery: boolean = false;
 
-  constructor(private search: SearchbarService) {} 
+  constructor(private search: SearchbarService) { }
   ngOnInit() {
     this.search.searchProducts('').subscribe(
       data => {
-        this.products = data;
-        console.log('Products:', this.products);
+        data.forEach((product_data) => {
+          let product = new Product(product_data);
+          this.products.push(product);
+        });
       },
       error => {
         console.error('Error:', error);
       }
     );
-   
+
   }
-  
-    
-  
-  
+
+
+
+
   sendData(event: any) {
-   
+
     let query: string = event.target.value;
     let matchSpaces: any = query.match(/\s*/);
 
     if (matchSpaces[0] === query) {
-      
+
       this.hasQuery = false;
       return;
     }
@@ -50,12 +52,12 @@ export class HeaderComponent implements OnInit  {
           this.products.push(productObject)
         })
         this.hasQuery = true;
-        console.log('Data received from server:', this.products);
+        console.log('Data received from server:', results);
+        console.log('Products:', this.products);
       },
       (error) => {
         console.error('Error from server:', error);
       }
     );
-    }
-    
   }
+}

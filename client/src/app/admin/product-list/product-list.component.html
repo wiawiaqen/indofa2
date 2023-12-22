@@ -32,17 +32,17 @@
         <th></th>
     </tr>
     <tbody *ngFor="let product of products">
-        
+
       <tr >
         <td>{{product.productID}}</td>
         <td>{{product.productCategory}}</td>
-        <td></td>
+        <td><img src="{{ product.productImgSourceReduce }}"></td>
         <td>{{product.productTitle}}</td>
         <td>
-          <input type="checkbox" />
+          <input type="checkbox" value="{{ product.productActive }}" [checked]="product.productActive" />
         </td>
         <td>
-          <button (click)="updateProduct(product)" 
+          <button (click)="updateProduct(product)"
           class="w-[100px] h-[35px] rounded-[10px] text-white text-[10pt]" style=" background-color: #23562A;">
           Chỉnh sửa</button>
           <button (click)="deleteProduct(product.productID)"
