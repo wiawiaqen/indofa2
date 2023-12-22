@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   getProductReduce(id: string) {
-    const fields = "name price imgbase64_reduce"
+    const fields = "name price imgbase64_reduce";
     return this.http.get('/api/products/' + id + '?fields=' + fields, { withCredentials: true })
   }
 

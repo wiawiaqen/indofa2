@@ -19,17 +19,24 @@ router.get(
   authMiddleware.auth,
   asyncHandler(async (req, res) => {
     try {
-
       let userCart = await Cart.findOne({ user: req.user._id });
 
       if (!userCart) {
-        const cart = new Cart({
-          user: id,
-          products: [],
-        });
-
-        await cart.save(); 
-        res.status(200).json({ data: cart });
+        if (req.session.cart) {
+          const cart = new Cart({
+            user: req.user._id,
+            products: req.session.cart,
+          });
+          await cart.save();
+          res.status(200).json({ data: cart });
+        } else {
+          const cart = new Cart({
+            user: req.user._id,
+            products: [],
+          });
+          await cart.save();
+          res.status(200).json({ data: cart });
+        }
       } else {
         userCart = await userCart
           .populate("products.product", "name price")

@@ -5,5 +5,12 @@
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  {
+    "context": ["/address"],
+    "target": "http://localhost:5000",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 ]
