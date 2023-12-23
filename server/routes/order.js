@@ -3,7 +3,7 @@ const router = Router();
 const authMiddleware = require("../middlewares/auth");
 const orderService = require("../controllers/orderController");
 
-router.get("/", authMiddleware.auth, orderService.getAll);
+router.get("/", orderService.getAll);
 router.get("one/:id", authMiddleware.auth, orderService.getOne);
 router.get("/filter", authMiddleware.auth, orderService.filter);
 router.post("/one", authMiddleware.auth, orderService.createOne);

@@ -1,57 +1,98 @@
-
-<head>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-</head>
-<body>
-  <div class="notice">
-      Hạt giống mới? <a href="#">Khám phá ngay</a>
-  </div>
-  <header class="header">
-      <div class="container">
-          <div class="first-line">
-              <img src="./assets/images/Logo.png" style="width: 135px; height: auto;">
-              <div class="search_wrap search_wrap_3">
-                  <div class="search_box">
-                      <input type="text" class="input" placeholder="Tìm kiếm sản phẩm...">
-                      <div class="btn btn_common">
-                          <i class="fas fa-search"></i>
-                      </div>
-                  </div>
-              </div>
-              <div class="user">
-                  <a href="profile">
-                      <img src="./assets/images/user.png" style="width: 20px; height: auto;">
-                      Đăng nhập / Đăng ký
-                  </a>
-              </div>
-              <div class="giohang">
-                  <a href="#">
-                      <img src="./assets/images/bag.png" style="width: 20px; height: auto;">
-                      0
-                  </a>
-              </div>
-          </div>
-      </div>
-  </header>
-  <header class="header1">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<div class="p-0 m-0 box-border">
+    <div class="py-[10px] bg-[#23562A] w-full">
+        <a href="#">
+            <div class="justify-center text-center text-[#FEFFF8]">
+                Hạt giống mới? Khám phá ngay
+            </div>
+        </a>
+    </div>
+    <div class="w-full px-[50px] py-[20px]">
+        <div class="flex item-center justify-between">
+            <div class="w-[135px] h-auto">
+                <img src="./assets/images/Logo.png">
+            </div>
+            <!--SEARCH BAR HERE-->
+            <div class="search_box w-[500px]">
+                <div class=" relative w-[500px] h-[35px]">
+                    <input type="text"
+                        class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
+                        formControlName="searchValue" placeholder="Tìm kiếm sản phẩm...">
+                    <div class="btn btn_common">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <!--Search result-->
+                </div>
+                <!--<div class="search-result-container w-[500px] rounded-[15px] px-5 py-5">
+                <div>
+                    <ul class="px-[20px] py-[15px] w-full">
+                        <li class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">Nhi</li>
+                        <li class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">Nhi 1</li>
+                    </ul>
+                </div>
+            </div>-->
+                <!--SEARCH BAR END-->
+            </div>
+            <div class="flex item-center account">
+                <a href="#" class="inline-flex px-[50px]">
+                    <img src="./assets/images/user.png" class="w-[20px] h-[20px]">
+                    <span class="pl-[5px]">Đăng nhập / Đăng ký</span>
+                </a>
+                <div class="account-popup min-h-min justify-center flex mt-[30px] items-center bg-opacity-30">
+                    <div class="relative flex flex-col m-2 bg-[#fefff8] shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+                        <div class="flex flex-col justify-center px-5 py-4 md:p-14">
+                            <span class=" text-[20px] text-[#23562a] font-custom">TÀI KHOẢN CỦA BẠN</span>
+                            <div class="py-2">
+                                <span class="text-[12px] text-[#23562a] font-bold">Họ và tên: </span>
+                                <span class="text-[12px]">Mai Phạm</span><br />
+                                <span class="text-[12px] text-[#23562a] font-bold">Email: </span>
+                                <span class="text-[12px]">mainpt21406c@st.uel.edu.vn</span>
+                            </div>
+                            <div class="pt-2">
+                                <a href="profile">
+                                    <button class="w-full bg-[#23562a] text-[#fefff8] p-2 rounded-lg text-[12px] cursor-pointer">
+                                        Thông tin tài khoản
+                                    </button>
+                                </a>
+                                
+                            </div>
+                            <div class="pt-2">
+                                <button class="w-full bg-[#aaaaaa] text-[#000000] p-2 rounded-lg text-[12px] cursor-pointer">
+                                    Đăng xuất
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>   
+            <div class="flex item-center">
+                <a href="#" class="inline-flex">
+                    <img src="./assets/images/bag.png" class="w-[20px] h-[20px]">
+                    <span class="pl-[5px]">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+  <header class="header1 mb-[20px]">
       <div class="container1">
               <!-- menu start here -->
               <div class="header-item item-center">
                   <nav class="menu">
-                      <ul class="menu-main">
+                      <ul>
                           <li>
                               <a href="#">TRANG CHỦ</a>
                           </li>
                           <li class="menu-item-has-children">
-                              <a href="prodtotal">HẠT GIỐNG&nbsp;<i class="fa fa-angle-down"></i></a>
+                              <a href="#">HẠT GIỐNG&nbsp;<i class="fa fa-angle-down"></i></a>
                               <div class="sub-menu mega-menu mega-menu-column-4">
                                  <div class="list-item">
-                                     <h4 class="title">HẠT GIỐNG</h4>
+                                     <h4 class="title font-custom">HẠT GIỐNG</h4>
                                      <ul>
-                                         <li><a href="#">Hạt giống rau</a></li>
-                                         <li><a href="#">Hạt giống hoa</a></li>
-                                         <li><a href="#">Hạt giống củ quả</a></li>
+                                         <li><a href="" routerLink="/prodtotal/rau">Hạt giống rau</a></li>
+                                         <li><a href="" routerLink="/prodtotal/hoa">Hạt giống hoa</a></li>
+                                         <li><a href="" routerLink="/prodtotal/cuqua">Hạt giống củ quả</a></li>
                                      </ul>
                                  </div>
                                  <div class="list-item">
@@ -66,14 +107,14 @@
                              <a href="#">DỤNG CỤ TRỒNG CÂY&nbsp;<i class="fa fa-angle-down"></i></a>
                              <div class="sub-menu mega-menu mega-menu-column-4">
                                 <div class="list-item">
-                                    <h4 class="title">CHẬU CÂY SẴN</h4>
+                                    <h4 class="title font-custom">CHẬU CÂY SẴN</h4>
                                     <ul>
-                                        <li><a href="#">Chậu cây gốm</a></li>
-                                        <li><a href="#">Chậu cây nhựa</a></li>
-                                        <li><a href="#">Chậu cây treo</a></li>
-                                        <li><a href="#">Trang trí chậu cây</a></li>
+                                        <li><a href="" routerLink="/prodtotal/gom">Chậu cây gốm</a></li>
+                                        <li><a href="" routerLink="/prodtotal/nhua">Chậu cây nhựa</a></li>
+                                        <li><a href="" routerLink="/prodtotal/treo">Chậu cây treo</a></li>
+                                        <li><a href="" routerLink="/prodtotal/chaucustom">Trang trí chậu cây</a></li>
                                     </ul>
-                                    <h4 class="title">DỤNG CỤ</h4>
+                                    <h4 class="title font-custom">DỤNG CỤ</h4>
                                     <ul>
                                         <li><a href="#">Dụng cụ khác</a></li>
                                     </ul>
@@ -87,7 +128,7 @@
                              </div>
                          </li>
                          <li>
-                             <a href="#">ĐẤT / GIÁ THỂ TRỒNG</a>
+                            <a href="" routerLink="/prodtotal/dat">ĐẤT/GIÁ THỂ TRỒNG</a>
                          </li>
                          <li>
                              <a href="blogs">BLOG</a>
@@ -96,7 +137,7 @@
                              <a href="#">VỀ CHÚNG TÔI&nbsp;<i class="fa fa-angle-down"></i></a>
                              <div class="sub-menu mega-menu mega-menu-column-4">
                                 <div class="list-item">
-                                    <h4 class="title">VỀ CHÚNG TÔI</h4>
+                                    <h4 class="title font-custom">VỀ CHÚNG TÔI</h4>
                                     <ul>
                                         <li><a href="#">Giới thiệu</a></li>
                                         <li><a href="#">Chính sách & Điều khoản</a></li>
@@ -112,4 +153,3 @@
               </div>
           </div>
   </header>
-</body>

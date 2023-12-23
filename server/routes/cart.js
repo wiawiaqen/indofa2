@@ -2,7 +2,6 @@ const Router = require("express");
 const router = Router();
 const authMiddleware = require("../middlewares/auth");
 const cartService = require("../controllers/cartController");
-const { Cart } = require("./models/cart");
 
 router.get("/", authMiddleware.auth, cartService.getAll);
 router.get("one/:id", authMiddleware.auth, cartService.getOne);

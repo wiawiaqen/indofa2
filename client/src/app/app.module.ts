@@ -32,6 +32,11 @@ import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.compon
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { LoginAdComponent } from './admin/login-ad/login-ad.component';
+import { ResetpsAdComponent } from './admin/resetps-ad/resetps-ad.component';
+import { OrderListComponent } from './admin/order-list/order-list.component';
+import { OrderDetailAdComponent } from './admin/order-detail/order-detail-ad.component';
+import { ProductListComponent } from './admin/product-list/product-list.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -40,7 +45,8 @@ const routes: Routes = [
   { path: 'blogcategory', component: BlogcategoryComponent },
   { path: 'blog', component:BlogComponent },
   { path: 'prodtotal', component:ProductTotalComponent },
-  { path: 'proddetail', component:ProductDetailComponent },
+  { path: 'prodtotal/:category', component:ProductTotalComponent },
+  { path: 'prodtotal/:category/:id', component:ProductDetailComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPwComponent},
@@ -84,6 +90,11 @@ const routes: Routes = [
     ProfileComponent,
     UpdateProfileComponent,
     OrderDetailComponent,
+    LoginAdComponent,
+    ResetpsAdComponent,
+    OrderListComponent,
+    OrderDetailAdComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

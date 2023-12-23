@@ -3,6 +3,7 @@ export class Product {
   productTitle: string;
   productDescription: string;
   productImgSource: string;
+  productImgReduce: string;
   productPrice: number | string;
   productDiscountPrice: number | string;
   productFullDescription: string;
@@ -14,6 +15,7 @@ export class Product {
     this.productTitle = data.name;
     this.productDescription = data.description;
     this.productImgSource = data.imgbase64;
+    this.productImgReduce = data.imgbase64_reduce;
     this.productPrice = this.numberWithCommas(data.price);
     this.productDiscountPrice = this.numberWithCommas(data.d_price);
     this.productFullDescription = data.f_description;
@@ -22,9 +24,25 @@ export class Product {
     this.productActive = data.isActive;
   }
   numberWithCommas(x: number | string) {
-    var parts = x.toString().split(",");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return parts.join(".");
+    try {
+      var parts = x.toString().split(",");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    }
+    catch (e) {
+      return x
+    }
+  }
+  processDetail(): string[] {
+    console.log(this.productDescription)
+    const lines = this.productDescription.split("\n")
+    console.log(lines)
+    let results = [];
+    for (let line in lines) {
+      line = line.trim();
+      results.push(lines[line].replace(" - ",""))
+    }
+    return results
   }
   processPlantingInstructions(): Record<string, string[]> {
     const lines = this.productFullDescription.split('\n');

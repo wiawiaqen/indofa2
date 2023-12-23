@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError,tap, map, Observable, retry, throwError } from 'rxjs';
 import { Product } from '../models';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class ProductService {
 
   constructor(
@@ -12,29 +14,124 @@ export class ProductService {
   ) { }
 
   getProducts() {
-    return this.http.get('/api/products/', {
+    let fields = "name price imgbase64_reduce"
+    return this.http.get('/api/products/?fields='+fields, {
       withCredentials: true
     }
     )
   }
+
 
   getProduct(id: string) {
-    return this.http.get('/api/products/' + id, {
+    return this.http.get('/api/products/one/' + id, {
       withCredentials: true
     }
     )
   }
 
-  getProductReduce(id: string) {
-    const fields = "name price imgbase64_reduce"
-    return this.http.get('/api/products/' + id + '?fields=' + fields, { withCredentials: true })
-  }
+  // getProductReduce(id: string) {
+  //   const fields = "name price imgbase64_reduce"
+  //   return this.http.get('/api/products/' + id + '?fields=' + fields, { withCredentials: true })
+  // }
 
-  getPagination(page: number) {
-    return this.http.get('/api/products/pagination/' + page, {
+
+  getPagination(page: string, category: string) {
+    return this.http.get('/api/products/pagination/' + page+"?category=" + category, {
       withCredentials: true
     }
     )
+  }
+
+
+  handleError(error: HttpErrorResponse) {
+    return throwError(() => new Error(error.message));
+  }
+
+  getAProduct(productId: string): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'text/plain;charset=utf-8'
+    );
+
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text',
+    };
+    return this.http.get<any>('/api/products/one/' +productId, requestOptions).pipe(
+      map((res) => JSON.parse(res) as Product),
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  postProduct(aProduct: any): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/json;charset=utf-8'
+    );
+
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text',
+    };
+    return this.http
+      .post<any>('/api/products/one', JSON.stringify(aProduct), requestOptions)
+      .pipe(
+        map((res) => JSON.parse(res) as Product),
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  putProduct(Product: any): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/json;charset=utf-8'
+    );
+
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text',
+    };
+    return this.http
+      .put<any>('/api/products/one', JSON.stringify(Product), requestOptions)
+      .pipe(
+        map((res) => JSON.parse(res) as Array<Product>),
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+  getProductCate(fashionStyle:string):Observable<any>
+  {
+    const header=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
+    const requestOptions:Object={
+      headers:header,
+      responseType:"text"
+    }
+    return this.http.get<any>("/fashions-style/"+fashionStyle,requestOptions).pipe(
+      map((res) => JSON.parse(res) as Array<Product>),
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+  deleteProduct(productId: string): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/json;charset=utf-8'
+    );
+
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text',
+    };
+    return this.http
+      .delete<any>('/api/products/' + productId, requestOptions)
+      .pipe(
+        map((res) => JSON.parse(res) as Array<Product>),
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 
 }
+

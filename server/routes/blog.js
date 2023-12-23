@@ -3,6 +3,7 @@ const router = Router();
 const authMiddleware = require("../middlewares/auth");
 const blogService = require("../controllers/blogController");
 
+
 router.get("/", blogService.getAll);
 router.get("one/:id", blogService.getOne);
 router.get("/filter", blogService.filter);

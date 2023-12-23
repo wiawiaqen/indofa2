@@ -1,3 +1,6 @@
+table,td,th{
+    border: 1px solid black
+}
 .btn{
 	position: absolute;
 	top: 0;
@@ -56,13 +59,14 @@ a{
 
 .header1 .menu > ul > li{
 	display: inline-block;
-	margin: 0 20px;
 	line-height: 40px;
-	justify-content: space-between;
+	margin: 0px 25px;
+	justify-content: center;
 
 }
 .header1 .menu > ul > li > a{
-	font-size: 18px;
+	font-size: 16px;
+	font-weight: 500;
 	color:#000000;
 	position: relative;
 	text-transform: uppercase;
@@ -144,20 +148,22 @@ a{
 	text-decoration: underline;
 }
 .header1 .menu > ul > li > a:hover::before{
-	transform: scaleX(1);
+	transform: scaleX(1);}
+.search-result{
+	max-width: 600px;
+	width: 100%;
+	
 }
-.account::before{
-	transform: scaleX(0);
-	transition: tranform 0.5s ease-in-out;
+hr{
+	border: none;
+	height: 1px;
+	background: #23562A;
 }
-.account-popup{
-	position: absolute;
-	z-index: 500;
-	transition: all 0.5s ease;
-	opacity:0;
-	visibility: hidden;
-}
-.account:hover .account-popup{
-	visibility: visible;
-	opacity: 1;
+.search-box{
+	display: block;
+	margin: 40px auto 0 auto;
+	padding: 10px 20px;
+	max-width: 600px;
+	width: 100%;
+	
 }
