@@ -110,7 +110,7 @@ router.post("/login", async (req, res) => {
       message: "Password is Incorrect",
     });
   }
-  const token = jwt.sign({ _id: user._id }, "secret");
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
   if (saveSession) {
     res.cookie("jwt", token, {
@@ -124,7 +124,7 @@ router.post("/login", async (req, res) => {
     });
   }
 
-  res.send({
+  res.status(201).send({
     message: "success",
   });
 });
@@ -144,7 +144,7 @@ router.get("/user", async (req, res) => {
     const user = await User.findOne({ _id: claims });
     const { hashedPassword, ...data } = await user.toJSON();
     let user_data = {
-      id: data._id,
+      _id: data._id,
       name: data.name,
       email: data.email,
       role: data.role,

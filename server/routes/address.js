@@ -4,7 +4,7 @@ const authMiddleware = require("../middlewares/auth");
 const addressService = require("../controllers/addressController");
 
 router.get("/", authMiddleware.auth, addressService.getAll);
-router.get("/:id", authMiddleware.auth, addressService.getOne);
+router.get("one/:id", authMiddleware.auth, addressService.getOne);
 router.get("/filter", authMiddleware.auth, addressService.filter);
 router.post("/one", authMiddleware.auth, addressService.createOne);
 router.post("/many", authMiddleware.auth, addressService.createMany);

@@ -9,8 +9,8 @@
         </div>
       </div>
     </div>
-    <div class="bg-[#23562A] w-[181px] h-[30px] text-white pl-3 pr-3 text-[10pt] rounded-[10px] pt-[6px] cursor-pointer mr-[10px]" (click)="createProduct()" >
-      <p class="float-left">Thêm sản phẩm</p>
+    <div class="bg-[#23562A] w-[181px] h-[30px] text-white pl-3 pr-3 text-[10pt] rounded-[10px] pt-[6px] cursor-pointer mr-[10px]"  >
+      <p class="float-left">Thêm bài viết</p>
       <p class="float-right">+</p>
     </div>
     <select class="w-[200px] h-[30px] text-[10pt] rounded-[10px] mr-[10px]" style="border: 2px solid #23562A">
@@ -20,32 +20,28 @@
     </select>
 </div>
   </div>
-<!-- Hiển thị sản phẩm -->
+<!-- Hiển thị bài viết -->
 
 <table >
     <tr>
         <th>ID</th>
         <th>Danh mục</th>
-        <th>Hình ảnh</th>
-        <th>Sản phẩm</th>
+        <th>Tiêu đề</th>
         <th>Hiển thị</th>
         <th></th>
     </tr>
-    <tbody *ngFor="let product of products">
+    <tbody >
 
       <tr >
-        <td>{{product.productID}}</td>
-        <td>{{product.productCategory}}</td>
-        <td><img src="{{ product.productImgSourceReduce }}"></td>
-        <td>{{product.productTitle}}</td>
-        <td>
-          <input type="checkbox" value="{{ product.productActive }}" [checked]="product.productActive" />
-        </td>
-        <td>
-          <button (click)="updateProduct(product.productID)"
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td>
+          <button>
           class="w-[100px] h-[35px] rounded-[10px] text-white text-[10pt]" style=" background-color: #23562A;">
           Chỉnh sửa</button>
-          <button (click)="deleteProduct(product.productID)"
+          <button>
           class="w-[74px] h-[35px] rounded-[10px] text-white text-[10pt] ml-[5px]" style=" background-color: #FB6565; ">
             Xóa</button>
         </td>

@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-product-update',
@@ -9,16 +9,17 @@ import { NgModule } from '@angular/core';
   styleUrl: './product-update.component.css'
 })
 export class ProductUpdateComponent {
- 
+
   errMessage: string = '';
+  productid: string = '';
   product: Product = new Product();
   products: any;
-  
+
   files: File[] = [];
   files1: File[] = [];
   imgbase64: string | ArrayBuffer | null = '';
   f_imgbase64: string | ArrayBuffer | null = '';
-  
+
   constructor(
     private service: ProductService,
     private activateRoute: ActivatedRoute,
@@ -30,35 +31,48 @@ export class ProductUpdateComponent {
         this.searchProduct(id);
       }
     });
-    
+
   }
-  
-  ngOnInit(): void {}
-  
+
+  ngOnInit(): void {
+    this.activateRoute.paramMap.subscribe({
+      next: (params: ParamMap) => {
+        this.searchProduct(String(params.get("id")))
+      },
+      error: (err) => {
+        this.errMessage = err;
+      }
+    })
+  }
+
+
+
   searchProduct(productId: string) {
     this.service.getAProduct(productId).subscribe({
       next: (data) => {
-        this.product = data;
+        this.product = new Product(data['data']);
+        this.product.productPrice = this.product.getRawNumber(String(this.product.productPrice))
+        this.product.productDiscountPrice = this.product.getRawNumber(String(this.product.productDiscountPrice))
       },
       error: (err) => {
         this.errMessage = err;
       },
     });
   }
-  putProduct(){
-    
+  putProduct() {
+
     this.service.putProduct(this.product).subscribe({
-      next:(data)=>{this.product=data},
-      error:(err)=>{this.errMessage=err}
+      next: (data) => { this.product = data },
+      error: (err) => { this.errMessage = err }
     }),
-    alert("Update successfully!")
+      alert("Update successfully!")
     this.goBack()
   }
   goBack() {
     this.router.navigate(['admin-product-list']);
   }
   public setProduct(p: Product) {
-    this.product =p; // Clone the object to avoid reference issues
+    this.product = p; // Clone the object to avoid reference issues
   }
   onSelect(event: any) {
     console.log(event);

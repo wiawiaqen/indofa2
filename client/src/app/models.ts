@@ -10,7 +10,7 @@ export class Product {
   productFullImgSource: string;
   productCategory: string;
   productActive: boolean;
-  constructor(data: any = { "name": "test", "description": "test", "imgbase64": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==", "price": 10000, "d_price": 10000, "f_description": "test", "f_imgbase64": "test", "category": "test", "isActive": true }, productTitle: string = 'Hạt giống rau muống INDOFA', productImgSource: string = 'test.png', productPrice: number | string = 10000) {
+  constructor(data: any = { "name": "test", "description": "test", "imgbase64": "data:image/jpeg;base64,", "price": 10000, "d_price": 10000, "f_description": "test", "f_imgbase64": "test", "category": "test", "isActive": true }, productTitle: string = 'Hạt giống rau muống INDOFA', productImgSource: string = 'test.png', productPrice: number | string = 10000) {
     this.productID = data._id;
     this.productTitle = data.name || "";
     this.productDescription = data.description || "";
@@ -30,6 +30,14 @@ export class Product {
       return parts.join(".");
     } catch (e) {
       return x;
+    }
+  }
+  getRawNumber(x: string) {
+    try {
+      return Number(x.replace(",",''))
+    }
+    catch(e){
+      return 0
     }
   }
   processPlantingInstructions(): Record<string, string[]> {
@@ -59,6 +67,7 @@ export class Product {
 }
 
 export class Review {
+  reviewID: string;
   reviewer: string;
   date: Date;
   rating: number;
@@ -66,6 +75,7 @@ export class Review {
   content: string;
 
   constructor(data: any = {}) {
+    this.reviewID = data._id;
     this.reviewer = data.reviewer;
     this.date = data.date ? new Date(data.date) : new Date();
     this.rating = data.rating;
@@ -75,6 +85,7 @@ export class Review {
 }
 
 export class Order {
+  orderID: string;
   userID: string;
   products: { productID: string, quantity: number }[];
   couponID: string;
@@ -82,6 +93,7 @@ export class Order {
   status: 'pending' | 'completed';
 
   constructor(data: any = {}) {
+    this.orderID = data._id;
     this.userID = data.user;
     this.products = data.products ? data.products.map((p: any) => ({
       productID: p.product,
@@ -105,12 +117,14 @@ export class blog {
 }
 
 export class Coupon {
+  couponID: string;
   code: string;
   type: 'percent' | 'fixed';
   discount: number;
   status: 'active' | 'inactive';
 
   constructor(data: any = {}) {
+    this.couponID = data._id;
     this.code = data.code;
     this.type = data.type;
     this.discount = data.discount;
@@ -120,12 +134,14 @@ export class Coupon {
 
 
 export class Cart {
+  cartID: string;
   userID: string;
   products: { productID: string, quantity: number }[];
   total: number;
   status: 'pending' | 'completed';
 
   constructor(data: any = {}) {
+    this.cartID = data._id;
     this.userID = data.user;
     this.products = data.products ? data.products.map((p: any) => ({
       productID: p.product,
@@ -137,10 +153,12 @@ export class Cart {
 }
 
 export class Blog {
+  blogID: string;
   title: string;
   content: Array<{ contentTitle: string, contentBody: string, base64Img?: string }>;
 
   constructor(data: any = {}) {
+    this.blogID = data._id;
     this.title = data.title;
     this.content = data.content ? data.content.map((c: any) => ({
       contentTitle: c.content_title,
@@ -151,6 +169,7 @@ export class Blog {
 }
 
 export class Address {
+  addressID: string;
   name: string;
   phone: string;
   street: string;
@@ -161,6 +180,7 @@ export class Address {
   isDefault: boolean;
 
   constructor(data: any = {}) {
+    this.addressID = data._id;
     this.name = data.name;
     this.phone = data.phone;
     this.street = data.street;
@@ -177,6 +197,7 @@ export class Address {
 }
 
 export class User {
+  userID: string;
   name: string;
   email: string;
   provider: 'google' | 'indofa';
@@ -184,6 +205,7 @@ export class User {
   isActive: boolean;
 
   constructor(data: any = {}) {
+    this.userID = data._id;
     this.name = data.name;
     this.email = data.email;
     this.provider = data.provider;

@@ -5,7 +5,6 @@ const productService = require("../controllers/productController");
 
 router.get("/", productService.getAll);
 router.get("/one/:id", productService.getOne);
-router.get("/filter", productService.filter);
 router.get("/pagination/:page", productService.pagination);
 router.get("/maxpage", productService.getMaxPage);
 router.post("/one", productService.createOne);

@@ -13,16 +13,6 @@ export class ProductListComponent implements OnInit {
   errMessage: string = '';
 
   constructor(public service: ProductService, public router: Router) {
-    this.fetchProducts();
-    this.service.getProducts().subscribe({
-      next: (data) => {
-        // Lấy danh sách các Medicines
-        this.products = data;
-      },
-      error: (err) => {
-        this.errMessage = err;
-      },
-    });
   }
 
   ngOnInit() {
@@ -60,8 +50,8 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['admin-product-add']);
   }
 
-  updateProduct(p: any) {
-    this.router.navigate(['admin-product-update', p._id]);
+  updateProduct(id: any) {
+    this.router.navigate([`admin-product-update/${id}`]);
   }
 
   deleteProduct(_id: any) {

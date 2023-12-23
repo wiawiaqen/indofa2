@@ -17,10 +17,21 @@ const CouponSchema = new mongoose.Schema(
       required: [true, "Discount is Required"],
     },
 
-    status: {
-      type: String,
-      enum: ["active", "inactive"],
-      default: "active",
+    d_max: {
+      type: Number,
+      required: [true, "Max Discount is Required"],
+      default: -1,
+    },
+
+    min_order: {
+      type: Number,
+      required: [true, "Min Order is Required"],
+      default: 0,
+    },
+
+    active: {
+      type: Boolean,
+      default: true,
     },
   },
   { toJSON: { virtuals: true } },

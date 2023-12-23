@@ -39,6 +39,9 @@ import { ProductListComponent } from './admin/product-list/product-list.componen
 import { ProductUpdateComponent } from './admin/product-update/product-update.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CategoryAddComponent } from './admin/category-add/category-add.component';
+import { BlogAddComponent } from './admin/blog-add/blog-add.component';
+import { BlogListComponent } from './admin/blog-list/blog-list.component';
+import { BlogUpdateComponent } from './admin/blog-update/blog-update.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
@@ -91,8 +94,10 @@ const routes: Routes = [
     ProductAddComponent,
     ProductListComponent,
     ProductUpdateComponent,
-    CategoryAddComponent
-    
+    CategoryAddComponent,
+    BlogAddComponent,
+    BlogListComponent,
+    BlogUpdateComponent
   ],
   imports: [
     BrowserModule,

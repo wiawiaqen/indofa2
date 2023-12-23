@@ -4,7 +4,7 @@ const authMiddleware = require("../middlewares/auth");
 const reviewService = require("../Controllers/reviewController.js");
 
 router.get("/", authMiddleware.auth, reviewService.getAll);
-router.get("/:id", authMiddleware.auth, reviewService.getOne);
+router.get("/one/:id", authMiddleware.auth, reviewService.getOne);
 router.get("/filter", authMiddleware.auth, reviewService.filter);
 router.post("/one", authMiddleware.auth, reviewService.createOne);
 router.post("/many", authMiddleware.auth, reviewService.createMany);

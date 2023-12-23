@@ -57,8 +57,10 @@ exports.getAll = (Model) =>
 
 exports.filter = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
-    let fields = req.query.fields;
-    const document = await Model.find(req.body).select(fields);
+    let { fields, ...restOfQuery } = req.query;
+    let query = restOfQuery;
+    
+    const document = await Model.find(query).select(fields);
     if (!document) {
       return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
     }
@@ -83,26 +85,18 @@ async function resizeBase64Image(base64Str, width, height) {
 async function resizeImagesInProducts(products, width = 250, height = 250) {
   for (const product of products) {
     try {
-      try {
-        const resizedImage = await resizeBase64Image(
-          product.imgbase64,
-          width,
-          height
-        );
-        product.imgbase64 = resizedImage;
-      } catch (error) {
-        // console.error(`Error resizing image for product ${product.id}:`, error);
-      }
-      try {
-        const resizedImage_full = await resizeBase64Image(
-          product.f_imgbase64,
-          width,
-          height
-        );
-        product.f_imgbase64 = resizedImage_full;
-      } catch (error) {
-        // console.error(`Error resizing image for product ${product.id}:`, error);
-      }
+      const resizedImage = await resizeBase64Image(
+        product.imgbase64,
+        width,
+        height
+      );
+      product.imgbase64 = resizedImage;
+      const resizedImage_full = await resizeBase64Image(
+        product.f_imgbase64,
+        width,
+        height
+      );
+      product.f_imgbase64 = resizedImage_full;
     } catch (error) {
       // console.error(`Error resizinxg image for product ${product.id}:`, error);
     }
@@ -110,13 +104,19 @@ async function resizeImagesInProducts(products, width = 250, height = 250) {
   return products;
 }
 
-const limit = 12;
+
 exports.pagination = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
-    const { page } = req.params.page;
-    const document = await Model.find()
-      .select("name price imgbase64_reduce")
-      .limit(limit * 1)
+    const limit = 12;
+    let page = req.params.page;
+    let { fields, ...restOfQuery } = req.query;
+    let query = restOfQuery;
+    if (!fields) {
+      fields = "name price imgbase64_reduce"; 
+    }
+    const document = await Model.find(query)
+      .select(fields)
+      .limit(limit)
       .skip((page - 1) * limit)
       .exec();
     if (!document) {
@@ -124,13 +124,15 @@ exports.pagination = (Model, name = "document") =>
         new apiError(`No ${name} for this id ${req.params.page}`, 404)
       );
     }
-    data = await resizeImagesInProducts(document);
-    res.status(200).json({ data: data });
+    res.status(200).json({ size: document.length, data: document });
   });
 
 exports.getMaxPage = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
-    const document = await Model.find();
+    const limit = 12;
+    let { fields, ...restOfQuery } = req.query;
+    let query = restOfQuery;
+    const document = await Model.find(query).select(fields);
     if (!document) {
       return next(
         new apiError(`No ${name} for this id ${req.params.page}`, 404)
