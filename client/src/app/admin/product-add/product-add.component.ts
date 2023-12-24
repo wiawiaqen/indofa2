@@ -12,11 +12,14 @@ import { Coupon } from 'src/app/models';
 })
 export class ProductAddComponent implements OnInit {
   myForm: FormGroup;
-  
+  showInput = false;
   constructor(private service: ProductService,
     private router: Router,
     private formBuilder: FormBuilder,
-  ) { }
+  ) { this.myForm = this.fb.group({
+    mySelect: [''],
+    newOption: ['', Validators.required]
+  }) }
 
   productForm: FormGroup;
   files: File[] = [];
@@ -33,6 +36,13 @@ export class ProductAddComponent implements OnInit {
       fdesc: '',
       desc: ''
     });
+    
+  }
+ 
+  
+  
+  hienInput() {
+    this.showInput = true;
   }
   onSelect(event: any) {
     console.log(event);
