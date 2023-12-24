@@ -5,8 +5,8 @@ const User = require("../models/user");
 const router = Router();
 const passport = require("passport");
 const userService = require("../Controllers/userController");
-const fs = require('fs').promises;
-const nodemailer = require('nodemailer');
+const fs = require("fs").promises;
+const nodemailer = require("nodemailer");
 
 router.get(
   "/google",
@@ -48,7 +48,7 @@ router.post("/register", async (req, res) => {
   let cfpassword = req.body.cfpassword;
   let saveSession = req.body.save;
   if (!(password === cfpassword)) {
-    return res.status(400).send({
+    return res.status(401).send({
       message: "Password does not match",
     });
   }
@@ -106,7 +106,7 @@ router.post("/login", async (req, res) => {
   }
 
   if (!(await bcrypt.compare(password, user.password))) {
-    return res.status(400).send({
+    return res.status(401).send({
       message: "Password is Incorrect",
     });
   }
@@ -189,11 +189,11 @@ router.post("/send-email", async (req, res, next) => {
       expiresIn: expiryTime,
     });
 
-    const htmlContent = await fs.readFile('./templates/resetpw.html', 'utf8');
+    const htmlContent = await fs.readFile("./templates/resetpw.html", "utf8");
     const personalizedHtmlContent = htmlContent
-      .replace('${username}', user.name)
-      .replace('${CLIENT_URL}', process.env.LIVE_URL)
-      .replace('${token}', token);
+      .replace("${username}", user.name)
+      .replace("${CLIENT_URL}", process.env.LIVE_URL)
+      .replace("${token}", token);
     // Tạo transporter để gửi email
     const mailTransporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
