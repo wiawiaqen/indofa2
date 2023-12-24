@@ -16,11 +16,24 @@ import { AboutUsTeamComponent } from './aboutusteam/aboutusteam.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutusreviewComponent } from './aboutusreview/aboutusreview.component';
+import { CartComponent } from './cart/cart.component';
+import { CouponComponent } from './coupon/coupon.component';
+import { CouponvalueComponent } from './couponvalue/couponvalue.component';
+import { SuccessorderComponent } from './successorder/successorder.component';
+import { CartnoproductsComponent } from './cartnoproducts/cartnoproducts.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { LoaderComponent } from './loader/loader.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
   { path: 'blog', component: BlogsComponent },
+  {path:'cart',component:CartComponent},
+  {path:'coupon',component:CouponComponent},
+  {path:'successorder',component:SuccessorderComponent},
+  {path:'cartnoproducts',component:CartnoproductsComponent},
+  {path:'loader',component:LoaderComponent},
+  {path:"**",component:NotfoundComponent}, 
 ]
 @NgModule({
   declarations: [
@@ -38,7 +51,14 @@ const routes: Routes = [
     AboutUsTeamComponent,
     HeaderComponent,
     FooterComponent,
-    AboutusreviewComponent
+    AboutusreviewComponent,
+    CartComponent,
+    CouponComponent,
+    CouponvalueComponent,
+    SuccessorderComponent,
+    CartnoproductsComponent,
+    NotfoundComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

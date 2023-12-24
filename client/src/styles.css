@@ -1,8 +1,20 @@
 /* @import 'tailwindcss/base'; */
-@import 'tailwindcss/components';
+/* @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 body {
   font-family: 'Noto Sans';
   background-color: #FEFFF8;
 }
+ */
+ /* @tailwind base; */
+ @tailwind components;
+ @tailwind utilities;
+ body {
+   @apply leading-[normal] m-0;
+ }
+ *,
+ ::before,
+ ::after {
+   border-width: 0;
+ }
 
