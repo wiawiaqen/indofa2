@@ -1,0 +1,33 @@
+swiper-container::part(button-prev) {
+    top: var(--swiper-navigation-top-offset,50%);
+    width: 30px;
+    height: 30px;
+    margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(254, 255, 248);
+    background-color: rgb(35, 86, 42);
+    border-radius: 100px;
+    padding: 5px;
+  }
+  
+  
+  swiper-container::part(button-next) {
+    top: var(--swiper-navigation-top-offset,50%);
+    width: 30px;
+    height: 30px;
+    margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(254, 255, 248);
+    background-color: rgb(35, 86, 42);
+    border-radius: 100px;
+    padding: 5px;
+  }
+  

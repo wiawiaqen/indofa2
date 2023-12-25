@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <div class="bg-[#e7f4e5] w-full h-8 pl-[50px] flex items-center text-black text-[13pt] gap-x-2">
-    <a routerLink="" class="hover:underline">Trang chủ</a> &#8260; 
-    <a routerLink="/prodtotal/{{category}}/{{page}}" class="text-[#23562A] hover:underline">{{mapping[category]}}</a> 
+    <a routerLink="" class="hover:underline">Trang chủ</a> &#8260;
+    <a routerLink="/prodtotal/{{category}}/{{page}}" class="text-[#23562A] hover:underline">{{mapping[category]}}</a>
 </div>
 
 <div class="w-full h-full grid grid-cols-[1fr_4fr] gap-[30px] overflow-hidden pb-[50px]">
@@ -15,7 +15,9 @@
             <hr class="w-[250px] desktop:hidden mt-3">
         </div>
         <div>
-            <p class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">HẠT GIỐNG</p>
+            <p
+                class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">
+                HẠT GIỐNG</p>
             <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
                 <a href="" routerLink="/prodtotal/rau">Hạt giống rau</a>
             </p>
@@ -28,7 +30,9 @@
             <hr class="w-[250px] desktop:hidden mt-3">
         </div>
         <div>
-            <p class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">DỤNG CỤ</p>
+            <p
+                class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">
+                DỤNG CỤ</p>
             <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
                 <a href="" routerLink="/prodtotal/gom">Chậu cây gốm</a>
             </p>
@@ -47,16 +51,19 @@
             <hr class="w-[250px] desktop:hidden mt-3">
         </div>
         <div>
-            <p class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">
+            <p
+                class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">
                 <a href="" routerLink="/prodtotal/dat">ĐẤT/GIÁ THỂ TRỒNG</a>
             </p>
             <hr class="w-[250px] desktop:hidden mt-3">
         </div>
         <div class="pb-[20px] ">
-            <p class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">GIÁ TIỀN</p>
+            <p
+                class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">
+                GIÁ TIỀN</p>
             <label class="w-full text-[13pt] custom-checkbox">
                 <div class="flex items-center">
-                <input type="checkbox" class="h-[30] mt-4" id="sortCheckbox">
+                    <input type="checkbox" class="h-[30] mt-4" id="sortCheckbox">
                     <div class="pl-[6px]">
                         <div class="flex gap-2 cursor-pointer">
                             <!---->
@@ -66,12 +73,10 @@
                 </div>
             </label>
 
-          
+
             <label class="w-full text-[13pt] custom-checkbox">
                 <div class="flex items-center">
-                <input type="checkbox" class="mt-4" id="sortCheckbox">
-
-
+                    <input type="checkbox" class="mt-4" id="sortCheckbox">
                     <div class="pl-[6px]">
                         <div class="flex gap-2 cursor-pointer">
                             <!---->
@@ -80,40 +85,40 @@
                     </div>
                 </div>
             </label>
-            
+
         </div>
-        <button id="clearFilterBtn" class="flex items-center w-full justify-center bg-[#FEFFF8] text-[#23562A] font-custom border-[#23562A] border-2 px-4 py-2 rounded hover:bg-[#23562A] hover:text-[#FEFFF8]">
+        <button id="clearFilterBtn" (click)="sort()"
+            class="flex items-center w-full justify-center bg-[#FEFFF8] text-[#23562A] font-custom border-[#23562A] border-2 px-4 py-2 rounded hover:bg-[#23562A] hover:text-[#FEFFF8]">
             Lọc theo giá
         </button>
-        
+
 
         <hr class="w-[250px] desktop:hidden mt-3">
     </div>
     <div class="pt-[30px] mr-[50px]">
         <div class="relative">
-            <img src="../../assets/category/{{category}}.png" alt="Hình ảnh Dòng sản phẩm" class="w-full h-[300px] mr-[100px] block" />
-            <div class="absolute bottom-[-0px] w-[210px] left-0 p-[16px] bg-[#E7F4E5] text-[#23562A] opacity-80 font-custom text-center uppercase items-center">{{mapping[category]}}</div>
-        </div>       
+            <img src="../../assets/category/{{category}}.png" alt="Hình ảnh Dòng sản phẩm"
+                class="w-full h-[300px] mr-[100px] block" />
+            <div
+                class="absolute bottom-[-0px] w-[210px] left-0 p-[16px] bg-[#E7F4E5] text-[#23562A] opacity-80 font-custom text-center uppercase items-center">
+                {{mapping[category]}}</div>
+        </div>
 
         <div class="grid grid-cols-4 grid-auto-rows justify-between gap-0 pt-[50px] text-normal text-[14pt]">
             <div *ngFor="let product of products">
                 <app-product-main [product]="product"></app-product-main>
             </div>
         </div>
-
+        <!-- <hr class="w-[1090px] border-black"> -->
         <div class="w3-center">
-            <div class="w3-bar w3-border border-black">
-                <a href="#" class="w3-button w3-large ">&#10094; Trang trước</a>
-                <a href="#" class="w3-button !hover:bg-[#3b7432] w3-large w3-[#E7F4E5]">1</a>
-                <a href="#" class="w3-button w3-center w3-large">2</a>
-                <a href="#" class="w3-button w3-center w3-large">3</a>
-                <a href="#" class="w3-button w3-large w3-right">Trang tiếp &#10095;</a>
+            <div class="w3-bar w3-border-black">
+                <a href="#" class="w3-button ratlagreen w3-large w3-left">&#10094;</a>
+                <div *ngFor="let count of [].constructor(maxpage); let i = index">
+                    <a routerLink="/prodtotal/{{category}}-{{i+1}}">{{i+1}}</a>
+                </div>
+                <a href="#" class="w3-button ratlagreen w3-large w3-right">&#10095;</a>
             </div>
         </div>
-
-        
-        
-        
+        <!-- <hr class="w-[1090px] border-black"> -->
     </div>
 </div>
-

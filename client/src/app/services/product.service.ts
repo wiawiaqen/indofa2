@@ -33,10 +33,15 @@ export class ProductService {
   //   const fields = "name price imgbase64_reduce"
   //   return this.http.get('/api/products/' + id + '?fields=' + fields, { withCredentials: true })
   // }
+  getMaxPage(category: string) {
+    return this.http.get('/api/products/pagination/' + "?category=" + category, {
+      withCredentials: true
+    }
+    )
+  }
 
-
-  getPagination(page: string, category: string) {
-    return this.http.get('/api/products/pagination/' + page+"?category=" + category, {
+  getPagination(page: string, category: string, sort: string = "null") {
+    return this.http.get('/api/products/pagination/' + page+"?category=" + category + "&asort=" +sort, {
       withCredentials: true
     }
     )

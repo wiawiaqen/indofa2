@@ -16,6 +16,8 @@ export class ProductTotalComponent {
   input: string = '';
   category: string = '';
   page: string = '';
+  sortKey: string ='null';
+  maxpage: number = 2;
   mapping: {[key:string]: string} = {
     "cuqua": "Hạt giống củ quả",
     "hoa": "Hạt giống hoa",
@@ -34,10 +36,10 @@ export class ProductTotalComponent {
     private router: Router
   ) { }
   ngOnInit(): void {
-    
     this.activatedRoute.params.subscribe((val) => {
       this.input = val['category'];
       let data = this.input.split("-")
+      console.log(data)
       this.category = data[0];
       try{
       this.page = data[1];}
@@ -45,11 +47,10 @@ export class ProductTotalComponent {
         this.page = "1"
       }
     });
-    
-    this.productService.getPagination(this.page, this.category).subscribe(
+    this.productService.getPagination(this.page, this.category, this.sortKey).subscribe(
       {
         next: (res: any) => {
-          console.log(res['data'])
+          this.products = []
           res['data'].forEach(
             (product_data: any) => {
               let product = new Product(product_data)
@@ -64,5 +65,21 @@ export class ProductTotalComponent {
       }
     );
   }
+  sort() {
+    this.loadData();
+  }
 
+  private loadData() {
+    this.productService.getPagination(this.page, this.category, this.sortKey).subscribe(
+      {
+        next: (res: any) => {
+          this.products = res['data'].map((product_data: any) => new Product(product_data));
+          console.log(this.products);
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      }
+    );
+}
 }
