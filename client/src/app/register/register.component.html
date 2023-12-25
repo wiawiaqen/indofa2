@@ -98,9 +98,11 @@
     <div class="relative">
       <img src="./assets/signin_login/signinnhe.jpg" alt="img"
         class="h-full w-[460px] rounded-r-2xl hidden md:block object-cover">
-      <div class="absolute hidden top-4 right-4 p-4 drop-shadow-lg md:block">
-        <img src="./assets/signin_login/close.png" class="w-[40px] h-full">
-      </div>
+        <a class="hover:cursor-pointer" (click)="closeParentModal()">
+          <div class="absolute hidden top-4 right-4 p-4 drop-shadow-lg md:block">
+            <img src="./assets/signin_login/close.png" class="w-[40px] h-full">
+          </div>
+        </a>
     </div>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </div>

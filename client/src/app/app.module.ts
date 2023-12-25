@@ -1,7 +1,11 @@
 
 import { NgModule } from '@angular/core';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
+//import { BrowserModule } from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+//import { RouterModule, Routes } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router'
 import { AppComponent } from './app.component';
 import { ProductMainComponent } from './product-main/product-main.component';
 import { ProductCategoryContainerComponent } from './product-category-container/product-category-container.component';
@@ -11,7 +15,8 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { BlogcategoryComponent } from './blogcategory/blogcategory.component';
 import { BlogComponent } from './blog/blog.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http'
 import { NavComponent } from './nav/nav.component';
@@ -29,8 +34,15 @@ import { BottommenublogComponent } from './bottommenublog/bottommenublog.compone
 import { ProductTotalComponent } from './product-total/product-total.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.component';
+import { ProductAddComponent } from './admin/product-add/product-add.component';
+import { ProductListComponent } from './admin/product-list/product-list.component';
+import { ProductUpdateComponent } from './admin/product-update/product-update.component';
 import { PaymentComponent } from './payment/payment.component';
-
+import { CategoryAddComponent } from './admin/category-add/category-add.component';
+import { BlogAddComponent } from './admin/blog-add/blog-add.component';
+import { BlogListComponent } from './admin/blog-list/blog-list.component';
+import { BlogUpdateComponent } from './admin/blog-update/blog-update.component';
+import { ModalComponent } from './modal/modal.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
@@ -45,7 +57,9 @@ const routes: Routes = [
   {path: 'reset/:token', component: ResetpwComponent},
   {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
   {path: 'payment', component: PaymentComponent},
-
+  {path: 'admin-product-add', component: ProductAddComponent},
+  {path: 'admin-product-list', component: ProductListComponent},
+  {path: 'admin-product-update/:id', component: ProductUpdateComponent}
 ]
 @NgModule({
   declarations: [
@@ -78,13 +92,23 @@ const routes: Routes = [
     ProductDetailComponent,
     ForgotPwAfterComponent,
     PaymentComponent,
+    ProductAddComponent,
+    ProductListComponent,
+    ProductUpdateComponent,
+    CategoryAddComponent,
+    BlogAddComponent,
+    BlogListComponent,
+    BlogUpdateComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

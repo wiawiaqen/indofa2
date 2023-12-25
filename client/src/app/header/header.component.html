@@ -1,43 +1,80 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<app-modal *ngIf="isModalOpen" [componentType]="componentToLoad"></app-modal>
+<div class="p-0 m-0 box-border">
+    <div class="py-[10px] bg-[#23562A] w-full">
+        <div class="justify-center text-center text-[#FEFFF8]">
+            Hạt giống mới? <a class="text-[#FEFFF8]" href="#">Khám phá ngay</a>
+        </div>
+    </div>
+    <div class="w-full px-[50px] py-[20px]">
+        <div class="flex item-center justify-between">
+            <div class="w-[135px] h-auto">
+                <img src="./assets/images/Logo.png">
+            </div>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-</head>
-<body>
-  <div class="notice">
-      Hạt giống mới? <a href="#">Khám phá ngay</a>
-  </div>
-  <header class="header">
-      <div class="container">
-          <div class="first-line">
-              <img src="./assets/images/Logo.png" style="width: 135px; height: auto;">
-              <div class="search_wrap search_wrap_3">
-                  <div class="search_box">
-                      <input type="text" class="input" placeholder="Tìm kiếm sản phẩm...">
-                      <div class="btn btn_common">
-                          <i class="fas fa-search"></i>
-                      </div>
+
+            <!--SEARCH BAR HERE-->
+            <div class="searchbox w-[500px]" id="searchbox">
+                <div class="relative w-[500px] h-[35px] ">
+                  <input
+                    type="text"
+                    class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
+                    [(ngModel)]="input"
+                    placeholder="Tìm kiếm sản phẩm..."
+                    (input)="sendData($event)"
+                  />
+                  <div class="btn btn_common">
+                    <i class="fas fa-search"></i>
                   </div>
-              </div>
-              <div class="user">
-                  <a href="#">
-                      <img src="./assets/images/user.png" style="width: 20px; height: auto;">
-                      Đăng nhập / Đăng ký
-                  </a>
-              </div>
-              <div class="giohang">
-                  <a href="#">
-                      <img src="./assets/images/bag.png" style="width: 20px; height: auto;">
-                      0
+                </div>
+
+                <div
+                  class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white"
+                  id="search-result-container"
+                  *ngIf="input.length > 0"
+                >
+                  <div class="z-[5000]">
+                    <ul class="px-[20px] py-[15px] w-full" *ngIf="products.length > 0; else noProducts">
+                      <ng-container *ngFor="let product of products">
+                        <hr *ngIf="product !== products[0]" />
+                        <li
+                          class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]"
+                        >
+                        <a [routerLink]="['/']"> {{ product.productTitle }}</a>
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </div>
+                </div>
+
+                <ng-template #noProducts>
+                  <div class="text-center">Không có sản phẩm.</div>
+                </ng-template>
+
+
+
+            <!--SEARCH BAR END-->
+            </div>
+              <div class="flex item-center">
+                  <div href="#" class="inline-flex">
+                      <img src="./assets/images/user.png" class="w-[20px] h-[20px]">
+                      <span class="pl-[5px]"><a class="hover:cursor-pointer" (click)="openLoginModal()">Đăng nhập</a> / <a class="hover:cursor-pointer" (click)="openRegisterModal()">Đăng ký</a></span>
+                  </div>
+                </div>
+              <div class="flex item-center">
+                  <a href="#" class="inline-flex">
+                      <img src="./assets/images/bag.png" class="w-[20px] h-[20px]">
+                      <span class="pl-[5px]">0</span>
                   </a>
               </div>
           </div>
       </div>
-  </header>
+    </div>
   <header class="header1">
       <div class="container1">
-              <!-- menu start here -->
-              <div class="header-item item-center">
+               <!-- menu start here  -->
+             <div class="header-item item-center">
                   <nav class="menu">
                       <ul class="menu-main">
                           <li>
@@ -112,4 +149,3 @@
               </div>
           </div>
   </header>
-</body>

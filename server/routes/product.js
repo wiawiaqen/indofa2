@@ -7,10 +7,9 @@ router.get("/", productService.getAll);
 router.get("/one/:id", productService.getOne);
 router.get("/pagination/:page", productService.pagination);
 router.get("/maxpage", productService.getMaxPage);
-router.get("/filter", productService.filter);
-router.post("/one", authMiddleware.auth, authMiddleware.admin, productService.createOne);
-router.post("/many", authMiddleware.auth, authMiddleware.admin, productService.createMany);
-router.put("/:id", authMiddleware.auth, authMiddleware.admin, productService.updateOne);
-router.delete("/:id", authMiddleware.auth, authMiddleware.admin, productService.deleteOne);
+router.post("/one", productService.createOne);
+router.post("/many", productService.createMany);
+router.put("/:id",  productService.updateOne);
+router.delete("/:id", productService.deleteOne);
 
 module.exports = router;

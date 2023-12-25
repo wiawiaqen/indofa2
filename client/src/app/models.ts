@@ -3,6 +3,7 @@ export class Product {
   productTitle: string;
   productDescription: string;
   productImgSource: string;
+  productImgSourceReduce: string;
   productPrice: number | string;
   productDiscountPrice: number | string;
   productFullDescription: string;
@@ -11,20 +12,33 @@ export class Product {
   productActive: boolean;
   constructor(data: any = { "name": "test", "description": "test", "imgbase64": "data:image/jpeg;base64,", "price": 10000, "d_price": 10000, "f_description": "test", "f_imgbase64": "test", "category": "test", "isActive": true }, productTitle: string = 'Hạt giống rau muống INDOFA', productImgSource: string = 'test.png', productPrice: number | string = 10000) {
     this.productID = data._id;
-    this.productTitle = data.name;
-    this.productDescription = data.description;
-    this.productImgSource = data.imgbase64;
-    this.productPrice = this.numberWithCommas(data.price);
-    this.productDiscountPrice = this.numberWithCommas(data.d_price);
-    this.productFullDescription = data.f_description;
-    this.productFullImgSource = data.f_imgbase64;
-    this.productCategory = data.category;
-    this.productActive = data.isActive;
+    this.productTitle = data.name || "";
+    this.productDescription = data.description || "";
+    this.productImgSource = data.imgbase64 || "";
+    this.productImgSourceReduce = data.imgbase64_reduce || "";
+    this.productPrice = this.numberWithCommas(data.price) || 0;
+    this.productDiscountPrice = this.numberWithCommas(data.d_price) || 0;
+    this.productFullDescription = data.f_description || "";
+    this.productFullImgSource = data.f_imgbase64 || "";
+    this.productCategory = data.category || "";
+    this.productActive = data.isActive || true;
   }
   numberWithCommas(x: number | string) {
-    var parts = x.toString().split(",");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return parts.join(".");
+    try {
+      var parts = x.toString().split(",");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    } catch (e) {
+      return x;
+    }
+  }
+  getRawNumber(x: string) {
+    try {
+      return Number(x.replace(",",''))
+    }
+    catch(e){
+      return 0
+    }
   }
   processPlantingInstructions(): Record<string, string[]> {
     const lines = this.productFullDescription.split('\n');

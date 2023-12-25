@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+//import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormGroup, FormBuilder } from '@angular/forms';
+//import { Router } from '@angular/router';
 import { Router } from '@angular/router';
-import { EventEmitter } from '@angular/core';
+import { ModalService } from '../services/modal.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,8 +20,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private modalService: ModalService
   ) { }
+
+  closeParentModal() {
+    this.modalService.close();
+  }
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: '',
@@ -27,6 +35,7 @@ export class LoginComponent implements OnInit {
       save: false
     })
   }
+
   ValidateEmail = (email: any) => {
     var validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
@@ -39,7 +48,7 @@ export class LoginComponent implements OnInit {
   submit(): void {
     let user = this.form.getRawValue();
     this.email_false = user.email == '' || !this.ValidateEmail(user.email) ? true : false;
-    this.password_false = user.password == ''? true : false;
+    this.password_false = user.password == '' ? true : false;
     this.login_false = false;
     this.email_not_found = false;
     this.password_not_match = false;

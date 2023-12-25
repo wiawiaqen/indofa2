@@ -1,69 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap');
-*{
-    padding: 0;
-    margin:0;
-    box-sizing: border-box;
-    outline: none;
-}
-body{
-    font-family: 'Noto Sans', sans-serif;
-    color: black;
-}
-.container{
-	margin: 0 30px;
-}
-.notice{
-    background-color: #23562A;
-    width: 100%;
-    padding: 9px 0px 12px 40px;
-    justify-content: center;
-    text-align: center;
-    color: white;
-}
-.notice a{
-	color: white;
-}
-ul{
-    list-style: none;
-}
-header{
-    width: 100%;
-    background-color: #FEFFF8;
-    padding: 23px 50px 20px 50px;
-}
-
-.first-line{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-	padding-right: 50px;
-}
-
-.search_wrap{
-	width: 500px;
-	margin: 0 19px;
-
-}
-
-.search_wrap .search_box{
-	position: relative;
-	width: 500px;
-	height: 35px;
-
-}
-
-.search_wrap .search_box .input{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	padding: 10px 20px;
-	border-radius: 3px;
-	font-size: 18px;
-}
-
-.search_wrap .search_box .btn{
+.btn{
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -74,7 +9,7 @@ header{
 }
 
 
-.search_wrap .search_box .btn.btn_common .fas{
+.btn.btn_common .fas{
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -83,17 +18,9 @@ header{
 	font-size: 15px;
 	padding-right: 12px;
 }
-.search_wrap.search_wrap_3 .search_box .input{
-	padding-right: 80px;
-	border-radius: 50px;
-	font-size: 13px;
-	background-color: #FEFFF8;
+.search-result-container{
+	box-shadow: 0 0 8px #ddd;
 }
-.search_wrap.search_wrap_3 .search_box .btn{
-	right: 0px;
-	border-radius: 50%;
-}
-
 
 .container1{
 	max-width: 100%;
@@ -218,5 +145,22 @@ a{
 	text-decoration: underline;
 }
 .header1 .menu > ul > li > a:hover::before{
-	transform: scaleX(1);
+	transform: scaleX(1);}
+.search-result{
+	max-width: 600px;
+	width: 100%;
+	
+}
+hr{
+	border: none;
+	height: 1px;
+	background: #23562A;
+}
+.search-box{
+	display: block;
+	margin: 40px auto 0 auto;
+	padding: 10px 20px;
+	max-width: 600px;
+	width: 100%;
+	
 }
