@@ -78,7 +78,7 @@ const ProductSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-ProductSchema.pre("save", function (next) {
+ProductSchema.pre("findByIdAndUpdate", function (next) {
   this.update_at = Date.now();
   next();
 });

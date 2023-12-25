@@ -47,7 +47,7 @@ const CartSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-CartSchema.pre("save", function (next) {
+CartSchema.pre("findByIdAndUpdate", function (next) {
   this.update_at = Date.now();
   next();
 });

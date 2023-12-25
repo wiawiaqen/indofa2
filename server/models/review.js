@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const ReviewSchema = new mongoose.Schema(
   {
-    reviewer: {
-      type: String,
-      required: [true, "Reviewer is Required"],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
 
     date: {
@@ -42,7 +42,7 @@ const ReviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-ReviewSchema.pre("save", function (next) {
+ReviewSchema.pre("findByIdAndUpdate", function (next) {
   this.update_at = Date.now();
   next();
 });

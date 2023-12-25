@@ -43,7 +43,7 @@ const BlogSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-BlogSchema.pre("save", function (next) {
+BlogSchema.pre("findByIdAndUpdate", function (next) {
   this.update_at = Date.now();
   next();
 });

@@ -51,7 +51,7 @@ const OrderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-OrderSchema.pre("save", function (next) {
+OrderSchema.pre("findByIdAndUpdate", function (next) {
   this.update_at = Date.now();
   next();
 });

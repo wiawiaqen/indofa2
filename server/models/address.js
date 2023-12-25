@@ -56,7 +56,7 @@ const AddressSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-AddressSchema.pre("save", function (next) {
+AddressSchema.pre("findByIdAndUpdate", function (next) {
   this.update_at = Date.now();
   next();
 });

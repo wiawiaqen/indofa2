@@ -48,7 +48,7 @@ const CouponSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-CouponSchema.pre("save", function (next) {
+CouponSchema.pre("findByIdAndUpdate", function (next) {
   this.update_at = Date.now();
   next();
 });
