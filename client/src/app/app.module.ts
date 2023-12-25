@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +41,16 @@ import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.compon
 import { ProductAddComponent } from './admin/product-add/product-add.component';
 import { ProductListComponent } from './admin/product-list/product-list.component';
 import { ProductUpdateComponent } from './admin/product-update/product-update.component';
-import { PaymentComponent } from './payment/payment.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { LoginAdComponent } from './admin/login-ad/login-ad.component';
+import { ResetpsAdComponent } from './admin/resetps-ad/resetps-ad.component';
+import { OrderListComponent } from './admin/order-list/order-list.component';
+import { OrderDetailAdComponent } from './admin/order-detail/order-detail-ad.component';
+
+import { register } from 'swiper/element/bundle';
+register();
 import { CategoryAddComponent } from './admin/category-add/category-add.component';
 import { BlogAddComponent } from './admin/blog-add/blog-add.component';
 import { BlogListComponent } from './admin/blog-list/blog-list.component';
@@ -59,13 +69,16 @@ const routes: Routes = [
   { path: 'blogcategory', component: BlogcategoryComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'prodtotal', component: ProductTotalComponent },
-  { path: 'proddetail', component: ProductDetailComponent },
+  { path: 'prodtotal/:category', component:ProductTotalComponent },
+  { path: 'prodtotal/:category/:id', component: ProductDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPwComponent },
   { path: 'reset/:token', component: ResetpwComponent },
   { path: 'forgot-password-after/:email', component: ForgotPwAfterComponent },
-  { path: 'payment', component: PaymentComponent },
+  { path: 'profile', component: ProfileComponent},
+  {path: 'up-profile', component:UpdateProfileComponent },
+  {path: 'ord-detail', component:OrderDetailComponent},
   { path: 'admin-product-add', component: ProductAddComponent },
   { path: 'admin-product-list', component: ProductListComponent },
   { path: 'admin-product-update/:id', component: ProductUpdateComponent }
@@ -104,7 +117,14 @@ const routes: Routes = [
     ProductTotalComponent,
     ProductDetailComponent,
     ForgotPwAfterComponent,
-    PaymentComponent,
+    ProfileComponent,
+    UpdateProfileComponent,
+    OrderDetailComponent,
+    LoginAdComponent,
+    ResetpsAdComponent,
+    OrderListComponent,
+    OrderDetailAdComponent,
+    ProductListComponent,
     ProductAddComponent,
     ProductListComponent,
     ProductUpdateComponent,
@@ -124,7 +144,9 @@ const routes: Routes = [
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AppModule { }
 

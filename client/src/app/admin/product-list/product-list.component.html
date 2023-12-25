@@ -14,10 +14,10 @@
             <i class="fas fa-search"></i>
           </div>
         </div>
-      
-        
-     
-    
+
+
+
+
     </div>
     <div class="bg-[#23562A] w-[181px] h-[30px] text-white pl-3 pr-3 text-[10pt] rounded-[10px] pt-[6px] cursor-pointer mr-[10px]" (click)="createProduct()" >
       <p class="float-left">Thêm sản phẩm</p>
@@ -53,6 +53,26 @@
         </td>
         <td>
           <button (click)="updateProduct(product.productID)"
+          class="w-[100px] h-[35px] rounded-[10px] text-white text-[10pt]" style=" background-color: #23562A;">
+          Chỉnh sửa</button>
+          <button (click)="deleteProduct(product.productID)"
+          class="w-[74px] h-[35px] rounded-[10px] text-white text-[10pt] ml-[5px]" style=" background-color: #FB6565; ">
+            Xóa</button>
+        </td>
+        </tr>
+       </tbody>
+</table>
+
+      <tr >
+        <td>{{product.productID}}</td>
+        <td>{{product.productCategory}}</td>
+        <td><img src="{{ product.productImgReduce }}"></td>
+        <td>{{product.productTitle}}</td>
+        <td>
+          <input type="checkbox" value="{{ product.productActive }}" [checked]="product.productActive" />
+        </td>
+        <td>
+          <button (click)="updateProduct(product)"
           class="w-[100px] h-[35px] rounded-[10px] text-white text-[10pt]" style=" background-color: #23562A;">
           Chỉnh sửa</button>
           <button (click)="deleteProduct(product.productID)"

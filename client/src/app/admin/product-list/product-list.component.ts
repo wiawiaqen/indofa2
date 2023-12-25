@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
         console.error('Error:', error);
       }
     );
-   
+
   }
 
   private fetchProducts() {
@@ -132,5 +132,40 @@ export class ProductListComponent implements OnInit {
         console.error('Error from server:', error);
       }
     );
+  }
+}
+
+  deleteProduct(_id: any) {
+    Swal.fire({
+      title: 'Tiếp tục xóa sản phẩm?',
+      text: "Sản phẩm sẽ bị xóa vĩnh viễn.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Tiếp tục'
+    }).then((result:any) => {
+      if (result.isConfirmed) {
+        this.service.deleteProduct(_id).subscribe({
+          next: (data:any) => {
+            this.products = data;
+            Swal.fire({
+              title: 'Đã xóa',
+              text: 'Sản phẩm đã được xóa.',
+              icon: 'success'
+            });
+          },
+          error: (err:any) => {
+            this.errMessage = err;
+            // Show error message
+            Swal.fire({
+              title: 'Lỗi',
+              text: 'Đã xảy ra lỗi khi xóa.',
+              icon: 'error'
+            });
+          },
+        });
+      }
+    });
   }
 }

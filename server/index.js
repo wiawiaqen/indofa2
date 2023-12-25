@@ -54,9 +54,12 @@ app.use("/api/review", reviewRoute);
 app.use("/api/search", searchRoute);
 app.use("/api/products", productRoute);
 app.use("/api/coupons", couponRoute);
+app.use("/api/orders", orderRoute);
+
 app.get("/", (req, res) => {
   res.send("hello world");
 });
+
 
 // Handle route error
 app.all("*", (req, res, next) => {
