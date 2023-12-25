@@ -7,10 +7,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-product-add',
   templateUrl: './product-add.component.html',
-  styleUrl: './product-add.component.css'
+  styleUrl: './product-add.component.css',
 })
-export class CategoryAddComponent {
-  myForm: FormGroup;
+
 
 export class ProductAddComponent {
  
