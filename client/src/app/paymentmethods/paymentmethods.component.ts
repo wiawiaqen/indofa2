@@ -20,17 +20,14 @@ export class PaymentmethodsComponent {
       // Perform your confirmation logic here
       console.log(`Confirmed payment for option ${this.selectedOption}`);
 
-      // Add navigation logic to the payment page
+      localStorage.setItem('paymentOption', this.selectedOption);
       this.navigateToPaymentPage();
     } else {
-      // Display a pop-up warning if no payment option is selected
       this.showErrorMessage = true;
     }
   }
 
   navigateToPaymentPage(): void {
-    // Add your navigation logic here using Angular Router
-    // For example, navigate to the '/payment' route
     this.router.navigate(['/payment']);
   }
 }

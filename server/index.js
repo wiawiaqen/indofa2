@@ -22,6 +22,8 @@ const searchRoute = require("./routes/liveSearch");
 const productRoute = require("./routes/product");
 const couponRoute = require("./routes/coupon");
 const addressRoute = require("./routes/address");
+const cartRoute = require("./routes/cart");
+const orderRoute = require("./routes/order");
 // Middleware
 const app = express();
 
@@ -56,6 +58,8 @@ app.use("/api/search", searchRoute);
 app.use("/api/products", productRoute);
 app.use("/api/coupons", couponRoute);
 app.use("/api/address", addressRoute);
+app.use("/api/carts", cartRoute);
+app.use("/api/orders", orderRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");

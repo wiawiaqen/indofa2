@@ -15,8 +15,7 @@ export class ChangeaddressComponent {
   selectedAddress: string = '';
 
   constructor(private addressService: AddressService,
-    private router: Router,
-    private cartService: CartService
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -50,7 +49,7 @@ export class ChangeaddressComponent {
   }
 
   goToPaymentPage(): void {
-    this.cartService.chooseAddressEvent(this.selectedAddress);
-    this.router.navigate(['/payment'], { queryParams: { selectedAddress: this.selectedAddress } });
+    localStorage.setItem('chosenAddress', this.selectedAddress);
+    this.router.navigate(['/payment']);
   }
 }

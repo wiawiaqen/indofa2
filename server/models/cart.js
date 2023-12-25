@@ -21,18 +21,6 @@ const CartSchema = new mongoose.Schema(
       },
     ],
 
-    total: {
-      type: Number,
-      required: [true, "Total is Required"],
-      default: 0,
-    },
-
-    status: {
-      type: String,
-      enum: ["pending", "completed"],
-      default: "pending",
-    },
-
     create_at: {
       type: Date,
       default: Date.now,

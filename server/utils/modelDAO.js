@@ -2,9 +2,10 @@ const asyncHandler = require("express-async-handler");
 const apiError = require("./apiError");
 const jimp = require("jimp");
 exports.createOne = (Model) =>
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
     const newDoc = await Model.create(req.body);
     res.status(201).json({ data: newDoc });
+    next();
   });
 
 exports.createMany = (Model) =>

@@ -36,7 +36,8 @@
       </p>
     </div>
     <div>
-      <p style="font-size:19px; padding-right: 50px; font-weight: bold; color: #23562A; padding-top: 5px;">{{ totalPrice }}
+      <p style="font-size:19px; padding-right: 50px; font-weight: bold; color: #23562A; padding-top: 5px;">{{ totalPrice
+        }}
         VNĐ</p>
     </div>
   </div>
@@ -50,12 +51,14 @@
       INDOFA VOUCHER
     </p>
   </div>
-  <div class="align-items:center" style="padding-top: 30px; padding-right: 8px;">
-    <p><a [routerLink]="'/coupon'"
-        style="text-decoration: none; color: #23562A; padding-top: 30px; padding-right: 50px;"
-        onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='#23562A'">Chọn mã</a>
-    </p>
+  <div class="flex align-items-center" style="padding-right: 8px;">
+
+    <input class="border-[1px] border-[#D9D9D9] rounded-[5px] border-solid mr-[20px]" type="text" [(ngModel)]="couponCode">
+    <button
+    style="background-color: #23562A; color: white; padding: 10px 0px; border: none; border-radius: 5px; cursor: pointer; width: 150px; height: 50px;"
+    (click)="CheckCoupon(couponCode)">Áp dụng</button>
   </div>
+
 </div>
 <div class="flex justify-between align-items:center border-3px border-solid border-[#23562A] border w-[90%]"
   style="margin-left: 50%;transform: translateX(-50%); margin-top: 30px; width: 90%">
@@ -104,7 +107,7 @@
     style="height: 1px;border-width:0;color:#23562A;background-color:#23562A; width: 95%; margin-top: 0.5em; margin-left: 0.5em;">
   <div class="flex justify-between" style="padding-top: 10px;">
     <div>
-      <p style="font-size:18px; padding-left: 40px; padding-top: 5px;">Giảm giá mã thanh toán</p>
+      <p style="font-size:18px; padding-left: 40px; padding-top: 5px;">Giảm giá phí vận chuyển</p>
     </div>
     <div>
       <p style="font-size:18px; padding-right: 50px;">{{ NumberWithCommas(totalDiscount) }} VNĐ</p>
@@ -129,10 +132,10 @@
 
   </div>
   <div>
-    <a [routerLink]="'/successfulorder'">
+    <a>
       <button
         style="background-color: #23562A; color: white; padding: 10px 0px; border: none; border-radius: 5px; cursor: pointer; width: 150px; height: 50px;"
-        (click)="placeOrder()">ĐẶT HÀNG</button>
+        (click)="createOrder()">ĐẶT HÀNG</button>
     </a>
   </div>
 </div>

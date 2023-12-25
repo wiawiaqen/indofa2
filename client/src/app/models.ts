@@ -103,8 +103,8 @@ export class Order {
   userID: string;
   products: { productID: string, quantity: number }[];
   couponID: string;
-  total: number;
-  date: Date;
+  total: string;
+  date: string;  // Change the type to string
   status: string;
 
   constructor(data: any = {}) {
@@ -115,11 +115,29 @@ export class Order {
       quantity: p.quantity
     })) : [];
     this.couponID = data.coupon;
-    this.total = data.total;
+    this.total = String(this.numberWithCommas(data.total));
     this.status = data.status == "pending" ? "Đang chờ xử lý" : "Đã hoàn thành";
-    this.date = data.created_at
+    this.date = this.formatDate(new Date(data.create_at));
+  }
+
+  private formatDate(date: Date): string {
+    let day = date.getDate().toString().padStart(2, '0');
+    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0 indexed
+    let year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+  private numberWithCommas(x: number | string) {
+    try {
+      var parts = x.toString().split(",");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    }
+    catch (e) {
+      return x
+    }
   }
 }
+
 
 export class blog {
   productTitle: string;

@@ -92,7 +92,7 @@
       <div class="pl-[50px] mr-[50px] relative">
         <table class="table w-[1000px]">
           <thead class="bg-[#23562A] text-white py-[15px]">
-            <tr>
+            <tr class="text-center">
               <th class="order_number text-centern py-[15px]  ">Mã đơn hàng</th>
               <th class="date text-center py-[15px]">Ngày đặt</th>
               <th class="total text-right py-[15px]">Thành tiền</th>
@@ -106,11 +106,10 @@
               <td class="text-center text-[#23562A] py-[10px]"><a href="ord-detail" title="">{{ order.orderID }}</a>
               </td>
               <td class="text-center py-[10px]"><span>{{ order.date }}</span></td>
-              <td class="text-right py-[10px]"><span class="total money">{{ order.total }}</span></td>
+              <td class="text-right py-[10px]"><span class="total money">{{ order.total }} VNĐ</span></td>
               <td class="text-center py-[10px]"><span class="status status_pending">{{ order.status }}</span></td>
               <td class="text-center py-[10px]"><span class="delivery status_fulfilled">Đang giao hàng</span></td>
             </tr>
-
           </tbody>
         </table>
 

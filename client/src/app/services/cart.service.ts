@@ -12,7 +12,7 @@ export class CartService {
   constructor(private _http: HttpClient,
     ) { }
 
-  chooseAddressEvent(address: Address) {
+  chooseAddressEvent(address: string) {
     this.chooseAddress.emit(address);
   }
 
@@ -22,6 +22,10 @@ export class CartService {
 
   choosePaymentEvent(payment: any) {
     this.choosePayment.emit(payment);
+  }
+
+  createOrder(order: any) {
+    return this._http.post('/api/orders/one', order, { withCredentials: true })
   }
 
   getCoupons(): Observable<{ [key: string]: [] }> {

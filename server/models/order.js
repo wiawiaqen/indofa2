@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const OrderSchema = new mongoose.Schema(
   {
     user: {
@@ -20,6 +19,11 @@ const OrderSchema = new mongoose.Schema(
         },
       },
     ],
+
+    address: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Address",
+    },
 
     coupon: {
       type: mongoose.Schema.Types.ObjectId,

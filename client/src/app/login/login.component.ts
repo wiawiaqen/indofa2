@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
       })
         .subscribe({
           next: (response) => {
+            this.closeParentModal();
             this.router.navigate(['/']);
           },
           error: (err) => {

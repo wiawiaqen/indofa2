@@ -19,7 +19,6 @@ router.get(
   asyncHandler(async (req, res) => {
     try {
       let userCart = await Cart.findOne({ user: req.user._id });
-
       if (!userCart) {
         const cart = new Cart({
           user: req.user._id,
@@ -29,8 +28,7 @@ router.get(
         res.status(200).json({ data: cart });
       } else {
         userCart = await userCart
-          .populate("products.product", "name price")
-          .execPopulate();
+          .populate("products.product", "name price imgbase64_reduce")
         res.status(200).json({ data: userCart });
       }
     } catch (err) {
