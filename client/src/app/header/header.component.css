@@ -79,7 +79,7 @@ h4 {
   height: 2px;
   background: black;
   transform: scaleX(0);
-  transition: tranform 0.5s ease-in-out;
+  transition: tranform 0.2s ease-in-out;
 }
 .header1 .menu > ul > li .sub-menu {
   position: absolute;
@@ -87,7 +87,7 @@ h4 {
   background-color: #fefff8;
   text-align: center;
   padding: 0 50px;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   opacity: 0;
   visibility: hidden;
 }
@@ -108,7 +108,7 @@ h4 {
   display: inline-block;
   font-size: 15px;
   color: #000000;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 .header1 .menu > ul > li .sub-menu.mega-menu {
   left: 50%;
@@ -166,12 +166,12 @@ hr {
 }
 .account::before {
   transform: scaleX(0);
-  transition: tranform 0.5s ease-in-out;
+  transition: tranform 0.2s ease-in-out;
 }
 .account-popup {
   position: absolute;
   z-index: 500;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   opacity: 0;
   visibility: hidden;
 }

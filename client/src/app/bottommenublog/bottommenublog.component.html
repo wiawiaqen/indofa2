@@ -1,29 +1,24 @@
-<!-- THANH ĐỀ XUẤT Ở CÁC TRANG BLOG CONTENT -->
-<div class="w-full h-[480px] grid grid-cols-[1fr_10fr_1fr] gap-[10px] pb-0 items-center text-[#23562a] text-[14pt]">
-
-    <img class="w-[45px] h-[39px] hover:scale-110" src="../../assets/images/next-symbol-1.png" />
-
-    <div class="grid grid-rows-[10%_85%] gap-[30px]">
-      <p class="text-[25px] text-center py-4 font-custom ">BÀI VIẾT TIẾP THEO</p>
-      <div class="blog-container grid grid-cols-4 gap-[50px]">
-        <a routerLink="/blog">
-          <app-blog-small
-            [small]="[{ title: 'Mùa xuân nở rộ', summary: 'Mùa xuân là thời điểm lý tưởng để thêm một chút sức sống vào ngôi nhà của bạn bằng cách ...', image: 'image-blog-1.1.png' }]">
-          </app-blog-small>
-        </a>
-        <app-blog-small
-            [small]="[{ title: 'Món quà yêu thương', summary: 'Cuộc sống thường xuyên đưa chúng ta vào những cuộc đua vội vã của...', image: 'image-blog-3.2.png' }]">
-        </app-blog-small>
-        <app-blog-small
-          [small]="[{ title: 'Vẻ đẹp của mùa thu', summary: 'Mùa thu là một trong những thời điểm đẹp nhất của năm, khi thiên nhiên biến đổi...', image: 'image-blog-1.3.png' }]">
-        </app-blog-small>
-        <app-blog-small
-          [small]="[{ title: 'Căn nhà xanh trong mơ', summary: 'Khi cuộc sống ngày càng hiện đại và nơi ở trở nên chật chội, việc tạo ra...', image: 'image-blog-2.1.png' }]">
-        </app-blog-small>
-      </div>
-    </div>
-
-    <img class="w-[45px] h-[39px] hover:scale-110 items-center" src="../../assets/images/next-symbol-2.png" />
-  </div>
-
-
+<swiper-container slides-per-view="4" speed="500" space-between="5" css-mode="true" navigation="true">
+  <ng-container *ngFor="let blog of blogs">
+    <app-loader style="margin-left: 50%;transform: translateX(-50%);" *ngIf="blogs_loading"></app-loader>
+    <swiper-slide>
+      <a routerLink="/blogcategory/{{blog.blogID}}" class="justify-center flex no-underline text-current">
+        <div class="w-[160px] h-[300px] items-center hover:shadow-lg transition-shadow hover:scale-105">
+          <img class="w-[140px] h-[147px] ml-[10px]" src="{{blog.main_img}}" />
+          <br>
+          <div class="mx-[10px] font-custom text-[16px] truncate">
+            {{blog.title}}
+        </div>
+        <div class="text-[12px] text-black h-[45px] mx-[10px] text-justify truncate">
+          {{blog.abstract}}
+        </div>
+          <a href="/blogcategory/{{blog.blogID}}">
+            <div class="btn-main mt-[10px] ml-[10px] text-[10px]">
+              Xem thêm →
+            </div>
+          </a>
+        </div>
+      </a>
+    </swiper-slide>
+  </ng-container>
+</swiper-container>

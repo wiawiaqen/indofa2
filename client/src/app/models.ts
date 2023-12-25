@@ -203,11 +203,14 @@ export class Cart {
 export class Blog {
   blogID: string;
   title: string;
-  content: Array<{ contentTitle: string, contentBody: string, base64Img?: string }>;
+  abstract: string;
+  main_img:string;
+  content: Array<{ contentTitle: string, contentBody: string, base64Img: string }>;
 
   constructor(data: any = {}) {
     this.blogID = data._id;
-    this.title = data.title;
+    this.title = data.title || "test";
+    this.main_img = data.main_img||"assets/blog/example.png";
     this.content = data.content ? data.content.map((c: any) => ({
       contentTitle: c.content_title,
       contentBody: c.content_body,

@@ -9,7 +9,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { AppComponent } from './app.component';
 import { ProductMainComponent } from './product-main/product-main.component';
 import { ProductCategoryContainerComponent } from './product-category-container/product-category-container.component';
-import { BlogMainComponent } from './blog-main/blog-main.component';
 import { LoginComponent } from './login/login.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogcategoryComponent } from './blogcategory/blogcategory.component';
@@ -32,7 +31,6 @@ import { SuccessorderComponent } from './successorder/successorder.component';
 import { CartnoproductsComponent } from './cartnoproducts/cartnoproducts.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { LoaderComponent } from './loader/loader.component';
-import { BlogSmallComponent } from './blog-small/blog-small.component';
 import { LeftmenuComponent } from './leftmenu/leftmenu.component';
 import { BottommenublogComponent } from './bottommenublog/bottommenublog.component';
 import { ProductTotalComponent } from './product-total/product-total.component';
@@ -82,7 +80,8 @@ const routes: Routes = [
   { path: 'cartnoproducts', component: CartnoproductsComponent },
   { path: 'loader', component: LoaderComponent },
   { path: 'blogcategory', component: BlogcategoryComponent },
-  { path: 'blog', component: BlogComponent },
+  { path: 'blogcategory/:type', component: BlogcategoryComponent },
+  { path: 'blogcategory/:id', component: BlogComponent },
   { path: 'prodtotal', component: ProductTotalComponent },
   { path: 'prodtotal/:category', component: ProductTotalComponent },
   { path: 'prodtotal/:category/:id', component: ProductDetailComponent },
@@ -104,6 +103,9 @@ const routes: Routes = [
   { path: 'admin-product-add', component: ProductAddComponent },
   { path: 'admin-product-list', component: ProductListComponent },
   { path: 'admin-product-update/:id', component: ProductUpdateComponent },
+  { path: 'termspolicy_sales', component:TermspolicySalesComponent },
+  { path: 'termspolicy_shipping', component:TermspolicyShippingComponent },
+  { path: 'termspolicy_security', component:TermspolicySecurityComponent },
   { path: "**", component: NotfoundComponent },
 ]
 @NgModule({
@@ -111,7 +113,6 @@ const routes: Routes = [
     AppComponent,
     ProductMainComponent,
     ProductCategoryContainerComponent,
-    BlogMainComponent,
     LoginComponent,
     BlogsComponent,
     BlogcategoryComponent,
@@ -132,7 +133,6 @@ const routes: Routes = [
     CartnoproductsComponent,
     NotfoundComponent,
     LoaderComponent,
-    BlogSmallComponent,
     LeftmenuComponent,
     BottommenublogComponent,
     HeaderComponent,

@@ -1,5 +1,5 @@
 <div class="leading-[30px] text-center text-[14pt] pb-[50px] font-normal">
-  <a href="#" routerLink="{{ product.productID }}" class="relative group flex flex-col items-center">
+  <a routerLink="/prodtotal/{{product.productCategory}}/{{ product.productID }}" class="relative group flex flex-col items-center">
     <img src="{{ product.productImgReduce }}" class="object-cover w-auto h-full mb-4">
     <p class="font-bold text-[12pt]">{{ product.productTitle }}</p>
     <p class="text-[12pt]  text-gray-500">{{ product.productPrice }} VNĐ</p>

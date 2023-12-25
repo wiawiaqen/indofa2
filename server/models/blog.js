@@ -6,7 +6,14 @@ const BlogSchema = new mongoose.Schema(
       type: String,
       required: [true, "Title is Required"],
     },
-
+    abstract: {
+      type: String,
+      required: [true, "abstract is Required"],
+    },
+    main_img:{
+      type:String,
+      required: [true, "Image path is Required"],
+    },
     content: [
       {
         content_title: {
@@ -22,30 +29,15 @@ const BlogSchema = new mongoose.Schema(
         },
       },
     ],
-
     type: {
       type: String,
       enum: ["space", "emotion", "season"],
       default: "space",
-    },
-
-    create_at: {
-      type: Date,
-      default: Date.now,
-    },
-
-    update_at: {
-      type: Date,
-      default: Date.now,
     },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
 
-BlogSchema.pre("findByIdAndUpdate", function (next) {
-  this.update_at = Date.now();
-  next();
-});
 const Blog = mongoose.model("Blog", BlogSchema);
 module.exports = Blog;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models';
-import { SearchbarService } from 'src/app/service/searchbar.service';
+import { SearchbarService } from 'src/app/services/searchbar.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-list',

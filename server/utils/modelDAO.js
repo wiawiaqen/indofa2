@@ -97,7 +97,7 @@ exports.pagination = (Model, name = "document") =>
     let { fields, asort, ...restOfQuery } = req.query;
     let query = restOfQuery;
     if (!fields) {
-      fields = "name price imgbase64_reduce";
+      fields = "name price imgbase64_reduce category";
     }
     let selectFields = fields ? fields.split(",").join(" ") : "";
     console.log(selectFields);
