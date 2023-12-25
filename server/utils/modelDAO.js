@@ -55,16 +55,16 @@ exports.getAll = (Model) =>
     res.status(200).json({ size: document.length, data: document });
   });
 
-  exports.filter = (Model, name = "document") =>
+exports.filter = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
     let { fields, ...restOfQuery } = req.query;
 
-    let selectFields = fields ? fields.split(',').join(' ') : '';
+    let selectFields = fields ? fields.split(",").join(" ") : "";
 
     let queryFilter = {};
     for (const [key, value] of Object.entries(restOfQuery)) {
-      if (value.includes(',')) {
-        queryFilter[key] = { $in: value.split(',') };
+      if (value.includes(",")) {
+        queryFilter[key] = { $in: value.split(",") };
       } else {
         queryFilter[key] = value;
       }
@@ -74,7 +74,9 @@ exports.getAll = (Model) =>
       const documents = await Model.find(queryFilter).select(selectFields);
 
       if (!documents || documents.length === 0) {
-        return next(new apiError(`No ${name} found with the provided criteria.`, 404));
+        return next(
+          new apiError(`No ${name} found with the provided criteria.`, 404)
+        );
       }
 
       res.status(200).json({ data: documents });
@@ -83,19 +85,23 @@ exports.getAll = (Model) =>
     }
   });
 
-
-
 exports.pagination = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
     const limit = 12;
     let page = req.params.page;
-    let { fields, ...restOfQuery } = req.query;
+    let { fields, asort,...restOfQuery } = req.query;
     let query = restOfQuery;
     if (!fields) {
-      fields = "name price imgbase64_reduce"; 
+      fields = "name price imgbase64_reduce";
     }
+    let selectFields = fields ? fields.split(",").join(" ") : "";
+    if (asort === "null") {
+      asort = null;
+    }
+    asort = asort === "true" ? 1 : -1;
     const document = await Model.find(query)
-      .select(fields)
+      .select(selectFields)
+      .sort({ price: asort })
       .limit(limit)
       .skip((page - 1) * limit)
       .exec();

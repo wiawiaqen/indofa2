@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { Product } from '../models';
 import { ModalService } from '../services/modal.service';
+import { AddressService } from '../services/address.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -17,10 +18,19 @@ export class HeaderComponent {
   componentToLoad: any = null;
 
   constructor(private search: SearchbarService,
-    private modalService: ModalService) {
+    private modalService: ModalService,
+    private addressService: AddressService) {
       this.modalService.onClose.subscribe(() => this.closeModal())
     }
   ngOnInit() {
+    this.addressService.getAddress().subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
     this.search.searchProducts('').subscribe(
       data => {
         data.forEach((product_data) => {

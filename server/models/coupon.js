@@ -33,10 +33,24 @@ const CouponSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
+    create_at: {
+      type: Date,
+      default: Date.now,
+    },
+
+    update_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
 
+CouponSchema.pre("save", function (next) {
+  this.update_at = Date.now();
+  next();
+});
 const Coupon = mongoose.model("Coupon", CouponSchema);
 module.exports = Coupon;

@@ -8,9 +8,10 @@
   },
   {
     "context": ["/address"],
-    "target": "http://localhost:5000",
+    "target": "https://provinces.open-api.vn",
     "secure": true,
     "changeOrigin": true,
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "pathRewrite": { "^/address": "" }
   }
 ]

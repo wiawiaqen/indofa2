@@ -32,10 +32,25 @@ const CartSchema = new mongoose.Schema(
       enum: ["pending", "completed"],
       default: "pending",
     },
+
+    create_at: {
+      type: Date,
+      default: Date.now,
+    },
+
+    update_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
+
+CartSchema.pre("save", function (next) {
+  this.update_at = Date.now();
+  next();
+});
 
 const Cart = mongoose.model("Cart", CartSchema);
 module.exports = Cart;
