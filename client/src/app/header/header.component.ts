@@ -1,5 +1,5 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
-import { SearchbarService } from '../service/searchbar.service';
+import { SearchbarService } from '../services/searchbar.service';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { Product } from '../models';

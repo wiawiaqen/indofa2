@@ -1,36 +1,16 @@
 <app-banner></app-banner>
 
-<!--<app-product-category-container [container_title]="'SẢN PHẨM NỔI BẬT'"></app-product-category-container>
-<app-product-category-container [container_title]="'HẠT GIỐNG'"></app-product-category-container>
-<app-product-category-container [container_title]="'DỤNG CỤ TRỒNG CÂY'"></app-product-category-container>
-<app-product-category-container [container_title]="'ĐẤT / GIÁ THỂ TRỒNG'"></app-product-category-container>-->
-
-
 <!--SẢN PHẨM NỔI BẬT-->
 <div class="mx-[50px]">
   <div class="flex items-center justify-between pb-[50px] pt-[50px]">
     <h1 class="text-[30px] text-[#23562A] font-custom">SẢN PHẨM NỔI BẬT</h1>
-    <a href="#">
-      <div class="btn-main">
-        XEM THÊM →
-      </div>
-    </a>
   </div>
-  <!-- <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+  <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <app-loader style="margin-left: 50%;transform: translateX(-50%);" *ngIf="bestseller_loading"></app-loader>
     <swiper-slide *ngFor="let product of bestseller">
-      <div class="leading-[30px] text-[14pt] font-normal">
-        <a routerLink="/proddetail" class="relative group">
-          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
-          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
-          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
-          <div
-            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
-            <span>THÊM VÀO GIỎ HÀNG</span>
-          </div>
-        </a>
-      </div>
+      <app-product-main [product]="product"></app-product-main>
     </swiper-slide>
-  </swiper-container> -->
+  </swiper-container>
 </div>
 <!--END SẢN PHẨM NỔI BẬT-->
 
@@ -38,25 +18,16 @@
 <div class="mx-[50px]">
   <div class="flex items-center justify-between pb-[50px] pt-[50px]">
     <h1 class="text-[30px] text-[#23562A] font-custom">HẠT GIỐNG</h1>
-    <a href="#">
+    <a routerLink="/prodtotal/rau,hoa,cuqua">
       <div class="btn-main">
         XEM THÊM →
       </div>
     </a>
   </div>
   <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <app-loader style="margin-left: 50%;transform: translateX(-50%);" *ngIf="hatgiong_loading"></app-loader>
     <swiper-slide *ngFor="let product of hatgiong_products">
-      <div class="leading-[30px] text-[14pt] font-normal">
-        <a routerLink="/proddetail" class="relative group">
-          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
-          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
-          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
-          <div
-            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
-            <span>THÊM VÀO GIỎ HÀNG</span>
-          </div>
-        </a>
-      </div>
+      <app-product-main [product]="product"></app-product-main>
     </swiper-slide>
   </swiper-container>
 </div>
@@ -66,25 +37,16 @@
 <div class="mx-[50px]">
   <div class="flex items-center justify-between pb-[50px] pt-[50px]">
     <h1 class="text-[30px] text-[#23562A] font-custom">DỤNG CỤ TRỒNG CÂY</h1>
-    <a href="#">
+    <a routerLink="/prodtotal/gom,nhua,treo,dungcu">
       <div class="btn-main">
         XEM THÊM →
       </div>
     </a>
   </div>
   <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <app-loader style="margin-left: 50%;transform: translateX(-50%);" *ngIf="dungcu_loading"></app-loader>
     <swiper-slide *ngFor="let product of dungcu_products">
-      <div class="leading-[30px] text-[14pt] font-normal">
-        <a routerLink="/proddetail" class="relative group">
-          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
-          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
-          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
-          <div
-            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
-            <span>THÊM VÀO GIỎ HÀNG</span>
-          </div>
-        </a>
-      </div>
+      <app-product-main [product]="product"></app-product-main>
     </swiper-slide>
   </swiper-container>
 </div>
@@ -94,25 +56,16 @@
 <div class="mx-[50px]">
   <div class="flex items-center justify-between pb-[50px] pt-[50px]">
     <h1 class="text-[30px] text-[#23562A] font-custom">ĐẤT / GIÁ THỂ TRỒNG</h1>
-    <a href="#">
+    <a routerLink="/prodtotal/dat">
       <div class="btn-main">
         XEM THÊM →
       </div>
     </a>
   </div>
   <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <app-loader style="margin-left: 50%;transform: translateX(-50%);" *ngIf="dat_loading"></app-loader>
     <swiper-slide *ngFor="let product of dat_products">
-      <div class="leading-[30px] text-[14pt] font-normal">
-        <a routerLink="/proddetail" class="relative group">
-          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
-          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
-          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
-          <div
-            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
-            <span>THÊM VÀO GIỎ HÀNG</span>
-          </div>
-        </a>
-      </div>
+      <app-product-main [product]="product"></app-product-main>
     </swiper-slide>
   </swiper-container>
 </div>
@@ -129,7 +82,7 @@
       Thỏa sức sáng tạo theo phong cách riêng của bạn
     </p>
     <div class="py-10">
-      <a href="#">
+      <a routerLink="/prodtotal/chaucustom">
         <div class="btn-main">
           XEM THÊM →
         </div>
@@ -144,7 +97,7 @@
       Chào mừng các tín đồ yêu thiên nhiên và cây cảnh đến với Indofa!
     </p>
     <div class="py-10 pr-auto">
-      <a href="#">
+      <a routerLink="/blogcategory">
         <div class="btn-main">
           XEM BÀI VIẾT →
         </div>
@@ -155,28 +108,31 @@
     <img src="assets/test.png" class="object-cover w-full">
   </div>
 </div>
+<div class="flex items-center justify-between pb-[50px] pt-[50px]">
+  <h1 class="text-[30px] ml-[50px] my-[20px] text-[#23562A] font-custom">BLOG CỦA INDOFA</h1>
+</div>
 <div class="grid grid-cols-3 gap-6 px-[50px]">
   <div class="blog-category">
     <img src="./assets/homepage/muanaocaynay.png" class=" w-full h-[329px]">
     <div class="blog-overlay">
-      <a href="#" class="flex items-center text-[#23562A] text-[25px] font-bold font-custom">Mùa nào cây nấy</a>
+      <a routerLink="/blogcategory/season" class="flex items-center text-[#23562A] text-[25px] font-bold font-custom">MÙA NÀO CÂY NẤY</a>
     </div>
   </div>
   <div class="blog-category">
     <img src="./assets/homepage/khonggiansongxanh.png" class="object-cover w-full h-[329px]">
     <div class="blog-overlay">
-      <a href="#" class="flex items-center text-center text-[#23562A] text-[25px] font-bold font-custom">Không gian sống xanh <br/> cùng Indofa</a>
+      <a routerLink="/blogcategory/space" class="flex items-center text-center text-[#23562A] text-[25px] font-bold font-custom">KHÔNG GIAN SỐNG XANH <br/> CÙNG INDOFA</a>
     </div>
   </div>
   <div class="blog-category">
     <img src="./assets/homepage/khoimaucamxuc.png" class="object-cover w-full h-[329px]">
     <div class="blog-overlay">
-      <a href="#" class="flex items-center text-[#23562A] text-[25px] font-bold font-custom">Nơi khơi màu cảm xúc</a>
+      <a routerLink="/blogcategory/emotion" class="flex items-center text-[#23562A] text-[25px] font-bold font-custom">NƠI KHƠI MÀU CẢM XÚC</a>
     </div>
   </div>
 </div>
 <div class="py-10 flex justify-center">
-  <a href="#">
+  <a routerLink="/blogs">
     <div class="btn-main">
       XEM THÊM →
     </div>

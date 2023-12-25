@@ -12,70 +12,18 @@
     <div>
         <div class="font-sans">
             <br>
-            <p class=" text-[28pt] text-[#23562A] font-bold text-center font-custom">MÙA NÀO CÂY NẤY</p>
+            <p class=" text-[28pt] text-[#23562A] font-bold text-center font-custom uppercase">{{mapping[type]}}</p>
             <br>        
-
-            <div class="hover:bg-[#E7F4E5] w-[full] h-[203px] float-left mb-4 mx-[50px]">
-                <a routerLink="/blog">
-                    <img src="../../assets/img/Rectangle 117.png" class="w-[331px] h-[204px] float-left">
+            <app-loader *ngIf="loading"></app-loader>
+            <div class="hover:bg-[#E7F4E5] w-[full] h-[203px] float-left mb-4 mx-[50px]" *ngFor="let blog of blogs">
+                <a routerLink="/blogcategory/{{blog.blogID}}">
+                    <img src="{{blog.main_img}}" class="w-[331px] h-[204px] float-left">
           
                     <div class="pl-[355px] text-justify pr-[20px] pt-[10px]">
-                        <p class="text-[14pt] font-bold text-[#23562A] font-custom">Mùa xuân nở rộ</p>
-                        <div class="text-[12pt] italic text-[#23562A]">
-                            <p>Huỳnh Nga</p>
-                            <p>31/10/2023</p>
-                        </div>
-                        <p>Mùa xuân là thời điểm lý tưởng để thêm một chút sức sống vào ngôi nhà của bạn bằng cách trồng cây cảnh trong nhà.</p>
+                        <p class="text-[14pt] font-bold text-[#23562A] font-custom">{{blog.title}}</p>
+                        <p>{{blog.abstract}}</p>
                     </div>
                 </a>
-            </div>
-
-            <div class="hover:bg-[#E7F4E5] w-[full] h-[203px] float-left mb-4 mx-[50px]">
-                <a href="#">
-                    <img src="../../assets/img/Rectangle 118.png" class="w-[331px] h-[204px] float-left">
-          
-                    <div class="pl-[355px] text-justify pr-[20px] pt-[10px]">
-                        <p class="text-[14pt] font-bold text-[#23562A] font-custom">Màu xanh đón hè về</p>
-                        <div class="text-[12pt] italic text-[#23562A]">
-                            <p>Thanh Mai</p>
-                            <p>21/10/2023</p>
-                        </div>
-                        <p>Mùa hè đem lại ánh nắng sáng rực rỡ, nhiệt độ cao, và nhiều hoạt động ngoài trời thú vị.</p>
-                    </div>
-                </a>
-            </div>
-          
-            <div class="hover:bg-[#E7F4E5] w-[full] h-[203px] float-left mb-4 mx-[50px]">
-                <a href="#">
-                    <img src="../../assets/img/Rectangle 119.png" class="w-[331px] h-[204px] float-left">
-          
-                    <div class="pl-[355px] text-justify pr-[20px] pt-[10px]">
-                        <p class="text-[14pt] font-bold text-[#23562A] font-custom">Vẻ đẹp của mùa thu</p>
-                        <div class="text-[12pt] italic text-[#23562A]">
-                            <p>Yến Nhi</p>
-                            <p>14/10/2023</p>
-                        </div>
-                        <p>Mùa thu là một trong những thời điểm đẹp nhất của năm, khi thiên nhiên biến đổi thành một bức tranh sắc màu tuyệt đẹp.</p>
-                    </div>
-                </a>
-            </div>
-          
-            <div class="hover:bg-[#E7F4E5] w-[full] h-[203px] float-left mb-4 mx-[50px]">
-                <a href="#">
-                    <img src="../../assets/img/Rectangle 120.png" class="w-[331px] h-[204px] float-left">
-          
-                    <div class="pl-[355px] text-justify pr-[20px] pt-[10px]">
-                        <p class="text-[14pt] font-bold text-[#23562A]" font-custom>Mùa đông ấm dần</p>
-                        <div class="text-[12pt] italic text-[#23562A]">
-                            <p>Nguyễn Nghĩa</p>
-                            <p>2/10/2023</p>
-                        </div>
-                        <p>Mùa đông có thể đặt ra một thách thức đối với việc trồng cây cảnh trong nhà, do ánh sáng thấp hơn và nhiệt độ thấp hơn.</p>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <app-bottommenublog></app-bottommenublog>
             </div>
         </div>
     </div>

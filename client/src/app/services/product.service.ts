@@ -44,6 +44,7 @@ export class ProductService {
     });
   }
 
+
   handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message));
   }

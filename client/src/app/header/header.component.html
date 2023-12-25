@@ -5,13 +5,15 @@
 <div class="p-0 m-0 box-border">
     <div class="py-[10px] bg-[#23562A] w-full">
         <div class="justify-center text-center text-[#FEFFF8]">
-            Hạt giống mới? <a class="text-[#FEFFF8]" href="#">Khám phá ngay</a>
+            Hạt giống mới? Khám phá ngay
         </div>
     </div>
     <div class="w-full px-[50px] py-[20px]">
         <div class="flex item-center justify-between">
             <div class="w-[135px] h-auto">
+                <a routerLink="">
                 <img src="./assets/images/Logo.png">
+                </a>
             </div>
 
 
@@ -90,7 +92,7 @@
                 </div>
                 </div>
               <div class="flex item-center">
-                  <a href="#" class="inline-flex">
+                  <a routerLink="/cart" class="inline-flex">
                       <img src="./assets/images/bag.png" class="w-[20px] h-[20px]">
                       <span class="pl-[5px]">0</span>
                   </a>
@@ -105,7 +107,7 @@
                   <nav class="menu">
                       <ul>
                           <li>
-                              <a href="#">TRANG CHỦ</a>
+                              <a routerLink="">TRANG CHỦ</a>
                           </li>
                           <li class="menu-item-has-children">
                               <a href="#">HẠT GIỐNG&nbsp;<i class="fa fa-angle-down"></i></a>
@@ -113,9 +115,9 @@
                                  <div class="list-item">
                                      <h4 class="title font-custom">HẠT GIỐNG</h4>
                                      <ul>
-                                         <li><a href="" routerLink="/prodtotal/rau">Hạt giống rau</a></li>
-                                         <li><a href="" routerLink="/prodtotal/hoa">Hạt giống hoa</a></li>
-                                         <li><a href="" routerLink="/prodtotal/cuqua">Hạt giống củ quả</a></li>
+                                         <li><a routerLink="/prodtotal/rau">Hạt giống rau</a></li>
+                                         <li><a routerLink="/prodtotal/hoa">Hạt giống hoa</a></li>
+                                         <li><a routerLink="/prodtotal/cuqua">Hạt giống củ quả</a></li>
                                      </ul>
                                  </div>
                                  <div class="list-item">
@@ -132,14 +134,14 @@
                                 <div class="list-item">
                                     <h4 class="title font-custom">CHẬU CÂY SẴN</h4>
                                     <ul>
-                                        <li><a href="" routerLink="/prodtotal/gom">Chậu cây gốm</a></li>
-                                        <li><a href="" routerLink="/prodtotal/nhua">Chậu cây nhựa</a></li>
-                                        <li><a href="" routerLink="/prodtotal/treo">Chậu cây treo</a></li>
-                                        <li><a href="" routerLink="/prodtotal/chaucustom">Trang trí chậu cây</a></li>
+                                        <li><a routerLink="/prodtotal/gom">Chậu cây gốm</a></li>
+                                        <li><a routerLink="/prodtotal/nhua">Chậu cây nhựa</a></li>
+                                        <li><a routerLink="/prodtotal/treo">Chậu cây treo</a></li>
+                                        <li><a routerLink="/prodtotal/chaucustom">Trang trí chậu cây</a></li>
                                     </ul>
                                     <h4 class="title font-custom">DỤNG CỤ</h4>
                                     <ul>
-                                        <li><a href="#">Dụng cụ khác</a></li>
+                                        <li><a routerLink="/prodtotal/dungcu/1">Dụng cụ khác</a></li>
                                     </ul>
                                 </div>
                                 <div class="list-item">
@@ -154,7 +156,7 @@
                             <a href="" routerLink="/prodtotal/dat/1">ĐẤT/GIÁ THỂ TRỒNG</a>
                          </li>
                          <li>
-                             <a href="blogs">BLOG</a>
+                             <a routerLink="/blogs">BLOG</a>
                          </li>
                          <li class="menu-item-has-children">
                              <a href="#">VỀ CHÚNG TÔI&nbsp;<i class="fa fa-angle-down"></i></a>
@@ -163,11 +165,16 @@
                                     <h4 class="title font-custom">VỀ CHÚNG TÔI</h4>
                                     <ul>
                                         <li><a href="" routerLink="/aboutusreal">Giới thiệu</a></li>
-                                        <li><a href="#">Chính sách & Điều khoản</a></li>
+                                        <li><a routerLink="/termspolicy_sales">Chính sách bán hàng & Đổi trả</a></li>
+                                        <li><a routerLink="/termspolicy_shipping">Chính sách vận chuyển</a></li>
+                                        <li><a routerLink="/termspolicy_security">Chính sách bảo mật</a></li>
                                     </ul>
                                 </div>
                                 <div class="list-item">
-                                    <img src="./assets/images/dungcu1.png">
+                                    <img src="./assets/homepage/aboutus_home.jpg">
+                                </div>
+                                <div class="list-item">
+                                    <img src="./assets/homepage/aboutus_home2.jpg">
                                 </div>
                              </div>
                          </li>

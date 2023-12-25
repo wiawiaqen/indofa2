@@ -35,7 +35,7 @@ export class ProductTotalComponent {
   ) { }
   ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe((val) => {
+    this.activatedRoute.params.subscribe((val:any) => {
       this.input = val['category'];
       let data = this.input.split("-")
       this.category = data[0];
