@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -36,7 +36,10 @@ import { LoginAdComponent } from './admin/login-ad/login-ad.component';
 import { ResetpsAdComponent } from './admin/resetps-ad/resetps-ad.component';
 import { OrderListComponent } from './admin/order-list/order-list.component';
 import { OrderDetailAdComponent } from './admin/order-detail/order-detail-ad.component';
+
 import { ProductListComponent } from './admin/product-list/product-list.component';
+import { register } from 'swiper/element/bundle';
+register();
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -104,7 +107,9 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AppModule { }
 

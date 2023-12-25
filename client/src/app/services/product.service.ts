@@ -41,7 +41,11 @@ export class ProductService {
     }
     )
   }
-
+  getProductsByCategory(category: string, currentProductId: string): Observable<any> {
+    return this.http.get('/api/products/?category=' + category + '&exclude=' + currentProductId, {
+      withCredentials: true
+    });
+  }    
 
   handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message));

@@ -83,6 +83,11 @@ async function resizeBase64Image(base64Str, width, height) {
   }
 }
 
+ProductSchema.statics.excludeProduct = async function (categoryId, excludeProductId) {
+  const query = { category: categoryId, _id: { $ne: excludeProductId } };
+  return this.find(query);
+};
+
 ProductSchema.pre("save", async function (next) {
   const fs = require("fs");
   const path = require("path");
@@ -95,7 +100,7 @@ ProductSchema.pre("save", async function (next) {
   }
 
   if (this.f_imgbase64) {
-    const fImgPath = path.join(__dirname,`FCUQUA/${this.f_imgbase64}.png`);
+    const fImgPath = path.join(__dirname, `FCUQUA/${this.f_imgbase64}.png`);
     const fImgData = fs.readFileSync(fImgPath, { encoding: "base64" });
     this.f_imgbase64 = "data:image/jpeg;base64," + fImgData;
   }

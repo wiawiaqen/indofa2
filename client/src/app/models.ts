@@ -44,32 +44,34 @@ export class Product {
     }
     return results
   }
-  processPlantingInstructions(): Record<string, string[]> {
-    const lines = this.productFullDescription.split('\n');
-    const result: Record<string, string[]> = {};
-    let currentKey = '';
 
-    for (let line of lines) {
-      line = line.trim();
-      if (line === '') continue;
-
-      if (line.startsWith('+')) {
-        if (currentKey) {
-          if (!result[currentKey]) {
-            result[currentKey] = [];
+    processPlantingInstructions(): { key: string, steps: string[] }[] {
+      const lines = this.productFullDescription.split('\n');
+      const result: { key: string, steps: string[] }[] = [];
+      let currentKey = '';
+  
+      for (let line of lines) {
+        line = line.trim();
+        if (line === '') continue;
+  
+        if (line.startsWith('+')) {
+          if (currentKey) {
+            const instructionIndex = result.findIndex(item => item.key === currentKey);
+  
+            if (instructionIndex === -1) {
+              result.push({ key: currentKey, steps: [line.substring(1).trim()] });
+            } else {
+              result[instructionIndex].steps.push(line.substring(1).trim());
+            }
           }
-          result[currentKey].push(line.substring(1).trim());
+        } else {
+          currentKey = line;
         }
-      } else {
-        currentKey = line;
       }
+  
+      return result;
     }
-
-    return result;
   }
-
-}
-
 export class Review {
   reviewID: string;
   reviewer: string;
