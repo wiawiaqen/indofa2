@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
-import { Product, User } from '../models';
 import { Cart } from '../models';
 
 
@@ -13,8 +12,7 @@ import { Cart } from '../models';
 export class CartComponent {
   style: string = "none";
   products: [] = [];
-  user: User;
-  cart: Cart;
+  cart: Cart = new Cart();
   item: { [key: string]: any } = {};
   constructor(
     private _cartService: CartService,
@@ -22,8 +20,7 @@ export class CartComponent {
     private _route: ActivatedRoute
     ) { }
   ngOnInit() {
-  }
-  updateCart() {
+    this.getCart();
   }
   increaseQuantity(productID: string) {
     let product = this.cart.products.find(p => p.productID === productID);
@@ -36,6 +33,13 @@ export class CartComponent {
     if (product) {
       product.quantity = product.quantity--;
     }
+  }
+  updateCart() {
+  }
+  getCart() {
+    this._cartService.getUserCart().subscribe(data => {
+      this.cart = new Cart(data['data']);
+    });
   }
   checkout() {
     this._router.navigate(['../checkout'], { relativeTo: this._route });

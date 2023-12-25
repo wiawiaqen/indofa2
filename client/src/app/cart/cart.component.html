@@ -27,10 +27,10 @@
               </div>
               <div class="mt-8">
                 <div class="flow-root">
-                  <ul role="list" class="-my-6 divide-y divide-gray-200">
-                    <li class="flex py-6" *ngFor="let p of cart.products">
+                  <ul role="list" *ngFor="let p of cart.products" class="-my-6 divide-y divide-gray-200">
+                    <li class="flex py-6">
                       <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                        <img src="{{item[p.productID]['imgbase64_reduce']}}"
+                        <img src="{{p.imgbase64_reduce}}"
                           alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                           class="h-full w-full object-cover object-center">
                       </div>
@@ -39,19 +39,19 @@
                         <div>
                           <div class="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <a href="#">{{item[p.productID]['name']}}</a>
+                              <a href="#">{{p.name}}</a>
                             </h3>
-                            <p class="ml-4">{{item[p.productID]['price']}}</p>
+                            <p class="ml-4">{{ p.price }}</p>
                           </div>
                         </div>
                         <div class="flex flex-1 items-end justify-between text-sm">
-                          <button type="button" (onclick)="decreaseQuantity(p.productID)" class="btnSub">-</button>
-                          <input (change)="updateCart()" name="totalAmount{{p.quantity}}" class="totalAmount"
-                            value="{{p.quantity}}" min=0>
-                          <button type="button" (onclick)="increaseQuantity(p.productID)" class="btnAdd">+</button>
-                          <div class="flex">
-                            <button type="button" class="font-medium text-[#AD0505] hover:text-[#FF0000]">Xóa</button>
+                          <div>
+                            <button type="button" (onclick)="decreaseQuantity(p.productID)" class="btnSub">-</button>
+                            <input [(ngModel)]="p.quantity" (change)="updateCart()"  class="py-1 w-10 text-center"
+                              value="{{p.quantity}}" min=0>
+                            <button type="button" (onclick)="increaseQuantity(p.productID)" class="btnAdd">+</button>
                           </div>
+                          <button type="button" class="font-medium text-[#AD0505] hover:text-[#FF0000]">Xóa</button>
                         </div>
                       </div>
                     </li>

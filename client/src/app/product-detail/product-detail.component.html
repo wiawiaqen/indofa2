@@ -33,7 +33,7 @@
       <!-- Prod description -->
       <div class="text-[14pt] text-black pt-[20px]">
         <p class="font-bold">Thông tin sản phẩm</p>
-        <ul class="ml-[21px] pt-[15px] list-disc" *ngFor="let desc of product.processDetail()">
+        <ul class="ml-[21px] pt-[15px] text-justify mr-[50px] list-disc" *ngFor="let desc of product.processDetail()">
           <li>{{ desc }}</li>
         </ul>
       </div>
@@ -46,7 +46,7 @@
         <button type="button" id="sub" (click)="goToPayment()"
           class="border-2 w-[full] h-[45px] px-5 border-[#23562A] bg-[#23562A] text-white rounded-full">
           Mua ngay
-        </button>
+          </button>
       </div>
     </div>
   </div>
@@ -54,8 +54,8 @@
 
   <div class="grid grid-cols-[2fr_1fr] mt-[10px] bg-[#e7f4e5] h-[750px] mb-[50px] items-center">
     <div class="text-[13pt] grid-col text-black  text-justify mx-[50px] items-center">
-      <p class="font-bold mb-4 text-center font-custom text-[#23562A] text-[15pt] ">MÔ TẢ SẢN PHẨM</p>
-      <div *ngFor="let instruction of product.processPlantingInstructions()">
+      <p class="font-bold mb-4 text-center font-custom text-[#23562A] text-[15pt]">MÔ TẢ SẢN PHẨM</p>
+      <div *ngFor="let instruction of product.processPlantingInstructions()" class="text-[13pt]">
         <b>{{ instruction.key }}</b>
         <ul>
           <li *ngFor="let step of instruction.steps">
@@ -68,21 +68,18 @@
       <img src="{{ product.productFullImgSource }}" alt="Ảnh sản phẩm" class="h-[750px] w-[full]">
     </div>
   </div>
+
   <div class="h-[fit] mb-[50px]">
     <p class="text-[22pt] text-center font-custom text-[#23562A] pb-[50px]">SẢN PHẨM TƯƠNG TỰ</p>
-    <swiper-container style="margin-left:50%; transform: translateX(-50%); width: 90%;" slides-per-view="4" speed="500" space-between="20" css-mode="true"
+    <swiper-container style="margin-left:50%; transform: translateX(-50%); width: 90%;" slides-per-view="4" speed="500" space-between="10" css-mode="true"
       navigation="true">
       <swiper-slide  *ngFor="let product of products">
         <app-product-main [product]="product"></app-product-main>
       </swiper-slide>
     </swiper-container>
-    <!-- <div class="grid grid-cols-4 justify-between gap-0 pt-[50px] text-normal text-[14pt]">
-      <div *ngFor="let product of products">
-          <app-product-main [product]="product"></app-product-main>
-      </div>
-  </div> -->
+
   <a href="" routerLink="/prodtotal/{{category}}/{{page}}">
-    <button type="button" class="ml-[650px] w-[165px] h-[45px] text-[12pt] font-bold border-2 px-5 border-[#23562A] text-[#23562A] hover:bg-[#e7f4e5] cursor-pointer rounded-full">
+    <button type="button" class="ml-[650px] w-[165px] h-[45px] text-[12pt] font-bold border-2 px-3 border-[#23562A] text-[#23562A] hover:bg-[#e7f4e5] cursor-pointer rounded-full">
     Xem thêm &nbsp; &rightarrow;
     </button>
   </a>
