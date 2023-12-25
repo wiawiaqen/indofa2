@@ -16,6 +16,8 @@ export class ProductTotalComponent {
   category: string = '';
   page: string = '';
   loading: boolean = true;
+  sortKey: string ='null';
+  maxpage: number = 2;
   mapping: {[key:string]: string} = {
     "cuqua": "Hạt giống củ quả",
     "hoa": "Hạt giống hoa",
@@ -38,6 +40,7 @@ export class ProductTotalComponent {
     this.activatedRoute.params.subscribe((val:any) => {
       this.input = val['category'];
       let data = this.input.split("-")
+      console.log(data)
       this.category = data[0];
       try{
       this.page = data[1];}
@@ -45,12 +48,11 @@ export class ProductTotalComponent {
         this.page = "1"
       }
     });
-
-    this.productService.getPagination(this.page, this.category).subscribe(
+    this.productService.getPagination(this.page, this.category, this.sortKey).subscribe(
       {
         next: (res: any) => {
+          this.products = []
           this.loading = true;
-          console.log("blabla")
           res['data'].forEach(
             (product_data: any) => {
               let product = new Product(product_data)
@@ -65,5 +67,21 @@ export class ProductTotalComponent {
       }
     );
   }
+  sort() {
+    this.loadData();
+  }
 
+  private loadData() {
+    this.productService.getPagination(this.page, this.category, this.sortKey).subscribe(
+      {
+        next: (res: any) => {
+          this.products = res['data'].map((product_data: any) => new Product(product_data));
+          console.log(this.products);
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      }
+    );
+}
 }

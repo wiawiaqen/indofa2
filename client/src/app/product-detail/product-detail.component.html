@@ -20,11 +20,11 @@
       </div>
       <!-- Quantity area -->
       <div class="flex items-center bg-[#FEFFF8] text-justify text-[#23562A] text-[14pt] w-[110px] h-[30px]">
-        <button type="button" id="sub"
+        <button type="button" id="sub" (click)="decreaseQuantity()"
           class="border-l border-t border-b border-[#9A9898] px-5 py-1 hover:bg-[#e7f4e5]  rounded-l-full">-</button>
-        <input class="count border-t border-b border-[#9A9898] bg bg-[#FEFFF8] py-1 w-10 text-center" type="text"
+        <input [(ngModel)]="quantity" class="count border-t border-b border-[#9A9898] bg bg-[#FEFFF8] py-1 w-10 text-center" type="text"
           readonly="" id="quantity-1" value="1" min="1" aria-label="Quantity">
-        <button type="button" id="add"
+        <button type="button" id="add" (click)="increaseQuantity()"
           class="border-r border-t border-b border-[#9A9898] px-5 py-1 hover:bg-[#e7f4e5] rounded-r-full">+</button>
       </div>
 
@@ -39,11 +39,11 @@
       </div>
 
       <div class="grid grid-cols-[1.5fr_1.5fr_1fr] gap-[20px] pt-[20px] text-[14pt] font-bold">
-        <button type="button" id="sub"
+        <button type="button" id="sub" (click)="goToProductTotal()"
           class="border-2 w-[full] h-[45px] px-5 border-[#23562A] text-[#23562A]  rounded-full">
           Thêm vào giỏ hàng
         </button>
-        <button type="button" id="sub"
+        <button type="button" id="sub" (click)="goToPayment()"
           class="border-2 w-[full] h-[45px] px-5 border-[#23562A] bg-[#23562A] text-white rounded-full">
           Mua ngay
         </button>
@@ -85,7 +85,7 @@
     <button type="button" class="ml-[650px] w-[165px] h-[45px] text-[12pt] font-bold border-2 px-5 border-[#23562A] text-[#23562A] hover:bg-[#e7f4e5] cursor-pointer rounded-full">
     Xem thêm &nbsp; &rightarrow;
     </button>
-  </a>  
+  </a>
 
 
   </div>

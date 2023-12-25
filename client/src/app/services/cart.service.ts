@@ -36,8 +36,8 @@ export class CartService {
     return this._http.get<any>('/api/carts/usercart', { withCredentials: true })
   }
 
-  updateCart(cart: any){
-    return this._http.put('/api/carts/usercart', cart, { withCredentials: true })
+  updateCart(id:string, cart: any){
+    return this._http.put('/api/carts/'+id, cart, { withCredentials: true })
   }
 
 }

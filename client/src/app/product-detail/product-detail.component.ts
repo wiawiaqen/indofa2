@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../models';
+import { Product, Cart } from '../models';
 import { ProductService } from '../services/product.service';
-
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -11,6 +11,8 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductDetailComponent implements OnInit {
   @Input() product: Product;
+  quantity: number = 1;
+  cart: Cart = new Cart();
   products: Product[] = [];
   relatedProducts: any[] = [];
   input: string = '';
@@ -34,19 +36,21 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
+    this.getUserCart();
     this.activatedRoute.params.subscribe(params => {
       this.category = params['category'];
       this.id = params['id'];
-  
+
       if (this.id == null || this.id == undefined || this.id == '') {
         this.router.navigate(['/prodtotal/:page', this.category, this.id]);
       } else {
         this.getProductDetails(this.id);
-        
+
       }
     });
     this.productService.getPagination("1", this.category).subscribe(
@@ -65,9 +69,59 @@ export class ProductDetailComponent implements OnInit {
           console.log(err);
         }
       });
-    
+
   }
-  
+  getUserCart() {
+    this.cartService.getUserCart().subscribe(data => {
+      this.cart = new Cart(data['data']);
+    });
+  }
+
+  increaseQuantity() {
+    this.quantity += 1;
+  }
+  decreaseQuantity() {
+    if (this.quantity > 1) {
+      this.quantity -= 1;
+    }
+  }
+  goToPayment() {
+    this.addToCart();
+    this.router.navigate(['/payment']);
+  }
+  goToProductTotal() {
+    this.addToCart();
+    this.router.navigate([`/prodtotal/${this.category}`]);
+  }
+  addToCart(){
+    let extractedProducts = this.cart.products.map((product: any) => {
+      return {
+        product: product.productID,
+        quantity: product.quantity
+      }
+    });
+    let isExist = false;
+    extractedProducts.forEach((product: any) => {
+      if (product.product === this.product.productID) {
+        isExist = true;
+        product.quantity += this.quantity;
+      }
+    });
+    if (!isExist) {
+      extractedProducts.push({
+        product: this.product.productID,
+        quantity: this.quantity
+      });
+    }
+    let data = {
+      cartID: this.cart.cartID,
+      products: extractedProducts
+    }
+    this.cartService.updateCart(this.cart.cartID, data).subscribe(data => {
+      console.log(data);
+    });
+  }
+
   getProductDetails(id: string): void {
     this.productService.getProduct(id).subscribe({
       next: (productDetails: any) => {
@@ -85,7 +139,7 @@ export class ProductDetailComponent implements OnInit {
   //   return this.http.get('/api/products/?category=' + category + '&exclude=' + currentProductId, {
   //     withCredentials: true
   //   });
-  // }    
+  // }
 
   // getRelatedProducts(category: string, productId: string): void {
 
@@ -103,8 +157,8 @@ export class ProductDetailComponent implements OnInit {
   //     }
   //   });
   // }
-  
-    
-    
+
+
+
   // }
 
