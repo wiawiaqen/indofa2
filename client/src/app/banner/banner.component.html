@@ -1,0 +1,7 @@
+<ngb-carousel [interval]="5000" [pauseOnHover]="false" [showNavigationArrows]="false">
+  <ng-template ngbSlide *ngFor="let banner of banners">
+      <div class="carousel-wrapper">
+          <img class="w-full" src="assets/{{banner.name}}">
+      </div>
+  </ng-template>
+</ngb-carousel>

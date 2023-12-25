@@ -18,6 +18,7 @@ export class ProductTotalComponent {
   page: string = '';
   sortKey: string ='null';
   maxpage: number = 2;
+  loading: boolean = true;
   mapping: {[key:string]: string} = {
     "cuqua": "Hạt giống củ quả",
     "hoa": "Hạt giống hoa",
@@ -50,6 +51,7 @@ export class ProductTotalComponent {
     this.productService.getPagination(this.page, this.category, this.sortKey).subscribe(
       {
         next: (res: any) => {
+          this.loading = true;
           this.products = []
           res['data'].forEach(
             (product_data: any) => {
@@ -57,7 +59,7 @@ export class ProductTotalComponent {
               this.products.push(product)
             }
           )
-          console.log(this.products)
+          this.loading = false;
         },
         error: (err: any) => {
           console.log(err);

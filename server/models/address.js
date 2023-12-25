@@ -11,7 +11,7 @@ const AddressSchema = new mongoose.Schema(
       type: String,
       required: [true, "Phone is Required"],
     },
-    
+
     street: {
       type: String,
       required: [true, "Street is Required"],
@@ -41,10 +41,25 @@ const AddressSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
+    create_at: {
+      type: Date,
+      default: Date.now,
+    },
+
+    update_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
+
+AddressSchema.pre("findByIdAndUpdate", function (next) {
+  this.update_at = Date.now();
+  next();
+});
 
 const Address = mongoose.model("Address", AddressSchema);
 module.exports = Address;

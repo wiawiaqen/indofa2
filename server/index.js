@@ -18,13 +18,9 @@ db.connect();
 // Routes
 const authRoute = require("./routes/auth");
 const reviewRoute = require("./routes/review");
+const searchRoute = require("./routes/liveSearch");
 const productRoute = require("./routes/product");
-const orderRoute = require("./routes/order");
-const cartRoute = require("./routes/cart");
 const couponRoute = require("./routes/coupon");
-const blogRoute = require("./routes/blog");
-const addressRoute = require("./routes/address");
-
 // Middleware
 const app = express();
 
@@ -52,10 +48,12 @@ app.use(morgan("combined"));
 app.use(express.json());
 
 // Use routes
+
 app.use("/api/auth", authRoute);
-app.use("/api/reviews", reviewRoute);
+app.use("/api/review", reviewRoute);
+app.use("/api/search", searchRoute);
 app.use("/api/products", productRoute);
-app.use("/api/orders", orderRoute);
+app.use("/api/coupons", couponRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");

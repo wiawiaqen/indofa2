@@ -33,6 +33,14 @@ export class Product {
       return x
     }
   }
+  getRawNumber(x: string) {
+    try {
+      return Number(x.replace(",",''))
+    }
+    catch(e){
+      return 0
+    }
+  }
   processDetail(): string[] {
     console.log(this.productDescription)
     const lines = this.productDescription.split("\n")
@@ -49,15 +57,15 @@ export class Product {
       const lines = this.productFullDescription.split('\n');
       const result: { key: string, steps: string[] }[] = [];
       let currentKey = '';
-  
+
       for (let line of lines) {
         line = line.trim();
         if (line === '') continue;
-  
+
         if (line.startsWith('+')) {
           if (currentKey) {
             const instructionIndex = result.findIndex(item => item.key === currentKey);
-  
+
             if (instructionIndex === -1) {
               result.push({ key: currentKey, steps: [line.substring(1).trim()] });
             } else {
@@ -68,7 +76,7 @@ export class Product {
           currentKey = line;
         }
       }
-  
+
       return result;
     }
   }

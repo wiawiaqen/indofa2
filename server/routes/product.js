@@ -12,6 +12,7 @@ router.post("/one", authMiddleware.auth, authMiddleware.admin, productService.cr
 router.post("/many", productService.createMany);
 router.put("/:id", productService.updateOne);
 router.delete("/:id", authMiddleware.auth, authMiddleware.admin, productService.deleteOne);
+
 module.exports = router;
 
 

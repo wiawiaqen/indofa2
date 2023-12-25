@@ -13,12 +13,9 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  getProducts() {
-    let fields = "name price imgbase64_reduce"
-    return this.http.get('/api/products/?fields='+fields, {
-      withCredentials: true
-    }
-    )
+  getProducts(): Observable<{ [key: string]: [] }> {
+    let fields = "name category active imgbase64_reduce"
+    return this.http.get<any>('api/products/'+ "?fields=" + fields)
   }
 
 
@@ -50,7 +47,7 @@ export class ProductService {
     return this.http.get('/api/products/?category=' + category + '&exclude=' + currentProductId, {
       withCredentials: true
     });
-  }    
+  }
 
   handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message));

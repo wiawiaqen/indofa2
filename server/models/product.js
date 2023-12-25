@@ -63,48 +63,23 @@ const ProductSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
+    create_at: {
+      type: Date,
+      default: Date.now,
+    },
+
+    update_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
-async function resizeBase64Image(base64Str, width, height) {
-  try {
-    const image = await jimp.read(
-      Buffer.from(base64Str.split(",")[1], "base64")
-    );
-    const resizedImage = await image
-      .resize(width, height)
-      .getBase64Async(jimp.MIME_JPEG);
 
-    return resizedImage;
-  } catch (error) {
-    console.error("Error resizing image:", error);
-    throw error;
-  }
-}
-
-ProductSchema.statics.excludeProduct = async function (categoryId, excludeProductId) {
-  const query = { category: categoryId, _id: { $ne: excludeProductId } };
-  return this.find(query);
-};
-
-ProductSchema.pre("save", async function (next) {
-  const fs = require("fs");
-  const path = require("path");
-
-  if (this.imgbase64) {
-    const imgPath = path.join(__dirname, `CUQUA/${this.imgbase64}.png`);
-    const imgData = fs.readFileSync(imgPath, { encoding: "base64" });
-    this.imgbase64 = "data:image/jpeg;base64," + imgData;
-    this.imgbase64_reduce = await resizeBase64Image(this.imgbase64, 250, 250);
-  }
-
-  if (this.f_imgbase64) {
-    const fImgPath = path.join(__dirname, `FCUQUA/${this.f_imgbase64}.png`);
-    const fImgData = fs.readFileSync(fImgPath, { encoding: "base64" });
-    this.f_imgbase64 = "data:image/jpeg;base64," + fImgData;
-  }
-
+ProductSchema.pre("findByIdAndUpdate", function (next) {
+  this.update_at = Date.now();
   next();
 });
 

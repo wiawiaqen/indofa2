@@ -1,0 +1,39 @@
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity"></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div
+                class="relative transform overflow-hidden rounded-lg bg-[#FEFFF8] text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                <div class="bg-[#FEFFF8] px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <div class="font-noto-sans font-bold text-[15px]">
+                        Ưu đãi phí vận chuyển
+                    </div>
+                    <div class="font-noto-sans font-bold text-[10px] text-[#9A9898] mt-[10px]">
+                        Có thể chọn 1 voucher
+                    </div>
+                    <app-couponvalue [coupon_value]="'Giảm tối đa 15k'" [coupon_condition]="'100k'"></app-couponvalue>
+                    <app-couponvalue [coupon_value]="'Giảm tối đa 25k'" [coupon_condition]="'200k'"></app-couponvalue>
+                    <div class="font-noto-sans font-bold text-[15px] mt-[15px]">
+                        Mã giảm giá
+                    </div>
+                    <div class="font-noto-sans font-bold text-[10px] text-[#9A9898] mt-[10px]">
+                        Có thể chọn 1 voucher
+                    </div>
+                    <app-couponvalue [image_url]="'assets/image_coupon/01.png'" [coupon_value]="'Giảm tối đa 15k'"
+                        [coupon_condition]="'100k'"></app-couponvalue>
+                    <app-couponvalue [image_url]="'assets/image_coupon/02.png'" [coupon_value]="'Giảm tối đa 25k'"
+                        [coupon_condition]="'200k'"></app-couponvalue>
+                </div>
+                <div class="bg-[#FEFFF8] px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button type="button"
+                        class="inline-flex w-full justify-center rounded-md bg-[#23562A] px-3 py-2 text-sm text-white shadow-sm sm:ml-3 sm:w-auto font-noto-sans">ÁP
+                        DỤNG</button>
+                    <button type="button"
+                        class="text-[#23562A] mt-3 inline-flex w-full justify-center rounded-md border-2px border border-solid border-[#23562A] bg-[#FEFFF8] px-3 py-2 text-sm sm:mt-0 sm:w-auto font-noto-sans">TRỞ
+                        LẠI</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

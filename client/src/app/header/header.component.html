@@ -1,45 +1,68 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<app-modal *ngIf="isModalOpen" [componentType]="componentToLoad"></app-modal>
+<div class="">
 <div class="p-0 m-0 box-border">
     <div class="py-[10px] bg-[#23562A] w-full">
-        <a href="#">
-            <div class="justify-center text-center text-[#FEFFF8]">
-                Hạt giống mới? Khám phá ngay
-            </div>
-        </a>
+        <div class="justify-center text-center text-[#FEFFF8]">
+            Hạt giống mới? <a class="text-[#FEFFF8]" href="#">Khám phá ngay</a>
+        </div>
     </div>
     <div class="w-full px-[50px] py-[20px]">
         <div class="flex item-center justify-between">
             <div class="w-[135px] h-auto">
                 <img src="./assets/images/Logo.png">
             </div>
+
+
             <!--SEARCH BAR HERE-->
-            <div class="search_box w-[500px]">
-                <div class=" relative w-[500px] h-[35px]">
-                    <input type="text"
-                        class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
-                        formControlName="searchValue" placeholder="Tìm kiếm sản phẩm...">
-                    <div class="btn btn_common">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <!--Search result-->
+            <div class="searchbox w-[500px]" id="searchbox">
+                <div class="relative w-[500px] h-[35px] ">
+                  <input
+                    type="text"
+                    class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
+                    [(ngModel)]="input"
+                    placeholder="Tìm kiếm sản phẩm..."
+                    (input)="sendData($event)"
+                  />
+                  <div class="btn btn_common">
+                    <i class="fas fa-search"></i>
+                  </div>
                 </div>
-                <!--<div class="search-result-container w-[500px] rounded-[15px] px-5 py-5">
-                <div>
-                    <ul class="px-[20px] py-[15px] w-full">
-                        <li class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">Nhi</li>
-                        <li class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">Nhi 1</li>
+
+                <div
+                  class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white"
+                  id="search-result-container"
+                  *ngIf="input.length > 0"
+                >
+                  <div class="z-[5000]">
+                    <ul class="px-[20px] py-[15px] w-full" *ngIf="products.length > 0; else noProducts">
+                      <ng-container *ngFor="let product of products">
+                        <hr *ngIf="product !== products[0]" />
+                        <li
+                          class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]"
+                        >
+                        <a [routerLink]="['/']"> {{ product.productTitle }}</a>
+                        </li>
+                      </ng-container>
                     </ul>
+                  </div>
                 </div>
-            </div>-->
-                <!--SEARCH BAR END-->
+
+                <ng-template #noProducts>
+                  <div class="text-center">Không có sản phẩm.</div>
+                </ng-template>
+
+
+
+            <!--SEARCH BAR END-->
             </div>
-            <div class="flex item-center account">
-                <a href="#" class="inline-flex px-[50px]">
-                    <img src="./assets/images/user.png" class="w-[20px] h-[20px]">
-                    <span class="pl-[5px]">Đăng nhập / Đăng ký</span>
-                </a>
-                <div class="account-popup min-h-min justify-center flex mt-[30px] items-center bg-opacity-30">
+              <div class="flex item-center account">
+                  <div href="#" class="inline-flex">
+                      <img src="./assets/images/user.png" class="w-[20px] h-[20px]">
+                      <span class="pl-[5px]"><a class="hover:cursor-pointer" (click)="openLoginModal()">Đăng nhập</a> / <a class="hover:cursor-pointer" (click)="openRegisterModal()">Đăng ký</a></span>
+                  </div>
+                  <div class="account-popup min-h-min justify-center flex mt-[30px] items-center bg-opacity-30">
                     <div class="relative flex flex-col m-2 bg-[#fefff8] shadow-2xl rounded-2xl md:flex-row md:space-y-0">
                         <div class="flex flex-col justify-center px-5 py-4 md:p-14">
                             <span class=" text-[20px] text-[#23562a] font-custom">TÀI KHOẢN CỦA BẠN</span>
@@ -47,7 +70,7 @@
                                 <span class="text-[12px] text-[#23562a] font-bold">Họ và tên: </span>
                                 <span class="text-[12px]">Mai Phạm</span><br />
                                 <span class="text-[12px] text-[#23562a] font-bold">Email: </span>
-                                <span class="text-[12px]">mainpt21406c@st.uel.edu.vn</span>
+                                <span class="text-[12px]">mainpt21406c&#64;st.uel.edu.vn</span>
                             </div>
                             <div class="pt-2">
                                 <a href="profile">
@@ -55,7 +78,7 @@
                                         Thông tin tài khoản
                                     </button>
                                 </a>
-                                
+
                             </div>
                             <div class="pt-2">
                                 <button class="w-full bg-[#aaaaaa] text-[#000000] p-2 rounded-lg text-[12px] cursor-pointer">
@@ -64,21 +87,21 @@
                             </div>
                         </div>
                     </div>
-                </div> 
-            </div>   
-            <div class="flex item-center">
-                <a href="#" class="inline-flex">
-                    <img src="./assets/images/bag.png" class="w-[20px] h-[20px]">
-                    <span class="pl-[5px]">0</span>
-                </a>
-            </div>
-        </div>
+                </div>
+                </div>
+              <div class="flex item-center">
+                  <a href="#" class="inline-flex">
+                      <img src="./assets/images/bag.png" class="w-[20px] h-[20px]">
+                      <span class="pl-[5px]">0</span>
+                  </a>
+              </div>
+          </div>
+      </div>
     </div>
-</div>
-  <header class="header1 mb-[20px]">
+  <header class="header1">
       <div class="container1">
-              <!-- menu start here -->
-              <div class="header-item item-center">
+               <!-- menu start here  -->
+             <div class="header-item item-center">
                   <nav class="menu">
                       <ul>
                           <li>
@@ -153,3 +176,5 @@
               </div>
           </div>
   </header>
+</div>
+

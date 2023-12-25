@@ -28,10 +28,24 @@ const BlogSchema = new mongoose.Schema(
       enum: ["space", "emotion", "season"],
       default: "space",
     },
+
+    create_at: {
+      type: Date,
+      default: Date.now,
+    },
+
+    update_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
 
+BlogSchema.pre("findByIdAndUpdate", function (next) {
+  this.update_at = Date.now();
+  next();
+});
 const Blog = mongoose.model("Blog", BlogSchema);
 module.exports = Blog;

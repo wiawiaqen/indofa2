@@ -36,10 +36,25 @@ const OrderSchema = new mongoose.Schema(
       enum: ["pending", "completed"],
       default: "pending",
     },
+
+    create_at: {
+      type: Date,
+      default: Date.now,
+    },
+
+    update_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
 );
+
+OrderSchema.pre("findByIdAndUpdate", function (next) {
+  this.update_at = Date.now();
+  next();
+});
 
 const Order = mongoose.model("Order", OrderSchema);
 module.exports = Order;

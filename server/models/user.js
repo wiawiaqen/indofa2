@@ -35,6 +35,16 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
+    create_at: {
+      type: Date,
+      default: Date.now,
+    },
+
+    update_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { toJSON: { virtuals: true } },
   { timestamps: true }
@@ -46,6 +56,10 @@ UserSchema.pre("save", async function (next) {
   }
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
+UserSchema.pre("findByIdAndUpdate", function (next) {
+  this.update_at = Date.now();
   next();
 });
 

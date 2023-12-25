@@ -2,40 +2,44 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models';
+import { SearchbarService } from 'src/app/service/searchbar.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   errMessage: string = '';
 
-  constructor(public service: ProductService, public router: Router) {
-    this.fetchProducts();
+  constructor(public service: ProductService, public router: Router, private search: SearchbarService) {
   }
 
   ngOnInit() {
     this.fetchProducts();
+    this.search.searchProducts('').subscribe(
+      data => {
+        data.forEach((product_data) => {
+          let product = new Product(product_data);
+          this.products.push(product);
+        });
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
+
   }
 
   private fetchProducts() {
     this.service.getProducts().subscribe(
-      (data:any) => {
-        data['data'].forEach((product_data:any) => {
+      (data) => {
+        data['data'].forEach((product_data) => {
           let product = new Product(product_data);
           this.products.push(product);
         });
         console.log('Products Data:', this.products);
-        // const parsedData = typeof data === 'string' ? JSON.parse(data) : data;
-
-        // if (Array.isArray(parsedData.data)) {
-
-        //   console.log('Products Data:', this.products);
-        // } else {
-        //   console.error('Error: Data is not an array', parsedData);
-        // }
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -51,8 +55,8 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['admin-product-add']);
   }
 
-  updateProduct(p: any) {
-    this.router.navigate(['/', p._id]);
+  updateProduct(id: any) {
+    this.router.navigate([`admin-product-update/${id}`]);
   }
 
   deleteProduct(_id: any) {
@@ -64,10 +68,10 @@ export class ProductListComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Tiếp tục'
-    }).then((result:any) => {
+    }).then((result) => {
       if (result.isConfirmed) {
         this.service.deleteProduct(_id).subscribe({
-          next: (data:any) => {
+          next: (data) => {
             this.products = data;
             Swal.fire({
               title: 'Đã xóa',
@@ -75,7 +79,7 @@ export class ProductListComponent implements OnInit {
               icon: 'success'
             });
           },
-          error: (err:any) => {
+          error: (err) => {
             this.errMessage = err;
             // Show error message
             Swal.fire({
@@ -87,5 +91,38 @@ export class ProductListComponent implements OnInit {
         });
       }
     });
+  }
+  input: string = ''
+  hasQuery: boolean = false;
+
+
+
+
+  sendData(event: any) {
+
+    let query: string = event.target.value;
+    let matchSpaces: any = query.match(/\s*/);
+
+    if (matchSpaces[0] === query) {
+
+      this.hasQuery = false;
+      return;
+    }
+
+    this.search.searchProducts(query.trim()).subscribe(
+      (results: Product[]) => {
+        this.products = [];
+        results.forEach((product) => {
+          let productObject = new Product(product);
+          this.products.push(productObject)
+        })
+        this.hasQuery = true;
+        console.log('Data received from server:', results);
+        console.log('Products:', this.products);
+      },
+      (error) => {
+        console.error('Error from server:', error);
+      }
+    );
   }
 }

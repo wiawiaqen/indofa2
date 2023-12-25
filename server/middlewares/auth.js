@@ -4,50 +4,38 @@ const asyncHandler = require("express-async-handler");
 
 function reset_cookie_and_redirect(res) {
   res.cookie("jwt", "", { maxAge: 0 });
-  return res.redirect("/login");
+  return res.status(401).json({ error: "You are not authorized" });
 }
-exports.auth = asyncHandler(async (req, res, next) => {
-  const token = req.cookies["jwt"];
 
+exports.auth = asyncHandler(async (req, res, next) => {
+  const token = req.cookies.jwt;
   if (!token) {
-    reset_cookie_and_redirect(res);
+    return reset_cookie_and_redirect(res);
   }
 
   try {
     const claims = jwt.verify(token, process.env.JWT_SECRET);
-
     if (!claims) {
-      reset_cookie_and_redirect(res);
+      return reset_cookie_and_redirect(res);
     }
-    const user = User.findOne({ _id: claims._id });
 
+    const user = await User.findOne({ _id: claims._id });
     if (!user) {
-      reset_cookie_and_redirect(res);
+      return reset_cookie_and_redirect(res);
     }
 
+    req.user = user;
     next();
   } catch (error) {
-    reset_cookie_and_redirect(res);
+    console.log(error)
+    return reset_cookie_and_redirect(res);
   }
 });
 
 exports.admin = asyncHandler(async (req, res, next) => {
-  const token = req.cookies["jwt"];
-
-  if (token) {
-    try {
-      const userId = jwt.verify(token, process.env.JWT_SECRET);
-      const user = User.findOne({ _id: userId._id });
-
-      if (user && user.role === "admin") {
-        next();
-      } else {
-        res.redirect("/");
-      }
-    } catch (error) {
-      res.redirect("/");
-    }
+  if (req.user && req.user.role === "admin") {
+    next();
   } else {
-    res.redirect("/");
+    return res.status(403).json({ error: "You are not admin bro" });
   }
 });

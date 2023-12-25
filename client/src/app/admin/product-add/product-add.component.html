@@ -1,0 +1,161 @@
+<p class="text-[#23562A] text-[30pt] font-bold">TẠO SẢN PHẨM MỚI</p>
+<form [formGroup]="productForm" (ngSubmit)="postProduct($event)">
+<table [cellPadding]="5">
+    <tr>
+        <th class="text-left">
+            Tên sản phẩm:
+        </th>
+        <td colspan="2">
+            <input type="text" formControlName="name" placeholder="Nhập tên sản phẩm..."
+                class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[425px] h-[28px] "
+                style="border: 1px solid #AAAAAA" >
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <th for="cate" class="text-left align-text-top">
+            Danh mục:
+        </th>
+        <td colspan="2">
+           
+                
+            <select formControlName="cate" id="cate" class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[425px] h-[28px] "
+                style="border: 1px solid #AAAAAA">
+                <option selected value="">Chọn danh mục sản phẩm</option>
+                <option value="cuqua">Hạt giống củ quả</option>
+                <option value="rau">Hạt giống rau</option>
+                <option value="hoa">Hạt giống hoa</option>
+            </select> <div *ngIf="!showInput"><button (click)="hienInput()" class="underline ml-[300px] text-[10pt]" > Thêm tùy chọn mới</button></div>
+        </td>
+        <td></td>
+    </tr>
+<tr>
+    <td></td>
+    <td>
+        <div *ngIf="showInput">
+            <input formControlName="newOption" placeholder="Thêm tùy chọn mới" />
+            <button >Lưu</button>
+          </div>
+    </td>
+</tr>
+    <tr>
+        <th class="text-left">
+            Trạng thái:
+        </th>
+        <td colspan="2"><label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            Hiển thị sản phẩm
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+
+        </th>
+        <td colspan="2"><label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            Sản phẩm được khuyến mãi
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+
+        </th>
+        <th class="text-left" >Giá hiện tại:</th>
+        <th class="text-left">Khuyến mãi:
+        </th>
+    </tr>
+    <tr>
+        <th>
+
+    
+        <td><input id="current-price" type="number" placeholder="0" formControlName="price" 
+                class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[219px] h-[28px] "
+                style="border: 1px solid #AAAAAA;"></td>
+        <td><input type="number" placeholder="0" id="discount-amount"
+                class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[219px] h-[28px] "
+                style="border: 1px solid #AAAAAA; "></td>
+    </tr>
+   
+    <tr>
+        <th class="text-left align-text-top">Thông tin sản phẩm:</th>
+        <td colspan="2"><textarea rows="10" cols="65" placeholder="Nhập thông tin sản phẩm..."
+                class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[830px] h-[224px] "
+                style="border: 1px solid #AAAAAA" 
+                formControlName="desc">
+</textarea></td>
+    </tr>
+    <tr>
+        <th class="text-left align-text-top">Mô tả sản phẩm:</th>
+        <td colspan="2"><textarea rows="10" cols="65" placeholder="Nhập mô tả sản phẩm..."
+                class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[830px] h-[224px]"
+                style="border: 1px solid #AAAAAA"
+                formControlName="fdesc">
+</textarea></td>
+    </tr>
+    <tr>
+        <th class="text-left align-text-top">Hình ảnh sản phẩm:</th>
+
+        <td colspan="2">
+            <div class=" rounded-[5px] w-[830px] h-[224px]" style="border: 1px solid #AAAAAA">
+                <p class="mt-[10px] text-right mr-[30px]">Kích cỡ tối đa với các tập tin mới: 50MB</p>
+                <hr width="774px" class="ml-[23px]" style="border-color: #AAAAAA;  ">
+                <div style="margin-top: 20px; margin-left: 23px;">
+
+                    <ngx-dropzone (change)="onSelect($event)" formControlName="pic"
+                    [(ngModel)]="product.productImgSource"
+                        class="custom-dropzone"
+                        >
+                        <ngx-dropzone-label><img src="../../../assets/img/dropdrag.png" class="dropzone-image "
+                                style="margin-left: 100px;">Thêm ảnh bằng cách kéo thả và nhấn vào.
+                        </ngx-dropzone-label>
+
+                        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th class="text-left align-text-top">Hình ảnh mô tả:</th>
+
+        <td colspan="2">
+            <div class=" rounded-[5px] w-[830px] h-[224px]" style="border: 1px solid #AAAAAA">
+                <p class="mt-[10px] text-right mr-[30px]">Kích cỡ tối đa với các tập tin mới: 50MB</p>
+                <hr width="774px" class="ml-[23px]" style="border-color: #AAAAAA;  ">
+                <div style="margin-top: 20px; margin-left: 23px;">
+
+                    <ngx-dropzone (change)="onSelect1($event)" 
+                    formControlName="pic1"
+                    [(ngModel)]="product.productFullImgSource"
+                        class="custom-dropzone">
+                        <ngx-dropzone-label><img src="../../../assets/img/dropdrag.png" class="dropzone-image "
+                                style="margin-left: 100px;">Thêm ảnh bằng cách kéo thả và nhấn vào.
+                        </ngx-dropzone-label>
+
+                        <ngx-dropzone-preview *ngFor="let f1 of files1" [removable]="true" (removed)="onRemove1(f1)">
+                            <ngx-dropzone-label>{{ f1.name }} ({{ f1.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button type="submit" class="bg-[#23562A] rounded-[10px] text-white w-[150px] h-[40px] "  (click)="postProduct($event)">Tạo sản
+                phẩm</button>
+            &nbsp;
+            <button type="reset" class="bg-[#DFDDDD] rounded-[10px] w-[150px] h-[40px]">Hủy bỏ</button>
+        </td>
+    </tr>
+</table>
+</form>

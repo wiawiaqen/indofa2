@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        custom: 
+        custom:
         ['BDLifelessGrotesk', 'cursive'],
          },
-         
+
     },
   },
   plugins: [],

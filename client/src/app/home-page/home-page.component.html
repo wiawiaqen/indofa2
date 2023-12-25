@@ -1,45 +1,184 @@
-<img src="assets/banner.png" class="w-full">
-<div class="grid grid-cols-3 gap-6 px-[40px] auto-rows-min mt-20">
-  <div class="p-4 border-solid rounded-[20px] border-[3px] border-[#23562A] text-center">
-    <div class="rounded-full border-solid border-[3px] border-[#23562A] w-[65px] m-auto translate-x-[-50%]">
-      <img src="assets/vision.png" class="object-contain p-1">
-    </div>
-    <p class="font-fold">TẦM NHÌN</p>
-    <p class="text-left">Trở thành một sản phẩm hàng đầu trong lĩnh vực trồng trọt trong nhà trên sàn thương mại điện tử.</p>
-  </div>
-  <div class="bg-[#23562A] text-white rounded-[20px] p-4 text-center border-2 border-green-600 mt-4">
-    <div class="rounded-full bg-white w-[65px] m-auto translate-x-[-50%]">
-      <img src="assets/mission.png" class="object-contain p-1">
-    </div>
-    <p class="font-fold">SỨ MỆNH</p>
-    <p class="text-left">Cung cấp cho khách hàng các sản phẩm chất lượng cao, an toàn và bền vững trong lĩnh vực trồng trọt trong nhà và cùng đồng hành với khách hàng trong suốt quá trình tận hưởng các trải nghiệm trồng cây đó.</p>
-  </div>
-  <div class="p-4 border-solid rounded-[20px] border-[3px] border-[#23562A] text-center">
-    <div class="rounded-full border-solid border-[3px] border-[#23562A] w-[65px] m-auto translate-x-[-50%]">
-      <img src="assets/objective.png" class="object-contain p-1">
-    </div>
-    <p class="font-fold">MỤC TIÊU</p>
-    <p class="text-left">Phát triển và cung cấp cho khách hàng các sản phẩm trồng trọt trong nhà chất lượng cao và đa dạng, đồng thời tạo ra một trải nghiệm tiện lợi và dễ sử dụng.</p>
-  </div>
-{{message}}
-</div>
+<app-banner></app-banner>
+
+<!--<app-product-category-container [container_title]="'SẢN PHẨM NỔI BẬT'"></app-product-category-container>
 <app-product-category-container [container_title]="'HẠT GIỐNG'"></app-product-category-container>
 <app-product-category-container [container_title]="'DỤNG CỤ TRỒNG CÂY'"></app-product-category-container>
-<app-product-category-container [container_title]="'ĐẤT / GIÁ THỂ TRỒNG'"></app-product-category-container>
-<div class="grid grid-cols-2 gap-6 px-[80px] mt-20 bg-[#E7F4E5]">
-  <div class="py-20">
-    <h1 class="text-center">TRANG TRÍ CHẬU CÂY</h1>
+<app-product-category-container [container_title]="'ĐẤT / GIÁ THỂ TRỒNG'"></app-product-category-container>-->
+
+
+<!--SẢN PHẨM NỔI BẬT-->
+<div class="mx-[50px]">
+  <div class="flex items-center justify-between pb-[50px] pt-[50px]">
+    <h1 class="text-[30px] text-[#23562A] font-custom">SẢN PHẨM NỔI BẬT</h1>
+    <a href="#">
+      <div class="btn-main">
+        XEM THÊM →
+      </div>
+    </a>
   </div>
-  <div class="py-20 flex justify-center">
-    <img src="assets/test_img.png" class="object-cover w-full">
+  <!-- <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <swiper-slide *ngFor="let product of bestseller">
+      <div class="leading-[30px] text-[14pt] font-normal">
+        <a routerLink="/proddetail" class="relative group">
+          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
+          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
+          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
+          <div
+            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
+            <span>THÊM VÀO GIỎ HÀNG</span>
+          </div>
+        </a>
+      </div>
+    </swiper-slide>
+  </swiper-container> -->
+</div>
+<!--END SẢN PHẨM NỔI BẬT-->
+
+<!--HẠT GIỐNG-->
+<div class="mx-[50px]">
+  <div class="flex items-center justify-between pb-[50px] pt-[50px]">
+    <h1 class="text-[30px] text-[#23562A] font-custom">HẠT GIỐNG</h1>
+    <a href="#">
+      <div class="btn-main">
+        XEM THÊM →
+      </div>
+    </a>
+  </div>
+  <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <swiper-slide *ngFor="let product of hatgiong_products">
+      <div class="leading-[30px] text-[14pt] font-normal">
+        <a routerLink="/proddetail" class="relative group">
+          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
+          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
+          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
+          <div
+            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
+            <span>THÊM VÀO GIỎ HÀNG</span>
+          </div>
+        </a>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div>
+<!--END HẠT GIỐNG-->
+
+<!--DỤNG CỤ-->
+<div class="mx-[50px]">
+  <div class="flex items-center justify-between pb-[50px] pt-[50px]">
+    <h1 class="text-[30px] text-[#23562A] font-custom">DỤNG CỤ TRỒNG CÂY</h1>
+    <a href="#">
+      <div class="btn-main">
+        XEM THÊM →
+      </div>
+    </a>
+  </div>
+  <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <swiper-slide *ngFor="let product of dungcu_products">
+      <div class="leading-[30px] text-[14pt] font-normal">
+        <a routerLink="/proddetail" class="relative group">
+          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
+          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
+          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
+          <div
+            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
+            <span>THÊM VÀO GIỎ HÀNG</span>
+          </div>
+        </a>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div>
+<!--END DỤNG CỤ-->
+
+<!--ĐẤT GIÁ THỂ TRỒNG-->
+<div class="mx-[50px]">
+  <div class="flex items-center justify-between pb-[50px] pt-[50px]">
+    <h1 class="text-[30px] text-[#23562A] font-custom">ĐẤT / GIÁ THỂ TRỒNG</h1>
+    <a href="#">
+      <div class="btn-main">
+        XEM THÊM →
+      </div>
+    </a>
+  </div>
+  <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
+    <swiper-slide *ngFor="let product of dat_products">
+      <div class="leading-[30px] text-[14pt] font-normal">
+        <a routerLink="/proddetail" class="relative group">
+          <img src="assets/{{ product.productImgSource }}" class="object-cover w-full">
+          <p class="font-bold text-[12pt] mt-4">{{ product.productTitle }}</p>
+          <p class="text-[12pt] text-gray-500">{{ product.productPrice }} VNĐ</p>
+          <div
+            class="hidden group-hover:block absolute bottom-[83px] py-[16px] w-full bg-[#E7F4E5] text-[#23562A] text-[12pt] items-center opacity-80 font-custom text-center">
+            <span>THÊM VÀO GIỎ HÀNG</span>
+          </div>
+        </a>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div>
+<!--END ĐẤT GIÁ THỂ TRỒNG-->
+
+<div class="grid grid-cols-2 gap-6 px-[50px] py-[20px]">
+  <div class="flex justify-center">
+    <img src="./assets/homepage/Trangtrichau.png" class="object-cover w-auto h-[480px]">
+  </div>
+  <div class="pt-[142px] px-10">
+    <h1 class="text-[35px] text-[#23562A] font-custom">TRANG TRÍ CHẬU CÂY</h1>
+    <p class="text-[18px]">
+      Trang trí  chậu cây muôn màu muôn vẻ<br/>
+      Thỏa sức sáng tạo theo phong cách riêng của bạn
+    </p>
+    <div class="py-10">
+      <a href="#">
+        <div class="btn-main">
+          XEM THÊM →
+        </div>
+      </a>
+    </div>
   </div>
 </div>
-<div class="grid grid-cols-2 gap-6 px-[80px]">
-  <div class="py-20 flex justify-center">
-    <img src="assets/test_img.png" class="object-cover w-full">
+<div class="grid grid-cols-2 gap-6 px-[50px]">
+  <div class="py-20">
+    <h1 class="text-[#23562A] text-[35px] font-custom">Tạo không gian sống xanh cùng Indofa</h1>
+    <p class="text-[18px]">
+      Chào mừng các tín đồ yêu thiên nhiên và cây cảnh đến với Indofa!
+    </p>
+    <div class="py-10 pr-auto">
+      <a href="#">
+        <div class="btn-main">
+          XEM BÀI VIẾT →
+        </div>
+      </a>
+    </div>
   </div>
   <div class="py-20">
-    <h1 class="text-center">BÀI VIẾT NÀO ĐÓ NỔI BẬT</h1>
+    <img src="assets/test.png" class="object-cover w-full">
   </div>
 </div>
-<app-product-category-container [is_blog]="true" [container_title]="'BLOG CỦA INDOFA'"></app-product-category-container>
+<div class="grid grid-cols-3 gap-6 px-[50px]">
+  <div class="blog-category">
+    <img src="./assets/homepage/muanaocaynay.png" class=" w-full h-[329px]">
+    <div class="blog-overlay">
+      <a href="#" class="flex items-center text-[#23562A] text-[25px] font-bold font-custom">Mùa nào cây nấy</a>
+    </div>
+  </div>
+  <div class="blog-category">
+    <img src="./assets/homepage/khonggiansongxanh.png" class="object-cover w-full h-[329px]">
+    <div class="blog-overlay">
+      <a href="#" class="flex items-center text-center text-[#23562A] text-[25px] font-bold font-custom">Không gian sống xanh <br/> cùng Indofa</a>
+    </div>
+  </div>
+  <div class="blog-category">
+    <img src="./assets/homepage/khoimaucamxuc.png" class="object-cover w-full h-[329px]">
+    <div class="blog-overlay">
+      <a href="#" class="flex items-center text-[#23562A] text-[25px] font-bold font-custom">Nơi khơi màu cảm xúc</a>
+    </div>
+  </div>
+</div>
+<div class="py-10 flex justify-center">
+  <a href="#">
+    <div class="btn-main">
+      XEM THÊM →
+    </div>
+  </a>
+</div>
