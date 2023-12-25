@@ -49,7 +49,7 @@ getCart(id: string): Observable<any> {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>("/api/users/user", requestOptions).pipe(
+    return this._http.get<any>("/api/auth/user", requestOptions).pipe(
       map(res => JSON.parse(res) as User),
       retry(3),
       catchError(this.handleError))

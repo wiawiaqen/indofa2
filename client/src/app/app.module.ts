@@ -43,7 +43,7 @@ import { PaymentproductsComponent } from './paymentproducts/paymentproducts.comp
 import { PaymentmethodsComponent } from './paymentmethods/paymentmethods.component';
 import { ChangeaddressComponent } from './changeaddress/changeaddress.component';
 import { CusaddressComponent } from './cusaddress/cusaddress.component';
-import { AddressService } from 'src/app/address.service';
+import { AddressService } from './services/address.service';
 import { SaveChangeAddressComponent } from './save-change-address/save-change-address.component';
 import { ProductAddComponent } from './admin/product-add/product-add.component';
 import { ProductListComponent } from './admin/product-list/product-list.component';

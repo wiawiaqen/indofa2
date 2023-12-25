@@ -30,14 +30,6 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.addressService.getAddress().subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
     this.search.searchProducts('').subscribe(
       data => {
         data.forEach((product_data) => {

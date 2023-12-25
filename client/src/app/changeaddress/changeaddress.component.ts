@@ -1,7 +1,7 @@
 // changeaddress.component.ts
 
 import { Component } from '@angular/core';
-import { AddressService } from 'src/app/address.service';
+import { AddressService } from '../services/address.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class ChangeaddressComponent {
     const target = event.target as HTMLSelectElement;
     this.selectedAddress = target.value;
     console.log('Selected Address:', this.selectedAddress);
-    this.addressService.setSelectedAddress(this.selectedAddress);
+    // this.addressService.setSelectedAddress(this.selectedAddress);
     // You can perform additional actions here based on the selected value
   }
 

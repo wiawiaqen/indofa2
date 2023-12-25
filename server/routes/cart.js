@@ -13,7 +13,6 @@ router.post("/one", authMiddleware.auth, cartService.createOne);
 router.post("/many", authMiddleware.auth, cartService.createMany);
 router.put("/:id", authMiddleware.auth, cartService.updateOne);
 router.delete("/:id", authMiddleware.auth, cartService.deleteOne);
-
 router.get(
   "/usercart",
   authMiddleware.auth,
@@ -22,21 +21,12 @@ router.get(
       let userCart = await Cart.findOne({ user: req.user._id });
 
       if (!userCart) {
-        if (req.session.cart) {
-          const cart = new Cart({
-            user: req.user._id,
-            products: req.session.cart,
-          });
-          await cart.save();
-          res.status(200).json({ data: cart });
-        } else {
-          const cart = new Cart({
-            user: req.user._id,
-            products: [],
-          });
-          await cart.save();
-          res.status(200).json({ data: cart });
-        }
+        const cart = new Cart({
+          user: req.user._id,
+          products: [],
+        });
+        await cart.save();
+        res.status(200).json({ data: cart });
       } else {
         userCart = await userCart
           .populate("products.product", "name price")

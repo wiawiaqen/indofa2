@@ -2,179 +2,173 @@
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <app-modal *ngIf="isModalOpen" [componentType]="componentToLoad"></app-modal>
 <div class="">
-<div class="p-0 m-0 box-border">
+  <div class="p-0 m-0 box-border">
     <div class="py-[10px] bg-[#23562A] w-full">
-        <div class="justify-center text-center text-[#FEFFF8]">
-            Hạt giống mới? <a class="text-[#FEFFF8]" href="#">Khám phá ngay</a>
-        </div>
-    </div>
-    <div class="w-full px-[50px] py-[20px]">
-        <div class="flex item-center justify-between">
-            <div class="w-[135px] h-auto">
-                <img src="./assets/images/Logo.png">
-            </div>
-
-
-            <!--SEARCH BAR HERE-->
-            <div class="searchbox w-[500px]" id="searchbox">
-                <div class="relative w-[500px] h-[35px] ">
-                  <input
-                    type="text"
-                    class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
-                    [(ngModel)]="input"
-                    placeholder="Tìm kiếm sản phẩm..."
-                    (input)="sendData($event)"
-                  />
-                  <div class="btn btn_common">
-                    <i class="fas fa-search"></i>
-                  </div>
-                </div>
-
-                <div
-                  class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white"
-                  id="search-result-container"
-                  *ngIf="input.length > 0"
-                >
-                  <div class="z-[5000]">
-                    <ul class="px-[20px] py-[15px] w-full" *ngIf="products.length > 0; else noProducts">
-                      <ng-container *ngFor="let product of products">
-                        <hr *ngIf="product !== products[0]" />
-                        <li
-                          class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]"
-                        >
-                        <a [routerLink]="['/']"> {{ product.productTitle }}</a>
-                        </li>
-                      </ng-container>
-                    </ul>
-                  </div>
-                </div>
-
-                <ng-template #noProducts>
-                  <div class="text-center">Không có sản phẩm.</div>
-                </ng-template>
-
-
-
-            <!--SEARCH BAR END-->
-            </div>
-              <div class="flex item-center account">
-                  <div href="#" class="inline-flex">
-                      <img src="./assets/images/user.png" class="w-[20px] h-[20px]">
-                      <span class="pl-[5px]"><a class="hover:cursor-pointer" (click)="openLoginModal()">Đăng nhập</a> / <a class="hover:cursor-pointer" (click)="openRegisterModal()">Đăng ký</a></span>
-                  </div>
-                  <div class="account-popup min-h-min justify-center flex mt-[30px] items-center bg-opacity-30">
-                    <div class="relative flex flex-col m-2 bg-[#fefff8] shadow-2xl rounded-2xl md:flex-row md:space-y-0">
-                        <div class="flex flex-col justify-center px-5 py-4 md:p-14">
-                            <span class=" text-[20px] text-[#23562a] font-custom">TÀI KHOẢN CỦA BẠN</span>
-                            <div class="py-2">
-                                <span class="text-[12px] text-[#23562a] font-bold">Họ và tên: </span>
-                                <span class="text-[12px]">Mai Phạm</span><br />
-                                <span class="text-[12px] text-[#23562a] font-bold">Email: </span>
-                                <span class="text-[12px]">mainpt21406c&#64;st.uel.edu.vn</span>
-                            </div>
-                            <div class="pt-2">
-                                <a href="profile">
-                                    <button class="w-full bg-[#23562a] text-[#fefff8] p-2 rounded-lg text-[12px] cursor-pointer">
-                                        Thông tin tài khoản
-                                    </button>
-                                </a>
-
-                            </div>
-                            <div class="pt-2">
-                                <button class="w-full bg-[#aaaaaa] text-[#000000] p-2 rounded-lg text-[12px] cursor-pointer">
-                                    Đăng xuất
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-              <div class="flex item-center">
-                  <a href="#" class="inline-flex">
-                      <img src="./assets/images/bag.png" class="w-[20px] h-[20px]">
-                      <span class="pl-[5px]">0</span>
-                  </a>
-              </div>
-          </div>
+      <div class="justify-center text-center text-[#FEFFF8]">
+        Hạt giống mới? <a class="text-[#FEFFF8]" href="#">Khám phá ngay</a>
       </div>
     </div>
-  <header class="header1">
-      <div class="container1">
-               <!-- menu start here  -->
-             <div class="header-item item-center">
-                  <nav class="menu">
-                      <ul>
-                          <li>
-                              <a href="#">TRANG CHỦ</a>
-                          </li>
-                          <li class="menu-item-has-children">
-                              <a href="#">HẠT GIỐNG&nbsp;<i class="fa fa-angle-down"></i></a>
-                              <div class="sub-menu mega-menu mega-menu-column-4">
-                                 <div class="list-item">
-                                     <h4 class="title font-custom">HẠT GIỐNG</h4>
-                                     <ul>
-                                         <li><a href="" routerLink="/prodtotal/rau">Hạt giống rau</a></li>
-                                         <li><a href="" routerLink="/prodtotal/hoa">Hạt giống hoa</a></li>
-                                         <li><a href="" routerLink="/prodtotal/cuqua">Hạt giống củ quả</a></li>
-                                     </ul>
-                                 </div>
-                                 <div class="list-item">
-                                     <img src="./assets/images/hatgiong1.png">
-                                 </div>
-                                 <div class="list-item">
-                                     <img src="./assets/images/hatgiong2.png">
-                                 </div>
-                              </div>
-                          </li>
-                          <li class="menu-item-has-children">
-                             <a href="#">DỤNG CỤ TRỒNG CÂY&nbsp;<i class="fa fa-angle-down"></i></a>
-                             <div class="sub-menu mega-menu mega-menu-column-4">
-                                <div class="list-item">
-                                    <h4 class="title font-custom">CHẬU CÂY SẴN</h4>
-                                    <ul>
-                                        <li><a href="" routerLink="/prodtotal/gom">Chậu cây gốm</a></li>
-                                        <li><a href="" routerLink="/prodtotal/nhua">Chậu cây nhựa</a></li>
-                                        <li><a href="" routerLink="/prodtotal/treo">Chậu cây treo</a></li>
-                                        <li><a href="" routerLink="/prodtotal/chaucustom">Trang trí chậu cây</a></li>
-                                    </ul>
-                                    <h4 class="title font-custom">DỤNG CỤ</h4>
-                                    <ul>
-                                        <li><a href="#">Dụng cụ khác</a></li>
-                                    </ul>
-                                </div>
-                                <div class="list-item">
-                                    <img src="./assets/images/dungcu1.png">
-                                </div>
-                                <div class="list-item">
-                                    <img src="./assets/images/dungcu2.png">
-                                </div>
-                             </div>
-                         </li>
-                         <li>
-                            <a href="" routerLink="/prodtotal/dat/1">ĐẤT/GIÁ THỂ TRỒNG</a>
-                         </li>
-                         <li>
-                             <a href="blogs">BLOG</a>
-                         </li>
-                         <li class="menu-item-has-children">
-                             <a href="#">VỀ CHÚNG TÔI&nbsp;<i class="fa fa-angle-down"></i></a>
-                             <div class="sub-menu mega-menu mega-menu-column-4">
-                                <div class="list-item">
-                                    <h4 class="title font-custom">VỀ CHÚNG TÔI</h4>
-                                    <ul>
-                                        <li><a href="" routerLink="/aboutusreal">Giới thiệu</a></li>
-                                        <li><a href="#">Chính sách & Điều khoản</a></li>
-                                    </ul>
-                                </div>
-                                <div class="list-item">
-                                    <img src="./assets/images/dungcu1.png">
-                                </div>
-                             </div>
-                         </li>
-                      </ul>
-                  </nav>
-              </div>
+    <div class="w-full px-[50px] py-[20px]">
+      <div class="flex item-center justify-between">
+        <a routerLink="/">
+          <div class="w-[135px] h-auto">
+            <img src="./assets/images/Logo.png">
           </div>
+        </a>
+
+
+        <!--SEARCH BAR HERE-->
+        <div class="searchbox w-[500px]" id="searchbox">
+          <div class="relative w-[500px] h-[35px] ">
+            <input type="text"
+              class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
+              [(ngModel)]="input" placeholder="Tìm kiếm sản phẩm..." (input)="sendData($event)" />
+            <div class="btn btn_common">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+
+          <div class="search-result-container w-[500px] rounded-[15px] px-5 py-5 absolute z-[500] bg-white"
+            id="search-result-container" *ngIf="input.length > 0">
+            <div class="z-[5000]">
+              <ul class="px-[20px] py-[15px] w-full" *ngIf="products.length > 0; else noProducts">
+                <ng-container *ngFor="let product of products">
+                  <hr *ngIf="product !== products[0]" />
+                  <li
+                    class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">
+                    <a [routerLink]="['/']"> {{ product.productTitle }}</a>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </div>
+
+          <ng-template #noProducts>
+            <div class="text-center">Không có sản phẩm.</div>
+          </ng-template>
+
+
+
+          <!--SEARCH BAR END-->
+        </div>
+        <div class="flex item-center account">
+          <div href="#" class="inline-flex">
+            <img src="./assets/images/user.png" class="w-[20px] h-[20px]">
+            <span class="pl-[5px]"><a class="hover:cursor-pointer" (click)="openLoginModal()">Đăng nhập</a> / <a
+                class="hover:cursor-pointer" (click)="openRegisterModal()">Đăng ký</a></span>
+          </div>
+          <div class="account-popup min-h-min justify-center flex mt-[30px] items-center bg-opacity-30">
+            <div class="relative flex flex-col m-2 bg-[#fefff8] shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+              <div class="flex flex-col justify-center px-5 py-4 md:p-14">
+                <span class=" text-[20px] text-[#23562a] font-custom">TÀI KHOẢN CỦA BẠN</span>
+                <div class="py-2">
+                  <span class="text-[12px] text-[#23562a] font-bold">Họ và tên: </span>
+                  <span class="text-[12px]">Mai Phạm</span><br />
+                  <span class="text-[12px] text-[#23562a] font-bold">Email: </span>
+                  <span class="text-[12px]">mainpt21406c&#64;st.uel.edu.vn</span>
+                </div>
+                <div class="pt-2">
+                  <a href="profile">
+                    <button class="w-full bg-[#23562a] text-[#fefff8] p-2 rounded-lg text-[12px] cursor-pointer">
+                      Thông tin tài khoản
+                    </button>
+                  </a>
+
+                </div>
+                <div class="pt-2">
+                  <button class="w-full bg-[#aaaaaa] text-[#000000] p-2 rounded-lg text-[12px] cursor-pointer">
+                    Đăng xuất
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex item-center">
+          <a href="#" class="inline-flex">
+            <img src="./assets/images/bag.png" class="w-[20px] h-[20px]">
+            <span class="pl-[5px]">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header class="header1">
+    <div class="container1">
+      <!-- menu start here  -->
+      <div class="header-item item-center">
+        <nav class="menu">
+          <ul>
+            <li>
+              <a href="#">TRANG CHỦ</a>
+            </li>
+            <li class="menu-item-has-children">
+              <a href="#">HẠT GIỐNG&nbsp;<i class="fa fa-angle-down"></i></a>
+              <div class="sub-menu mega-menu mega-menu-column-4">
+                <div class="list-item">
+                  <h4 class="title font-custom">HẠT GIỐNG</h4>
+                  <ul>
+                    <li><a href="" routerLink="/prodtotal/rau">Hạt giống rau</a></li>
+                    <li><a href="" routerLink="/prodtotal/hoa">Hạt giống hoa</a></li>
+                    <li><a href="" routerLink="/prodtotal/cuqua">Hạt giống củ quả</a></li>
+                  </ul>
+                </div>
+                <div class="list-item">
+                  <img src="./assets/images/hatgiong1.png">
+                </div>
+                <div class="list-item">
+                  <img src="./assets/images/hatgiong2.png">
+                </div>
+              </div>
+            </li>
+            <li class="menu-item-has-children">
+              <a href="#">DỤNG CỤ TRỒNG CÂY&nbsp;<i class="fa fa-angle-down"></i></a>
+              <div class="sub-menu mega-menu mega-menu-column-4">
+                <div class="list-item">
+                  <h4 class="title font-custom">CHẬU CÂY SẴN</h4>
+                  <ul>
+                    <li><a href="" routerLink="/prodtotal/gom">Chậu cây gốm</a></li>
+                    <li><a href="" routerLink="/prodtotal/nhua">Chậu cây nhựa</a></li>
+                    <li><a href="" routerLink="/prodtotal/treo">Chậu cây treo</a></li>
+                    <li><a href="" routerLink="/prodtotal/chaucustom">Trang trí chậu cây</a></li>
+                  </ul>
+                  <h4 class="title font-custom">DỤNG CỤ</h4>
+                  <ul>
+                    <li><a href="#">Dụng cụ khác</a></li>
+                  </ul>
+                </div>
+                <div class="list-item">
+                  <img src="./assets/images/dungcu1.png">
+                </div>
+                <div class="list-item">
+                  <img src="./assets/images/dungcu2.png">
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href="" routerLink="/prodtotal/dat/1">ĐẤT/GIÁ THỂ TRỒNG</a>
+            </li>
+            <li>
+              <a href="blogs">BLOG</a>
+            </li>
+            <li class="menu-item-has-children">
+              <a href="#">VỀ CHÚNG TÔI&nbsp;<i class="fa fa-angle-down"></i></a>
+              <div class="sub-menu mega-menu mega-menu-column-4">
+                <div class="list-item">
+                  <h4 class="title font-custom">VỀ CHÚNG TÔI</h4>
+                  <ul>
+                    <li><a href="" routerLink="/aboutusreal">Giới thiệu</a></li>
+                    <li><a href="#">Chính sách & Điều khoản</a></li>
+                  </ul>
+                </div>
+                <div class="list-item">
+                  <img src="./assets/images/dungcu1.png">
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </header>
 </div>
-

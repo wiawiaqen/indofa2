@@ -86,10 +86,12 @@ router.post("/register", async (req, res) => {
     res.send({
       message: "success",
     });
+    res.redirect(process.env.LIVE_URL);
   }
 });
 
 router.post("/login", async (req, res) => {
+  console.log(req.body.email)
   const user = await User.findOne({ email: req.body.email });
   let saveSession = req.body.save;
   let password = req.body.password;
@@ -150,7 +152,7 @@ router.get("/user", async (req, res) => {
       role: data.role,
       provider: data.provider,
     };
-    res.send(user_data);
+    res.send({data: user_data});
   } catch (err) {
     res.cookie("jwt", "", { maxAge: 0 });
     return res.status(401).send({

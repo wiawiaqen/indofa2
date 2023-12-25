@@ -8,3 +8,4 @@ exports.getOne = dao.getOne(cart);
 exports.deleteOne = dao.deleteOne(cart);
 exports.createMany = dao.createMany(cart);
 exports.filter = dao.filter(cart);
+exports.getCartByUser = dao.getByUserId(cart);

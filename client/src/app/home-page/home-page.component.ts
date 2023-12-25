@@ -50,7 +50,7 @@ constructor(
 ){}
 ngOnInit():void{
   this.http
-  .get('http://localhost:5000/api/user',{withCredentials: true})
+  .get('/api/auth/user',{withCredentials: true})
   .subscribe(
     (res:any)=> {
     this.message=`Hi ${res.name}`

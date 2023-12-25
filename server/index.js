@@ -21,6 +21,7 @@ const reviewRoute = require("./routes/review");
 const searchRoute = require("./routes/liveSearch");
 const productRoute = require("./routes/product");
 const couponRoute = require("./routes/coupon");
+const addressRoute = require("./routes/address");
 // Middleware
 const app = express();
 
@@ -54,6 +55,7 @@ app.use("/api/review", reviewRoute);
 app.use("/api/search", searchRoute);
 app.use("/api/products", productRoute);
 app.use("/api/coupons", couponRoute);
+app.use("/api/address", addressRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");

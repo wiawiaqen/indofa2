@@ -1,7 +1,7 @@
 // cusaddress.component.ts
 
 import { Component } from '@angular/core';
-import { AddressService } from 'src/app/address.service';
+import { AddressService } from '../services/address.service';
 
 @Component({
   selector: 'app-cusaddress',
@@ -16,6 +16,6 @@ export class CusaddressComponent {
   // Call this method whenever the address changes
   updateSelectedAddress(newAddress: string): void {
     this.selectedAddress = newAddress;
-    this.addressService.setSelectedAddress(newAddress);
+    // this.addressService.setSelectedAddress(newAddress);
   }
 }

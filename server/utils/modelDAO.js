@@ -21,6 +21,9 @@ exports.updateOne = (Model, name = "document") =>
     if (!document) {
       return next(new apiError(`No ${name} for this id ${id}`, 404));
     }
+    if (req.user._id !== document.user || req.user.role !== "admin") {
+      return next(new apiError(`Error!`, 404));
+    }
 
     document.save();
     res.status(200).json({ data: document });
@@ -29,11 +32,12 @@ exports.updateOne = (Model, name = "document") =>
 exports.deleteOne = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
     const document = await Model.findByIdAndDelete(req.params.id);
-
     if (!document) {
       return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
     }
-
+    if (req.user._id !== document.user || req.user.role !== "admin") {
+      return next(new apiError(`Error!`, 404));
+    }
     document.remove();
     res.status(204).send();
   });
@@ -89,13 +93,13 @@ exports.pagination = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
     const limit = 12;
     let page = req.params.page;
-    let { fields, asort,...restOfQuery } = req.query;
+    let { fields, asort, ...restOfQuery } = req.query;
     let query = restOfQuery;
     if (!fields) {
       fields = "name price imgbase64_reduce";
     }
     let selectFields = fields ? fields.split(",").join(" ") : "";
-    console.log(selectFields)
+    console.log(selectFields);
     if (asort === "null") {
       asort = null;
     }
@@ -121,4 +125,17 @@ exports.getMaxPage = (Model, name = "document") =>
     const count = await Model.countDocuments(query);
     const maxPage = Math.ceil(count / limit);
     res.status(200).json({ data: maxPage });
+  });
+
+exports.getByUserId = (Model, name = "document") =>
+  asyncHandler(async (req, res, next) => {
+    if (!req.user) {
+      return next(new apiError(`No user`, 404));
+    }
+    let fields = req.query.fields;
+    const document = await Model.find({ user: req.user._id }).select(fields);
+    if (!document) {
+      return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
+    }
+    res.status(200).json({ data: document });
   });

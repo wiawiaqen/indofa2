@@ -2,7 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AddressService } from 'src/app/address.service';
+import { AddressService } from '../services/address.service';
 
 @Component({
   selector: 'app-payment',
@@ -19,8 +19,8 @@ export class PaymentComponent implements OnInit {
       this.selectedAddress = params['selectedAddress'] || ''; // Use the default value if params.selectedAddress is undefined
     });
     // Listen for changes in the selected address
-    this.addressService.selectedAddress$.subscribe((address) => {
-      this.selectedAddress = address;
-    });
+    // this.addressService.setSelectedAddress().subscribe((address) => {
+    //   this.selectedAddress = address;
+    // });
   }
 }

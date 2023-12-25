@@ -35,9 +35,9 @@ export class Product {
   }
   getRawNumber(x: string) {
     try {
-      return Number(x.replace(",",''))
+      return Number(x.replace(",", ''))
     }
-    catch(e){
+    catch (e) {
       return 0
     }
   }
@@ -48,38 +48,38 @@ export class Product {
     let results = [];
     for (let line in lines) {
       line = line.trim();
-      results.push(lines[line].replace(" - ",""))
+      results.push(lines[line].replace(" - ", ""))
     }
     return results
   }
 
-    processPlantingInstructions(): { key: string, steps: string[] }[] {
-      const lines = this.productFullDescription.split('\n');
-      const result: { key: string, steps: string[] }[] = [];
-      let currentKey = '';
+  processPlantingInstructions(): { key: string, steps: string[] }[] {
+    const lines = this.productFullDescription.split('\n');
+    const result: { key: string, steps: string[] }[] = [];
+    let currentKey = '';
 
-      for (let line of lines) {
-        line = line.trim();
-        if (line === '') continue;
+    for (let line of lines) {
+      line = line.trim();
+      if (line === '') continue;
 
-        if (line.startsWith('+')) {
-          if (currentKey) {
-            const instructionIndex = result.findIndex(item => item.key === currentKey);
+      if (line.startsWith('+')) {
+        if (currentKey) {
+          const instructionIndex = result.findIndex(item => item.key === currentKey);
 
-            if (instructionIndex === -1) {
-              result.push({ key: currentKey, steps: [line.substring(1).trim()] });
-            } else {
-              result[instructionIndex].steps.push(line.substring(1).trim());
-            }
+          if (instructionIndex === -1) {
+            result.push({ key: currentKey, steps: [line.substring(1).trim()] });
+          } else {
+            result[instructionIndex].steps.push(line.substring(1).trim());
           }
-        } else {
-          currentKey = line;
         }
+      } else {
+        currentKey = line;
       }
-
-      return result;
     }
+
+    return result;
   }
+}
 export class Review {
   reviewID: string;
   reviewer: string;
@@ -104,7 +104,8 @@ export class Order {
   products: { productID: string, quantity: number }[];
   couponID: string;
   total: number;
-  status: 'pending' | 'completed';
+  date: Date;
+  status: string;
 
   constructor(data: any = {}) {
     this.orderID = data._id;
@@ -115,7 +116,8 @@ export class Order {
     })) : [];
     this.couponID = data.coupon;
     this.total = data.total;
-    this.status = data.status;
+    this.status = data.status == "pending" ? "Đang chờ xử lý" : "Đã hoàn thành";
+    this.date = data.created_at
   }
 }
 
@@ -216,7 +218,6 @@ export class User {
   email: string;
   provider: 'google' | 'indofa';
   role: 'user' | 'admin';
-  isActive: boolean;
 
   constructor(data: any = {}) {
     this.userID = data._id;
@@ -224,6 +225,5 @@ export class User {
     this.email = data.email;
     this.provider = data.provider;
     this.role = data.role;
-    this.isActive = data.isActive !== undefined ? data.isActive : true;
   }
 }
