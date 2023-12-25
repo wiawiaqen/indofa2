@@ -61,6 +61,15 @@ import { BlogAddComponent } from './admin/blog-add/blog-add.component';
 import { BlogListComponent } from './admin/blog-list/blog-list.component';
 import { BlogUpdateComponent } from './admin/blog-update/blog-update.component';
 import { ModalComponent } from './modal/modal.component';
+import { NgbModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { BannerComponent } from './banner/banner.component';
+import { TermspolicyLeftMenuComponent } from './termspolicy-left-menu/termspolicy-left-menu.component';
+import { TermspolicySalesComponent } from './termspolicy-sales/termspolicy-sales.component';
+import { TermspolicySecurityComponent } from './termspolicy-security/termspolicy-security.component';
+import { TermspolicyShippingComponent } from './termspolicy-shipping/termspolicy-shipping.component';
+import { NewUserAddressComponent } from './new-user-address/new-user-address.component';
+import { OldUserAddressComponent } from './old-user-address/old-user-address.component';
+import { SelectAddressComponent } from './select-address/select-address.component';
 
 register();
 const routes: Routes = [
@@ -149,7 +158,6 @@ const routes: Routes = [
     ResetpsAdComponent,
     OrderListComponent,
     OrderDetailAdComponent,
-    ProductListComponent,
     ProductAddComponent,
     ProductListComponent,
     ProductUpdateComponent,
@@ -157,7 +165,15 @@ const routes: Routes = [
     BlogAddComponent,
     BlogListComponent,
     BlogUpdateComponent,
-    ModalComponent
+    ModalComponent,
+    BannerComponent,
+    TermspolicyLeftMenuComponent,
+    TermspolicySalesComponent,
+    TermspolicySecurityComponent,
+    TermspolicyShippingComponent,
+    NewUserAddressComponent,
+    OldUserAddressComponent,
+    SelectAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -165,13 +181,15 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxDropzoneModule
-
+    NgxDropzoneModule,
+    NgbModule,
+    NgbCarouselModule
   ],
   providers: [
     AddressService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
 

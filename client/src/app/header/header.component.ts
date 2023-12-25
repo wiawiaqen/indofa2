@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
 import { SearchbarService } from '../service/searchbar.service';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { Product } from '../models';
 import { ModalService } from '../services/modal.service';
 import { AddressService } from '../services/address.service';
+import { offset } from '@popperjs/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,12 +17,18 @@ export class HeaderComponent {
   products: Product[] = [];
   hasQuery: boolean = false;
   componentToLoad: any = null;
+  isFixed: boolean = false;
+  offset: number = 0;
+
 
   constructor(private search: SearchbarService,
     private modalService: ModalService,
-    private addressService: AddressService) {
-      this.modalService.onClose.subscribe(() => this.closeModal())
-    }
+    private addressService: AddressService,
+    private el: ElementRef
+  ) {
+    this.modalService.onClose.subscribe(() => this.closeModal())
+  }
+
   ngOnInit() {
     this.addressService.getAddress().subscribe({
       next: (data) => {
@@ -43,6 +50,17 @@ export class HeaderComponent {
       }
     );
 
+  }
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    this.offset = this.el.nativeElement.offsetTop;
+    const offset = this.el.nativeElement.offsetTop;
+    const windowScroll = window.pageYOffset;
+    if (windowScroll > offset) {
+      this.isFixed = true;
+    } else {
+      this.isFixed = false;
+    }
   }
   closeModal() {
     this.isModalOpen = false;
