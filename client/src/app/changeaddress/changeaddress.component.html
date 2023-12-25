@@ -1,0 +1,80 @@
+<div class="bg-[#e7f4e5] w-full h-8 pl-[30px] flex items-center text-black text-[14pt] font-noto-sans gap-x-2">
+    <a routerLink="/homepage" class="no-underline text-[#000000]">TRANG CHỦ</a> &#8260;
+    <a routerLink="/payment" class="no-underline text-[#000000]">THANH TOÁN</a> &#8260;
+    <a routerLink="/changeaddress" class="no-underline text-[#23562A] hover:underline font-noto-sans">ĐỊA CHỈ GIAO
+        HÀNG</a>
+</div>
+
+<div
+    style="background-color: #E7F4E5; width: 90%; height: 130px; margin-left: 50%; transform: translateX(-50%); margin-top: 30px;">
+    <div style="display: flex; align-items: center;" class="flex justify-between">
+        <div style="display: flex; align-items: center;">
+            <div>
+                <img src="assets/Payment/location.png"
+                    style="width: 30px; padding-left: 10px; padding-top: 10px;" />
+            </div>
+            <div>
+                <p style="font-family: Noto Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; color: #23562A; padding-left: 10px; padding-top: 10px; margin: 0;">
+                    Địa chỉ mặc định
+                </p>
+            </div>
+        </div>        
+        <div>
+            <a [routerLink]="'/paymentmethods'">
+                <img src="assets/Payment/edit.png"
+                    style="padding-right: 10px; padding-top: 10px; display: inline-block; width: 30px" />
+            </a>
+        </div>
+    </div>
+    <hr
+        style="height:2px; border-width:0; color:#23562A; background-color:#23562A; width: 20%; margin-top: 0.5em; margin-left: 0.5em;">
+    <div style="display: flex; align-items: center;">
+        <input type="radio" id="option1" name="option1" style="width: 20px; height: 20px; margin-left: 20px;"
+            class="mr-2 border-2 border-[#23562A] focus:ring-green-500 focus:border-green-500"
+            [(ngModel)]="selectedAddress" value="option1" (change)="goToPaymentPage()">
+        <label for="option1" class="button">
+            <p
+                style="font-family: Noto Sans; font-style: normal; font-size: 14px; line-height: 19px; padding-left: 10px; padding-top: 10px;">
+                Phạm Nguyễn Thanh Mai &#10072; 0966544961</p>
+            <p
+                style="font-family: Noto Sans; font-style: normal; font-weight: normal; font-size: 14px; line-height: 19px; padding-left: 10px; padding-top: 10px;">
+                KTX Khu B, Đường Mạc Đĩnh Chi, Phường Linh Xuân, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</p>
+        </label>
+    </div>
+</div>
+
+<div class="items-center"
+    style="background-color: #E7F4E5; width: 90%; height: 80px; margin-left: 50%; transform: translateX(-50%); margin-top: 30px;">
+    <div class="flex justify-between">
+        <div style="display: flex; align-items: center; padding-top: 5px;" >
+            <input type="radio" id="option2" name="option2" style="width: 20px; height: 20px; margin-left: 20px;"
+                class="mr-2 border-2 border-[#23562A] focus:ring-green-500 focus:border-green-500"
+                [(ngModel)]="selectedAddress" value="option2" (change)="goToPaymentPage()">
+            <label for="option2" class="button">
+                <p
+                    style="font-family: Noto Sans; font-style: normal; font-size: 14px; line-height: 19px; padding-left: 10px; padding-top: 10px;">
+                    Phạm Nguyễn Thanh Mai &#10072; 0966544961</p>
+                <p
+                    style="font-family: Noto Sans; font-style: normal; font-weight: normal; font-size: 14px; line-height: 19px; padding-left: 10px; padding-top: 10px;">
+                    KTX Khu A, Đường Mạc Đĩnh Chi, Phường Linh Xuân, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</p>
+            </label>
+        </div>
+        <div>
+            <a [routerLink]="'/paymentmethods'">
+                <img src="assets/Payment/edit.png"
+                    style="padding-right: 10px; padding-top: 10px; display: inline-block; width: 30px" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<div style="display:flex; align-items: center; justify-content: center;">
+    <a [routerLink]="'/paymentmethods'"> <img
+            src="assets/Payment/addaddress.png"
+            style="padding-left: 10px; padding-top: 10px; display: inline-block; width: 30px" /></a>
+    <a [routerLink]="'/paymentmethods'" style="text-decoration: none; color: #23562A;">
+        <p
+            style="display:flex; display: inline-block; font-family: Noto Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; color: #23562A; padding-left: 10px; padding-top: 10px;">
+            Thêm địa chỉ mới</p>
+    </a>
+</div>

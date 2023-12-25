@@ -1,0 +1,21 @@
+.button{
+    border: none;
+    color:#FEFFF8;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+.button input:checked ~ .checkmark {
+    background-color: #23562A;
+    color:#23562A;
+  }
+button::after{
+    background-color:#23562A;
+    transition: all 0.5s;
+    opacity: 0.7;
+}
+.button:hover input ~ .checkmark {
+    background-color: #23562A;
+  }

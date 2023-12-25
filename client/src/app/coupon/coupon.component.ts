@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// coupon.component.ts
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-coupon',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./coupon.component.css']
 })
 export class CouponComponent {
-
+  selectedCoupon: string = '';
 }

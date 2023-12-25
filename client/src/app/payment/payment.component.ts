@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
-import { Address } from '../models';
-import { User } from '../models';
-import { Cart } from '../models';
+// payment.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AddressService } from 'src/app/address.service';
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
-export class PaymentComponent {
-  address: Address = new Address();
-  user: User = new User();
-  cart: Cart = new Cart();
+export class PaymentComponent implements OnInit {
+  selectedAddress: string = ''; // Initialize the property
+
+  constructor(private route: ActivatedRoute, private addressService: AddressService) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.selectedAddress = params['selectedAddress'] || ''; // Use the default value if params.selectedAddress is undefined
+    });
+    // Listen for changes in the selected address
+    this.addressService.selectedAddress$.subscribe((address) => {
+      this.selectedAddress = address;
+    });
+  }
 }

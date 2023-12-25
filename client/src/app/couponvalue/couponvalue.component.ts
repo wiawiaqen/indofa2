@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./couponvalue.component.css']
 })
 export class CouponvalueComponent {
-@Input() coupon_value: string = '';
-@Input() coupon_condition: string = '';
-@Input() image_url: string = 'assets/image_coupon/freeship.png';
+  @Input() coupon_value: string = '';
+  @Input() coupon_condition: string = '';
+  @Input() image_url: string = 'assets/image_coupon/freeship.png';
 }
