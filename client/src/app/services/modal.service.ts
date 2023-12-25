@@ -5,8 +5,11 @@ import { Injectable, EventEmitter } from '@angular/core';
 })
 export class ModalService {
   public onClose = new EventEmitter();
-
+  public onOpen = new EventEmitter();
   close() {
     this.onClose.emit();
+  }
+  open() {
+    this.onOpen.emit();
   }
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product, Cart } from '../models';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
+import { ModalService } from '../services/modal.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -37,7 +38,8 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +73,9 @@ export class ProductDetailComponent implements OnInit {
       });
 
   }
+  openCart() {
+    this.modalService.open();
+  }
   getUserCart() {
     this.cartService.getUserCart().subscribe(data => {
       this.cart = new Cart(data['data']);
@@ -91,7 +96,7 @@ export class ProductDetailComponent implements OnInit {
   }
   goToProductTotal() {
     this.addToCart();
-    this.router.navigate([`/prodtotal/${this.category}`]);
+    this.openCart();
   }
   addToCart(){
     let extractedProducts = this.cart.products.map((product: any) => {

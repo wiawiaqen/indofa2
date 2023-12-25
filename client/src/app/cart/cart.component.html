@@ -15,7 +15,7 @@
                 <h2 class="text-[30px] font-bd-lifeless-grotesk text-[#23562A] font-bold" id="slide-over-title">GIỎ HÀNG
                   CỦA BẠN</h2>
                 <div class="ml-3 flex h-7 items-center">
-                  <button type="button" class="relative -m-2 p-2 text-gray-400 hover:text-[#23562A]">
+                  <button (click)="closeModal()" type="button" class="relative -m-2 p-2 text-gray-400 hover:text-[#23562A]">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Close panel</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -46,10 +46,10 @@
                         </div>
                         <div class="flex flex-1 items-end justify-between text-sm">
                           <div>
-                            <button type="button" (onclick)="decreaseQuantity(p.productID)" class="btnSub">-</button>
-                            <input [(ngModel)]="p.quantity" (change)="updateCart()"  class="py-1 w-10 text-center"
+                            <button type="button" (click)="decreaseQuantity(p.productID)" class="btnSub">-</button>
+                            <input [(ngModel)]="p.quantity" (change)="updateCart()" class="py-1 w-10 text-center"
                               value="{{p.quantity}}" min=0>
-                            <button type="button" (onclick)="increaseQuantity(p.productID)" class="btnAdd">+</button>
+                            <button type="button" (click)="increaseQuantity(p.productID)" class="btnAdd">+</button>
                           </div>
                           <button type="button" class="font-medium text-[#AD0505] hover:text-[#FF0000]">Xóa</button>
                         </div>

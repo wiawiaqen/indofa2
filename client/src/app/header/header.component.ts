@@ -13,6 +13,7 @@ import { offset } from '@popperjs/core';
 })
 export class HeaderComponent {
   isModalOpen: boolean = false;
+  showCart: boolean = false;
   input: string = ''
   products: Product[] = [];
   hasQuery: boolean = false;
@@ -26,7 +27,13 @@ export class HeaderComponent {
     private addressService: AddressService,
     private el: ElementRef
   ) {
-    this.modalService.onClose.subscribe(() => this.closeModal())
+    this.modalService.onClose.subscribe(() => {
+      this.closeModal();
+      this.closeCart();
+    })
+    this.modalService.onOpen.subscribe(() => {
+      this.openCart()
+    });
   }
 
   ngOnInit() {
@@ -53,6 +60,12 @@ export class HeaderComponent {
     } else {
       this.isFixed = false;
     }
+  }
+  closeCart() {
+    this.showCart = false;
+  }
+  openCart(){
+    this.showCart = true;
   }
   closeModal() {
     this.isModalOpen = false;
