@@ -90,12 +90,14 @@ export class Coupon {
 
 
 export class Cart {
+  cartID: string;
   userID: string;
   products: { productID: string, quantity: number }[];
   total: number;
   status: 'pending' | 'completed';
 
   constructor(data: any = {}) {
+    this.cartID = data._id;
     this.userID = data.user;
     this.products = data.products ? data.products.map((p: any) => ({
       productID: p.product,
@@ -139,6 +141,7 @@ export class Address {
 }
 
 export class User {
+  userID: string;
   name: string;
   email: string;
   provider: 'google' | 'indofa';
@@ -146,6 +149,7 @@ export class User {
   isActive: boolean;
 
   constructor(data: any = {}) {
+    this.userID = data._id;
     this.name = data.name;
     this.email = data.email;
     this.provider = data.provider;

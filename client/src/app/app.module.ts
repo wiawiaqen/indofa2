@@ -29,6 +29,16 @@ import { BottommenublogComponent } from './bottommenublog/bottommenublog.compone
 import { ProductTotalComponent } from './product-total/product-total.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ForgotPwAfterComponent } from './forgot-pw-after/forgot-pw-after.component';
+import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
+import { PaymentproductsComponent } from './paymentproducts/paymentproducts.component';
+import { PaymentmethodsComponent } from './paymentmethods/paymentmethods.component';
+import { ChangeaddressComponent } from './changeaddress/changeaddress.component';
+import { CusaddressComponent} from './cusaddress/cusaddress.component';
+import { AddressService } from 'src/app/address.service';
+import { SaveChangeAddressComponent } from './save-change-address/save-change-address.component';
+import { CouponComponent } from './coupon/coupon.component';
+import { CouponvalueComponent } from './couponvalue/couponvalue.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -43,6 +53,15 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPwComponent},
   {path: 'reset/:token', component: ResetpwComponent},
   {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
+  {path: 'cart', component: CartComponent},
+  {path: 'payment', component: PaymentComponent},
+  {path:'paymentproducts', component: PaymentproductsComponent},
+  {path:'paymentmethods', component: PaymentmethodsComponent},
+  {path:'changeaddress', component: ChangeaddressComponent},
+  {path:'cusaddress', component: CusaddressComponent},
+  { path: 'payment/:selectedAddress', component: PaymentComponent},
+  {path: 'save-change-address', component: SaveChangeAddressComponent},
+  {path: 'coupon', component: CouponComponent},
 
 ]
 @NgModule({
@@ -75,6 +94,15 @@ const routes: Routes = [
     ProductTotalComponent,
     ProductDetailComponent,
     ForgotPwAfterComponent,
+    CartComponent,
+    PaymentComponent,
+    PaymentproductsComponent,
+    PaymentmethodsComponent,
+    ChangeaddressComponent,
+    CusaddressComponent,
+    SaveChangeAddressComponent,
+    CouponComponent,
+    CouponvalueComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +111,9 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AddressService, // Add the service to the providers array
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
