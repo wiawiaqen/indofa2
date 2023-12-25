@@ -1,5 +1,5 @@
 <p class="text-[#23562A] text-[30pt] font-bold">TẠO SẢN PHẨM MỚI</p>
-<form [formGroup]="productForm" (ngSubmit)="postProduct($event)">
+<form [formGroup]="myForm" (ngSubmit)="postProduct($event)">
 <table [cellPadding]="5">
     <tr>
         <th class="text-left">
@@ -13,22 +13,29 @@
         <td></td>
     </tr>
     <tr>
-        <th for="cate" class="text-left">
-            <!-- Cái này thêm vòng lặp từ dữ liệu -->
+        <th for="cate" class="text-left align-text-top">
             Danh mục:
         </th>
         <td colspan="2">
+           
+                
             <select formControlName="cate" id="cate" class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[425px] h-[28px] "
                 style="border: 1px solid #AAAAAA">
-                <option>Chọn danh mục sản phẩm</option>
-                <option value="cuqua">Củ quả</option>
-                <option value="rau">Rau</option>
-                <option value="hoa">Hoa</option>
-            </select>
+                <option selected value="">Chọn danh mục sản phẩm</option>
+                <option value="cuqua">Hạt giống củ quả</option>
+                <option value="rau">Hạt giống rau</option>
+                <option value="hoa">Hạt giống hoa</option>
+                <option value="dunguc">Dụng cụ</option>
+                <option value="dat">Đất</option>
+                <option value="chaucustom">Trang trí chậu cây</option>
+                <option value="gom">Chậu cây gốm</option>
+                <option value="treo">Chậu cây treo</option>
+                <option value="nhua">Chậu cây nhựa</option>
+                <option value="khac">Khác</option>
+            </select> 
         </td>
         <td></td>
     </tr>
-
     <tr>
         <th class="text-left">
             Trạng thái:
@@ -58,24 +65,13 @@
 
         </th>
         <th class="text-left" >Giá hiện tại:</th>
-        <th class="text-left">Khuyến mãi: 
-            <!-- làm vòng lặp luôn -->
-            
-            <select id="coupon" class="pl-[12px] rounded-[5px] text-[13px] py-[5px] bg-[#AAAA]"  formControlName="coupon"
-                style="border: 1px solid #AAAAAA;">
-                    <!-- <option *ngFor="let coupon of coupons" [value]="coupon.code">{{ coupon.code }}</option> -->
-                    <option value="WASK21QX">WASK21QX</option>
-                    <option value="CQD4MZVU">CQD4MZVU</option>
-                    <option value="3Z3WZCW2">3Z3WZCW2</option>
-                    <option value="TTQEM2KZ">TTQEM2KZ</option>
-            </select>
+        <th class="text-left">Khuyến mãi:
         </th>
     </tr>
     <tr>
         <th>
 
-        </th> 
-        <!-- gắn biến chạy tự động  -->
+    
         <td><input id="current-price" type="number" placeholder="0" formControlName="price" 
                 class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[219px] h-[28px] "
                 style="border: 1px solid #AAAAAA;"></td>
@@ -83,14 +79,7 @@
                 class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[219px] h-[28px] "
                 style="border: 1px solid #AAAAAA; "></td>
     </tr>
-    <tr>
-        <th></th>
-        <th class="text-left">Giá sau khi khuyến mãi:
-            <span id="discount-price" class="text-[#FF0000]">
-               
-              </span>
-        </th>
-    </tr>
+   
     <tr>
         <th class="text-left align-text-top">Thông tin sản phẩm:</th>
         <td colspan="2"><textarea rows="10" cols="65" placeholder="Nhập thông tin sản phẩm..."

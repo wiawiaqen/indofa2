@@ -25,19 +25,17 @@
                 <option value="cuqua">Hạt giống củ quả</option>
                 <option value="rau">Hạt giống rau</option>
                 <option value="hoa">Hạt giống hoa</option>
-            </select> <div *ngIf="!showInput"><button (click)="hienInput()" class="underline ml-[300px] text-[10pt]" > Thêm tùy chọn mới</button></div>
+                <option value="dunguc">Dụng cụ</option>
+                <option value="dat">Đất</option>
+                <option value="chaucustom">Trang trí chậu cây</option>
+                <option value="gom">Chậu cây gốm</option>
+                <option value="treo">Chậu cây treo</option>
+                <option value="nhua">Chậu cây nhựa</option>
+                <option value="khac">Khác</option>
+            </select> 
         </td>
         <td></td>
     </tr>
-<tr>
-    <td></td>
-    <td>
-        <div *ngIf="showInput">
-            <input formControlName="newOption" placeholder="Thêm tùy chọn mới" />
-            <button >Lưu</button>
-          </div>
-    </td>
-</tr>
     <tr>
         <th class="text-left">
             Trạng thái:

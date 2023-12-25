@@ -1,24 +1,29 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
-import { Product } from 'src/app/models';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../models';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-category-add',
-
-  templateUrl: './category-add.component.html',
-  styleUrl: './category-add.component.css'
+  selector: 'app-product-add',
+  templateUrl: './product-add.component.html',
+  styleUrl: './product-add.component.css'
 })
 export class CategoryAddComponent {
   myForm: FormGroup;
 
+export class ProductAddComponent {
+ 
+  showInput = false;
   constructor(private service: ProductService,
     private router: Router,
     private formBuilder: FormBuilder,
-  ) { }
+  ) { this.myForm = this.fb.group({
+    mySelect: [''],
+    newOption: ['', Validators.required]
+  }) }
 
-  productForm: FormGroup;
+  myForm: FormGroup;
   files: File[] = [];
   files1: File[] = [];
 
@@ -26,13 +31,20 @@ export class CategoryAddComponent {
   f_imgbase64: string | ArrayBuffer | null = '';
   fb = inject(FormBuilder)
   ngOnInit(): void{
-    this.productForm = this.formBuilder.group({
+    this.myForm = this.formBuilder.group({
       name: '',
       cate: '',
       price: '',
       fdesc: '',
       desc: ''
     });
+    
+  }
+ 
+  
+  
+  hienInput() {
+    this.showInput = true;
   }
   onSelect(event: any) {
     console.log(event);
@@ -61,7 +73,7 @@ export class CategoryAddComponent {
     reader2.readAsDataURL(f_img);
     reader2.onload = () => {
       // Have to wait the file finished loading
-      let formData = this.productForm.getRawValue()
+      let formData = this.myForm.getRawValue()
       this.f_imgbase64 = reader2.result;
       let data = {
         name: formData.name,
