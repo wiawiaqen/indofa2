@@ -18,9 +18,5 @@ export class PaymentComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.selectedAddress = params['selectedAddress'] || ''; // Use the default value if params.selectedAddress is undefined
     });
-    // Listen for changes in the selected address
-    // this.addressService.setSelectedAddress().subscribe((address) => {
-    //   this.selectedAddress = address;
-    // });
   }
 }

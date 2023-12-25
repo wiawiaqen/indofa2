@@ -1,7 +1,12 @@
 // cusaddress.component.ts
-
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { AddressService } from '../services/address.service';
+import { CartService } from '../services/cart.service';
+import { User } from '../models';
+import { Address } from '../models';
+import { Cart } from '../models';
 
 @Component({
   selector: 'app-cusaddress',
@@ -9,13 +14,50 @@ import { AddressService } from '../services/address.service';
   styleUrls: ['./cusaddress.component.css']
 })
 export class CusaddressComponent {
-  selectedAddress: string = '';
+  user: User;
+  defaultAddress: Address;
+  address: Address[];
+  cart: Cart;
 
-  constructor(private addressService: AddressService) {}
+  constructor(
+    private addressService: AddressService,
+    private authService: AuthService,
+    private cartService: CartService,
+    private router: Router
+  ) { }
 
-  // Call this method whenever the address changes
-  updateSelectedAddress(newAddress: string): void {
-    this.selectedAddress = newAddress;
-    // this.addressService.setSelectedAddress(newAddress);
+  ngOnInit() {
+    this.getUser();
+    this.getDefaulAddress();
   }
+
+  getUser() {
+    this.authService.checkUser().subscribe(data => {
+      try{this.user = new User(data['data']);}
+      catch(e){
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  getDefaulAddress() {
+    this.addressService.getUserAddress().subscribe(data => {
+      this.address = [];
+      data['data'].forEach((element: { [key: string]: any }) => {
+        let address_object = new Address(element);
+        this.address.push(address_object);
+        if (element['default'] === true) {
+          this.defaultAddress = new Address(element);
+        }
+      });
+    });
+  }
+
+  getCart() {
+    this.cartService.getUserCart().subscribe(data => {
+      this.cart = new Cart(data['data']);
+    });
+  }
+
+
 }

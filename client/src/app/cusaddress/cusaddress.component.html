@@ -13,10 +13,10 @@
         <div>
             <p
                 style="font-family: Noto Sans; font-style: normal; font-size: 14px; line-height: 19px; padding-left: 10px; padding-top: 10px;">
-                Phạm Nguyễn Thanh Mai &#10072; 0966544961</p>
+                {{ defaultAddress.name }} &#10072; {{ defaultAddress.phone }}</p>
             <p
                 style="font-family: Noto Sans; font-style: normal; font-weight: normal; font-size: 14px; line-height: 19px; padding-left: 10px; padding-top: 10px;">
-                KTX Khu B, Đường Mạc Đĩnh Chi , Phường Linh Xuân, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</p>
+                {{ defaultAddress.full_address() }}</p>
         </div>
         <div style="margin-right:50px">
             <a [routerLink]="'/changeaddress'" style="text-decoration: none; color: #23562A;"><img

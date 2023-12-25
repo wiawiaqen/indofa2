@@ -16,7 +16,7 @@ export class ProfileComponent {
   defaultAddress: Address;
   orders: Order[];
   address: Address[];
-  constructor(private auth: AuthService,
+  constructor(private authService: AuthService,
     private addressService: AddressService,
     private orderService: OrderService
   ) { }
@@ -28,7 +28,7 @@ export class ProfileComponent {
   }
 
   getUser() {
-    this.auth.checkUser().subscribe(data => {
+    this.authService.checkUser().subscribe(data => {
       this.user = new User(data['data']);
     });
   }

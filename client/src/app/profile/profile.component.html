@@ -141,15 +141,15 @@
         <div>
           <table class="w-[550px] mx-[100px] border border-[#9A9898]">
             <tr class="bg-[#e7f4e5] font-bold border border-[#9A9898]">
-              <td class="py-[15px] px-[15px]"> Mai Pham (mặc định) </td>
+              <td class="py-[15px] px-[15px]"> {{ defaultAddress.name }} (mặc định) </td>
             </tr>
             <tr>
               <div class="col-lg-12 col-md-12 large_view ">
                 <div class="lb-left pt-[15px] px-[15px]"><b>Địa chỉ:</b></div>
                 <div class="lb-right px-[15px] pb-[15px]">
-                  <p>KTX Khu B, ĐHQG TP HCM</p>
+                  <p>{{ defaultAddress.street }}, {{ defaultAddress.ward }}</p>
                   <p></p>
-                  <p>Hồ Chí Minh, Vietnam </p>
+                  <p>{{ defaultAddress.district }}, {{ defaultAddress.city }} </p>
                 </div>
               </div>
             </tr>

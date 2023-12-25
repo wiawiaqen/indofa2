@@ -136,14 +136,18 @@ export class Coupon {
   couponID: string;
   code: string;
   type: 'percent' | 'fixed';
+  maxDiscount: number;
+  minOrder: number;
   discount: number;
-  status: 'active' | 'inactive';
+  status: boolean;
 
   constructor(data: any = {}) {
     this.couponID = data._id;
     this.code = data.code;
     this.type = data.type;
+    this.maxDiscount = data.d_max;
     this.discount = data.discount;
+    this.minOrder = data.min_order;
     this.status = data.status;
   }
 }
@@ -152,19 +156,29 @@ export class Coupon {
 export class Cart {
   cartID: string;
   userID: string;
-  products: { productID: string, quantity: number }[];
-  total: number;
-  status: 'pending' | 'completed';
+  products: { productID: string, quantity: number, name: string, imgbase64_reduce: string, price: String }[];
+
 
   constructor(data: any = {}) {
     this.cartID = data._id;
     this.userID = data.user;
     this.products = data.products ? data.products.map((p: any) => ({
-      productID: p.product,
+      productID: p.product._id,
+      imgbase64_reduce: p.product.imgbase64_reduce,
+      name: p.product.name,
+      price: this.NumberWithCommas(p.product.price),
       quantity: p.quantity
     })) : [];
-    this.total = data.total;
-    this.status = data.status;
+  }
+  NumberWithCommas(x: number | string) {
+    try {
+      var parts = x.toString().split(",");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    }
+    catch (e) {
+      return x
+    }
   }
 }
 
