@@ -1,5 +1,6 @@
 swiper-container::part(button-prev) {
-    top: var(--swiper-navigation-top-offset,50%);
+    top: var(--swiper-navigation-top-offset,40%);
+    left: var(--swiper-navigation-left-offset, 10px);
     width: 30px;
     height: 30px;
     margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
@@ -16,7 +17,8 @@ swiper-container::part(button-prev) {
   
   
   swiper-container::part(button-next) {
-    top: var(--swiper-navigation-top-offset,50%);
+    top: var(--swiper-navigation-top-offset,40%);
+    right: var(--swiper-navigation-right-offset, 10px);
     width: 30px;
     height: 30px;
     margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));

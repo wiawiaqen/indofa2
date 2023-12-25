@@ -15,7 +15,7 @@ export class ProductTotalComponent {
   products: Product[] = [];
   input: string = '';
   category: string = '';
-  page: string = '';
+  page: number = 1;
   sortKey: string ='null';
   maxpage: number = 2;
   loading: boolean = true;
@@ -29,6 +29,8 @@ export class ProductTotalComponent {
     "gom": "Chậu gốm",
     "treo": "Chậu treo",
     "nhua": "Chậu nhựa",
+    "gom,nhua,treo,chaucustom,dungcu": "Dụng cụ",
+    "cuqua,hoa,rau": "Hạt giống"
   }
   constructor(
     private productService: ProductService,
@@ -43,40 +45,33 @@ export class ProductTotalComponent {
       console.log(data)
       this.category = data[0];
       try{
-      this.page = data[1];}
+      this.page = Number(data[1]);}
       catch(e){
-        this.page = "1"
+        this.page = 1
       }
     });
-    this.productService.getPagination(this.page, this.category, this.sortKey).subscribe(
-      {
-        next: (res: any) => {
-          this.loading = true;
-          this.products = []
-          res['data'].forEach(
-            (product_data: any) => {
-              let product = new Product(product_data)
-              this.products.push(product)
-            }
-          )
-          this.loading = false;
-        },
-        error: (err: any) => {
-          console.log(err);
-        }
-      }
-    );
+    this.products = []
+    this.loadData()
+  }
+  getMaxPage() {
+    this.productService.getMaxPage(this.category)
+  }
+  setPage(page: number | String){
+    this.page = Number(page)+1
+    this.loadData()
   }
   sort() {
     this.loadData();
   }
 
-  private loadData() {
-    this.productService.getPagination(this.page, this.category, this.sortKey).subscribe(
+  loadData() {
+    this.products = []
+    this.loading = true
+    this.productService.getPagination(String(this.page), this.category, this.sortKey).subscribe(
       {
         next: (res: any) => {
           this.products = res['data'].map((product_data: any) => new Product(product_data));
-          console.log(this.products);
+          this.loading = false
         },
         error: (err: any) => {
           console.log(err);

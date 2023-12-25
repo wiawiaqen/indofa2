@@ -95,12 +95,19 @@ exports.pagination = (Model, name = "document") =>
       fields = "name price imgbase64_reduce";
     }
     let selectFields = fields ? fields.split(",").join(" ") : "";
-    console.log(selectFields)
+    let queryFilter = {};
+    for (const [key, value] of Object.entries(restOfQuery)) {
+      if (value.includes(",")) {
+        queryFilter[key] = { $in: value.split(",") };
+      } else {
+        queryFilter[key] = value;
+      }
+    }
     if (asort === "null") {
       asort = null;
     }
     asort = asort === "true" ? 1 : -1;
-    const document = await Model.find(query)
+    const document = await Model.find(queryFilter)
       .select(selectFields)
       .limit(limit)
       .skip((page - 1) * limit)

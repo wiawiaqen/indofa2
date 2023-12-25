@@ -5,8 +5,6 @@
 <div class="bg-[#e7f4e5] w-full h-8 pl-[50px] flex items-center text-black text-[13pt] gap-x-2">
     <a routerLink="" class="hover:underline">Trang chủ</a> &#8260;
     <a routerLink="/prodtotal/{{category}}/{{page}}" class="text-[#23562A] hover:underline">{{mapping[category]}}</a>
-    <a routerLink="" class="hover:underline">Trang chủ</a> &#8260;
-    <a routerLink="/prodtotal/{{category}}/{{page}}" class="text-[#23562A] hover:underline">{{mapping[category]}}</a>
 </div>
 
 <div class="w-full h-full grid grid-cols-[1fr_4fr] gap-[30px] overflow-hidden pb-[50px]">
@@ -19,7 +17,10 @@
         <div>
             <p
                 class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">
-                HẠT GIỐNG</p>
+                <a href="" routerLink="/prodtotal/rau,hoa,cuqua">
+                    HẠT GIỐNG
+                </a>
+            </p>
             <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
                 <a href="" routerLink="/prodtotal/rau">Hạt giống rau</a>
             </p>
@@ -34,7 +35,10 @@
         <div>
             <p
                 class="text-[15pt] font-bold font-custom text-[#23562A] collection__item mt-4 hover:bg-[#E7F4E5] w-[250px]">
-                DỤNG CỤ</p>
+                <a href="" routerLink="/prodtotal/gom,nhua,treo,chaucustom,dungcu">
+                    DỤNG CỤ
+                </a>
+            </p>
             <p class="text-[13pt] text-black collection__item mt-4 text-normal hover:bg-[#E7F4E5] w-[250px]">
                 <a href="" routerLink="/prodtotal/gom">Chậu cây gốm</a>
             </p>
@@ -107,22 +111,27 @@
                 class="absolute bottom-[-0px] w-[210px] left-0 p-[16px] bg-[#E7F4E5] text-[#23562A] opacity-80 font-custom text-center uppercase items-center">
                 {{mapping[category]}}</div>
         </div>
-
+        <app-loader class="mt-[20px]" *ngIf="loading"></app-loader>
         <div class="grid grid-cols-4 grid-auto-rows justify-between gap-0 pt-[50px] text-normal text-[14pt]">
             <div *ngFor="let product of products">
                 <app-product-main [product]="product"></app-product-main>
             </div>
         </div>
         <!-- <hr class="w-[1090px] border-black"> -->
-        <div class="w3-center">
-            <div class="w3-bar w3-border-black">
-                <a href="#" class="w3-button ratlagreen w3-large w3-left">&#10094;</a>
-                <div *ngFor="let count of [].constructor(maxpage); let i = index">
-                    <a routerLink="/prodtotal/{{category}}-{{i+1}}">{{i+1}}</a>
+        <div class="justify-center flex flex-row">
+            <div class="pagination w3-center">
+                <div class="w3-bar w3-border-black">
+                <a href="#" class="flex-row w3-button ratlagreen w3-large">&#10094;</a>
+                    <div *ngFor="let count of [].constructor(maxpage); let i = index" [ngClass]="{'targetpage': i+1 == page}" class="w3-button ratlagreen w3-large">
+                    <a routerLink="/prodtotal/{{category}}-{{i+1}}" 
+                    
+                    (click)="setPage(i)">{{i+1}}</a>
+                    </div>
+                <a href="#" class="flex-row w3-button ratlagreen w3-large">&#10095;</a>
                 </div>
-                <a href="#" class="w3-button ratlagreen w3-large w3-right">&#10095;</a>
             </div>
         </div>
+          
         <!-- <hr class="w-[1090px] border-black"> -->
     </div>
 </div>

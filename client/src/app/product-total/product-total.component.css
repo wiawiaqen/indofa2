@@ -6,3 +6,23 @@
     background-color: #23562A !important; 
     color: white !important; 
 }
+
+.w3-bar {
+    display: flex;
+    align-items: center; /* Thêm dòng này để căn giữa theo chiều dọc */
+  }
+  .w3-bar a {
+    line-height: 1; /* Đảm bảo các phần tử có cùng độ cao của dòng */
+  }
+  
+  .pagination {
+
+    align-items: center;
+    margin: 0 10px; /* Điều chỉnh khoảng cách giữa các phần tử */
+  }
+  
+  .pagination a {
+
+    margin: 0 5px; /* Điều chỉnh khoảng cách giữa các số */
+  }
+  
