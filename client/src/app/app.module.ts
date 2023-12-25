@@ -65,7 +65,6 @@ const routes: Routes = [
   { path: 'successorder', component: SuccessorderComponent },
   { path: 'cartnoproducts', component: CartnoproductsComponent },
   { path: 'loader', component: LoaderComponent },
-  { path: "**", component: NotfoundComponent },
   { path: 'blogcategory', component: BlogcategoryComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'prodtotal', component: ProductTotalComponent },
@@ -81,7 +80,8 @@ const routes: Routes = [
   {path: 'ord-detail', component:OrderDetailComponent},
   { path: 'admin-product-add', component: ProductAddComponent },
   { path: 'admin-product-list', component: ProductListComponent },
-  { path: 'admin-product-update/:id', component: ProductUpdateComponent }
+  { path: 'admin-product-update/:id', component: ProductUpdateComponent },
+  { path: "**", component: NotfoundComponent },
 ]
 @NgModule({
   declarations: [

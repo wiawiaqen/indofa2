@@ -33,6 +33,14 @@ export class Product {
       return x
     }
   }
+  getRawNumber(x: string) {
+    try {
+      return Number(x.replace(",",''))
+    }
+    catch(e){
+      return 0
+    }
+  }
   processDetail(): string[] {
     console.log(this.productDescription)
     const lines = this.productDescription.split("\n")

@@ -95,13 +95,13 @@ exports.pagination = (Model, name = "document") =>
       fields = "name price imgbase64_reduce";
     }
     let selectFields = fields ? fields.split(",").join(" ") : "";
+    console.log(selectFields)
     if (asort === "null") {
       asort = null;
     }
     asort = asort === "true" ? 1 : -1;
     const document = await Model.find(query)
       .select(selectFields)
-      .sort({ price: asort })
       .limit(limit)
       .skip((page - 1) * limit)
       .exec();

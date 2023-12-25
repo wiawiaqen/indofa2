@@ -13,12 +13,9 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  getProducts() {
-    let fields = "name price imgbase64_reduce"
-    return this.http.get('/api/products/?fields='+fields, {
-      withCredentials: true
-    }
-    )
+  getProducts(): Observable<{ [key: string]: [] }> {
+    let fields = "name category active imgbase64_reduce"
+    return this.http.get<any>('api/products/'+ "?fields=" + fields)
   }
 
 

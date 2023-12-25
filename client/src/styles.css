@@ -13,7 +13,9 @@ body {
        url(./fonts/BDLifelessGrotesk-ExtraBold.ttf) format("truetype");
 }
 
-
+.font-normal {
+  font-family: 'Noto Sans';
+}
 
 .font-custom {
   font-family: 'BDLifelessGrotesk', cursive;

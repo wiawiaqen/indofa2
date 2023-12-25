@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../models';
 import { ProductService } from '../services/product.service';
-import { MapType } from '@angular/compiler';
 
 @Component({
   selector: 'app-product-total',
@@ -16,6 +15,7 @@ export class ProductTotalComponent {
   input: string = '';
   category: string = '';
   page: string = '';
+  loading: boolean = true;
   mapping: {[key:string]: string} = {
     "cuqua": "Hạt giống củ quả",
     "hoa": "Hạt giống hoa",
@@ -34,7 +34,7 @@ export class ProductTotalComponent {
     private router: Router
   ) { }
   ngOnInit(): void {
-    
+
     this.activatedRoute.params.subscribe((val) => {
       this.input = val['category'];
       let data = this.input.split("-")
@@ -45,18 +45,19 @@ export class ProductTotalComponent {
         this.page = "1"
       }
     });
-    
+
     this.productService.getPagination(this.page, this.category).subscribe(
       {
         next: (res: any) => {
-          console.log(res['data'])
+          this.loading = true;
+          console.log("blabla")
           res['data'].forEach(
             (product_data: any) => {
               let product = new Product(product_data)
               this.products.push(product)
             }
           )
-          console.log(this.products)
+          this.loading = false;
         },
         error: (err: any) => {
           console.log(err);
