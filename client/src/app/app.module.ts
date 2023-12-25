@@ -1,11 +1,10 @@
-
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
-//import { BrowserModule } from '@angular/platform-browser';
-import { BrowserModule } from '@angular/platform-browser';
-//import { RouterModule, Routes } from '@angular/router';
-import {RouterModule, Routes} from '@angular/router'
 import { AppComponent } from './app.component';
 import { ProductMainComponent } from './product-main/product-main.component';
 import { ProductCategoryContainerComponent } from './product-category-container/product-category-container.component';
@@ -15,10 +14,7 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { BlogcategoryComponent } from './blogcategory/blogcategory.component';
 import { BlogComponent } from './blog/blog.component';
 import { HomePageComponent } from './home-page/home-page.component';
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { RegisterComponent } from './register/register.component';
-import {HttpClientModule} from '@angular/common/http'
 import { NavComponent } from './nav/nav.component';
 import { ForgotPwComponent } from './forgot-pw/forgot-pw.component';
 import { ResetpwComponent } from './resetpw/resetpw.component';
@@ -28,6 +24,13 @@ import { AboutUsTeamComponent } from './aboutusteam/aboutusteam.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutusreviewComponent } from './aboutusreview/aboutusreview.component';
+import { CartComponent } from './cart/cart.component';
+import { CouponComponent } from './coupon/coupon.component';
+import { CouponvalueComponent } from './couponvalue/couponvalue.component';
+import { SuccessorderComponent } from './successorder/successorder.component';
+import { CartnoproductsComponent } from './cartnoproducts/cartnoproducts.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { LoaderComponent } from './loader/loader.component';
 import { BlogSmallComponent } from './blog-small/blog-small.component';
 import { LeftmenuComponent } from './leftmenu/leftmenu.component';
 import { BottommenublogComponent } from './bottommenublog/bottommenublog.component';
@@ -47,19 +50,25 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aboutusreal', component: AboutUsRealComponent },
   { path: 'blogs', component: BlogsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'coupon', component: CouponComponent },
+  { path: 'successorder', component: SuccessorderComponent },
+  { path: 'cartnoproducts', component: CartnoproductsComponent },
+  { path: 'loader', component: LoaderComponent },
+  { path: "**", component: NotfoundComponent },
   { path: 'blogcategory', component: BlogcategoryComponent },
-  { path: 'blog', component:BlogComponent },
-  { path: 'prodtotal', component:ProductTotalComponent },
-  { path: 'proddetail', component:ProductDetailComponent },
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'forgot-password', component: ForgotPwComponent},
-  {path: 'reset/:token', component: ResetpwComponent},
-  {path: 'forgot-password-after/:email', component: ForgotPwAfterComponent},
-  {path: 'payment', component: PaymentComponent},
-  {path: 'admin-product-add', component: ProductAddComponent},
-  {path: 'admin-product-list', component: ProductListComponent},
-  {path: 'admin-product-update/:id', component: ProductUpdateComponent}
+  { path: 'blog', component: BlogComponent },
+  { path: 'prodtotal', component: ProductTotalComponent },
+  { path: 'proddetail', component: ProductDetailComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPwComponent },
+  { path: 'reset/:token', component: ResetpwComponent },
+  { path: 'forgot-password-after/:email', component: ForgotPwAfterComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'admin-product-add', component: ProductAddComponent },
+  { path: 'admin-product-list', component: ProductListComponent },
+  { path: 'admin-product-update/:id', component: ProductUpdateComponent }
 ]
 @NgModule({
   declarations: [
@@ -71,7 +80,6 @@ const routes: Routes = [
     BlogsComponent,
     BlogcategoryComponent,
     BlogComponent,
-    HomePageComponent,
     RegisterComponent,
     NavComponent,
     ForgotPwComponent,
@@ -80,9 +88,14 @@ const routes: Routes = [
     AboutUsRealComponent,
     AboutuscommentComponent,
     AboutUsTeamComponent,
-    HeaderComponent,
-    FooterComponent,
     AboutusreviewComponent,
+    CartComponent,
+    CouponComponent,
+    CouponvalueComponent,
+    SuccessorderComponent,
+    CartnoproductsComponent,
+    NotfoundComponent,
+    LoaderComponent,
     BlogSmallComponent,
     LeftmenuComponent,
     BottommenublogComponent,
