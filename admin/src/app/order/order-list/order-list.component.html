@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div>
+    <div class="py-[30px] mx-[50px] overflow-hidden relative" >
+        <div class="flex flex-wrap relative">
+            <p id="profile" class="text-[15pt] font-bold font-custom text-[#23562A]">DANH SÁCH ĐƠN HÀNG</p>
+            <div class=" flex flex-wrap ml-auto ">
+              <div class="searchbox w-[120px]" id="searchbox">
+                <div class="relative w-[120px] h-[30px]">
+                    <input type="text" class="pl-[20px] px-5 border-[#23562A] flex items-center rounded-2xl text-[13px] w-full h-full bg-[#FEFFF8] border-2"  placeholder="Tìm kiếm">
+                    <div class=" absolute top-[5px] right-[15px] btn btn_common">
+                      <i class="fas fa-search"></i>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    <div class="overflow-hidden mt-[20px]">
+       <table class="w-[100%]" cellpadding="10">
+  <tr class="bg-[#23562A] text-white font-bold py-[15px] text-center">
+    <td class="filter-btn" data-status="all" (click)="handleFilterClick($event)">Tất cả</td>
+    <td class="filter-btn" data-status="placed" (click)="handleFilterClick($event)">Đã đặt</td>
+    <td class="filter-btn" data-status="processing" (click)="handleFilterClick($event)">Đang xử lý</td>
+    <td class="filter-btn" data-status="delivered" (click)="handleFilterClick($event)">Đã giao</td>
+    <td class="filter-btn" data-status="completed" (click)="handleFilterClick($event)">Đã hoàn thành</td>
+    <td class="filter-btn" data-status="cancelled" (click)="handleFilterClick($event)">Đã hủy</td>
+  </tr>
+</table>
+        <table class="w-[100%] text-center" cellpadding="10" >
+          <thead class=" py-[15px]">
+              <tr class="border-b border-[#9A9898]">
+                  <th class="text-center py-[15px] w-[140px]">Mã đơn hàng</th>
+                  <th class="text-center py-[15px]">Tên khách hàng</th>
+                  <th class="text-center py-[15px]">Ngày đặt hàng</th>
+                  <th class="text-center py-[15px]">Trạng thái</th>
+                  <th class="text-center py-[15px]">Hình thức thanh toán</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[#9A9898]">
+                <td><a href="" routerLink="/ordetail">DNXJFN123</a></td>
+                <td>Phạm Nguyễn Thanh Mai</td>
+                <td>26/11/2023</td>
+                <td class="flex justify-center">
+                    <select class="pl-[20px] px-5 border-[#23562A] border-[2px] flex justify-center-center rounded-2xl mx-3 text-[12pt] w-[180px] bg-[#FEFFF8]">
+                        <option class="text-black">Trạng thái</option>
+                        <option>Đang xử lý</option>
+                        <option>Đã hủy</option>
+                        <option>Đã thanh toán</option>
+                    </select>
+                </td>
+                <td>Chuyển khoản</td> 
+            </tr>
+            <tr class="border-b border-[#9A9898]">
+                <td><a href="" routerLink="/ordetail">DNXJFN124</a></td>
+                <td>Nguyễn Thị Thúy Hiền</td>
+                <td>14/12/2023</td>
+                <td class="flex justify-center">
+                    <select class="pl-[20px] px-5 border-[#23562A] border-[2px] flex justify-center-center rounded-2xl mx-3 text-[12pt] w-[180px] bg-[#FEFFF8]">
+                        <option class="text-black">Trạng thái</option>
+                        <option>Đang xử lý</option>
+                        <option>Đã hủy</option>
+                        <option>Đã thanh toán</option>
+                    </select>
+                </td>
+                <td>Chuyển khoản</td> 
+            </tr>
+          </tbody>
+      </table>
+      </div>  
+</div>

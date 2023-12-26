@@ -30,7 +30,7 @@ export class ProductTotalComponent {
     "treo": "Chậu treo",
     "nhua": "Chậu nhựa",
     "gom,nhua,treo,chaucustom,dungcu": "Dụng cụ",
-    "cuqua,hoa,rau": "Hạt giống"
+    "rau,hoa,cuqua": "Hạt giống"
   }
   constructor(
     private productService: ProductService,
