@@ -83,10 +83,9 @@ export class ProductListComponent implements OnInit {
           },
           error: (err) => {
             this.errMessage = err;
-            // Show error message
             Swal.fire({
               title: 'Lỗi',
-              text: 'Đã xảy ra lỗi khi xóa.',
+              text: `Đã xảy ra lỗi khi xóa. ${err}`,
               icon: 'error'
             });
           },

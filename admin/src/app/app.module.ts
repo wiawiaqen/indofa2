@@ -18,10 +18,12 @@ import { OrderDetailComponent } from './order/order-detail/order-detail.componen
 import { CouponComponent } from './coupon/coupon.component';
 import { NewCouponComponent } from './new-coupon/new-coupon.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'ordetail', component: OrderDetailComponent },
+  { path: 'ordetail', component: OrderDetailComponent},
   { path: 'product-add', component: ProductAddComponent },
+  { path: 'dashboard', component: DashboardComponent},
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-update/:id', component: ProductUpdateComponent },
   { path: 'blog-add', component: BlogAddComponent },
@@ -32,8 +34,8 @@ const routes: Routes = [
   { path: 'new-coupon', component: NewCouponComponent },
   { path: 'order-list', component: OrderListComponent },
   { path: 'order-detail/:id', component: OrderDetailComponent },
-  { path: '', redirectTo: 'product-list', pathMatch: 'full' },
-  { path: '**', redirectTo: 'product-list', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
 ]
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ const routes: Routes = [
     CouponComponent,
     NewCouponComponent,
     LeftMenuComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

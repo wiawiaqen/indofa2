@@ -3,19 +3,23 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 @Component({
   selector: 'app-product-add',
-  templateUrl: './product-add.component.html',
-  styleUrl: './product-add.component.css',
-})
-export class ProductAddComponent {
-  myForm: FormGroup;
 
-  constructor(private service: ProductService,
+  templateUrl: './product-add.component.html',
+  styleUrl: './product-add.component.css'
+})
+export class ProductAddComponent implements OnInit {
+  myForm: FormGroup;
+  showInput = false;
+  constructor(
+    private service: ProductService,
     private router: Router,
     private formBuilder: FormBuilder,
-  ) { }
+  ) { this.myForm = this.fb.group({
+    mySelect: [''],
+    newOption: ['', Validators.required]
+  }) }
 
   productForm: FormGroup;
   files: File[] = [];
@@ -32,6 +36,10 @@ export class ProductAddComponent {
       fdesc: '',
       desc: ''
     });
+
+  }
+  hienInput() {
+    this.showInput = true;
   }
   onSelect(event: any) {
     console.log(event);
@@ -71,8 +79,6 @@ export class ProductAddComponent {
         price: formData.price,
         f_description: formData.fdesc
       }
-      console.log(formData)
-      console.log(formData.name)
       this.service.postProduct(data).subscribe({
         next: (data) => {
         },
@@ -80,6 +86,7 @@ export class ProductAddComponent {
           this.errMessage = err;
         },
       });
+      this.router.navigate(['/product-list']);
     }
   }
   product = new Product();

@@ -37,7 +37,7 @@
                   <hr *ngIf="product !== products[0]" />
                   <li
                     class="list-none rounded-[3px] py-[5px] px-[10px] cursor-pointer text-[14px] text-left hover:bg-[#E7F4E5]">
-                    <a [routerLink]="['/']"> {{ product.productTitle }}</a>
+                    <a routerLink="/prodtotal/{{ product.productCategory }}/{{ product.productID }}"> {{ product.productTitle }}</a>
                   </li>
                 </ng-container>
               </ul>

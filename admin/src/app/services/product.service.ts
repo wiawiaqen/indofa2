@@ -78,22 +78,8 @@ export class ProductService {
     );
   }
   deleteProduct(productId: string): Observable<any> {
-    const headers = new HttpHeaders().set(
-      'Content-Type',
-      'application/json;charset=utf-8'
-    );
-
-    const requestOptions: Object = {
-      headers: headers,
-      responseType: 'text',
-    };
     return this.http
-      .delete<any>('/api/products/' + productId, requestOptions)
-      .pipe(
-        map((res) => JSON.parse(res) as Array<Product>),
-        retry(3),
-        catchError(this.handleError)
-      );
+      .delete<any>('/api/products/' + productId)
   }
 
 

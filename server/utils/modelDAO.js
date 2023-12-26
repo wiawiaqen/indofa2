@@ -32,14 +32,11 @@ exports.updateOne = (Model, name = "document") =>
 
 exports.deleteOne = (Model, name = "document") =>
   asyncHandler(async (req, res, next) => {
-    const document = await Model.findByIdAndDelete(req.params.id);
-    if (!document) {
-      return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
-    }
-    if (req.user._id !== document.user || req.user.role !== "admin") {
+    const document = await Model.findById(req.params.id);
+    if (req.user._id !== document.user && req.user.role !== "admin") {
       return next(new apiError(`Error!`, 404));
     }
-    document.remove();
+    let data = await Model.findByIdAndDelete(req.params.id);
     res.status(204).send();
   });
 

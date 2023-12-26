@@ -67,6 +67,7 @@ export class CouponComponent implements OnInit {
       if (result.isConfirmed) {
         this.couponService.deleteCoupon(_id).subscribe({
           next: (data:any) => {
+
             this.coupons = data;
             Swal.fire({
               title: 'Đã xóa',
@@ -103,6 +104,7 @@ export class CouponComponent implements OnInit {
       (results: Coupon[]) => {
         this.coupons = [];
         results.forEach((coupon) => {
+          this.coupons = [];
           let couponObject = new Coupon(coupon);
           this.coupons.push(couponObject)
         })

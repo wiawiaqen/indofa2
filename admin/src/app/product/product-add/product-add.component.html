@@ -1,5 +1,5 @@
 <p class="text-[#23562A] text-[30pt] font-bold">TẠO SẢN PHẨM MỚI</p>
-<form [formGroup]="myForm" (ngSubmit)="postProduct($event)">
+<form [formGroup]="productForm" (ngSubmit)="postProduct($event)">
 <table [cellPadding]="5">
     <tr>
         <th class="text-left">
@@ -17,8 +17,8 @@
             Danh mục:
         </th>
         <td colspan="2">
-           
-                
+
+
             <select formControlName="cate" id="cate" class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[425px] h-[28px] "
                 style="border: 1px solid #AAAAAA">
                 <option selected value="">Chọn danh mục sản phẩm</option>
@@ -32,7 +32,7 @@
                 <option value="treo">Chậu cây treo</option>
                 <option value="nhua">Chậu cây nhựa</option>
                 <option value="khac">Khác</option>
-            </select> 
+            </select>
         </td>
         <td></td>
     </tr>
@@ -71,20 +71,20 @@
     <tr>
         <th>
 
-    
-        <td><input id="current-price" type="number" placeholder="0" formControlName="price" 
+
+        <td><input id="current-price" type="number" placeholder="0" formControlName="price"
                 class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[219px] h-[28px] "
                 style="border: 1px solid #AAAAAA;"></td>
         <td><input type="number" placeholder="0" id="discount-amount"
                 class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[219px] h-[28px] "
                 style="border: 1px solid #AAAAAA; "></td>
     </tr>
-   
+
     <tr>
         <th class="text-left align-text-top">Thông tin sản phẩm:</th>
         <td colspan="2"><textarea rows="10" cols="65" placeholder="Nhập thông tin sản phẩm..."
                 class="pl-[20px] rounded-[5px] text-[13px] py-[5px] w-[830px] h-[224px] "
-                style="border: 1px solid #AAAAAA" 
+                style="border: 1px solid #AAAAAA"
                 formControlName="desc">
 </textarea></td>
     </tr>
@@ -96,14 +96,14 @@
                 formControlName="fdesc">
 </textarea></td>
     </tr>
-    <tr>
+    <tr class="mb-[20px]">
         <th class="text-left align-text-top">Hình ảnh sản phẩm:</th>
 
         <td colspan="2">
             <div class=" rounded-[5px] w-[830px] h-[224px]" style="border: 1px solid #AAAAAA">
                 <p class="mt-[10px] text-right mr-[30px]">Kích cỡ tối đa với các tập tin mới: 50MB</p>
                 <hr width="774px" class="ml-[23px]" style="border-color: #AAAAAA;  ">
-                <div style="margin-top: 20px; margin-left: 23px;">
+                <div style="margin-top: 20px">
 
                     <ngx-dropzone (change)="onSelect($event)" formControlName="pic"
                     [(ngModel)]="product.productImgSource"
@@ -121,16 +121,16 @@
             </div>
         </td>
     </tr>
-    <tr>
+    <tr class="mt-[20px]">
         <th class="text-left align-text-top">Hình ảnh mô tả:</th>
 
         <td colspan="2">
-            <div class=" rounded-[5px] w-[830px] h-[224px]" style="border: 1px solid #AAAAAA">
+            <div class=" rounded-[5px] w-[830px]" style="border: 1px solid #AAAAAA">
                 <p class="mt-[10px] text-right mr-[30px]">Kích cỡ tối đa với các tập tin mới: 50MB</p>
                 <hr width="774px" class="ml-[23px]" style="border-color: #AAAAAA;  ">
-                <div style="margin-top: 20px; margin-left: 23px;">
+                <div style="margin-top: 20px">
 
-                    <ngx-dropzone (change)="onSelect1($event)" 
+                    <ngx-dropzone (change)="onSelect1($event)"
                     formControlName="pic1"
                     [(ngModel)]="product.productFullImgSource"
                         class="custom-dropzone">
