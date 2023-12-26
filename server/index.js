@@ -24,6 +24,7 @@ const couponRoute = require("./routes/coupon");
 const addressRoute = require("./routes/address");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
+const blogRoute = require("./routes/blog");
 // Middleware
 const app = express();
 
@@ -60,6 +61,7 @@ app.use("/api/coupons", couponRoute);
 app.use("/api/address", addressRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
+app.use("/api/blogs", blogRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");

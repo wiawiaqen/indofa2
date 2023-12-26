@@ -61,5 +61,15 @@ AddressSchema.pre("findByIdAndUpdate", function (next) {
   next();
 });
 
+AddressSchema.pre("save", function (next) {
+  if (this.default) {
+    this.model("Address").updateMany(
+      { user: this.user },
+      { default: false },
+    );
+  } 
+  next();
+});
+
 const Address = mongoose.model("Address", AddressSchema);
 module.exports = Address;
