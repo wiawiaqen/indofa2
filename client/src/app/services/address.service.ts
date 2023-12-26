@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AddressService {
+  private apiUrl = 'https://provinces.open-api.vn/api/?depth=3';
 
   constructor(private _http: HttpClient) { }
-  getAddressData() {
-    return this._http.get('https://provinces.open-api.vn/api/?depth=3')
+
+  getProvinces(): Observable<any> {
+    return this._http.get(this.apiUrl);
   }
 
   getUserAddress(): Observable<{ [key: string]: [] }>{

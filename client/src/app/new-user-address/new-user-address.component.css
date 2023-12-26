@@ -28,3 +28,21 @@ input:checked + .button{
 input:checked + .button::before{
   transform: translateX(19px);
 }
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input{
+  color: #000000;
+}
+.dropdown select {
+  width: 100%;
+  padding: 8px;
+  margin-top:10px;
+  border: 1px solid #AAAAAA;
+  border-radius: 5px;
+  background-color: #FEFFF8;
+  color: #000000;
+}

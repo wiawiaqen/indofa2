@@ -47,7 +47,7 @@
                         <div class="flex flex-1 items-end justify-between text-sm">
                           <div>
                             <button type="button" (click)="decreaseQuantity(p.productID)" class="btnSub">-</button>
-                            <input [(ngModel)]="p.quantity" (change)="updateCart()" class="py-1 w-10 text-center"
+                            <input [(ngModel)]="p.quantity"  class="py-1 w-10 text-center"
                               value="{{p.quantity}}" min=0>
                             <button type="button" (click)="increaseQuantity(p.productID)" class="btnAdd">+</button>
                           </div>
@@ -63,13 +63,13 @@
 
             <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
               <div class="flex justify-between text-base font-medium text-gray-900">
-                <p>Subtotal</p>
-                <p>$262.00</p>
+                <p>Tổng cộng</p>
+                <p>{{ stringPrice }} VNĐ</p>
               </div>
-              <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+              <p class="mt-0.5 text-sm text-gray-500">Phí vận chuyển sẽ được tính tại trang thành toán.</p>
               <div class="mt-6">
-                <a href="#"
-                  class="flex items-center justify-center rounded-md border border-transparent bg-[#23562A] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#3B9647]">THANH
+                <a (click)="goToPayment()"
+                  class="flex hover:cursor-pointer  items-center justify-center rounded-md border border-transparent bg-[#23562A] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#3B9647]">THANH
                   TOÁN</a>
               </div>
               <div class="mt-6 flex justify-center text-center text-sm text-gray-500">

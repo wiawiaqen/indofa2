@@ -52,6 +52,9 @@ export class CusaddressComponent {
           this.defaultAddress = new Address(element);
         }
       });
+      if (this.address.length === 0) {
+        this.router.navigate(['/newaddress']);
+      }
       this.address.forEach(address_object => {
         if (address_object.addressID === this.selectedAddress) {
           this.defaultAddress = address_object;

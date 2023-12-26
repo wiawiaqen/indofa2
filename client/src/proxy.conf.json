@@ -5,13 +5,5 @@
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
-  },
-  {
-    "context": ["/address"],
-    "target": "https://provinces.open-api.vn",
-    "secure": true,
-    "changeOrigin": true,
-    "logLevel": "debug",
-    "pathRewrite": { "^/address": "" }
   }
 ]

@@ -44,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserCart();
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params:any) => {
       this.category = params['category'];
       this.id = params['id'];
 

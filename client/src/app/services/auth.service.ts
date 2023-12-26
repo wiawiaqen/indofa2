@@ -13,4 +13,7 @@ export class AuthService {
   checkUser(): Observable<{ [key: string]: [] }> {
     return this._http.get<any>('api/auth/user', { withCredentials: true })
   }
+  logOut(): Observable<{ [key: string]: [] }> {
+    return this._http.post<any>('api/auth/logout', { withCredentials: true })
+  }
 }

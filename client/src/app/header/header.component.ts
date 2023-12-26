@@ -5,7 +5,8 @@ import { RegisterComponent } from '../register/register.component';
 import { Product } from '../models';
 import { ModalService } from '../services/modal.service';
 import { AddressService } from '../services/address.service';
-import { offset } from '@popperjs/core';
+import { AuthService } from '../services/auth.service';
+import { User } from '../models';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,6 +17,7 @@ export class HeaderComponent {
   showCart: boolean = false;
   input: string = ''
   products: Product[] = [];
+  user: User | null = null;
   hasQuery: boolean = false;
   componentToLoad: any = null;
   isFixed: boolean = false;
@@ -25,7 +27,8 @@ export class HeaderComponent {
   constructor(private search: SearchbarService,
     private modalService: ModalService,
     private addressService: AddressService,
-    private el: ElementRef
+    private el: ElementRef,
+    private authService: AuthService
   ) {
     this.modalService.onClose.subscribe(() => {
       this.closeModal();
@@ -37,6 +40,7 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
+    this.getUser();
     this.search.searchProducts('').subscribe(
       data => {
         data.forEach((product_data) => {
@@ -50,21 +54,22 @@ export class HeaderComponent {
     );
 
   }
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    this.offset = this.el.nativeElement.offsetTop;
-    const offset = this.el.nativeElement.offsetTop;
-    const windowScroll = window.pageYOffset;
-    if (windowScroll > offset) {
-      this.isFixed = true;
-    } else {
-      this.isFixed = false;
-    }
+
+  getUser() {
+    this.authService.checkUser().subscribe(data => {
+      this.user = new User(data['data']);
+    });
+  }
+  logOut(){
+    this.authService.logOut().subscribe(data => {
+      this.user = null;
+    });
   }
   closeCart() {
     this.showCart = false;
+    this.getUser();
   }
-  openCart(){
+  openCart() {
     this.showCart = true;
   }
   closeModal() {

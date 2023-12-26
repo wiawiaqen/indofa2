@@ -42,9 +42,7 @@ export class Product {
     }
   }
   processDetail(): string[] {
-    console.log(this.productDescription)
     const lines = this.productDescription.split("\n")
-    console.log(lines)
     let results = [];
     for (let line in lines) {
       line = line.trim();
