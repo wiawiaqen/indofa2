@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login/login.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { NewCouponComponent } from './new-coupon/new-coupon.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { CustomerComponent } from './customer/customer.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { LeftMenuComponent } from './left-menu/left-menu.component';
     CouponComponent,
     NewCouponComponent,
     LeftMenuComponent,
+    CustomerComponent,
     
   ],
   imports: [
