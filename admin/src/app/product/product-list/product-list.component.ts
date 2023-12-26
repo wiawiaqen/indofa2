@@ -80,6 +80,7 @@ export class ProductListComponent implements OnInit {
               text: 'Sản phẩm đã được xóa.',
               icon: 'success'
             });
+            this.fetchProducts();
           },
           error: (err) => {
             this.errMessage = err;

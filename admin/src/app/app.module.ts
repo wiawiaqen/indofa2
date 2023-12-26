@@ -19,7 +19,7 @@ import { CouponComponent } from './coupon/coupon.component';
 import { NewCouponComponent } from './new-coupon/new-coupon.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { NgApexchartsModule } from 'ng-apexcharts';
 const routes: Routes = [
   { path: 'ordetail', component: OrderDetailComponent},
   { path: 'product-add', component: ProductAddComponent },
@@ -60,6 +60,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
