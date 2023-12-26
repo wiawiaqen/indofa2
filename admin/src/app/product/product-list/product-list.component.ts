@@ -54,11 +54,11 @@ export class ProductListComponent implements OnInit {
   }
 
   createProduct() {
-    this.router.navigate(['admin-product-add']);
+    this.router.navigate(['product-add']);
   }
 
   updateProduct(id: any) {
-    this.router.navigate([`admin-product-update/${id}`]);
+    this.router.navigate([`product-update/${id}`]);
   }
 
   deleteProduct(_id: any) {

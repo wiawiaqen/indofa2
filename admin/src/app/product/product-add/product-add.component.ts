@@ -9,20 +9,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './product-add.component.html',
   styleUrl: './product-add.component.css',
 })
-
-
 export class ProductAddComponent {
- 
-  showInput = false;
+  myForm: FormGroup;
+
   constructor(private service: ProductService,
     private router: Router,
     private formBuilder: FormBuilder,
-  ) { this.myForm = this.fb.group({
-    mySelect: [''],
-    newOption: ['', Validators.required]
-  }) }
+  ) { }
 
-  myForm: FormGroup;
+  productForm: FormGroup;
   files: File[] = [];
   files1: File[] = [];
 
@@ -30,20 +25,13 @@ export class ProductAddComponent {
   f_imgbase64: string | ArrayBuffer | null = '';
   fb = inject(FormBuilder)
   ngOnInit(): void{
-    this.myForm = this.formBuilder.group({
+    this.productForm = this.formBuilder.group({
       name: '',
       cate: '',
       price: '',
       fdesc: '',
       desc: ''
     });
-    
-  }
- 
-  
-  
-  hienInput() {
-    this.showInput = true;
   }
   onSelect(event: any) {
     console.log(event);
@@ -72,7 +60,7 @@ export class ProductAddComponent {
     reader2.readAsDataURL(f_img);
     reader2.onload = () => {
       // Have to wait the file finished loading
-      let formData = this.myForm.getRawValue()
+      let formData = this.productForm.getRawValue()
       this.f_imgbase64 = reader2.result;
       let data = {
         name: formData.name,
@@ -86,9 +74,9 @@ export class ProductAddComponent {
       console.log(formData)
       console.log(formData.name)
       this.service.postProduct(data).subscribe({
-        next: (data: any) => {
+        next: (data) => {
         },
-        error: (err: any) => {
+        error: (err) => {
           this.errMessage = err;
         },
       });

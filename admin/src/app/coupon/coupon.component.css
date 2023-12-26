@@ -1,0 +1,23 @@
+.btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 35px;
+	height: 100%;
+	z-index: 1;
+	cursor: pointer;
+}
+
+
+.btn.btn_common .fas{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: black;
+	font-size: 15px;
+	padding-right: 12px;
+}
+table tr:nth-child(even){
+    background-color: #E7F4E5;
+}

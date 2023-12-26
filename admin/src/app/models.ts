@@ -89,8 +89,9 @@ export class Product {
     userID: string;
     products: { productID: string, quantity: number }[];
     couponID: string;
-    total: number;
-    status: 'pending' | 'completed';
+    total: string;
+    date: string;
+    status: string;
 
     constructor(data: any = {}) {
       this.orderID = data._id;
@@ -100,8 +101,26 @@ export class Product {
         quantity: p.quantity
       })) : [];
       this.couponID = data.coupon;
-      this.total = data.total;
-      this.status = data.status;
+      this.total = String(this.numberWithCommas(data.total));
+      this.status = data.status == "pending" ? "Đang chờ xử lý" : "Đã hoàn thành";
+      this.date = this.formatDate(new Date(data.create_at));
+    }
+
+    private formatDate(date: Date): string {
+      let day = date.getDate().toString().padStart(2, '0');
+      let month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0 indexed
+      let year = date.getFullYear();
+      return `${day}-${month}-${year}`;
+    }
+    private numberWithCommas(x: number | string) {
+      try {
+        var parts = x.toString().split(",");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return parts.join(".");
+      }
+      catch (e) {
+        return x
+      }
     }
   }
 
@@ -121,6 +140,10 @@ export class Product {
     code: string;
     type: 'percent' | 'fixed';
     discount: number;
+    amount: number;
+    describe: string;
+    date_start: string;
+    date_end:string;
     status: 'active' | 'inactive';
 
     constructor(data: any = {}) {
@@ -128,6 +151,10 @@ export class Product {
       this.code = data.code;
       this.type = data.type;
       this.discount = data.discount;
+      this.amount = data.amount;
+      this.describe = data.describe
+      this.date_start = data.date_start;
+      this.date_end = data.date_end;
       this.status = data.status;
     }
   }

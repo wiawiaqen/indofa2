@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError,tap, map, Observable, retry, throwError } from 'rxjs';
+import { catchError, tap, map, Observable, retry, throwError } from 'rxjs';
 import { Product } from '../models';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class ProductService {
 
   getProducts(): Observable<{ [key: string]: [] }> {
     let fields = "name category active imgbase64_reduce"
-    return this.http.get<any>('api/products/'+ "?fields=" + fields)
+    return this.http.get<any>('api/products/' + "?fields=" + fields)
   }
 
   handleError(error: HttpErrorResponse) {
@@ -58,20 +58,20 @@ export class ProductService {
     };
 
     return this.http
-  .put<any>('/api/products/' + product.productID, JSON.stringify(product), requestOptions)
-  .pipe(
-    map(res => res as Product),
-    retry(3),
-    catchError(this.handleError)
-  )}
-  getProductCate(fashionStyle:string):Observable<any>
-  {
-    const header=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
-    const requestOptions:Object={
-      headers:header,
-      responseType:"text"
+      .put<any>('/api/products/' + product.productID, JSON.stringify(product), requestOptions)
+      .pipe(
+        map(res => res as Product),
+        retry(3),
+        catchError(this.handleError)
+      )
+  }
+  getProductCate(fashionStyle: string): Observable<any> {
+    const header = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
+    const requestOptions: Object = {
+      headers: header,
+      responseType: "text"
     }
-    return this.http.get<any>("/fashions-style/"+fashionStyle,requestOptions).pipe(
+    return this.http.get<any>("/fashions-style/" + fashionStyle, requestOptions).pipe(
       map((res) => JSON.parse(res) as Array<Product>),
       retry(3),
       catchError(this.handleError)
@@ -95,6 +95,7 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
+
 
 
 }

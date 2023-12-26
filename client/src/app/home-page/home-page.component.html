@@ -7,7 +7,7 @@
   </div>
   <swiper-container slides-per-view="4" speed="500" space-between="20" css-mode="true" navigation="true">
     <app-loader style="margin-left: 50%;transform: translateX(-50%);" *ngIf="bestseller_loading"></app-loader>
-    <swiper-slide *ngFor="let product of bestseller">
+    <swiper-slide *ngFor="let product of hatgiong_products">
       <app-product-main [product]="product"></app-product-main>
     </swiper-slide>
   </swiper-container>

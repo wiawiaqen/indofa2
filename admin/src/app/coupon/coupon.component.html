@@ -1,0 +1,82 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<div class="bg-[#23562A] py-[13px] w-full pl-[46px]">
+    <img src="./assets/images/admin_logo.png" class="w-[160px] h-auto">
+</div>
+<div class="w-full h-full grid grid-cols-[0fr_4fr] gap-[20px] overflow-hidden">
+    <div class="row-span-2">
+    </div>
+    <div class="inline-flex mt-[39px]">
+        <p class="font-custom text-[30px] w-full text-[#23562A]">DANH SÁCH KHUYẾN MÃI</p>
+        <div class="search_box w-[200px] mr-[10px]">
+            <div class=" relative w-[200px] h-[40px]">
+                <input type="text"
+                    class="pl-[20px] rounded-[10px] text-[13px] w-full h-full py-[10px] bg-[#FEFFF8] border-2 border-[#23562A]"
+                    formControlName="searchValue" placeholder="Tìm khuyến mãi..."
+                    (input)="sendData($event)">
+                <div class="btn btn_common">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+        <div class="mr-[50px]">
+            <button class="text-[16px] text-[#FEFFF8] bg-[#23562A] w-[170px] h-[40px] rounded-[10px]" (click)="createCoupon()">
+                Tạo khuyến mãi +
+            </button>
+        </div>
+    </div>
+    <div class="mr-[50px] shadow-md mt-[15px] text-center">
+        <table class="bg-[#FEFFF8] w-full text-[16px] w-full">
+            <tr>
+                <th class="py-[20px]">Khuyến mãi</th>
+                <th>Loại</th>
+                <th>Trạng thái</th>
+                <th>Đã sử dụng</th>
+                <th>Bắt đầu</th>
+                <th>Kết thúc</th>
+                <th>Tác vụ</th>
+            </tr>
+            <tbody *ngFor="let coupon of coupons">
+            <tr>
+                <td class="text-left pl-[19px] w-[200px] py-[25px]">
+                    <p class="font-bold">{{coupon.couponID}}</p>
+                    <p class="text-[#9A9898]">{{coupon.describe}}</p>
+                </td>
+                <td>{{coupon.type}}</td>
+                <td class="flex justify-center py-[37px]">
+                    <div class="flex justify-center m-auto py-[10px] border-[#23562A] border-2 w-[152px] shadow-md bg-[#E7F4E5] text-[#23562A] rounded-[30px] ">
+                        {{coupon.status}}
+                    </div>
+                </td>
+                <td>20/70</td>
+                <td>{{coupon.date_start}}</td>
+                <td>{{coupon.date_end}}</td>
+                <td class="flex justify-center">
+                    <button (click)="deleteCoupon(coupon.couponID)">
+                        <img src="./assets/images/image 7.png"/>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+            <!-- <tr>
+                <td class="text-left pl-[19px] w-[200px] py-[25px]">
+                    <p class="font-bold">PNTHFG152368</p>
+                    <p class="text-[#9A9898]">Giảm giá 20%, tối đa là 30.000 VNĐ</p>
+                </td>
+                <td>Mã giảm giá</td>
+                <td class="flex justify-center py-[37px]">
+                    <div class="flex justify-center m-auto py-[10px] border-[#DF1111] border-2 w-[152px] shadow-md bg-[#FEF1F1] text-[#FB6565] rounded-[30px] ">
+                        Đã hết hạn
+                    </div>
+                </td>
+                <td>20/70</td>
+                <td>20/11/2023</td>
+                <td>30/11/2023</td>
+                <td class="flex justify-center">
+                    <img src="./assets/images/image 7.png"/>
+                </td>
+            </tr> -->
+        </table>
+    </div>
+</div>
+

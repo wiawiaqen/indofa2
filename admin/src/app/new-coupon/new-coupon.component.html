@@ -1,0 +1,90 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<div class="bg-[#23562A] py-[13px] w-full pl-[46px]">
+    <img src="./assets/images/admin_logo.png" class="w-[160px] h-auto">
+</div>
+<div class="w-full h-full grid grid-cols-[1fr_4fr] gap-[10px] overflow-hidden text-[16px]">
+    <div class="row-span-3">
+          <app-left-menu></app-left-menu>
+    </div>
+    <div class="inline-flex mt-[39px] pl-[10px]">
+        <p class="font-custom text-[30px] w-full text-[#23562A]">MÃ KHUYẾN MÃI</p>
+        <div class="mr-[10px]">
+            <button class="text-[16px] text-[#23562A] border-2 border-[#23562A] w-[90px] h-[40px] rounded-[10px]">
+                Hủy
+            </button>
+        </div>
+        <div class="mr-[50px]">
+            <button class="text-[16px] text-[#FEFFF8] bg-[#23562A] w-[90px] h-[40px] rounded-[10px]" (click)="submitCoupon()">
+                Lưu
+            </button>
+        </div>
+    </div>
+    <form [formGroup]="myForm">
+    <div class="mr-[50px] pl-[10px]">
+        <div class="container">
+            <input type="checkbox" id="check" class="hidden">
+            <label for="check" class="button"></label>
+            <p class="ml-[10px]">Hiển thị mã trên website</p>
+        </div>
+        <div class="mt-[17px] mb-[12px] shadow-md p-[20px]">
+            <p class="mb-[10px] font-bold">Mã khuyến mãi</p>
+            <input type="text" placeholder="Nhập mã khuyến mãi" class="w-full py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px]">
+            <p class="mb-[10px] font-bold">Mô tả</p>
+            <input type="text" placeholder="Nhập mô tả" class="w-full pt-[8px] pb-[36px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] pl-[16px]">
+        </div>
+        <div class="grid grid-cols-2 gap-[60px] mt[17px] mb-[12px] shadow-md p-[20px]">
+            <div>
+                <p class="mb-[10px] font-bold">Thời gian hiệu lực</p>
+                <p class="mb-[10px]">Thời gian hiệu lực</p>
+                <input type="text" placeholder="Nhập thời gian" class="w-full py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px]">
+            </div>
+            <div>
+                <p class="mb-[10px]">&nbsp;</p>
+                <p class="mb-[10px]">Thời gian hiệu lực</p>
+                <input type="text" placeholder="Nhập thời gian" class="w-full py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px]">
+            </div>
+        </div>
+    </div>
+    <div class="w-full h-full grid grid-cols-[1fr_2fr] gap-[20px] overflow-hidden mt[17px] pl-[10px] mb-[100px]">
+        <div class="p-[20px] shadow-md">
+            <div>
+                <p class="mb-[10px] font-bold">Loại mã khuyến mãi</p>
+                <div class="w-full py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px] inline-flex">
+                    <p class="w-full">Chọn loại khuyến mãi</p>
+                    <i class="fa fa-angle-down mr-[12px] mt-[5px]"></i>
+                </div>
+            </div>
+        </div>
+        <div class="p-[20px] shadow-md mr-[50px]">
+            <table class="w-full">
+                <tr>
+                    <td class="font-bold mb-[10px]">Số lượng</td>
+                    <td class="font-bold">Mức giảm</td>
+                    <td>
+                        <input type="checkbox" id="limit" name="limit" value="limit">
+                        <label for="vehicle1" class="font-bold pl-[5px]">Giới hạn số tiền giảm tối đa</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="0" class="w-[70px] py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px]">
+                    </td>
+                    <td class="inline-flex mr-[10px]">
+                        <input type="text" placeholder="0" class="w-[70px] py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px] mr-[10px]">
+                        <div class="w-[90px] py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px] inline-flex">
+                            <select class="bg-[#FEFFF8]">
+                                <option>%</option>
+                                <option>VND</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Nhập giá trị tối đa..." class="w-full py-[8px] bg-[#FEFFF8] border-[1px] rounded-[5px] border-[#AAAAAA] text-[#AAAAAA] mb-[10px] pl-[16px]">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div> 
+    </form>  
+</div>

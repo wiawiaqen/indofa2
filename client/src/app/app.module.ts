@@ -54,7 +54,6 @@ import { ResetpsAdComponent } from './admin/resetps-ad/resetps-ad.component';
 import { OrderListComponent } from './admin/order-list/order-list.component';
 import { OrderDetailAdComponent } from './admin/order-detail/order-detail-ad.component';
 import { register } from 'swiper/element/bundle';
-
 import { BlogAddComponent } from './admin/blog-add/blog-add.component';
 import { BlogListComponent } from './admin/blog-list/blog-list.component';
 import { BlogUpdateComponent } from './admin/blog-update/blog-update.component';

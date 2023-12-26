@@ -38,7 +38,7 @@
               </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-[#9A9898]">
+            <tr class="border-b border-[#9A9898]" *ngFor="let order of orders">
                 <td><a href="" routerLink="/ordetail">DNXJFN123</a></td>
                 <td>Phạm Nguyễn Thanh Mai</td>
                 <td>26/11/2023</td>
@@ -50,7 +50,7 @@
                         <option>Đã thanh toán</option>
                     </select>
                 </td>
-                <td>Chuyển khoản</td> 
+                <td>Chuyển khoản</td>
             </tr>
             <tr class="border-b border-[#9A9898]">
                 <td><a href="" routerLink="/ordetail">DNXJFN124</a></td>
@@ -64,9 +64,9 @@
                         <option>Đã thanh toán</option>
                     </select>
                 </td>
-                <td>Chuyển khoản</td> 
+                <td>Chuyển khoản</td>
             </tr>
           </tbody>
       </table>
-      </div>  
+      </div>
 </div>
