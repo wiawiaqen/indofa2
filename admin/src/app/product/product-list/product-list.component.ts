@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
 import { Product } from '../../models';
-import { SearchbarService } from '../../services/searchbar.service'; 
+import { SearchbarService } from '../../services/searchbar.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-list',
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
+  products_list: Product[] = [];
   products: Product[] = [];
   errMessage: string = '';
 
@@ -20,6 +21,7 @@ export class ProductListComponent implements OnInit {
     this.fetchProducts();
     this.search.searchProducts('').subscribe(
       data => {
+        this.products = [];
         data.forEach((product_data) => {
           let product = new Product(product_data);
           this.products.push(product);
@@ -29,25 +31,17 @@ export class ProductListComponent implements OnInit {
         console.error('Error:', error);
       }
     );
-   
+
   }
 
   private fetchProducts() {
     this.service.getProducts().subscribe(
       (data) => {
+        this.products_list = [];
         data['data'].forEach((product_data) => {
           let product = new Product(product_data);
-          this.products.push(product);
+          this.products_list.push(product);
         });
-        console.log('Products Data:', this.products);
-        // const parsedData = typeof data === 'string' ? JSON.parse(data) : data;
-
-        // if (Array.isArray(parsedData.data)) {
-
-        //   console.log('Products Data:', this.products);
-        // } else {
-        //   console.error('Error: Data is not an array', parsedData);
-        // }
       },
       (error) => {
         console.error('Error fetching products:', error);

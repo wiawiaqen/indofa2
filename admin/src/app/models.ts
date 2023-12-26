@@ -44,11 +44,11 @@ export class Product {
       const lines = this.productFullDescription.split('\n');
       const result: Record<string, string[]> = {};
       let currentKey = '';
-  
+
       for (let line of lines) {
         line = line.trim();
         if (line === '') continue;
-  
+
         if (line.startsWith('+')) {
           if (currentKey) {
             if (!result[currentKey]) {
@@ -60,12 +60,12 @@ export class Product {
           currentKey = line;
         }
       }
-  
+
       return result;
     }
-  
+
   }
-  
+
   export class Review {
     reviewID: string;
     reviewer: string;
@@ -73,7 +73,7 @@ export class Product {
     rating: number;
     title: string;
     content: string;
-  
+
     constructor(data: any = {}) {
       this.reviewID = data._id;
       this.reviewer = data.reviewer;
@@ -83,7 +83,7 @@ export class Product {
       this.content = data.content;
     }
   }
-  
+
   export class Order {
     orderID: string;
     userID: string;
@@ -91,7 +91,7 @@ export class Product {
     couponID: string;
     total: number;
     status: 'pending' | 'completed';
-  
+
     constructor(data: any = {}) {
       this.orderID = data._id;
       this.userID = data.user;
@@ -104,7 +104,7 @@ export class Product {
       this.status = data.status;
     }
   }
-  
+
   export class blog {
     productTitle: string;
     productImgSource: string;
@@ -115,14 +115,14 @@ export class Product {
       this.date = date;
     }
   }
-  
+
   export class Coupon {
     couponID: string;
     code: string;
     type: 'percent' | 'fixed';
     discount: number;
     status: 'active' | 'inactive';
-  
+
     constructor(data: any = {}) {
       this.couponID = data._id;
       this.code = data.code;
@@ -131,15 +131,15 @@ export class Product {
       this.status = data.status;
     }
   }
-  
-  
+
+
   export class Cart {
     cartID: string;
     userID: string;
     products: { productID: string, quantity: number }[];
     total: number;
     status: 'pending' | 'completed';
-  
+
     constructor(data: any = {}) {
       this.cartID = data._id;
       this.userID = data.user;
@@ -151,12 +151,12 @@ export class Product {
       this.status = data.status;
     }
   }
-  
+
   export class Blog {
     blogID: string;
     title: string;
     content: Array<{ contentTitle: string, contentBody: string, base64Img?: string }>;
-  
+
     constructor(data: any = {}) {
       this.blogID = data._id;
       this.title = data.title;
@@ -167,7 +167,7 @@ export class Product {
       })) : [];
     }
   }
-  
+
   export class Address {
     addressID: string;
     name: string;
@@ -178,7 +178,7 @@ export class Product {
     ward: string;
     userID: string;
     isDefault: boolean;
-  
+
     constructor(data: any = {}) {
       this.addressID = data._id;
       this.name = data.name;
@@ -190,12 +190,12 @@ export class Product {
       this.userID = data.user;
       this.isDefault = data.default !== undefined ? data.default : false;
     }
-  
+
     full_address(): string {
       return `${this.street}, ${this.ward}, ${this.district}, ${this.city}`;
     }
   }
-  
+
   export class User {
     userID: string;
     name: string;
@@ -203,7 +203,7 @@ export class Product {
     provider: 'google' | 'indofa';
     role: 'user' | 'admin';
     isActive: boolean;
-  
+
     constructor(data: any = {}) {
       this.userID = data._id;
       this.name = data.name;
@@ -213,4 +213,3 @@ export class Product {
       this.isActive = data.isActive !== undefined ? data.isActive : true;
     }
   }
-  

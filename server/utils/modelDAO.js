@@ -56,7 +56,8 @@ exports.getOne = (Model, name = "document") =>
 exports.getAll = (Model) =>
   asyncHandler(async (req, res, next) => {
     let fields = req.query.fields;
-    const document = await Model.find().select(fields);
+    let selectFields = fields ? fields.split(",").join(" ") : "";
+    const document = await Model.find().select(selectFields);
     res.status(200).json({ size: document.length, data: document });
   });
 

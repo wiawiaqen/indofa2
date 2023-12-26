@@ -51,16 +51,16 @@ export class ProductService {
       'Content-Type',
       'application/json;charset=utf-8'
     );
-  
+
     const requestOptions: Object = {
       headers: headers,
       responseType: 'text',
     };
-  
+
     return this.http
   .put<any>('/api/products/' + product.productID, JSON.stringify(product), requestOptions)
   .pipe(
-    map(res => res as Product), 
+    map(res => res as Product),
     retry(3),
     catchError(this.handleError)
   )}
@@ -95,6 +95,6 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
-  
+
 
 }

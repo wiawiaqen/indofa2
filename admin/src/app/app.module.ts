@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule, Routes} from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {HttpClientModule} from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
@@ -14,7 +14,15 @@ import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogUpdateComponent } from './blog/blog-update/blog-update.component';
 import { LoginComponent } from './login/login/login.component';
 
-
+const routes: Routes = [
+  { path: 'product-add', component: ProductAddComponent },
+  { path: 'product-list', component: ProductListComponent },
+  { path: 'product-update/:id', component: ProductUpdateComponent },
+  { path: 'blog-add', component: BlogAddComponent },
+  { path: 'blog-list', component: BlogListComponent },
+  { path: 'blog-update/:id', component: BlogUpdateComponent },
+  { path: 'login', component: LoginComponent },
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,13 +33,12 @@ import { LoginComponent } from './login/login/login.component';
     BlogListComponent,
     BlogUpdateComponent,
     LoginComponent,
-    
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     AppRoutingModule,
-    NgxDropzoneModule ,
-    
+    NgxDropzoneModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -39,4 +46,5 @@ import { LoginComponent } from './login/login/login.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
