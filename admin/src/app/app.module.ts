@@ -13,8 +13,13 @@ import { BlogAddComponent } from './blog/blog-add/blog-add.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogUpdateComponent } from './blog/blog-update/blog-update.component';
 import { LoginComponent } from './login/login/login.component';
+import { OrderListComponent } from './order/order-list/order-list.component';
+import { OrderDetailComponent } from './order/order-detail/order-detail.component';
 
-
+const routes: Routes = [
+  { path: 'ordetail', component:  OrderDetailComponent },
+  
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +30,8 @@ import { LoginComponent } from './login/login/login.component';
     BlogListComponent,
     BlogUpdateComponent,
     LoginComponent,
+    OrderListComponent,
+    OrderDetailComponent,
     
   ],
   imports: [
