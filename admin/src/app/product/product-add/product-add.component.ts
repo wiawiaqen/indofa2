@@ -1,18 +1,17 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
-import { Product } from 'src/app/models';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../models';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-category-add',
-
-  templateUrl: './category-add.component.html',
-  styleUrl: './category-add.component.css'
+  selector: 'app-product-add',
+  templateUrl: './product-add.component.html',
+  styleUrl: './product-add.component.css'
 })
-export class CategoryAddComponent {
+export class ProductAddComponent {
   myForm: FormGroup;
-
+  
   constructor(private service: ProductService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -21,7 +20,7 @@ export class CategoryAddComponent {
   productForm: FormGroup;
   files: File[] = [];
   files1: File[] = [];
-
+  
   imgbase64: string | ArrayBuffer | null = '';
   f_imgbase64: string | ArrayBuffer | null = '';
   fb = inject(FormBuilder)
@@ -75,9 +74,9 @@ export class CategoryAddComponent {
       console.log(formData)
       console.log(formData.name)
       this.service.postProduct(data).subscribe({
-        next: (data: any) => {
+        next: (data) => {
         },
-        error: (err: any) => {
+        error: (err) => {
           this.errMessage = err;
         },
       });

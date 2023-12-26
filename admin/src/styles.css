@@ -1,0 +1,24 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(./fonts/Roboto-Regular.ttf) format("truetype");
+}
+
+body {
+  font-family: 'Roboto', cursive;
+  background-color: #FEFFF8;
+}
+
+@font-face {
+  font-family: 'BDLifelessGrotesk';
+  src: 
+       url(./fonts/BDLifelessGrotesk-ExtraBold.ttf) format("truetype");
+
+}
+
+.font-custom {
+  font-family: 'BDLifelessGrotesk', cursive;
+}

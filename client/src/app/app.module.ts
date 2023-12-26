@@ -46,6 +46,7 @@ import { SaveChangeAddressComponent } from './save-change-address/save-change-ad
 import { ProductAddComponent } from './admin/product-add/product-add.component';
 import { ProductListComponent } from './admin/product-list/product-list.component';
 import { ProductUpdateComponent } from './admin/product-update/product-update.component';
+<<<<<<< HEAD
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
@@ -55,6 +56,10 @@ import { OrderListComponent } from './admin/order-list/order-list.component';
 import { OrderDetailAdComponent } from './admin/order-detail/order-detail-ad.component';
 import { register } from 'swiper/element/bundle';
 import { CategoryAddComponent } from './admin/category-add/category-add.component';
+=======
+import { PaymentComponent } from './payment/payment.component';
+
+>>>>>>> 89d8bf5c9fc13a29de36c0b3531f247e5aa44f51
 import { BlogAddComponent } from './admin/blog-add/blog-add.component';
 import { BlogListComponent } from './admin/blog-list/blog-list.component';
 import { BlogUpdateComponent } from './admin/blog-update/blog-update.component';
@@ -161,7 +166,7 @@ const routes: Routes = [
     ProductAddComponent,
     ProductListComponent,
     ProductUpdateComponent,
-    CategoryAddComponent,
+
     BlogAddComponent,
     BlogListComponent,
     BlogUpdateComponent,

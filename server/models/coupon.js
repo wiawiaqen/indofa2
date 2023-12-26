@@ -12,9 +12,19 @@ const CouponSchema = new mongoose.Schema(
       enum: ["percent", "fixed"],
     },
 
+    describe: {
+      type: String,
+      required: [true, "Describe is Required"],
+    },
+
     discount: {
       type: Number,
       required: [true, "Discount is Required"],
+    },
+
+    amount: {
+      type: Number,
+      required: [true, "Amount is Required"],
     },
 
     d_max: {
@@ -27,6 +37,16 @@ const CouponSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Min Order is Required"],
       default: 0,
+    },
+
+    date_start: {
+      type: Date,
+      default: Date.now,
+    },
+
+    date_end: {
+      type: Date,
+      default: Date.now,
     },
 
     active: {
