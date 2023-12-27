@@ -8,7 +8,7 @@ router.get("/", blogService.getAll);
 router.get("one/:id", blogService.getOne);
 router.get("/filter", blogService.filter);
 router.post("/one", authMiddleware.auth, authMiddleware.admin, blogService.createOne);
-router.post("/many", blogService.createMany);
+router.post("/many", authMiddleware.auth, authMiddleware.admin,blogService.createMany);
 router.put("/:id", authMiddleware.auth, authMiddleware.admin, blogService.updateOne);
 router.delete("/:id", authMiddleware.auth, authMiddleware.admin, blogService.deleteOne);
 
